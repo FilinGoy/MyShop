@@ -1,12 +1,22 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
     },
     "devDependencies": {
         "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.7.2",
-        "vite": "^4.0.0"
+        "laravel-mix": "^6.0.49",
+        "volar-service-vetur": "latest",
+        "vue-loader": "^16.8.3"
+    },
+    "dependencies": {
+        "bootstrap": "^5.2.3",
+        "vue": "^3.2.47"
     }
 }

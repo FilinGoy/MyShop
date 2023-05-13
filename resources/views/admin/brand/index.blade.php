@@ -64,7 +64,7 @@
                                 <thead>
                                     <tr class="d-flex">
                                         <th class="col-2">ID</th>
-                                        <th class="col-7">Название</th>
+                                        <th class="col-7">Наименование</th>
                                         <th class="col-3">Действие</td>
                                     </tr>
                                 </thead>

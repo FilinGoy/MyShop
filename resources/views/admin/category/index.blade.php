@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Торговые марки</h1>
+                    <h1 class="m-0">Категории</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -64,7 +64,7 @@
                                 <thead>
                                     <tr class="d-flex">
                                         <th class="col-2">ID</th>
-                                        <th class="col-7">Название</th>
+                                        <th class="col-7">Наименование</th>
                                         <th class="col-3">Действие</td>
                                     </tr>
                                 </thead>

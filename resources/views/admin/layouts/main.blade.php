@@ -176,7 +176,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('product.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-store"></i>
                                 <p>
                                     Товары
@@ -184,13 +184,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-poll-h"></i>
                                 <p> Категории </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('user.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Пользователи
@@ -213,19 +213,19 @@
                                 </a>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('tag.index') }}" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Тэги</p>
                                 </a>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('country.index') }}" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Страны</p>
                                 </a>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('manufacturer.index') }}" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Производители</p>
                                 </a>

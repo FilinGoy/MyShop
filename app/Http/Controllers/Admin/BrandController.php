@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Brand\StoreRequest;
-use App\Http\Requests\Brand\UpdateRequest;
+use App\Http\Requests\General\StoreRequest;
+use App\Http\Requests\General\UpdateRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    // index | create | store | edit | show | update | delete
     public function index()
     {
         $brands = Brand::all();

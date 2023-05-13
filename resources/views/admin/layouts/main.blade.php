@@ -46,7 +46,7 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-{{--                 <!-- Messages Dropdown Menu -->
+                {{--                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-comments"></i>
@@ -166,6 +166,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <li class="nav-header">Основные разделы</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-shopping-bag"></i>
@@ -177,7 +178,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('product.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-store"></i>
+                                <i class="nav-icon fas fa-barcode"></i>
                                 <p>
                                     Товары
                                 </p>
@@ -197,41 +198,83 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-header">Разное</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-circle"></i>
-                              <p>
-                                Дополнительно
-                                <i class="right fas fa-angle-left"></i>
-                              </p>
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Дополнительные разделы
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
                             <ul class="nav nav-treeview" style="display: node;">
-                              <li class="nav-item">
-                                <a href="{{ route('brand.index') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Торговые марки</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="{{ route('tag.index') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Тэги</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="{{ route('country.index') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Страны</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="{{ route('manufacturer.index') }}" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Производители</p>
-                                </a>
-                              </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('brand.index') }}" class="nav-link">
+                                        <i class="far fa-copyright nav-icon"></i>
+                                        <p>Торговые марки</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('tag.index') }}" class="nav-link">
+                                        <i class="fas fa-tag nav-icon"></i>
+                                        <p>Тэги</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('country.index') }}" class="nav-link">
+                                        <i class="fas fa-globe nav-icon"></i>
+                                        <p>Страны</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('manufacturer.index') }}" class="nav-link">
+                                        <i class="fas fa-industry nav-icon"></i>
+                                        <p>Производители</p>
+                                    </a>
+                                </li>
                             </ul>
-                          </li>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-database"></i>
+                                <p>
+                                    Виды данных <br> (по умолчанию)
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: node;">
+                                <li class="nav-item">
+                                    <a href="{{ route('status.index') }}" class="nav-link">
+                                        <i class="fas fa-info-circle nav-icon"></i>
+                                        <p>Виды статуса заказа</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('packaging.index') }}" class="nav-link">
+                                        <i class="fas fa-box nav-icon"></i>
+                                        <p>Виды упаковок</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('payment.index') }}" class="nav-link">
+                                        <i class="fas fa-credit-card nav-icon"></i>
+                                        <p>Виды оплаты</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('time.index') }}" class="nav-link">
+                                        <i class="fas fa-calendar-alt nav-icon"></i>
+                                        <p>Виды измерения времени</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('weight.index') }}" class="nav-link">
+                                        <i class="fas fa-balance-scale nav-icon"></i>
+                                        <p>Виды измерения веса</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

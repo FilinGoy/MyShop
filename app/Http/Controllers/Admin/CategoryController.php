@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $data = $request->validated();
         $category->update($data);
 
-        return view('admin.category.show', compact($category));
+        return view('admin.category.show', compact('category'));
     }
 
     public function delete(Category $category)

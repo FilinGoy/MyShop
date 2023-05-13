@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Категории</h1>
+                    <h1 class="m-0">Виды упаковок</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -39,7 +39,7 @@
                             <div class="card-body" style="display: block;">
                                 <div class="row">
                                     <div class="col">
-                                        <form action="{{ route('category.store') }}" method="post">
+                                        <form action="{{ route('packaging.store') }}" method="post">
                                             @csrf
                                             <div class="input-group mb-3">
                                                 <input type="text" name="title" class="form-control">
@@ -69,23 +69,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
+                                    @foreach ($types as $type)
                                         <tr class="d-flex">
-                                            <td class="col-2">{{ $category->id }}</td>
-                                            <td class="col-7">{{ $category->title }}</td>
+                                            <td class="col-2">{{ $type->id }}</td>
+                                            <td class="col-7">{{ $type->title }}</td>
                                             <td class="col-3">
                                                 <div>
-                                                    <a href="{{ route('category.show', $category->id) }}" class="btn btn-outline-info btn-flat">
+                                                    <a href="{{ route('packaging.show', $type->id) }}" class="btn btn-outline-info btn-flat">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                    <a href="{{ route('category.edit', $category->id) }}" class="btn btn-outline-warning btn-flat">
+                                                    <a href="{{ route('packaging.edit', $type->id) }}" class="btn btn-outline-warning btn-flat">
                                                         <i class="fas fa-pen"></i>
                                                     </a>
-                                                    <form action="{{ route('category.delete', $category->id) }}" id="deleteForm{{ $category->id }}" method="post" hidden>
+                                                    <form action="{{ route('packaging.delete', $type->id) }}" id="deleteForm{{ $type->id }}" method="post" hidden>
                                                         @csrf
                                                         @method('delete')
                                                     </form>
-                                                    <button type="submit" form="deleteForm{{ $category->id }}" class="btn btn-outline-danger btn-flat">
+                                                    <button type="submit" form="deleteForm{{ $type->id }}" class="btn btn-outline-danger btn-flat">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>

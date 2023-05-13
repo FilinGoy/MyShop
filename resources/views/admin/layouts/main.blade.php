@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="assets/AdminLTE/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="assets/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+    @yield('head')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -36,14 +38,15 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                        <i class="fas fa-bars"></i>
+                    </a>
                 </li>
             </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
+{{--                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-comments"></i>
@@ -131,7 +134,7 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -139,7 +142,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="/" class="brand-link">
+            <a href="{{ route('admin') }}" class="brand-link">
                 <img src="assets/img/logo.png" alt="Logo" class="brand-image bg-light img-cube elevation-3">
                 <span class="brand-text font-weight-light">CapyProducts</span>
             </a>
@@ -183,9 +186,7 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-poll-h"></i>
-                                <p>
-                                    Категории
-                                </p>
+                                <p> Категории </p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -196,6 +197,41 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                              <i class="nav-icon fas fa-circle"></i>
+                              <p>
+                                Дополнительно
+                                <i class="right fas fa-angle-left"></i>
+                              </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: node;">
+                              <li class="nav-item">
+                                <a href="{{ route('brand.index') }}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Торговые марки</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Тэги</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Страны</p>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Производители</p>
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -235,6 +271,8 @@
     <script src="assets/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="assets/AdminLTE/dist/js/adminlte.js"></script>
+
+    @yield('script')
 </body>
 
 </html>

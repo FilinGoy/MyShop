@@ -17,9 +17,8 @@ return new class extends Migration
             $table->integer('id', true);
             $table->integer('user_id')->index('orders_fk0');
             $table->integer('status_id')->index('orders_fk1');
-            $table->date('datetime');
             $table->dateTime('datetime_delivery')->nullable();
-            $table->decimal('total_price', 10, 0);
+            $table->decimal('total_price');
             $table->integer('payment_id')->index('orders_fk2');
             $table->timestamps();
         });

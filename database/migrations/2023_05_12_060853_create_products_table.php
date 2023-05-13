@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('weight_type_id')->nullable()->index('products_fk5');
             $table->integer('calorie')->nullable();
             $table->integer('count');
-            $table->decimal('price', 10, 0);
+            $table->decimal('price');
             $table->string('description')->nullable();
             $table->boolean('published')->default(false);
             $table->string('preview_image')->nullable();

@@ -123,8 +123,8 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/', '\App\Http\Controllers\Admin\UserController@index')->name('user.index');
         Route::get('/create', '\App\Http\Controllers\Admin\UserController@create')->name('user.create');
         Route::post('/', '\App\Http\Controllers\Admin\UserController@store')->name('user.store');
-        Route::get('/{user}/edit', '\App\Http\Controllers\Admin\UserController@edit')->name('user.edit');
         Route::get('/{user}', '\App\Http\Controllers\Admin\UserController@show')->name('user.show');
+        Route::get('/{user}/edit', '\App\Http\Controllers\Admin\UserController@edit')->name('user.edit');
         Route::patch('/{user}', '\App\Http\Controllers\Admin\UserController@update')->name('user.update');
         Route::delete('/{user}', '\App\Http\Controllers\Admin\UserController@delete')->name('user.delete');
     });

@@ -264,13 +264,13 @@
                                 <li class="nav-item">
                                     <a href="{{ route('time.index') }}" class="nav-link">
                                         <i class="fas fa-calendar-alt nav-icon"></i>
-                                        <p>Виды измерения времени</p>
+                                        <p>Единицы измерения времени</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('weight.index') }}" class="nav-link">
                                         <i class="fas fa-balance-scale nav-icon"></i>
-                                        <p>Виды измерения веса</p>
+                                        <p>Единицы измерения веса</p>
                                     </a>
                                 </li>
                             </ul>

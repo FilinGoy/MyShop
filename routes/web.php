@@ -18,19 +18,18 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::group(['prefix' => 'brands'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\BrandController@index')->name('brand.index');
+        Route::get('/{brand}', '\App\Http\Controllers\Admin\BrandController@show')->name('brand.show');
         Route::post('/', '\App\Http\Controllers\Admin\BrandController@store')->name('brand.store');
         Route::get('/{brand}/edit', '\App\Http\Controllers\Admin\BrandController@edit')->name('brand.edit');
-        Route::get('/{brand}', '\App\Http\Controllers\Admin\BrandController@show')->name('brand.show');
         Route::patch('/{brand}', '\App\Http\Controllers\Admin\BrandController@update')->name('brand.update');
         Route::delete('/{brand}', '\App\Http\Controllers\Admin\BrandController@delete')->name('brand.delete');
     });
 
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\CategoryController@index')->name('category.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\CategoryController@create')->name('category.create');
+        Route::get('/{category}', '\App\Http\Controllers\Admin\CategoryController@show')->name('category.show');
         Route::post('/', '\App\Http\Controllers\Admin\CategoryController@store')->name('category.store');
         Route::get('/{category}/edit', '\App\Http\Controllers\Admin\CategoryController@edit')->name('category.edit');
-        Route::get('/{category}', '\App\Http\Controllers\Admin\CategoryController@show')->name('category.show');
         Route::patch('/{category}', '\App\Http\Controllers\Admin\CategoryController@update')->name('category.update');
         Route::delete('/{category}', '\App\Http\Controllers\Admin\CategoryController@delete')->name('category.delete');
     });
@@ -67,20 +66,18 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::group(['prefix' => 'packaging-types'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\PackagingTypeController@index')->name('packaging.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\PackagingTypeController@create')->name('packaging.create');
+        Route::get('/{type}', '\App\Http\Controllers\Admin\PackagingTypeController@show')->name('packaging.show');
         Route::post('/', '\App\Http\Controllers\Admin\PackagingTypeController@store')->name('packaging.store');
         Route::get('/{type}/edit', '\App\Http\Controllers\Admin\PackagingTypeController@edit')->name('packaging.edit');
-        Route::get('/{type}', '\App\Http\Controllers\Admin\PackagingTypeController@show')->name('packaging.show');
         Route::patch('/{type}', '\App\Http\Controllers\Admin\PackagingTypeController@update')->name('packaging.update');
         Route::delete('/{type}', '\App\Http\Controllers\Admin\PackagingTypeController@delete')->name('packaging.delete');
     });
 
     Route::group(['prefix' => 'payment-types'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\PaymentTypeController@index')->name('payment.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\PaymentTypeController@create')->name('payment.create');
+        Route::get('/{type}', '\App\Http\Controllers\Admin\PaymentTypeController@show')->name('payment.show');
         Route::post('/', '\App\Http\Controllers\Admin\PaymentTypeController@store')->name('payment.store');
         Route::get('/{type}/edit', '\App\Http\Controllers\Admin\PaymentTypeController@edit')->name('payment.edit');
-        Route::get('/{type}', '\App\Http\Controllers\Admin\PaymentTypeController@show')->name('payment.show');
         Route::patch('/{type}', '\App\Http\Controllers\Admin\PaymentTypeController@update')->name('payment.update');
         Route::delete('/{type}', '\App\Http\Controllers\Admin\PaymentTypeController@delete')->name('payment.delete');
     });
@@ -97,30 +94,27 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::group(['prefix' => 'statuses'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\StatusController@index')->name('status.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\StatusController@create')->name('status.create');
+        Route::get('/{status}', '\App\Http\Controllers\Admin\StatusController@show')->name('status.show');
         Route::post('/', '\App\Http\Controllers\Admin\StatusController@store')->name('status.store');
         Route::get('/{status}/edit', '\App\Http\Controllers\Admin\StatusController@edit')->name('status.edit');
-        Route::get('/{status}', '\App\Http\Controllers\Admin\StatusController@show')->name('status.show');
         Route::patch('/{status}', '\App\Http\Controllers\Admin\StatusController@update')->name('status.update');
         Route::delete('/{status}', '\App\Http\Controllers\Admin\StatusController@delete')->name('status.delete');
     });
 
     Route::group(['prefix' => 'tags'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\TagController@index')->name('tag.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\TagController@create')->name('tag.create');
+        Route::get('/{tag}', '\App\Http\Controllers\Admin\TagController@show')->name('tag.show');
         Route::post('/', '\App\Http\Controllers\Admin\TagController@store')->name('tag.store');
         Route::get('/{tag}/edit', '\App\Http\Controllers\Admin\TagController@edit')->name('tag.edit');
-        Route::get('/{tag}', '\App\Http\Controllers\Admin\TagController@show')->name('tag.show');
         Route::patch('/{tag}', '\App\Http\Controllers\Admin\TagController@update')->name('tag.update');
         Route::delete('/{tag}', '\App\Http\Controllers\Admin\TagController@delete')->name('tag.delete');
     });
 
     Route::group(['prefix' => 'time-types'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\TimeTypeController@index')->name('time.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\TimeTypeController@create')->name('time.create');
+        Route::get('/{type}', '\App\Http\Controllers\Admin\TimeTypeController@show')->name('time.show');
         Route::post('/', '\App\Http\Controllers\Admin\TimeTypeController@store')->name('time.store');
         Route::get('/{type}/edit', '\App\Http\Controllers\Admin\TimeTypeController@edit')->name('time.edit');
-        Route::get('/{type}', '\App\Http\Controllers\Admin\TimeTypeController@show')->name('time.show');
         Route::patch('/{type}', '\App\Http\Controllers\Admin\TimeTypeController@update')->name('time.update');
         Route::delete('/{type}', '\App\Http\Controllers\Admin\TimeTypeController@delete')->name('time.delete');
     });
@@ -137,10 +131,9 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::group(['prefix' => 'weight-types'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\WeightTypeController@index')->name('weight.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\WeightTypeController@create')->name('weight.create');
+        Route::get('/{type}', '\App\Http\Controllers\Admin\WeightTypeController@show')->name('weight.show');
         Route::post('/', '\App\Http\Controllers\Admin\WeightTypeController@store')->name('weight.store');
         Route::get('/{type}/edit', '\App\Http\Controllers\Admin\WeightTypeController@edit')->name('weight.edit');
-        Route::get('/{type}', '\App\Http\Controllers\Admin\WeightTypeController@show')->name('weight.show');
         Route::patch('/{type}', '\App\Http\Controllers\Admin\WeightTypeController@update')->name('weight.update');
         Route::delete('/{type}', '\App\Http\Controllers\Admin\WeightTypeController@delete')->name('weight.delete');
     });

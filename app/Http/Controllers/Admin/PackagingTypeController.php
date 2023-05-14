@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\General\StoreRequest;
 use App\Http\Requests\General\UpdateRequest;
 use App\Models\PackagingType;
-use Illuminate\Http\Request;
 
 class PackagingTypeController extends Controller
 {
-        // index | - create | store | edit | show | update | delete
     public function index()
     {
         $types = PackagingType::all();

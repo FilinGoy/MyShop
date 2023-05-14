@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\General\StoreRequest;
 use App\Http\Requests\General\UpdateRequest;
 use App\Models\Brand;
-use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {

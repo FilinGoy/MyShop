@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\General\StoreRequest;
 use App\Http\Requests\General\UpdateRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {

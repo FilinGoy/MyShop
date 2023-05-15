@@ -48,15 +48,15 @@
                             <h3 class="card-title">Текущие данные</h3>
                         </div>
                         <div class="card-body">
-                            <dl class="row">
-                                <dt class="col-lg-3">Идентификатор (ID):</dt>
-                                <dd class="col-lg-9">{{ $tag->id }}</dd>
-                                <dt class="col-lg-3">Наименование:</dt>
-                                <dd class="col-lg-9">{{ $tag->title }}</dd>
-                                <dt class="col-lg-3">Создан:</dt>
-                                <dd class="col-lg-9">{{ $tag->created_at }}</dd>
-                                <dt class="col-lg-3">Изменён:</dt>
-                                <dd class="col-lg-9">{{ $tag->updated_at }}</dd>
+                            <dl>
+                                <dt>Идентификатор (ID)</dt>
+                                <dd>{{ $tag->id }}</dd>
+                                <dt>Наименование</dt>
+                                <dd>{{ $tag->title }}</dd>
+                                <dt>Создан</dt>
+                                <dd>{{ $tag->created_at }}</dd>
+                                <dt>Изменён</dt>
+                                <dd>{{ $tag->updated_at }}</dd>
                             </dl>
                         </div>
                     </div>

@@ -26,15 +26,15 @@
                         <h3 class="card-title">{{ $status->title }}</h3>
                     </div>
                     <div class="card-body">
-                        <dl class="row">
-                            <dt class="col-sm-3">Идентификатор (ID):</dt>
-                            <dd class="col-sm-9">{{ $status->id }}</dd>
-                            <dt class="col-sm-3">Наименование:</dt>
-                            <dd class="col-sm-9">{{ $status->title }}</dd>
-                            <dt class="col-sm-3">Создан:</dt>
-                            <dd class="col-sm-9">{{ $status->created_at }}</dd>
-                            <dt class="col-sm-3">Изменён:</dt>
-                            <dd class="col-sm-9">{{ $status->updated_at }}</dd>
+                        <dl>
+                            <dt>Идентификатор (ID)</dt>
+                            <dd>{{ $status->id }}</dd>
+                            <dt>Наименование</dt>
+                            <dd>{{ $status->title }}</dd>
+                            <dt>Создан</dt>
+                            <dd>{{ $status->created_at }}</dd>
+                            <dt>Изменён</dt>
+                            <dd>{{ $status->updated_at }}</dd>
                         </dl>
                     </div>
                 </div>

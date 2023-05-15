@@ -29,6 +29,9 @@
                                 <div class="form-group">
                                     <label for="email" class="col-form-label">E-Mail адрес<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control col" id="email" name="email" value="{{ old('email') }}" placeholder="example@mail.ru">
+                                    @if($errors->has('email'))
+                                        <p class="text-danger">{{$errors->first('email')}}</p>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="first_name" class="col-form-label">Имя</label>
@@ -36,7 +39,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="last_name" class="col-form-label">Фамилия</label>
-                                    <input type="text" class="form-control col" id="last_name" name="last_name" value="{{ old('first_name') }}" placeholder="Иванов">
+                                    <input type="text" class="form-control col" id="last_name" name="last_name" value="{{ old('last_name') }}" placeholder="Иванов">
                                 </div>
                                 <div class="form-group">
                                     <label for="number" class="col-form-label">Номер</label>
@@ -52,6 +55,9 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control col" id="password_confirmation" name="password_confirmation" placeholder="Повторите пароль">
+                                    @if($errors->has('password'))
+                                        <p class="text-danger">{{$errors->first('password')}}</p>
+                                    @endif
                                 </div>
                             </div>
 

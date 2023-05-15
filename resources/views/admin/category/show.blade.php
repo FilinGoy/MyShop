@@ -26,15 +26,15 @@
                         <h3 class="card-title">{{ $category->title }}</h3>
                     </div>
                     <div class="card-body">
-                        <dl class="row">
-                            <dt class="col-sm-3">Идентификатор (ID):</dt>
-                            <dd class="col-sm-9">{{ $category->id }}</dd>
-                            <dt class="col-sm-3">Наименование:</dt>
-                            <dd class="col-sm-9">{{ $category->title }}</dd>
-                            <dt class="col-sm-3">Создан:</dt>
-                            <dd class="col-sm-9">{{ $category->created_at }}</dd>
-                            <dt class="col-sm-3">Изменён:</dt>
-                            <dd class="col-sm-9">{{ $category->updated_at }}</dd>
+                        <dl>
+                            <dt>Идентификатор (ID)</dt>
+                            <dd>{{ $category->id }}</dd>
+                            <dt>Наименование</dt>
+                            <dd>{{ $category->title }}</dd>
+                            <dt>Создан</dt>
+                            <dd>{{ $category->created_at }}</dd>
+                            <dt>Изменён</dt>
+                            <dd>{{ $category->updated_at }}</dd>
                         </dl>
                     </div>
                   </div>

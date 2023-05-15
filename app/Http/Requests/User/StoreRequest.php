@@ -30,4 +30,14 @@ class StoreRequest extends FormRequest
             'number' => 'nullable|string'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'email.required' => 'Поле является обязательным!',
+            'email.unique' => 'Данный E-Mail уже используется!',
+            'password.required' => 'Поле является обязательным!',
+            'password.confirmed' => 'Пароли не совпадают!'
+        ];
+    }
 }

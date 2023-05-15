@@ -24,20 +24,46 @@
                         <div class="card-header">
                             <h3 class="card-title">Данные для изменения</h3>
                         </div>
-                        <form class="form-horizontal" action="{{ route('category.update', $category->id) }}" method="post">
+                        <form class="form-horizontal" action="{{ route('user.update', $user->id) }}" method="post">
                             @csrf
                             @method('patch')
                             <div class="card-body">
-                                <h4>{{ $category->title }}</h4>
-                                <div class="form-group row">
-                                    <label for="title" class="col-lg-3 col-form-label">Наименование:</label>
-                                    <input type="text" class="form-control col" id="title" name="title" value="{{ $category->title }}" placeholder="Новое наименование">
+                                <h4>Пользователь ({{ $user->email }})</h4>
+                                <div class="form-group">
+                                    <label for="email" class="col-form-label">E-Mail адрес<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control col @if($errors->has('email'))is-invalid @endif" id="email" name="email" value="{{ $user->email ?? old('email') }}" required placeholder="example@mail.ru">
+                                    @if($errors->has('email'))
+                                        <p class="text-danger">{{$errors->first('email')}}</p>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="first_name" class="col-form-label">Имя</label>
+                                    <input type="text" class="form-control col" id="first_name" name="first_name" value="{{ $user->first_name ?? old('first_name') }}" placeholder="Иван">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name" class="col-form-label">Фамилия</label>
+                                    <input type="text" class="form-control col" id="last_name" name="last_name" value="{{ $user->last_name ?? old('last_name') }}" placeholder="Иванов">
+                                </div>
+                                <div class="form-group">
+                                    <label for="number" class="col-form-label">Номер</label>
+                                    <input type="text" class="form-control col" id="number" name="number" value="{{ $user->number ?? old('number') }}" placeholder="+7 (999) 999-99-99">
+                                </div>
+                                <div class="form-group">
+                                    <label for="adress" class="col-form-label">Адрес</label>
+                                    <input type="text" class="form-control col" id="adress" name="adress" value="{{ $user->adress ?? old('adress') }}" placeholder="г.Москва, Благвощенская, д.3, кв.5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-form-label">Пароль<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control col @if($errors->has('password'))is-invalid @endif" id="password" name="password" value="{{ $user->password ?? old('password') }}" required placeholder="Пароль">
+                                    @if($errors->has('password'))
+                                        <p class="text-danger">{{$errors->first('password')}}</p> is-invalid
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-outline-success">Подтвердить</button>
-                                <a type="button" href="{{ route('category.index') }}" class="btn btn-outline-danger float-right">Отменить</a>
+                                <a type="button" href="{{ route('user.index') }}" class="btn btn-outline-danger float-right">Отменить</a>
                             </div>
                         </form>
                     </div>
@@ -48,15 +74,23 @@
                             <h3 class="card-title">Текущие данные</h3>
                         </div>
                         <div class="card-body">
-                            <dl class="row">
-                                <dt class="col-lg-3">Идентификатор (ID):</dt>
-                                <dd class="col-lg-9">{{ $category->id }}</dd>
-                                <dt class="col-lg-3">Наименование:</dt>
-                                <dd class="col-lg-9">{{ $category->title }}</dd>
-                                <dt class="col-lg-3">Создан:</dt>
-                                <dd class="col-lg-9">{{ $category->created_at }}</dd>
-                                <dt class="col-lg-3">Изменён:</dt>
-                                <dd class="col-lg-9">{{ $category->updated_at }}</dd>
+                            <dl>
+                                <dt>Идентификатор (ID)</dt>
+                                <dd>{{ $user->id }}</dd>
+                                <dt>E-Mail</dt>
+                                <dd>{{ $user->email}}</dd>
+                                <dt>Имя</dt>
+                                <dd>{{ $user->first_name ?? '-'  }}</dd>
+                                <dt>Фамилия</dt>
+                                <dd>{{ $user->last_name ?? '-'  }}</dd>
+                                <dt>Номер</dt>
+                                <dd>{{ $user->number ?? '-'  }}</dd>
+                                <dt>Адрес</dt>
+                                <dd>{{ $user->adress ?? '-'  }}</dd>
+                                <dt>Создан</dt>
+                                <dd>{{ $user->created_at ?? '-'  }}</dd>
+                                <dt>Изменён</dt>
+                                <dd>{{ $user->updated_at ?? '-'  }}</dd>
                             </dl>
                         </div>
                     </div>

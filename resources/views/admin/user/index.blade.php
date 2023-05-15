@@ -39,6 +39,7 @@
                             <div class="card-body" style="display: block;">
                                 <div class="row">
                                     <div class="col">
+                                        <h4>Действия с пользователями</h4>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <a href="{{ route('user.create') }}" class="btn btn-outline-primary">Добавить</a>
@@ -77,13 +78,13 @@
                                             <td class="col-2 text-truncate">{{ $user->last_name }}</td>
                                             <td class="col-2">
                                                 <div>
-                                                    <a href="{{ route('category.show', $user->id) }}" class="btn btn-outline-info btn-flat">
+                                                    <a href="{{ route('user.show', $user->id) }}" class="btn btn-outline-info btn-flat">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                    <a href="{{ route('category.edit', $user->id) }}" class="btn btn-outline-warning btn-flat">
+                                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-warning btn-flat">
                                                         <i class="fas fa-pen"></i>
                                                     </a>
-                                                    <form action="{{ route('category.delete', $user->id) }}" id="deleteForm{{ $user->id }}" method="post" hidden>
+                                                    <form action="{{ route('user.delete', $user->id) }}" id="deleteForm{{ $user->id }}" method="post" hidden>
                                                         @csrf
                                                         @method('delete')
                                                     </form>

@@ -64,8 +64,8 @@
                                         <th class="col-4">Наименование</th>
                                         <th class="col-1">Артикул</td>
                                         <th class="col-1">Цена</td>
-                                        <th class="col-2">Количество</td>
-                                        <th class="col-1">Публикация</td>
+                                        <th class="col-1">Количество</td>
+                                        <th class="col-2">Публикация</td>
                                         <th class="col-2">Действие</td>
                                     </tr>
                                 </thead>
@@ -77,9 +77,12 @@
                                                 {{ $product->title }}
                                             </td>
                                             <td class="col-1 text-truncate">{{ $product->article }}</td>
-                                            <td class="col-1 text-truncate">{{ $product->price }}</td>
-                                            <td class="col-2 text-truncate">{{ $product->count }}</td>
-                                            <td class="col-1 text-truncate"><i class="fas fa-circle nav-icon text-{{ $product->published ? success : danger }}"></i></td>
+                                            <td class="col-1 text-truncate">{{ $product->price }} руб.</td>
+                                            <td class="col-1 text-truncate">{{ $product->count }} шт.</td>
+                                            <td class="col-2 text-truncate">
+                                                <i class="fas fa-circle nav-icon text-{{ $product->published ? 'success' : 'danger' }}"></i>
+                                                <span class="text-{{ $product->published ? 'success' : 'danger' }}">{{ $product->published ? 'Опубликован' : 'Не опубликован' }}</span>
+                                            </td>
                                             <td class="col-2">
                                                 <div>
                                                     <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-info btn-flat">

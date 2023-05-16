@@ -45,6 +45,9 @@
                             <dd>{{ $user->updated_at }}</dd>
                         </dl>
                     </div>
+                    <div class="card-footer">
+                        <a type="button" href="{{ route('user.index') }}" class="btn btn-outline-danger float-right">Назад</a>
+                    </div>
                   </div>
             </div>
         </div>

@@ -168,7 +168,7 @@
                         <li class="nav-header">Основные разделы</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-shopping-bag"></i>
+                                <i class="nav-icon fas fa-shopping-bag" ></i>
                                 <p>
                                     Заказы
                                     {{-- <span class="right badge badge-danger">New</span> --}}

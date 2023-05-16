@@ -10,6 +10,174 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        // Типы данных
+
+        DB::table('payment_types')->insert(
+            array(
+                [
+                    'title' => 'Наличными средствами',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Банковской картой (при получении)',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Оплата онлайн',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            )
+        );
+
+        DB::table('statuses')->insert(
+            array(
+                [
+                    'title' => 'В обработке',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Ожидает подтверждения',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Новый',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Оплачен',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'В доставке',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Выполнен',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Отменён',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Возврат',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Утерян',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Удалён',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            )
+        );
+
+        DB::table('time_types')->insert(
+            array(
+                [
+                    'title' => 'ч.',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'дн.',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'мес.',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'г.',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            )
+        );
+
+        DB::table('weight_types')->insert(
+            array(
+                [
+                    'title' => 'г',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'кг',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            )
+        );
+
+        DB::table('packaging_types')->insert(
+            array(
+                [
+                    'title' => 'Фасованный',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Бумага',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Упаковка',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Плёнка',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            )
+        );
+
+        DB::table('positions')->insert(
+            array(
+                [
+                    'title' => 'Пользователь',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Курьер',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Модератор',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Директор',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            )
+        );
+
         // Готовые данные
 
         DB::table('categories')->insert(
@@ -180,37 +348,22 @@ return new class extends Migration
         DB::table('brands')->insert(
             array(
                 [
-                    'title' => 'ООО "Кондитер"',
+                    'title' => 'Siper',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'ООО "ВкусВилл"',
+                    'title' => 'Vkuska',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'ООО "ВкуныйДомик"',
+                    'title' => 'Snekus',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'ОАО "Николевская фабрика"',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'ОАО "Сладкоежка"',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'ИП "Александров И.Н."',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'ИП "Семенов Л.А."',
+                    'title' => 'Lakomka',
                     'created_at' => now(),
                     'updated_at' => now()
                 ]
@@ -237,152 +390,85 @@ return new class extends Migration
             )
         );
 
-        // Типы данных
-
-        DB::table('payment_types')->insert(
+        DB::table('country')->insert(
             array(
                 [
-                    'title' => 'Наличными средствами',
+                    'id' => 1,
+                    'name' => 'Россия',
+                    'abbreviation' => 'RUS',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Банковской картой (при получении)',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'Оплата онлайн',
+                    'id' => 2,
+                    'title' => 'Казахстан',
+                    'abbreviation' => 'KAZ',
                     'created_at' => now(),
                     'updated_at' => now()
                 ]
             )
         );
 
-        DB::table('statuses')->insert(
+        DB::table('manufacturers')->insert(
             array(
                 [
-                    'title' => 'В обработке',
+                    'name' => 'ООО "Кондитер"',
+                    'country_id' => 1,
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Ожидает подтверждения',
+                    'name' => 'ООО "ВкусВилл"',
+                    'country_id' => 2,
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Новый',
+                    'name' => 'ООО "ВкуныйДомик"',
+                    'country_id' => 2,
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Оплачен',
+                    'name' => 'ОАО "Николевская фабрика"',
+                    'country_id' => 1,
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'В доставке',
+                    'name' => 'ОАО "Сладкоежка"',
+                    'country_id' => 2,
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Выполнен',
+                    'name' => 'ИП "Александров И.Н."',
+                    'country_id' => 1,
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Отменён',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'Возврат',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'Утерян',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'Удалён',
+                    'name' => 'ИП "Семенов Л.А."',
+                    'country_id' => 1,
                     'created_at' => now(),
                     'updated_at' => now()
                 ]
             )
         );
 
-        DB::table('time_types')->insert(
+        DB::table('users')->insert(
             array(
                 [
-                    'title' => 'ч.',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'дн.',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'мес.',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'г.',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]
-            )
-        );
-
-        DB::table('weight_types')->insert(
-            array(
-                [
-                    'title' => 'г',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'кг',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]
-            )
-        );
-
-        DB::table('packaging_types')->insert(
-            array(
-                [
-                    'title' => 'Фасованный',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'Бумага',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'Упаковка',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'Плёнка',
+                    'first_name' => 'Денис',
+                    'last_name' => 'Суворов',
+                    'login' => 'fg',
+                    'email' => 'den_suvorov2003@mail.ru',
+                    'position_id' => 3,
+                    'password' => '0000',
                     'created_at' => now(),
                     'updated_at' => now()
                 ]
             )
         );
     }
-
-    /*
-    public function down(): void
-    {
-        Schema::dropIfExists('admins');
-    } */
 };

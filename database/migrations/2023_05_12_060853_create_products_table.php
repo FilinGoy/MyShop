@@ -23,15 +23,15 @@ return new class extends Migration
             $table->integer('expiration_type_id')->nullable()->index('products_fk3');
             $table->string('article')->nullable();
             $table->integer('packaging_id')->nullable()->index('products_fk4');
-            $table->string('ingredients');
+            $table->text('ingredients');
             $table->integer('weight')->nullable();
             $table->integer('weight_type_id')->nullable()->index('products_fk5');
             $table->integer('calorie')->nullable();
-            $table->integer('count');
-            $table->decimal('price');
-            $table->string('description')->nullable();
+            $table->integer('count')->default(0);
+            $table->decimal('price')->default(0);
+            $table->text('description')->nullable();
             $table->boolean('published')->default(false);
-            $table->string('preview_image')->nullable();
+            $table->string('preview_image')->nullable()->default('none.png');
             $table->timestamps();
         });
     }

@@ -28,35 +28,35 @@
                             @csrf
                             @method('patch')
                             <div class="card-body">
-                                <h4>Новый пользователь</h4>
+                                <h4>Пользователь ({{ $user->email }})</h4>
                                 <div class="form-group">
                                     <label for="email" class="col-form-label">E-Mail адрес<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control col" id="email" name="email" value="{{ old('email') ?? $user->email }}" placeholder="example@mail.ru">
+                                    <input type="text" class="form-control col @if($errors->has('email'))is-invalid @endif" id="email" name="email" value="{{ $user->email ?? old('email') }}" required placeholder="example@mail.ru">
                                     @if($errors->has('email'))
                                         <p class="text-danger">{{$errors->first('email')}}</p>
                                     @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="first_name" class="col-form-label">Имя</label>
-                                    <input type="text" class="form-control col" id="first_name" name="first_name" value="{{ old('first_name') ?? $user->first_name }}" placeholder="Иван">
+                                    <input type="text" class="form-control col" id="first_name" name="first_name" value="{{ $user->first_name ?? old('first_name') }}" placeholder="Иван">
                                 </div>
                                 <div class="form-group">
                                     <label for="last_name" class="col-form-label">Фамилия</label>
-                                    <input type="text" class="form-control col" id="last_name" name="last_name" value="{{ old('last_name') ?? $user->last_name }}" placeholder="Иванов">
+                                    <input type="text" class="form-control col" id="last_name" name="last_name" value="{{ $user->last_name ?? old('last_name') }}" placeholder="Иванов">
                                 </div>
                                 <div class="form-group">
                                     <label for="number" class="col-form-label">Номер</label>
-                                    <input type="text" class="form-control col" id="number" name="number" value="{{ old('number') ?? $user->number }}" placeholder="+7 (999) 999-99-99">
+                                    <input type="text" class="form-control col" id="number" name="number" value="{{ $user->number ?? old('number') }}" placeholder="+7 (999) 999-99-99">
                                 </div>
                                 <div class="form-group">
                                     <label for="adress" class="col-form-label">Адрес</label>
-                                    <input type="text" class="form-control col" id="adress" name="adress" value="{{ old('adress') ?? $user->adress }}" placeholder="г.Москва, Благвощенская, д.3, кв.5">
+                                    <input type="text" class="form-control col" id="adress" name="adress" value="{{ $user->adress ?? old('adress') }}" placeholder="г.Москва, Благвощенская, д.3, кв.5">
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="col-form-label">Пароль<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control col" id="password" name="password" value="{{ $user->password ?? old('password') }}" placeholder="Пароль">
+                                    <input type="text" class="form-control col @if($errors->has('password'))is-invalid @endif" id="password" name="password" value="{{ $user->password ?? old('password') }}" required placeholder="Пароль">
                                     @if($errors->has('password'))
-                                        <p class="text-danger">{{$errors->first('password')}}</p>
+                                        <p class="text-danger">{{$errors->first('password')}}</p> is-invalid
                                     @endif
                                 </div>
                             </div>

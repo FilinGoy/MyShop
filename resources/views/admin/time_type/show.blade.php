@@ -37,6 +37,9 @@
                             <dd>{{ $type->updated_at }}</dd>
                         </dl>
                     </div>
+                    <div class="card-footer">
+                        <a type="button" href="{{ route('time.index') }}" class="btn btn-outline-danger float-right">Назад</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('country', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('name')->unique();
-            $table->string('abbreviation')->unique();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign(['position_id'], 'users_fk0')->references(['id'])->on('positions');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('country');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_fk0');
+        });
     }
 };

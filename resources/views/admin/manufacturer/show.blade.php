@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Статус</h1>
+                    <h1 class="m-0">Страна</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -23,24 +23,26 @@
             <div class="row">
                 <div class="col card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">{{ $status->title }}</h3>
+                        <h3 class="card-title">{{ $country->name.' ('.$country->abbreviation.')' }}</h3>
                     </div>
                     <div class="card-body">
                         <dl>
                             <dt>Идентификатор (ID)</dt>
-                            <dd>{{ $status->id }}</dd>
+                            <dd>{{ $country->id }}</dd>
                             <dt>Наименование</dt>
-                            <dd>{{ $status->title }}</dd>
+                            <dd>{{ $country->name}}</dd>
+                            <dt>Аббревиатура</dt>
+                            <dd>{{ $country->abbreviation }}</dd>
                             <dt>Создан</dt>
-                            <dd>{{ $status->created_at }}</dd>
+                            <dd>{{ $country->created_at ?? '-'  }}</dd>
                             <dt>Изменён</dt>
-                            <dd>{{ $status->updated_at }}</dd>
+                            <dd>{{ $country->updated_at ?? '-'  }}</dd>
                         </dl>
                     </div>
                     <div class="card-footer">
-                        <a type="button" href="{{ route('status.index') }}" class="btn btn-outline-danger float-right">Назад</a>
+                        <a type="button" href="{{ route('country.index') }}" class="btn btn-outline-danger float-right">Назад</a>
                     </div>
-                </div>
+                  </div>
             </div>
         </div>
     </section>

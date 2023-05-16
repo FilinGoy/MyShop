@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Статус</h1>
+                    <h1 class="m-0">Тег</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -36,6 +36,9 @@
                             <dt>Изменён</dt>
                             <dd>{{ $tag->updated_at }}</dd>
                         </dl>
+                    </div>
+                    <div class="card-footer">
+                        <a type="button" href="{{ route('tag.index') }}" class="btn btn-outline-danger float-right">Назад</a>
                     </div>
                   </div>
             </div>

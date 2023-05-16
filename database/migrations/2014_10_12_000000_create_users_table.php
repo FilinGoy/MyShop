@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('adress')->nullable();
             $table->string('number')->nullable();
-            $table->integer('position_id')->index('users_fk0')->default(0);
+            $table->integer('position_id')->index('users_fk0')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -156,21 +156,25 @@ return new class extends Migration
         DB::table('positions')->insert(
             array(
                 [
+                    'id' => 1,
                     'title' => 'Пользователь',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
+                    'id' => 2,
                     'title' => 'Курьер',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
+                    'id' => 3,
                     'title' => 'Модератор',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
+                    'id' => 4,
                     'title' => 'Директор',
                     'created_at' => now(),
                     'updated_at' => now()

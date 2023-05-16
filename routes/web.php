@@ -44,16 +44,6 @@ Route::group(['prefix' => 'admin'], function(){
         Route::delete('/{country}', '\App\Http\Controllers\Admin\CountryController@delete')->name('country.delete');
     });
 
-    Route::group(['prefix' => 'favourites'], function () {
-        Route::get('/', '\App\Http\Controllers\Admin\FavouriteController@index')->name('favourite.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\FavouriteController@create')->name('favourite.create');
-        Route::post('/', '\App\Http\Controllers\Admin\FavouriteController@store')->name('favourite.store');
-        Route::get('/{favourite}/edit', '\App\Http\Controllers\Admin\FavouriteController@edit')->name('favourite.edit');
-        Route::get('/{favourite}', '\App\Http\Controllers\Admin\FavouriteController@show')->name('favourite.show');
-        Route::patch('/{favourite}', '\App\Http\Controllers\Admin\FavouriteController@update')->name('favourite.update');
-        Route::delete('/{favourite}', '\App\Http\Controllers\Admin\FavouriteController@delete')->name('favourite.delete');
-    });
-
     Route::group(['prefix' => 'manufacturers'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\ManufactureController@index')->name('manufacturer.index');
         Route::get('/create', '\App\Http\Controllers\Admin\ManufactureController@create')->name('manufacturer.create');
@@ -99,6 +89,15 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/{status}/edit', '\App\Http\Controllers\Admin\StatusController@edit')->name('status.edit');
         Route::patch('/{status}', '\App\Http\Controllers\Admin\StatusController@update')->name('status.update');
         Route::delete('/{status}', '\App\Http\Controllers\Admin\StatusController@delete')->name('status.delete');
+    });
+
+    Route::group(['prefix' => 'positions'], function () {
+        Route::get('/', '\App\Http\Controllers\Admin\PositionController@index')->name('position.index');
+        Route::get('/{position}', '\App\Http\Controllers\Admin\PositionController@show')->name('position.show');
+        Route::post('/', '\App\Http\Controllers\Admin\PositionController@store')->name('position.store');
+        Route::get('/{position}/edit', '\App\Http\Controllers\Admin\PositionController@edit')->name('position.edit');
+        Route::patch('/{position}', '\App\Http\Controllers\Admin\PositionController@update')->name('position.update');
+        Route::delete('/{position}', '\App\Http\Controllers\Admin\PositionController@delete')->name('position.delete');
     });
 
     Route::group(['prefix' => 'tags'], function () {

@@ -23,6 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'email' => 'required|string|unique:users,email',
+            'login' => 'required|string|min:4|unique:users,login',
             'first_name' => 'nullable|string',
             'last_name' => 'nullable|string',
             'password' => 'required|confirmed|string',
@@ -36,6 +37,9 @@ class StoreRequest extends FormRequest
         return [
             'email.required' => 'Поле является обязательным!',
             'email.unique' => 'Данный E-Mail уже используется!',
+            'login.required' => 'Поле является обязательным!',
+            'login.unique' => 'Данный логин уже используется!',
+            'login.min' => 'Данный логин содержит менее 4 символов!',
             'password.required' => 'Поле является обязательным!',
             'password.confirmed' => 'Пароли не совпадают!'
         ];

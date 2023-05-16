@@ -152,7 +152,7 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <div class="form-inline">
+{{--                     <div class="form-inline">
                         <div class="input-group" data-widget="sidebar-search">
                             <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                                 aria-label="Search">
@@ -162,7 +162,7 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-header">Основные разделы</li>
@@ -242,6 +242,12 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview" style="display: node;">
+                                <li class="nav-item">
+                                    <a href="{{ route('position.index') }}" class="nav-link">
+                                        <i class="fas fa-user-shield nav-icon"></i>
+                                        <p>Привелегии</p>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ route('status.index') }}" class="nav-link">
                                         <i class="fas fa-info-circle nav-icon"></i>

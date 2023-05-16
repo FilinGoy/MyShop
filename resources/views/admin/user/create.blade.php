@@ -34,6 +34,13 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
+                                    <label for="login" class="col-form-label">Логин</label>
+                                    <input type="text" class="form-control col" id="login" name="login" value="{{ old('login') }}" placeholder="Логин" minlength="4" required>
+                                    @if($errors->has('login'))
+                                        <p class="text-danger">{{$errors->first('login')}}</p>
+                                    @endif
+                                </div>
+                                <div class="form-group">
                                     <label for="first_name" class="col-form-label">Имя</label>
                                     <input type="text" class="form-control col" id="first_name" name="first_name" value="{{ old('first_name') }}" placeholder="Иван">
                                 </div>

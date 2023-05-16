@@ -25,7 +25,8 @@ class UserController extends Controller
     {
         $data = $request->validated();
         User::firstOrCreate([
-            'email' => $data['email']
+            'email' => $data['email'],
+            'login' => $data['login']
         ], $data);
 
         return redirect()->route('user.index');

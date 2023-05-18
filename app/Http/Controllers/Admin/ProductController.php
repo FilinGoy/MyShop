@@ -15,6 +15,7 @@ use App\Models\ProductTag;
 use App\Models\Tag;
 use App\Models\TimeType;
 use App\Models\WeightType;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -26,14 +27,34 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('admin.product.create');
+        $categories = Category::all();
+        $brands = Brand::all();
+        $manufacturers = Manufacture::join('country', 'country.id', '=', 'manufacturers.country_id')
+                        ->select('manufacturers.id', 'country.name as country', 'manufacturers.name as manufacturer')->get();
+        $expirations = TimeType::all();
+        $packagings = PackagingType::all();
+        $weights = WeightType::all();
+        $tags = Tag::all();
+
+        return view('admin.product.create', compact('categories', 'brands', 'manufacturers', 'expirations',
+                                                    'packagings', 'weights', 'tags'));
     }
 
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+
+        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+
         Product::firstOrCreate([
-            'article' => $data['article']
+            'category_id' => $data['category'],
+            'brand_id' => $data['brand'],
+            'manufacturer_id' => $data['manufacturer'],
+            'category_id' => $data['category'],
+            'expiration_date' => $data['expiration'],
+            'expiration_type_id' => $data['expiration_type'],
+            'packaging_id' => $data['packaging'],
+            'weight_type_id' => $data['weight_type']
         ], $data);
 
         return redirect()->route('product.index');

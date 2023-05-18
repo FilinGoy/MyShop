@@ -10,10 +10,14 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Select2 style -->
+    <link rel="stylesheet" href="assets/AdminLTE/plugins/select2/css/select2.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="assets/AdminLTE/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/AdminLTE/dist/css/adminlte.min.css">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="assets/AdminLTE/plugins/dropzone/min/dropzone.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="assets/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
@@ -143,7 +147,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('admin') }}" class="brand-link">
-                <img src="assets/img/logo.png" alt="Logo" class="brand-image bg-secondary rounded elevation-3">
+                <img src="storage/images/logo.png" alt="Logo" class="brand-image bg-secondary rounded elevation-3">
                 <span class="brand-text font-weight-light">CapyProducts</span>
             </a>
 
@@ -152,7 +156,7 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-{{--                     <div class="form-inline">
+                    {{--                     <div class="form-inline">
                         <div class="input-group" data-widget="sidebar-search">
                             <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                                 aria-label="Search">
@@ -168,7 +172,7 @@
                         <li class="nav-header">Основные разделы</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-shopping-bag" ></i>
+                                <i class="nav-icon fas fa-shopping-bag"></i>
                                 <p>
                                     Заказы
                                     {{-- <span class="right badge badge-danger">New</span> --}}
@@ -315,10 +319,41 @@
     </script>
     <!-- Bootstrap 4 -->
     <script src="assets/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="assets/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="assets/AdminLTE/plugins/moment/moment.min.js"></script>
+    <script src="assets/AdminLTE/plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="assets/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="assets/AdminLTE/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- dropzonejs -->
+    <script src="assets/AdminLTE/plugins/dropzone/min/dropzone.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="assets/AdminLTE/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+
     <!-- AdminLTE App -->
     <script src="assets/AdminLTE/dist/js/adminlte.js"></script>
+
+
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Input Elements
+            $('[data-mask]').inputmask()
+
+            //Switch Elements
+            $("input[data-bootstrap-switch]").each(function(){
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            })
+
+            bsCustomFileInput.init();
+        })
+    </script>
 
     @yield('script')
 </body>

@@ -71,7 +71,7 @@
                             <dd>@foreach ($tags as $tag)
                                 {{ $tag->title }}
                                 <br>
-                             @endforeach</dd>
+                            @endforeach</dd>
 
                             <dt>Создан</dt>
                             <dd>{{ $product->created_at }}</dd>

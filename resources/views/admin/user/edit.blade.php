@@ -53,7 +53,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="number" class="col-form-label">Номер</label>
-                                    <input type="text" class="form-control col" id="number" name="number" value="{{ old('number') ?? $user->number }}" placeholder="+7 (999) 999-99-99">
+                                    <input type="text" class="form-control col" id="number" name="number" data-inputmask="&quot;mask&quot;: &quot;+7 (999) 999-99-99&quot;"
+                                    data-mask="" inputmode="text" value="{{ old('number') ?? $user->number }}" placeholder="+7 (999) 999-99-99">
                                 </div>
                                 <div class="form-group">
                                     <label for="adress" class="col-form-label">Адрес</label>

@@ -41,37 +41,55 @@
                             <dt>Производитель</dt>
                             <dd>{{ $manufacturer->name }}</dd>
                             <dt>Срок хранения</dt>
-                            <dd>{{ $product->expiration_date ? $product->expiration_date.' '.$expiration->title : '-' }}</dd>
+                            <dd>{{ $product->expiration_date ? $product->expiration_date . ' ' . $expiration->title : '-' }}
+                            </dd>
                             <dt>Упаковка</dt>
                             <dd>{{ $packaging->title ?? '-' }}</dd>
 
                             <dt>Ингридиенты</dt>
                             <dd>{{ $product->ingredients }}</dd>
                             <dt>Вес</dt>
-                            <dd>{{ $product->weight ? $product->weight.' '.$weight->title : '-' }}</dd>
+                            <dd>{{ $product->weight ? $product->weight . ' ' . $weight->title : '-' }}</dd>
                             <dt>Калории</dt>
-                            <dd>{{ $product->calorie }} ККАЛ</dd>
+                            <dd>{{ $product->calorie ? $product->calorie . ' ККАЛ' : '-' }}</dd>
                             <dt>В наличии</dt>
                             <dd>{{ $product->count }} шт</dd>
 
                             <dt>Описание</dt>
-                            <dd>{{ $product->description }}</dd>
+                            <dd>{{ $product->description ?? '-' }}</dd>
                             <dt>Публикация</dt>
                             <dd>{{ $product->published ? 'Опубликовано' : 'Не опубликовано' }}</dd>
-                            <dt>Превью</dt>
+                            <dt>Фотографии</dt>
                             <dd class="row">
-                                <div class="position-relative col-3">
-                                    <img src="{{ asset('storage/images/'.$product->preview_image) }}" alt="{{ $product->preview_image }}" class="img-fluid">
-                                    <div class="ribbon-wrapper ribbon-lg">
-                                        <div class="ribbon bg-info text-lg"> Превью </div>
+                                <div class="col-2 d-flex align-items-center mt-2">
+                                    <div class="img-thumbnail d-flex h-100 p-3 position-relative">
+                                        <img src="{{ asset('storage/' . $product->preview_image) }}" class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
+                                        <div class="ribbon-wrapper ribbon-lg">
+                                            <div class="ribbon bg-success text-lg">
+                                                Превью
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                @foreach ($images as $image)
+                                    <div class="col-2 d-flex align-items-center mt-2">
+                                        <div class="img-thumbnail d-flex h-100 p-3">
+                                            <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid align-self-center" alt="{{ $image->image_path }}">
+                                        </div>
+                                    </div>
+                                @endforeach
                             </dd>
                             <dt>Теги</dt>
-                            <dd>@foreach ($tags as $tag)
-                                {{ $tag->title }}
-                                <br>
-                            @endforeach</dd>
+                            <dd>
+                                @if (isset($tags))
+                                    @foreach ($tags as $tag)
+                                        {{ $tag->title }}
+                                        <br>
+                                    @endforeach
+                                @else
+                                    {{ '-' }}
+                                @endif
+                            </dd>
 
                             <dt>Создан</dt>
                             <dd>{{ $product->created_at }}</dd>
@@ -80,7 +98,8 @@
                         </dl>
                     </div>
                     <div class="card-footer">
-                        <a type="button" href="{{ route('product.index') }}" class="btn btn-outline-danger float-right">Назад</a>
+                        <a type="button" href="{{ route('product.index') }}"
+                            class="btn btn-outline-danger float-right">Назад</a>
                     </div>
                 </div>
             </div>

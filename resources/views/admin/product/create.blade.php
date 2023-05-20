@@ -22,18 +22,17 @@
                 <div class="col">
                     <div class="card card-info">
                         <div class="card-header"></div>
-                        <form class="form-horizontal" action="{{ route('product.store') }}" method="post">
+                        <form class="form-horizontal" action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <h4>Новый продукт</h4>
-
                                 <div class="form-group">
                                     <label for="published" class="col-form-label">Публикация (видимость на сайте)<span
                                             class="text-danger">*</span></label>
                                     <div>
                                         <input type="checkbox" name="published" id="published"
-                                        @if ( old('published') ) checked @endif data-bootstrap-switch
-                                        data-off-color="danger" data-on-color="success">
+                                            @if (old('published')) checked @endif data-bootstrap-switch
+                                            data-off-color="danger" data-on-color="success">
                                     </div>
                                 </div>
 
@@ -147,7 +146,7 @@
                                 <div class="form-group">
                                     <label for="ingredients" class="col-form-label">Состав продукта<span
                                             class="text-danger">*</span></label>
-                                    <textarea class="form-control" placeholder="Текст..." style="min-height: 60px;"></textarea>
+                                    <textarea name="ingredients" class="form-control" placeholder="Текст..." style="min-height: 60px;">{{ old('ingredients') }}</textarea>
                                     @if ($errors->has('ingredients'))
                                         <p class="text-danger">{{ $errors->first('ingredients') }}</p>
                                     @endif
@@ -203,7 +202,8 @@
                                     <label for="price" class="col-form-label">
                                         Цена<span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="price" name="price">
+                                        <input type="text" class="form-control" id="price" name="price"
+                                            value="{{ old('price') }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00 (формат)</span>
                                         </div>
@@ -215,7 +215,7 @@
 
                                 <div class="form-group">
                                     <label for="description" class="col-form-label">Описание</label>
-                                    <textarea class="form-control" rows="3" placeholder="Текст..." style="min-height: 60px;"></textarea>
+                                    <textarea name="description" class="form-control" rows="3" placeholder="Текст..." style="min-height: 60px;">{{ old('description') }}</textarea>
                                     @if ($errors->has('description'))
                                         <p class="text-danger">{{ $errors->first('description') }}</p>
                                     @endif
@@ -223,19 +223,15 @@
 
                                 <div class="form-group">
                                     <label class="col-form-label">Теги</label>
-                                    <select class="select2" multiple="multiple" data-placeholder="Выберите теги" style="width: 100%;" name="tags[]">
-                                        @if (old('tags'))
-                                            @for ($i =0; $i < count(old('tags')); $i++)
-                                            @php
-                                                array_add($oldTags, '', old('tags.'.$i))
-                                            @endphp 
-                                            @endfor
-                                        @endif
+                                    <select class="select2" multiple="multiple" data-placeholder="Выберите теги"
+                                        style="width: 100%;" name="tags[]">
                                         @foreach ($tags as $tag)
-                                            <option value="{{ $tag->id }}" {{-- @if ( isset($oldTags) ) selected @endif --}}>{{ $tag->title }}</option>
+                                            <option value="{{ $tag->id }}"
+                                                @if (old('tags') !== null) @if (in_array($tag->id, old('tags'))) selected @endif
+                                                @endif> {{ $tag->title }} </option>
                                         @endforeach
+
                                     </select>
-                                    {{ $oldTags??'' }}
                                     @if ($errors->has('tags'))
                                         <p class="text-danger">{{ $errors->first('tags') }}</p>
                                     @endif
@@ -244,8 +240,18 @@
                                 <div class="form-group">
                                     <label for="preview_image">Файл (превью)</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="preview_image" name="preview_image">
+                                        <input type="file" class="custom-file-input" id="preview_image"
+                                            name="preview_image" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp">
                                         <label class="custom-file-label" for="customFile">Выберите файл</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="images">Файлы (доп.фотографии)</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="images" name="images[]" multiple
+                                            accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp">
+                                        <label class="custom-file-label" for="images">Выберите файлы (до 10 файлов)</label>
                                     </div>
                                 </div>
                             </div>

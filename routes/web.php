@@ -138,4 +138,4 @@ Route::group(['prefix' => 'admin'], function(){
     });
 });
 
-//Route::get('{page}', \App\Http\Controllers\Client\IndexController::class)->where('page', '.*');
+Route::get('{page}', \App\Http\Controllers\IndexController::class)->where('page', '.*');

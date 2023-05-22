@@ -45,7 +45,9 @@ class ProductController extends Controller
     {
         $data = $request->validated();
 
-        $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+        if (isset($data['preview_image'])) {
+            $data['preview_image'] = Storage::disk('public')->put('/images/products', $data['preview_image']);
+        }
 
         $product = Product::firstOrCreate([
             'title' => $data['title'],
@@ -57,7 +59,7 @@ class ProductController extends Controller
             'price' => $data['price'],
             'description' => $data['description'],
             'published' => $data['published'],
-            'preview_image' => $data['preview_image'],
+            'preview_image' => $data['preview_image'] ?? 'images/main/none.png',
             'category_id' => $data['category'],
             'brand_id' => $data['brand'],
             'manufacturer_id' => $data['manufacturer'],

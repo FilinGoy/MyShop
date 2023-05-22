@@ -147,7 +147,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('admin') }}" class="brand-link">
-                <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" class="brand-image bg-secondary rounded elevation-3">
+                <img src="{{ asset('storage/images/main/logo.png') }}" alt="Logo" class="brand-image bg-secondary rounded elevation-3">
                 <span class="brand-text font-weight-light">CapyProducts</span>
             </a>
 
@@ -283,6 +283,11 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li class="nav-header">Отладка</li>
+                        <li class="nav-item text-white">
+                            {{ $errors }}
                         </li>
                     </ul>
                 </nav>

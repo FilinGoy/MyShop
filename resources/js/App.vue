@@ -7,7 +7,7 @@
 						<div class="p-3">
 							<div class="d-flex justify-content-between align-items-center">
 								<router-link to="/">
-									<img src="storage/images/logo.svg" height="40" alt="Logo" />
+									<img src="storage/images/main/logo.svg" height="40" alt="Logo" />
 								</router-link>
 								CapyProducts
 								<button
@@ -105,26 +105,6 @@
 									<p>Products grid</p>
 									<span class="label">Cards grid preview</span>
 								</a>
-
-								<a class="dropdown-item rounded-sm" href="products-list.html">
-									<p>Products list</p>
-									<span class="label">Cards list preview</span>
-								</a>
-
-								<a class="dropdown-item rounded-sm" href="products-topbar.html">
-									<p>Products topbar</p>
-									<span class="label">Card grid with top filters</span>
-								</a>
-
-								<a class="dropdown-item rounded-sm" href="products-grid-flat.html">
-									<p>Products grid flat <span class="badge badge-danger">New</span></p>
-									<span class="label">Cards with flat filters</span>
-								</a>
-
-								<a class="dropdown-item rounded-sm" href="products-list-flat.html">
-									<p>Products list flat</p>
-									<span class="label">Cards with flat filters</span>
-								</a>
 							</div>
 						</div>
 					</div>
@@ -146,7 +126,9 @@
                             <p class="text-body-secondary">Суворов Денис © 2023</p>
                         </div>
 
-                        div
+                        <div class="col">
+                            Информация
+                        </div>
                     </div>
                 </div>
             </div>

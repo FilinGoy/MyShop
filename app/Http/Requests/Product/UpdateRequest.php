@@ -38,7 +38,7 @@ class UpdateRequest extends FormRequest
             'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'description' => 'nullable|string',
             'published' => 'nullable',
-            'preview_image' => 'required',
+            'preview_image' => 'nullable',
             'tags' => 'nullable|array',
             'images' => 'nullable|array'
         ];

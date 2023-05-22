@@ -2,8 +2,8 @@
     <main class="mb-auto">
         <div class="container">
             <div class="row pb-2">
-                <div id="carouselMain" class="carousel slide px-4" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="height: 450px;">
+                <div id="carouselMain" class="carousel slide px-4 col-12" data-bs-ride="carousel">
+                    <div class="carousel-inner" style="max-height: 450px;">
                         <div class="carousel-item active">
                             <img src='/storage/images/main/slider1.jpg' class="d-block w-100" />
                         </div>

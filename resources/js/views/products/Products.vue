@@ -284,9 +284,9 @@
                             <div v-for="product in products" :key="product.id" class="col-6 col-xl-4">
                                 <div class="card card-fill border-0 mb-2 mb-lg-4">
                                     <div class="card-image">
-                                        <a href="product.html">
-                                            <img :src="'storage/'+product.preview_image" class="card-img-top" alt="...">
-                                        </a>
+                                        <router-link :to="`/products/${product.id}`">
+                                            <img :src="product.preview_image ?? 'storage/images/main/none.png'" class="card-img-top" alt="...">
+                                        </router-link>
                                     </div>
                                     <div class="card-body p-3 p-lg-4">
                                         <div class="d-flex justify-content-between align-items-center">
@@ -296,7 +296,7 @@
                                                         {{ product.title }}
                                                     </a>
                                                 </h2>
-                                                <small class="text-muted pre-label">
+                                                <small class="text-muted">
                                                     <span>{{ product.price }}</span>
                                                 </small>
                                             </div>
@@ -349,7 +349,7 @@ export default {
     methods: {
         getProducts() {
             this.axios.post('/api/products').then(res => {
-                this.products = res.data;
+                this.products = res.data.data;
             })
         }
     }

@@ -340,7 +340,7 @@ var _hoisted_7 = {
   "class": "row gutters-mobile"
 };
 var _hoisted_8 = {
-  "class": "card card-fill border-0 mb-2 mb-lg-4 shadow-sm"
+  "class": "card card-fill border-0 mb-2 mb-lg-4"
 };
 var _hoisted_9 = {
   "class": "card-image"

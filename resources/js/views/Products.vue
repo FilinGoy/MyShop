@@ -282,7 +282,7 @@
                         <div v-if="products" class="row gutters-mobile">
 
                             <div v-for="product in products" :key="product.id" class="col-6 col-xl-4">
-                                <div class="card card-fill border-0 mb-2 mb-lg-4 shadow-sm">
+                                <div class="card card-fill border-0 mb-2 mb-lg-4">
                                     <div class="card-image">
                                         <a href="product.html">
                                             <img :src="'storage/'+product.preview_image" class="card-img-top" alt="...">

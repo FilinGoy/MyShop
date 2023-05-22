@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="../css/fontawesome/all.min.css">
 
         <link media="all" rel="stylesheet" href="../css/template/style.css">
+
+        <link media="all" rel="stylesheet" href="../css/app.css">
     </head>
 
     @yield('content')

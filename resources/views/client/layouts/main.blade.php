@@ -6,16 +6,16 @@
 
         <base href="{{ asset('/') }}">
 
-        <title>Laravel</title>
+        <title>CapyProducts</title>
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <link media="all" rel="stylesheet" href="../css/bootstrap.min.css">
-        <link media="all" rel="stylesheet" href="../css/style.css">
+        <link media="all" rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/fontawesome/all.min.css">
+
+        <link media="all" rel="stylesheet" href="../css/template/style.css">
     </head>
 
     @yield('content')
 
-    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script defer src="../js/bootstrap/bootstrap.bundle.min.js"></script>
     <script defer src="js/app.js"></script>
 </html>

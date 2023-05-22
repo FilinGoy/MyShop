@@ -285,7 +285,7 @@
                                 <div class="card card-fill border-0 mb-2 mb-lg-4 shadow-sm">
                                     <div class="card-image">
                                         <a href="product.html">
-                                            <img src="assets/images//demo/product-1.png" class="card-img-top" alt="...">
+                                            <img :src="'storage/'+product.preview_image" class="card-img-top" alt="...">
                                         </a>
                                     </div>
                                     <div class="card-body p-3 p-lg-4">

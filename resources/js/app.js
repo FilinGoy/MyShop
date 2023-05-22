@@ -1,10 +1,10 @@
 import { createApp } from 'vue';
+import { createStore } from 'vuex';
 import './bootstrap';
 
 import router from './router';
 import App from './App.vue';
 import axios from 'axios';
-import {createStore} from 'vuex';
 
 const app = createApp(App);
 const store = createStore();

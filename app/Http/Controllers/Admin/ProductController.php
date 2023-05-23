@@ -46,7 +46,7 @@ class ProductController extends Controller
         $data = $request->validated();
 
         if (isset($data['preview_image'])) {
-            $data['preview_image'] = Storage::disk('public')->put('/images/products', $data['preview_image']);
+            $tempMass['preview_image'] = Storage::disk('public')->put('/images/products', $data['preview_image']);
         }
 
         $product = Product::firstOrCreate([
@@ -67,8 +67,7 @@ class ProductController extends Controller
             'expiration_type_id' => $data['expiration_type'],
             'packaging_id' => $data['packaging'],
             'weight_type_id' => $data['weight_type']
-        ]);
-
+        ], $tempMass);
 
         if (array_key_exists('tags', $data)){
             $tags = $data['tags'];
@@ -94,7 +93,7 @@ class ProductController extends Controller
                 $countImages = ProductImage::where('product_id', $product->id)->get();
 
                 if (count($countImages) > 10) continue;
-                $path = Storage::disk('public')->put('/images', $image);
+                $path = Storage::disk('public')->put('/images/products', $image);
                 ProductImage::create([
                     'product_id' => $product->id,
                     'image_path' => $path
@@ -107,13 +106,13 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $category = Category::where('id', $product->category_id)->get()[0];
-        $brand = Brand::where('id', $product->brand_id)->get()[0]??'';
-        $manufacturer = Manufacture::where('id', $product->manufacturer_id)->get()[0];
-        $manufacturer['country'] = Country::where('id', $manufacturer->country_id)->get()[0]->title;
-        $expiration = TimeType::where('id', $product->expiration_type_id)->get()[0]??'';
-        $packaging = PackagingType::where('id', $product->packaging_id)->get()[0]??'';
-        $weight = WeightType::where('id', $product->weight_type_id)->get()[0]??'';
+        $category = Category::where('id', $product->category_id)->first();
+        $brand = Brand::where('id', $product->brand_id)->first()??'';
+        $manufacturer = Manufacture::where('id', $product->manufacturer_id)->first();
+        $manufacturer['country'] = Country::where('id', $manufacturer->country_id)->first()->name;
+        $expiration = TimeType::where('id', $product->expiration_type_id)->first()->title??'';
+        $packaging = PackagingType::where('id', $product->packaging_id)->first()??'';
+        $weight = WeightType::where('id', $product->weight_type_id)->first()->title??'';
         $images = ProductImage::where('product_id', $product->id)->get();
 
         $tags = ProductTag::join('tags', 'tags.id', '=', 'products_tags.tag_id')
@@ -137,15 +136,16 @@ class ProductController extends Controller
 
         $images = ProductImage::where('product_id', $product->id)->get();
 
-        $olds['category'] = Category::where('id', $product->category_id)->select('title')->get()[0]['title']??'';
+        $olds['category'] = Category::where('id', $product->category_id)->select('title')->first()['title']??'';
 
         $olds['manufacturer'] = Manufacture::join('country', 'country.id', '=', 'manufacturers.country_id')
                                             ->select('manufacturers.id', 'country.name as country', 'manufacturers.name as name')
-                                            ->where('manufacturers.id', $product->manufacturer_id)->get()[0];
+                                            ->where('manufacturers.id', $product->manufacturer_id)->first();
 
-        $olds['expiration'] = TimeType::where('id', $product->expiration_type_id)->select('title')->get()[0]['title']??'';
-        $olds['packaging'] = PackagingType::where('id', $product->packaging_id)->select('title')->get()[0]['title']??'';
-        $olds['weight'] = WeightType::where('id', $product->weight_type_id)->select('title')->get()[0]['title']??'';
+        $olds['expiration'] = TimeType::where('id', $product->expiration_type_id)->first()['title']??'';
+        $olds['packaging'] = PackagingType::where('id', $product->packaging_id)->first()['title']??'';
+        $olds['weight'] = WeightType::where('id', $product->weight_type_id)->first()??'';
+        $olds['brand'] = Brand::where('id', $product->brand_id)->first()['title']??'';
 
         $olds['tags'] = ProductTag::join('tags', 'tags.id', '=', 'products_tags.tag_id')
                                             -> select('tags.title', 'tags.id')
@@ -158,6 +158,17 @@ class ProductController extends Controller
     public function update(UpdateRequest $request, Product $product)
     {
         $data = $request->validated();
+
+        $tempData = [];
+
+        if (isset($data['preview_image']))
+        {
+            if ($product->preview_image !== 'images/main/none.png') {
+                Storage::disk('public')->delete('/'.$product->preview_image);
+            }
+            $tempData['preview_image'] = Storage::disk('public')->put('/images/products', $data['preview_image'] );
+        }
+
         $product->update([
             'title' => $data['title'],
             'article' => $data['article'],
@@ -168,7 +179,6 @@ class ProductController extends Controller
             'price' => $data['price'],
             'description' => $data['description'],
             'published' => $data['published'],
-            'preview_image' => $data['preview_image'] ?? 'images/main/none.png',
             'category_id' => $data['category'],
             'brand_id' => $data['brand'],
             'manufacturer_id' => $data['manufacturer'],
@@ -176,7 +186,7 @@ class ProductController extends Controller
             'expiration_type_id' => $data['expiration_type'],
             'packaging_id' => $data['packaging'],
             'weight_type_id' => $data['weight_type']
-        ]);
+        ] + $tempData);
 
         return redirect()->route('product.show', $product->id);
     }

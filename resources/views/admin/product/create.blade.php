@@ -93,14 +93,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="expiration">Срок хранения</label>
                                     <div class="form-group row">
-                                        <div class="col-4">
+                                        <div class="col">
+                                            <label for="expiration">Срок хранения</label>
                                             <input type="number" class="form-control" id="expiration" name="expiration"
-                                                min="1" placeholder="-" value="{{ old('expiration') }}">
+                                                placeholder="-" value="{{ old('expiration') }}" min="1" max="2147483647">
                                         </div>
-                                        <div class="col-2">
-                                            <select class="form-control select2 col-3" style="width: 100%;"
+                                        <div class="col d-flex align-self-end">
+                                            <select class="form-control select2" style="width: 100%;"
                                                 name="expiration_type">
                                                 <option selected value="">Не выбрано</option>
                                                 @foreach ($expirations as $expiration)
@@ -155,12 +155,12 @@
                                 <div class="form-group">
                                     <label for="weight">Вес</label>
                                     <div class="form-group row">
-                                        <div class="col-4">
+                                        <div class="col">
                                             <input type="number" class="form-control" id="weight" name="weight"
-                                                min="1" placeholder="-" value="{{ old('weight') }}">
+                                                min="1" placeholder="-" value="{{ old('weight') }}" min="1" max="2147483647">
                                         </div>
-                                        <div class="col-2">
-                                            <select class="form-control select2 col-3" style="width: 100%;"
+                                        <div class="col">
+                                            <select class="form-control select2" style="width: 100%;"
                                                 name="weight_type">
                                                 <option selected value="">Не выбрано</option>
                                                 @foreach ($weights as $weight)

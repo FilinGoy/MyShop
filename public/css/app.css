@@ -8,3 +8,9 @@
     transition: all 0.5s;
 }
 
+.card-img-top {
+    height: 170px;
+    -o-object-fit: contain;
+       object-fit: contain;
+}
+

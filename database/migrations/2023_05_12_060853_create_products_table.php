@@ -28,10 +28,10 @@ return new class extends Migration
             $table->integer('weight_type_id')->nullable()->index('products_fk5');
             $table->integer('calorie')->nullable();
             $table->integer('count')->default(0);
-            $table->decimal('price')->default(0);
+            $table->decimal('price', 10)->default(0);
             $table->text('description')->nullable();
             $table->boolean('published')->default(false);
-            $table->string('preview_image')->nullable()->default('none.png');
+            $table->string('preview_image')->nullable();
             $table->timestamps();
         });
     }

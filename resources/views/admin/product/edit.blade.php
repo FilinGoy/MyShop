@@ -19,12 +19,12 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="card card-warning">
                         <div class="card-header">
                             <h3 class="card-title">Данные для изменения</h3>
                         </div>
-                        <form class="form-horizontal" action="{{ route('product.update', $product->id) }}" method="post">
+                        <form class="form-horizontal" action="{{ route('product.update', $product->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="card-body">
@@ -102,12 +102,12 @@
                                 <div class="form-group">
                                     <label for="expiration">Срок хранения</label>
                                     <div class="form-group row">
-                                        <div class="col-4">
+                                        <div class="col">
                                             <input type="number" class="form-control" id="expiration" name="expiration"
                                                 min="1" placeholder="-" value="{{ old('expiration') ?? $product->expiration_date }}">
                                         </div>
-                                        <div class="col-2">
-                                            <select class="form-control select2 col-3" style="width: 100%;"
+                                        <div class="col">
+                                            <select class="form-control select2" style="width: 100%;"
                                                 name="expiration_type">
                                                 <option @if (old('expiration_type') == null && $product->expiration_type_id == null) selected @endif value="">Не выбрано</option>
                                                 {{ $tempExpirationType = old('expiration_type') ?? $product->expiration_type_id }}
@@ -164,17 +164,17 @@
                                 <div class="form-group">
                                     <label for="weight">Вес</label>
                                     <div class="form-group row">
-                                        <div class="col-4">
+                                        <div class="col">
                                             <input type="number" class="form-control" id="weight" name="weight"
                                                 min="1" placeholder="-" value="{{ old('weight') ?? $product->weight }}">
                                         </div>
-                                        <div class="col-2">
-                                            <select class="form-control select2 col-3" style="width: 100%;"
+                                        <div class="col">
+                                            <select class="form-control select2" style="width: 100%;"
                                                 name="weight_type">
-                                                <option selected value="">Не выбрано</option>
-                                                {{ $tempWeight = old('weight_type') ?? $olds["weight"] }}
+                                                <option @if (old('weight_type') == null && $product->weight_type_id == null) selected @endif value="">Не выбрано</option>
+                                                {{ $tempWeightType = old('weight_type') ?? $olds["weight"] }}
                                                 @foreach ($weights as $weight)
-                                                    <option @if ($weight->id == $tempWeight) selected @endif
+                                                    <option @if ($weight->id == $tempWeightType->id) selected @endif
                                                         value="{{ $weight->id }}">{{ $weight->title }}</option>
                                                 @endforeach
                                             </select>
@@ -250,7 +250,7 @@
                                     <label for="preview_image">Файл (превью)</label>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="preview_image" name="preview_image">
-                                        <label class="custom-file-label" for="customFile">Выберите файл</label>
+                                        <label class="custom-file-label" for="customFile">{{ $product->preview_image }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +262,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Текущие данные</h3>
@@ -279,11 +279,10 @@
                                 <dd>{{ $product->article ?? '-' }}</dd>
                                 <dt>Категория</dt>
                                 <dd>{{ $olds['category'] }}</dd>
-
                                 <dt>Бренд</dt>
                                 <dd>{{ $olds['brand'] ?? '-' }}</dd>
                                 <dt>Производитель</dt>
-                                <dd>{{ $olds['manufacturer']->name.' '.$olds['manufacturer']->country }}</dd>
+                                <dd>{{ $olds['manufacturer']->name.', '.$olds['manufacturer']->country }}</dd>
                                 <dt>Срок хранения</dt>
                                 <dd>{{ $product->expiration_date ? $product->expiration_date . ' ' . $olds['expiration'] : '-' }}
                                 </dd>
@@ -293,7 +292,7 @@
                                 <dt>Ингридиенты</dt>
                                 <dd>{{ $product->ingredients }}</dd>
                                 <dt>Вес</dt>
-                                <dd>{{ $product->weight ? $product->weight . ' ' . $olds['weight'] : '-' }}</dd>
+                                <dd>{{ $product->weight ? $product->weight . ' ' . $olds['weight']->title : '-' }}</dd>
                                 <dt>Калории</dt>
                                 <dd>{{ $product->calorie ? $product->calorie . ' ККАЛ' : '-' }}</dd>
                                 <dt>В наличии</dt>
@@ -304,27 +303,27 @@
                                 <dt>Фотографии</dt>
                                 <dd class="row">
                                     <div class="col-2 d-flex align-items-center mt-2">
-                                        <div class="img-thumbnail d-flex h-100 p-3 position-relative">
+                                        <div class="img-thumbnail d-flex h-100 p-1 position-relative">
                                             <img src="{{ asset('storage/' . $product->preview_image) }}" class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
                                             <div class="ribbon-wrapper ribbon">
-                                                <div class="ribbon bg-success text-lg">
+                                                <div class="ribbon bg-success">
                                                     Превью
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     @if (isset($images))
+                                        @foreach ($images as $image)
+                                        <div class="col-2 d-flex align-items-center mt-2">
+                                            <div class="img-thumbnail d-flex h-100 p-3">
+                                                <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid align-self-center" alt="{{ $image->image_path }}">
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    @else
                                         <div class="col-2 d-flex align-items-center mt-2">
                                             <b>Доп.фотографии не найдены</b>
                                         </div>
-                                    @else
-                                        @foreach ($images as $image)
-                                            <div class="col-2 d-flex align-items-center mt-2">
-                                                <div class="img-thumbnail d-flex h-100 p-3">
-                                                    <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid align-self-center" alt="{{ $image->image_path }}">
-                                                </div>
-                                            </div>
-                                        @endforeach
                                     @endif
                                 </dd>
                                 <dt>Теги</dt>

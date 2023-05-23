@@ -39,9 +39,9 @@
                             <dt>Бренд</dt>
                             <dd>{{ $brand->title ?? '-' }}</dd>
                             <dt>Производитель</dt>
-                            <dd>{{ $manufacturer->name }}</dd>
+                            <dd>{{ $manufacturer->name.', '.$manufacturer->country }}</dd>
                             <dt>Срок хранения</dt>
-                            <dd>{{ $product->expiration_date ? $product->expiration_date . ' ' . $expiration->title : '-' }}
+                            <dd>{{ $product->expiration_date ? $product->expiration_date . ' ' . $expiration : '-' }}
                             </dd>
                             <dt>Упаковка</dt>
                             <dd>{{ $packaging->title ?? '-' }}</dd>
@@ -62,10 +62,10 @@
                             <dt>Фотографии</dt>
                             <dd class="row">
                                 <div class="col-2 d-flex align-items-center mt-2">
-                                    <div class="img-thumbnail d-flex h-100 p-3 position-relative">
-                                        <img src="{{ asset('storage/' . $product->preview_image) }}" class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
+                                    <div class="img-thumbnail d-flex h-100 p-1 position-relative">
+                                        <img src="{{ asset('storage/'.$product->preview_image) }}" class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
                                         <div class="ribbon-wrapper ribbon-lg">
-                                            <div class="ribbon bg-success text-lg">
+                                            <div class="ribbon bg-success">
                                                 Превью
                                             </div>
                                         </div>

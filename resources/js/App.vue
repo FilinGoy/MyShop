@@ -58,7 +58,7 @@
 
 				<div
 					class="col-2 col-lg-2 nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-md-flex justify-content-around align-items-center text-danger text-uppercase py-2 dropdown"
-				    data-bs-toggle="collapse" href="#categories" role="button" aria-expanded="false" aria-controls="categories" data-bs-auto-close="true"
+						data-bs-toggle="collapse" href="#categories" role="button" aria-expanded="false" aria-controls="categories" data-bs-auto-close="true"
                 >
 					<i class="fa-solid fa-bars pe-2"></i>
 					<p>Каталог</p>

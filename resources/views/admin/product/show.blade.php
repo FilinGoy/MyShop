@@ -49,7 +49,7 @@
                             <dt>Ингридиенты</dt>
                             <dd>{{ $product->ingredients }}</dd>
                             <dt>Вес</dt>
-                            <dd>{{ $product->weight ? $product->weight . ' ' . $weight->title : '-' }}</dd>
+                            <dd>{{ $product->weight ? $product->weight . ' ' . $weight : '-' }}</dd>
                             <dt>Калории</dt>
                             <dd>{{ $product->calorie ? $product->calorie . ' ККАЛ' : '-' }}</dd>
                             <dt>В наличии</dt>

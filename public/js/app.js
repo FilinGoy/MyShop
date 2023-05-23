@@ -18065,8 +18065,28 @@ var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   placeholder: "Найти товар"
 })])], -1 /* HOISTED */);
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-xxl-1 nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-xxl-flex justify-content-center align-items-center text-black-50 py-2\"><i class=\"fa-regular fa-heart flex-fill\"></i></div><div class=\"col-2 col-md-1 col-lg-2 col-xl-1 offset-3 offset-md-0 nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50 py-2\"><i class=\"fa-regular fa-circle-user pe-lg-2\"></i><p class=\"d-none d-lg-block\">Профиль</p><!-- //TODO - Изменение состояния кнопки при входе\n                        &lt;i class=&quot;fa-solid fa-right-to-bracket pe-lg-2 flex-fill&quot;&gt;&lt;/i&gt;\n                        &lt;p class=&quot;d-none d-xl-block flex-fill&quot;&gt;Войти&lt;/p&gt; --></div><div class=\"col-2 col-md-1 col-lg-2 col-xl-1 nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50 py-2\"><i class=\"fa-solid fa-basket-shopping pe-lg-2\"></i><p class=\"d-none d-lg-block\">Корзина</p></div>", 3);
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"collapse w-100 m-0 shadow\" id=\"categories\" data-bs-toggle=\"collapse\"><div class=\"py-3 px-lg-4 py-lg-5 bg-white d-none d-md-block\"><div class=\"container p-0\"><div class=\"row\"><div class=\"col-lg-3\"><a class=\"dropdown-item rounded-sm\" href=\"products-grid.html\"><p>Products grid</p><span class=\"label\">Cards grid preview</span></a></div></div></div></div></div>", 1);
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"footer mt-auto py-3 bg-body-tertiary border-top bg-white\"><div class=\"container-fluid\"><div class=\"row\"><div class=\"container\"><div class=\"row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 justify-content-between align-items-center\"><div class=\"col mb-3 text-center\"><a href=\"#\" class=\"d-flex align-items-center mb-3 link-body-emphasis text-decoration-none\"><svg class=\"bi me-2\" width=\"40\" height=\"32\"><use xlink:href=\"#bootstrap\"></use></svg></a><i class=\"fa-solid fa-frog fa-bounce fa-2x\" style=\"color:#2f7402;\"></i><p class=\"text-body-secondary\">Суворов Денис © 2023</p></div><div class=\"col\"> Информация </div></div></div></div></div></footer>", 1);
+var _hoisted_21 = {
+  "class": "collapse w-100 m-0 shadow",
+  id: "categories",
+  "data-bs-toggle": "collapse"
+};
+var _hoisted_22 = {
+  "class": "py-3 px-lg-4 py-lg-5 bg-white d-none d-md-block"
+};
+var _hoisted_23 = {
+  "class": "container p-0"
+};
+var _hoisted_24 = {
+  "class": "row"
+};
+var _hoisted_25 = {
+  "class": "col-lg-3"
+};
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Продукты", -1 /* HOISTED */);
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "label"
+}, "Страница продуктов", -1 /* HOISTED */);
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"footer mt-auto py-3 bg-body-tertiary border-top bg-white\"><div class=\"container-fluid\"><div class=\"row\"><div class=\"container\"><div class=\"row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 justify-content-between align-items-center\"><div class=\"col mb-3 text-center\"><a href=\"#\" class=\"d-flex align-items-center mb-3 link-body-emphasis text-decoration-none\"><svg class=\"bi me-2\" width=\"40\" height=\"32\"><use xlink:href=\"#bootstrap\"></use></svg></a><i class=\"fa-solid fa-frog fa-bounce fa-2x\" style=\"color:#2f7402;\"></i><p class=\"text-body-secondary\">Суворов Денис © 2023</p></div><div class=\"col\"> Информация </div></div></div></div></div></footer>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
@@ -18085,7 +18105,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_14, _hoisted_15];
     }),
     _: 1 /* STABLE */
-  })]), _hoisted_16, _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            None     540px\t     720px       960px\t     1140px\t      1320px\n                        Class prefix\t.col-\t.col-sm-\t.col-md-\t.col-lg-\t.col-xl-\t.col-xxl- "), _hoisted_18]), _hoisted_21])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view), _hoisted_22], 64 /* STABLE_FRAGMENT */);
+  })]), _hoisted_16, _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            None     540px\t     720px       960px\t     1140px\t      1320px\n                        Class prefix\t.col-\t.col-sm-\t.col-md-\t.col-lg-\t.col-xl-\t.col-xxl- "), _hoisted_18]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    "class": "dropdown-item rounded-sm",
+    to: "/products"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_26, _hoisted_27];
+    }),
+    _: 1 /* STABLE */
+  })])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view), _hoisted_28], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

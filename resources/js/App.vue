@@ -101,10 +101,10 @@
 					<div class="container p-0">
 						<div class="row">
 							<div class="col-lg-3">
-								<a class="dropdown-item rounded-sm" href="products-grid.html">
-									<p>Products grid</p>
-									<span class="label">Cards grid preview</span>
-								</a>
+								<router-link class="dropdown-item rounded-sm" to="/products">
+									<p>Продукты</p>
+									<span class="label">Страница продуктов</span>
+								</router-link>
 							</div>
 						</div>
 					</div>

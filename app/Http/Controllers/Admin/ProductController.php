@@ -178,7 +178,7 @@ class ProductController extends Controller
             'weight_type_id' => $data['weight_type']
         ]);
 
-        return view('admin.product.index');
+        return redirect()->route('product.show', $product->id);
     }
 
     public function delete(Product $product)

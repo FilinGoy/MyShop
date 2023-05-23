@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'manufacturer' => 'required|integer',
             'expiration' => 'nullable|integer',
             'expiration_type' => 'nullable|integer',
-            'article' => 'nullable|string|unique:products,article'.$this->product->id,
+            'article' => 'nullable|string|unique:products,article,'.$this->product->id,
             'packaging' => 'nullable|string',
             'ingredients' => 'required|string',
             'weight' => 'nullable|integer',
@@ -55,7 +55,8 @@ class UpdateRequest extends FormRequest
             'count.required' => 'Поле является обязательным!',
             'price.required' => 'Поле является обязательным!',
             'price.regex' => 'Поле заполнено некорректно!',
-            'published.required' => 'Поле является обязательным!'
+            'published.required' => 'Поле является обязательным!',
+            'price.validation' => 'Поле заполнено некорректно (попробуйте написать через точку)!'
         ];
     }
 

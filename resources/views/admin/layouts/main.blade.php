@@ -147,7 +147,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('admin') }}" class="brand-link">
-                <img src="{{ asset('storage/images/main/logo.png') }}" alt="Logo" class="brand-image bg-secondary rounded elevation-3">
+                <img src="{{ asset('storage/images/main/logo.png') }}" alt="Logo"
+                    class="brand-image bg-secondary rounded elevation-3">
                 <span class="brand-text font-weight-light">CapyProducts</span>
             </a>
 
@@ -286,8 +287,22 @@
                         </li>
 
                         <li class="nav-header">Отладка</li>
-                        <li class="nav-item text-white">
-                            {{ $errors }}
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-database"></i>
+                                <p>
+                                    Отладочные данные
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: node;">
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="modal" data-target="#modal-xl">
+                                        <i class="fas fa-terminal nav-icon"></i>
+                                        <p>Показать ошибки</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -295,6 +310,32 @@
             </div>
             <!-- /.sidebar -->
         </aside>
+
+        <div class="modal fade" id="modal-xl">
+            <div class="modal-dialog modal-xl h-100">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ошибки</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @foreach ($errors->getMessages() as $key => $messages)
+                            <b>{{ $key }}:</b><br>
+                            @foreach ($messages as $text)
+                                <pre>{{ $text }}</pre>
+                            @endforeach
+                        @endforeach
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">

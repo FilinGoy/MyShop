@@ -181,7 +181,7 @@
                                 <div class="form-group">
                                     <label for="calorie" class="col-form-label">
                                         Калорийность</label>
-                                    <input type="text" class="form-control col" id="calorie" name="calorie"
+                                    <input type="number" class="form-control col" id="calorie" name="calorie"
                                         value="{{ old('calorie') }}" placeholder="ККАЛ">
                                     @if ($errors->has('calorie'))
                                         <p class="text-danger">{{ $errors->first('calorie') }}</p>
@@ -191,7 +191,7 @@
                                 <div class="form-group">
                                     <label for="count" class="col-form-label">
                                         Количество (на складе)<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control col" id="count" name="count"
+                                    <input type="number" class="form-control col" id="count" name="count"
                                         value="{{ old('count') }}" placeholder="шт." min="0">
                                     @if ($errors->has('count'))
                                         <p class="text-danger">{{ $errors->first('count') }}</p>
@@ -203,7 +203,7 @@
                                         Цена<span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="price" name="price"
-                                            value="{{ old('price') }}">
+                                            value="{{ old('price') }}" data-inputmask='"mask": "9{1,8}.99", "greedy" : false' data-mask>
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00 (формат)</span>
                                         </div>

@@ -23,16 +23,16 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'category' => 'required|integer',
-            'brand' => 'nullable|integer',
-            'manufacturer' => 'required|integer',
-            'expiration' => 'nullable|integer',
-            'expiration_type' => 'nullable|integer',
+            'category_id' => 'required|integer',
+            'brand_id' => 'nullable|integer',
+            'manufacturer_id' => 'required|integer',
+            'expiration_date' => 'nullable|integer',
+            'expiration_type_id' => 'nullable|integer',
             'article' => 'nullable|string|unique:products,article',
-            'packaging' => 'nullable|string',
+            'packaging_id' => 'nullable|string',
             'ingredients' => 'required|string',
             'weight' => 'nullable|integer',
-            'weight_type' => 'nullable|integer',
+            'weight_type_id' => 'nullable|integer',
             'calorie' => 'nullable|integer',
             'count' => 'required|integer',
             'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
@@ -55,7 +55,8 @@ class StoreRequest extends FormRequest
             'count.required' => 'Поле является обязательным!',
             'price.required' => 'Поле является обязательным!',
             'price.regex' => 'Поле заполнено некорректно!',
-            'published.required' => 'Поле является обязательным!'
+            'published.required' => 'Поле является обязательным!',
+            'price.numeric' => 'Поле заполнено некорректно (попробуйте написать через точку)!'
         ];
     }
 

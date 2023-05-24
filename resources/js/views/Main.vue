@@ -38,6 +38,8 @@
                     <p class="text-muted">Удобная оплата</p>
                 </div>
             </div>
+            <div class="row text-center" style="height:350px">
+            </div>
         </div>
     </main>
 </template>

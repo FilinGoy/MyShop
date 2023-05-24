@@ -2,10 +2,9 @@
 	<header style="height: 60px;">
 		<nav class="fixed-top navbar-white bg-white shadow dropdown" style="height: 60px;">
 			<div class="container d-flex justify-content-between align-items-stretch h-100 g-0">
-				<div class="collapse navbar-collapse navbar-collapse-sidebar" id="navbarToggler">
-					<div class="d-block d-lg-none">
-						<div class="p-3">
-							<div class="d-flex justify-content-between align-items-center">
+				<div class="collapse navbar-nav navbar-collapse navbar-collapse-sidebar d-sm-none" id="navbarToggler">
+                    <ul class="navbar-nav position-relative">
+                        <div class="d-flex justify-content-between align-items-center p-2">
 								<router-link to="/">
 									<img src="storage/images/main/logo.svg" height="40" alt="Logo" />
 								</router-link>
@@ -21,21 +20,45 @@
 									<i class="fa-solid fa-xmark"></i>
 								</button>
 							</div>
-						</div>
-						<div class="bg-light">
-							<div class="form-group form-group-icon m-0">
+
+							<div class="form-group form-group-icon">
 								<button class="btn bg-white border py-1 px-2 mr-2">
 									Поиск
 								</button>
 								<input type="text" class="form-control bg-light" placeholder="Найти товар" />
 							</div>
-						</div>
-					</div>
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+                            <hr>
+
+                            <li class="nav-item">
+                                <router-link to="/about" class="nav-link">Оплата заказа</router-link>
+                            </li>
+
+                            <li class="nav-item">
+                                <router-link to="/about" class="nav-link">Доставка</router-link>
+                            </li>
+
+                            <li class="nav-item">
+                                <router-link to="/about" class="nav-link">О магазине</router-link>
+                            </li>
+
+                            <hr>
+
+                            <li class="nav-item">
+                                <p class="fs-5">Категории</p>
+                            </li>
+
+                            <router-link v-for="category in categories" :key="category.id" class="col-lg-4 col-xxl-3 dropdown-item rounded-sm" :to="`/categories/${category.id}`">
+                                <p class="text-wrap">{{ category.title }}</p>
+                            </router-link>
+
+                        <hr>
+
+                        <li class="nav-item p-2">
+                            <p>Суворов Денис © 2023</p>
+                        </li>
 					</ul>
 				</div>
-				<!-- //REVIEW - Кнопка открытия / закрытия боковой панели -->
 
 				<div
 					class="col-1 d-md-none nav-item d-flex justify-content-center align-items-center text-black-50 navbar-toggler"
@@ -58,8 +81,13 @@
 
 				<div
 					class="col-2 col-lg-2 nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-md-flex justify-content-around align-items-center text-danger text-uppercase py-2 dropdown"
-						data-bs-toggle="collapse" href="#categories" role="button" aria-expanded="false" aria-controls="categories" data-bs-auto-close="true"
-                >
+					data-bs-toggle="collapse"
+					href="#categories"
+					role="button"
+					aria-expanded="false"
+					aria-controls="categories"
+					data-bs-auto-close="true"
+				>
 					<i class="fa-solid fa-bars pe-2"></i>
 					<p>Каталог</p>
 				</div>
@@ -96,14 +124,18 @@
 					<p class="d-none d-lg-block">Корзина</p>
 				</div>
 			</div>
-			<div class="collapse w-100 m-0 shadow" id="categories" data-bs-toggle="collapse">
+			<div class="collapse w-100 m-0 shadow" id="categories">
 				<div class="py-3 px-lg-4 py-lg-5 bg-white d-none d-md-block">
 					<div class="container p-0">
 						<div class="row">
-							<div class="col-lg-3">
-								<router-link class="dropdown-item rounded-sm" to="/products">
-									<p>Продукты</p>
-									<span class="label">Страница продуктов</span>
+							<router-link v-for="category in categories" :key="category.id" class="col-lg-4 col-xxl-3 dropdown-item rounded-sm" :to="`/categories/${category.id}`">
+								<p class="text-wrap">{{ category.title }}</p>
+							</router-link>
+						</div>
+						<div class="row">
+							<div class="col">
+								<router-link class="dropdown-item rounded-sm text-center" to="/products">
+									<p>Все товары</p>
 								</router-link>
 							</div>
 						</div>
@@ -115,23 +147,23 @@
 	<router-view></router-view>
 	<footer class="footer mt-auto py-3 bg-body-tertiary border-top bg-white">
 		<div class="container-fluid">
-            <div class="row">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 justify-content-between align-items-center">
-                        <div class="col mb-3 text-center">
-                            <a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                            </a>
-                            <i class="fa-solid fa-frog fa-bounce fa-2x " style="color: #2f7402;"></i>
-                            <p class="text-body-secondary">Суворов Денис © 2023</p>
-                        </div>
+			<div class="row">
+				<div class="container">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 justify-content-between align-items-center">
+						<div class="col mb-3 text-center">
+							<a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+								<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+							</a>
+							<i class="fa-solid fa-frog fa-bounce fa-2x" style="color: #2f7402;"></i>
+							<p class="text-body-secondary">Суворов Денис © 2023</p>
+						</div>
 
-                        <div class="col">
-                            Информация
-                        </div>
-                    </div>
-                </div>
-            </div>
+						<div class="col">
+							Информация
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</footer>
 </template>
@@ -141,6 +173,21 @@ import elem from "./components/Header.vue";
 export default {
 	name: "App",
 	components: { elem },
+	data() {
+		return {
+			categories: [],
+		};
+	},
+	mounted() {
+		this.getCategories();
+	},
+	methods: {
+		getCategories() {
+			this.axios.get("/api/categories").then((res) => {
+				this.categories = res.data.data;
+			});
+		},
+	},
 };
 </script>
 <style></style>

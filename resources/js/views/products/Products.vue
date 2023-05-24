@@ -292,16 +292,16 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
                                                 <h2 class="card-title mb-1 h5">
-                                                    <a href="product.html">
+                                                    <a :href="`/products/${product.id}`">
                                                         {{ product.title }}
                                                     </a>
                                                 </h2>
                                                 <small class="text-muted">
-                                                    <span>{{ product.price }}</span>
+                                                    <span>{{ product.price }} ₽</span>
                                                 </small>
                                             </div>
                                             <div>
-                                                <a href="product.html" class="d-inline-block" data-toggle="tooltip" data-placement="top" title="Add to cart">
+                                                <a :href="`/products/${product.id}`" class="d-inline-block" data-toggle="tooltip" data-placement="top" title="Add to cart">
                                                     <i class="icon icon-cart font-size-xl"></i>
                                                 </a>
                                             </div>
@@ -328,7 +328,6 @@
                                 </li>
                             </ul>
                         </nav>
-
                     </div>
                 </div>
             </div>

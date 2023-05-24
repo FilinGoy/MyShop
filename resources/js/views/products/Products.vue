@@ -282,7 +282,7 @@
                         <div v-if="products" class="row gutters-mobile">
 
                             <div v-for="product in products" :key="product.id" class="col-6 col-xl-4">
-                                <div class="card card-fill border-0 mb-2 mb-lg-4">
+                                <div class="card card-fill border-0 mb-2 mb-lg-4" v-if="product.published">
                                     <div class="card-image">
                                         <router-link :to="`/products/${product.id}`">
                                             <img :src="product.preview_image ?? 'storage/images/main/none.png'" class="card-img-top" alt="...">

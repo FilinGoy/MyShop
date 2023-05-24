@@ -340,6 +340,7 @@ var _hoisted_7 = {
   "class": "row gutters-mobile"
 };
 var _hoisted_8 = {
+  key: 0,
   "class": "card card-fill border-0 mb-2 mb-lg-4"
 };
 var _hoisted_9 = {
@@ -371,7 +372,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: product.id,
       "class": "col-6 col-xl-4"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    }, [product.published ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
       to: "/products/".concat(product.id)
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -391,7 +392,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "data-toggle": "tooltip",
       "data-placement": "top",
       title: "Add to cart"
-    }, _hoisted_18, 8 /* PROPS */, _hoisted_16)])])])])]);
+    }, _hoisted_18, 8 /* PROPS */, _hoisted_16)])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pagination "), _hoisted_19])])])])]);
 }
 

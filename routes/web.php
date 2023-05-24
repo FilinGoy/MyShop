@@ -45,13 +45,13 @@ Route::group(['prefix' => 'admin'], function(){
     });
 
     Route::group(['prefix' => 'manufacturers'], function () {
-        Route::get('/', '\App\Http\Controllers\Admin\ManufactureController@index')->name('manufacturer.index');
-        Route::get('/create', '\App\Http\Controllers\Admin\ManufactureController@create')->name('manufacturer.create');
-        Route::post('/', '\App\Http\Controllers\Admin\ManufactureController@store')->name('manufacturer.store');
-        Route::get('/{manufacturer}/edit', '\App\Http\Controllers\Admin\ManufactureController@edit')->name('manufacturer.edit');
-        Route::get('/{manufacturer}', '\App\Http\Controllers\Admin\ManufactureController@show')->name('manufacturer.show');
-        Route::patch('/{manufacturer}', '\App\Http\Controllers\Admin\ManufactureController@update')->name('manufacturer.update');
-        Route::delete('/{manufacturer}', '\App\Http\Controllers\Admin\ManufactureController@delete')->name('manufacturer.delete');
+        Route::get('/', '\App\Http\Controllers\Admin\ManufacturerController@index')->name('manufacturer.index');
+        Route::get('/create', '\App\Http\Controllers\Admin\ManufacturerController@create')->name('manufacturer.create');
+        Route::post('/', '\App\Http\Controllers\Admin\ManufacturerController@store')->name('manufacturer.store');
+        Route::get('/{manufacturer}/edit', '\App\Http\Controllers\Admin\ManufacturerController@edit')->name('manufacturer.edit');
+        Route::get('/{manufacturer}', '\App\Http\Controllers\Admin\ManufacturerController@show')->name('manufacturer.show');
+        Route::patch('/{manufacturer}', '\App\Http\Controllers\Admin\ManufacturerController@update')->name('manufacturer.update');
+        Route::delete('/{manufacturer}', '\App\Http\Controllers\Admin\ManufacturerController@delete')->name('manufacturer.delete');
     });
 
     Route::group(['prefix' => 'packaging-types'], function () {

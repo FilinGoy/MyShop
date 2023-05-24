@@ -51,6 +51,9 @@
                             <router-link v-for="category in categories" :key="category.id" class="col-lg-4 col-xxl-3 dropdown-item rounded-sm" :to="`/categories/${category.id}`">
                                 <p class="text-wrap">{{ category.title }}</p>
                             </router-link>
+                            <router-link class="col-lg-4 col-xxl-3 dropdown-item rounded-sm" :to="`/products`">
+                                <p class="text-wrap">Все товары</p>
+                            </router-link>
 
                         <hr>
 

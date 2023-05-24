@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class ManufactureController extends Controller
+class ManufacturerController extends Controller
 {
     //
 }

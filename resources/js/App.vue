@@ -178,7 +178,7 @@ export default {
 	components: { elem },
 	data() {
 		return {
-			categories: [],
+			categories: []
 		};
 	},
 	mounted() {
@@ -189,7 +189,7 @@ export default {
 			this.axios.get("/api/categories").then((res) => {
 				this.categories = res.data.data;
 			});
-		},
+		}
 	},
 };
 </script>

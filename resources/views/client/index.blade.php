@@ -1,8 +1,8 @@
 @extends('client.layouts.main')
 
 @section('content')
-    <body class="d-flex flex-column h-100">
-        <div id="app">
+    <body class="h-100">
+        <div id="app" class="d-flex flex-column min-vh-100">
 
         </div>
     </body>

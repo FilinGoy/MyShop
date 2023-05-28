@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,16 +25,6 @@
     </head>
 
     @yield('content')
-
-    <script src="../js/vendor/jquery.min.js"></script>
-    <script src="../js/vendor/bootstrap.bundle.js"></script>
-    <script src="../js/vendor/in-view.min.js"></script>
-    <script src="../js/vendor/jquery.lavalamp.js"></script>
-    <script src="../js/vendor/owl.carousel.js"></script>
-    <script src="../js/vendor/rellax.js"></script>
-    <script src="../js/vendor/wow.js"></script>
-    <script src="../js/vendor/tabzy.js"></script>
-    <script src="../js/vendor/isotope.pkgd.js"></script>
 
     <script defer src="../js/bootstrap/bootstrap.bundle.min.js"></script>
     <script defer src="js/app.js"></script>

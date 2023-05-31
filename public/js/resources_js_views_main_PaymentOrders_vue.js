@@ -34,7 +34,7 @@ var _hoisted_1 = {
 };
 var _hoisted_2 = {
   "aria-label": "breadcrumb",
-  "class": "col-12"
+  "class": "col-12 py-3"
 };
 var _hoisted_3 = {
   "class": "breadcrumb"

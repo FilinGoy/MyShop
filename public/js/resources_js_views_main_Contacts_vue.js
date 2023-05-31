@@ -12,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'contacts'
+  name: "contacts"
 });
 
 /***/ }),
@@ -34,7 +34,7 @@ var _hoisted_1 = {
 };
 var _hoisted_2 = {
   "aria-label": "breadcrumb",
-  "class": "col-12"
+  "class": "col-12 py-3"
 };
 var _hoisted_3 = {
   "class": "breadcrumb"
@@ -46,7 +46,7 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "breadcrumb-item active",
   "aria-current": "page"
 }, "Контакты", -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-12 bg-white py-5 px-md-7\"><div class=\"mr-lg-8\"><h1>Администрация интернет-магазина «Дом Вкуса»</h1><h5>ООО «Дом Вкуса»</h5><p class=\"text-wrap\"> ИНН 7999999999 / КПП 999999999 <br> ОГРН 1999999999999 <br> Юридический адрес: 454136, Челябинск, Калининский район, ​Молодогвардейцев, 31 к1, 9999 офис <br> Фактический адрес: 454136, Челябинск, Калининский район, ​Молодогвардейцев, 31 к1, 9999 офис. </p><h5>Режим работы</h5><p>В будние дни с 6:00 до 14:00 по ект (GMT+5)</p><h5>Контактные данные</h5><p>Вопросы можно задать по адресу <a class=\"text-danger text-nowrap\" href=\"mailto:info@shop.ru\">info@shop.ru</a> или по телефону <a class=\"text-danger text-nowrap\" href=\"tel:+78009999999\">8 800 999 99 99</a> (7 дней в неделю с 05:00 до 22:00 по ект (GMT+5), для звонков по РФ, звонок бесплатный).</p></div></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-12 bg-white py-5 px-md-7\"><div class=\"mr-lg-8\"><h1>Администрация интернет-магазина «Дом Вкуса»</h1><h5>ООО «Дом Вкуса»</h5><p class=\"text-wrap\"> ИНН 7999999999 / КПП 999999999 <br> ОГРН 1999999999999 <br> Юридический адрес: 454136, Челябинск, Калининский район, ​Молодогвардейцев, 31 к1, 9999 офис <br> Фактический адрес: 454136, Челябинск, Калининский район, ​Молодогвардейцев, 31 к1, 9999 офис. </p><h5>Режим работы</h5><p>В будние дни с 6:00 до 14:00 по ект (GMT+5)</p><h5>Контактные данные</h5><p> Вопросы можно задать по адресу <a class=\"text-danger text-nowrap\" href=\"mailto:info@shop.ru\">info@shop.ru</a> или по телефону <a class=\"text-danger text-nowrap\" href=\"tel:+78009999999\">8 800 999 99 99</a> (7 дней в неделю с 05:00 до 22:00 по ект (GMT+5), для звонков по РФ, звонок бесплатный). </p></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ol", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {

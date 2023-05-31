@@ -294,8 +294,8 @@ var _hoisted_72 = {
   "class": "col-xl-8"
 };
 var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
-var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"mb-2\"><div class=\"row\"><div class=\"col-5\"><input type=\"number\" class=\"form-control mr-2\" value=\"1\"></div><div class=\"col-7\"><button class=\"btn btn-block btn-primary\"><i class=\"icon icon-cart\"></i> В корзину</button></div></div></div><hr>", 2);
-var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"btn-group w-100\"><span class=\"btn btn-sm btn-outline-primary\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\"><span class=\"show\"><i class=\"fa fa-heart-o\"></i> Избранное</span><span class=\"hide\"><i class=\"fa fa-heart\"></i> В избранном</span></span></div>", 1);
+var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"mb-2\"><div class=\"row\"><div class=\"col-5\"><input type=\"number\" class=\"form-control mr-2\" value=\"1\"></div><div class=\"col-7\"><button class=\"btn btn-block btn-danger\"><i class=\"icon icon-cart\"></i> В корзину</button></div></div></div><hr>", 2);
+var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"btn-group w-100\"><span class=\"btn btn-sm btn-outline-danger\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\"><span class=\"show\"><i class=\"fa fa-heart-o\"></i> Избранное</span><span class=\"hide\"><i class=\"fa fa-heart\"></i> В избранном</span></span></div>", 1);
 var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", {
   "class": "divider"
 }, null, -1 /* HOISTED */);
@@ -370,11 +370,11 @@ var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, "- 45 минут назад"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "ml-auto"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-star icon-xs text-primary"
+  "class": "fa fa-star icon-xs text-danger"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-star icon-xs text-primary"
+  "class": "fa fa-star icon-xs text-danger"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa fa-star icon-xs text-primary"
+  "class": "fa fa-star icon-xs text-danger"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa fa-star icon-xs text-secondary"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {

@@ -46,22 +46,36 @@
 					</div>
 				</div>
 
-				<div class="nav-item d-flex flex-grow-1 justify-content-end">
+				<div class="nav-item d-flex flex-grow-1 justify-content-end dropdown">
 					<div class="nav-item d-none d-md-flex flex-grow-1 px-2 justify-content-around align-items-center text-black-50">
-						<div class="form-group-icon w-100">
-							<button class="btn bg-white border py-1 px-2 mr-2 text-muted text-uppercase">
-								<p>Найти</p>
+						<div class="d-flex w-100 bg-light border-1 border">
+							<input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Поиск товаров" />
+							<button class="btn bg-white rounded-0 border-0 text-muted shadow-none">
+								<i class="fas fa-search"></i>
 							</button>
-							<input type="text" class="form-control bg-light" placeholder="Поиск товаров" />
 						</div>
 					</div>
 					<div class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
 						<i class="fa-regular fa-heart"></i>
 					</div>
 
-					<div class="nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-lg-flex justify-content-center align-items-center text-black-50">
-						<i class="fa-regular fa-circle-user pe-2"></i>
-						<p>Профиль</p>
+					<div class="dropdown d-none d-lg-flex">
+						<div
+							class="nav-item btn btn-white h-100 shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
+							type="button"
+							id="dropdownProfile"
+							data-bs-toggle="dropdown"
+						>
+							<i class="fa-regular fa-circle-user pe-2"></i>
+							<p>Профиль</p>
+						</div>
+
+						<ul class="dropdown-menu" aria-labelledby="dropdownProfile">
+							<li><router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link></li>
+							<li><router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link></li>
+							<li><router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link></li>
+							<li><router-link to="#" class="dropdown-item border-top text-wrap px-4">Выйти</router-link></li>
+						</ul>
 					</div>
 
 					<div class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
@@ -101,11 +115,11 @@
 			</div>
 			<div class="offcanvas-search flex-column">
 				<div class="justify-content-around align-items-center text-black-50">
-					<div class="form-group-icon w-100">
-						<button class="btn bg-white border py-1 px-2 mr-2 text-muted text-uppercase">
-							<p>Найти</p>
+					<div class="d-flex w-100 bg-light border-1 border">
+						<input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Поиск товаров" />
+						<button class="btn bg-white rounded-0 border-0 text-muted shadow-none">
+							<i class="fas fa-search"></i>
 						</button>
-						<input type="text" class="form-control bg-light" placeholder="Поиск товаров" />
 					</div>
 				</div>
 			</div>
@@ -260,7 +274,7 @@ export default {
 			this.axios.get("/api/categories").then((res) => {
 				this.categories = res.data.data;
 			});
-		},
+		}
 	},
 };
 </script>

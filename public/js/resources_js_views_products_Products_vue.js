@@ -289,7 +289,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "btn-group-toggle",
   "data-toggle": "buttons"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "btn btn-outline-primary active"
+  "class": "btn btn-outline-danger active"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "checkbox",
   checked: ""
@@ -297,28 +297,28 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "btn-group-toggle",
   "data-toggle": "buttons"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "btn btn-outline-primary active"
+  "class": "btn btn-outline-danger active"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "checkbox"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" M ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "btn-group-toggle",
   "data-toggle": "buttons"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "btn btn-outline-primary active"
+  "class": "btn btn-outline-danger active"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "checkbox"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" L ")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "btn-group-toggle",
   "data-toggle": "buttons"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "btn btn-outline-primary active"
+  "class": "btn btn-outline-danger active"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "checkbox"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" XL ")])])])])])])], -1 /* HOISTED */);
 var _hoisted_5 = {
   "class": "col-lg-9"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-white p-2 p-lg-3 shadow-sm mb-2 mb-lg-4\"><div class=\"d-flex justify-content-between\"><!-- Left --><div><div class=\"form-inline\"><div class=\"form-group mb-0\"><select class=\"form-control form-control-sm\" id=\"exampleFormControlSelect1\"><option>20</option><option>50</option><option>100</option><option>All</option></select><label for=\"exampleFormControlSelect1\" class=\"ml-3 d-none d-lg-block\"><small>Showing all 24 of 128 products</small></label></div></div></div><!-- Right --><div><div class=\"form-inline\"><div class=\"mr-2\"><a href=\"products-grid.html\" class=\"btn btn-sm text-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Grid view\"><i class=\"fa fa-th-large\"></i></a><a href=\"products-list.html\" class=\"btn btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"List view\"><i class=\"fa fa-list-ul\"></i></a></div><div class=\"form-group mb-0\"><label for=\"exampleFormControlSelect2\" class=\"mr-3 d-none d-lg-block\"><small>Sort by</small></label><select class=\"form-control form-control-sm\" id=\"exampleFormControlSelect2\"><option>Name</option><option>Price</option></select></div><div class=\"d-lg-none ml-2\"><button class=\"btn btn-primary btn-sm toggle-show\" data-show=\"open-mobile-filters\"><strong><i class=\"icon icon-text-align-center\"></i><span class=\"d-none d-sm-inline-block\">Filters</span></strong></button></div></div></div></div></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-white p-2 p-lg-3 shadow-sm mb-2 mb-lg-4\"><div class=\"d-flex justify-content-between\"><!-- Left --><div><div class=\"form-inline\"><div class=\"form-group mb-0\"><select class=\"form-control form-control-sm\" id=\"exampleFormControlSelect1\"><option>20</option><option>50</option><option>100</option><option>All</option></select><label for=\"exampleFormControlSelect1\" class=\"ml-3 d-none d-lg-block\"><small>Showing all 24 of 128 products</small></label></div></div></div><!-- Right --><div><div class=\"form-inline\"><div class=\"mr-2\"><a href=\"products-grid.html\" class=\"btn btn-sm text-danger\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Grid view\"><i class=\"fa fa-th-large\"></i></a><a href=\"products-list.html\" class=\"btn btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"List view\"><i class=\"fa fa-list-ul\"></i></a></div><div class=\"form-group mb-0\"><label for=\"exampleFormControlSelect2\" class=\"mr-3 d-none d-lg-block\"><small>Sort by</small></label><select class=\"form-control form-control-sm\" id=\"exampleFormControlSelect2\"><option>Name</option><option>Price</option></select></div><div class=\"d-lg-none ml-2\"><button class=\"btn btn-danger btn-sm toggle-show\" data-show=\"open-mobile-filters\"><strong><i class=\"icon icon-text-align-center\"></i><span class=\"d-none d-sm-inline-block\">Filters</span></strong></button></div></div></div></div></div>", 1);
 var _hoisted_7 = {
   key: 0,
   "class": "row gutters-mobile"

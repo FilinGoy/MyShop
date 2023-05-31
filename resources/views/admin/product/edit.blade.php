@@ -25,7 +25,7 @@
                             <h3 class="card-title">Данные для изменения</h3>
                         </div>
                         <form class="form-horizontal" action="{{ route('product.update', $product->id) }}" method="post"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" id="editForm">
                             @csrf
                             @method('patch')
                             <div class="card-body">
@@ -233,7 +233,7 @@
 
                                 <div class="form-group">
                                     <label for="description" class="col-form-label">Описание</label>
-                                    <textarea name="description" class="form-control" rows="3" placeholder="Текст..." style="min-height: 60px;">{{ old('description') ?? $product->description }}</textarea>
+                                    <textarea name="description" id="summernote">{{ old('description') ?? $product->description }}</textarea>
                                     @if ($errors->has('description'))
                                         <p class="text-danger">{{ $errors->first('description') }}</p>
                                     @endif
@@ -264,10 +264,46 @@
                                             for="customFile">{{ $product->preview_image }}</label>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="images">Файлы (доп.фотографии)</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="images" name="images[]"
+                                            multiple
+                                            accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp">
+                                        <label class="custom-file-label" for="images">Выберите файлы (до 5
+                                            файлов)</label>
+                                    </div>
+                                    <div class="form-group d-flex justify-content-between row mx-0">
+                                        @if (isset($images))
+                                            @foreach ($images as $image)
+                                                <div class="d-flex align-items-center h-100 mt-3">
+                                                    <div class="img-thumbnail position-relative d-flex p-1">
+                                                        <img src="{{ asset('storage/' . $image->image_path) }}"
+                                                            class="fit-img align-self-center"
+                                                            alt="{{ $image->image_path }}">
+
+                                                        <a href="{{ route("product.removeImage", ['product' => $product->id, 'image' =>$image->id]) }}"
+                                                            class="position-absolute btn text-danger">
+                                                            <div><i class="fas fa-times"></i></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="col-2 d-flex align-items-center mt-2">
+                                                <b>Доп.фотографии не найдены</b>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+
                             </div>
 
+
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-outline-success">Подтвердить</button>
+                                <button type="submit" form="editForm" class="btn btn-outline-success">Подтвердить</button>
                                 <a type="button" href="{{ route('product.index') }}"
                                     class="btn btn-outline-danger float-right">Отменить</a>
                             </div>
@@ -311,13 +347,14 @@
                                 <dd>{{ $product->count }} шт</dd>
 
                                 <dt>Описание</dt>
-                                <dd>{{ $product->description ?? '-' }}</dd>
+                                <dd class="border">{!! $product->description ?? '-' !!}</dd>
                                 <dt>Фотографии</dt>
-                                <dd class="row">
-                                    <div class="col-2 d-flex align-items-center mt-2">
+                                <dd class="row d-flex justify-content-between">
+                                    <div class="d-flex align-items-center mt-2">
                                         <div class="img-thumbnail d-flex h-100 p-1 position-relative">
                                             <img src="{{ asset('storage/' . $product->preview_image) }}"
-                                                class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
+                                                class="img-fluid fit-img align-self-center"
+                                                alt="{{ $product->preview_image }}">
                                             <div class="ribbon-wrapper ribbon">
                                                 <div class="ribbon bg-success">
                                                     Превью
@@ -327,11 +364,10 @@
                                     </div>
                                     @if (isset($images))
                                         @foreach ($images as $image)
-                                            <div class="col-2 d-flex align-items-center mt-2">
-                                                <div class="img-thumbnail d-flex h-100 p-3">
+                                            <div class="d-flex align-items-center h-100 mt-2">
+                                                <div class="img-thumbnail d-flex p-1">
                                                     <img src="{{ asset('storage/' . $image->image_path) }}"
-                                                        class="img-fluid align-self-center"
-                                                        alt="{{ $image->image_path }}">
+                                                        class="fit-img align-self-center" alt="{{ $image->image_path }}">
                                                 </div>
                                             </div>
                                         @endforeach

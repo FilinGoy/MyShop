@@ -79,6 +79,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/{product}/edit', '\App\Http\Controllers\Admin\ProductController@edit')->name('product.edit');
         Route::get('/{product}', '\App\Http\Controllers\Admin\ProductController@show')->name('product.show');
         Route::patch('/{product}', '\App\Http\Controllers\Admin\ProductController@update')->name('product.update');
+        Route::get('/{product}/removeImage/removeImage/{image}', '\App\Http\Controllers\Admin\ProductController@removeImage')->name('product.removeImage');
         Route::delete('/{product}', '\App\Http\Controllers\Admin\ProductController@delete')->name('product.delete');
     });
 

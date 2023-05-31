@@ -39,7 +39,7 @@
                             <dt>Бренд</dt>
                             <dd>{{ $brand->title ?? '-' }}</dd>
                             <dt>Производитель</dt>
-                            <dd>{{ $manufacturer->name.', '.$manufacturer->country }}</dd>
+                            <dd>{{ $manufacturer->name . ', ' . $manufacturer->country }}</dd>
                             <dt>Срок хранения</dt>
                             <dd>{{ $product->expiration_date ? $product->expiration_date . ' ' . $expiration : '-' }}
                             </dd>
@@ -56,14 +56,15 @@
                             <dd>{{ $product->count }} шт</dd>
 
                             <dt>Описание</dt>
-                            <dd>{{ $product->description ?? '-' }}</dd>
+                            <dd class="border">{!! $product->description ?? '-' !!}</dd>
                             <dt>Публикация</dt>
                             <dd>{{ $product->published ? 'Опубликовано' : 'Не опубликовано' }}</dd>
                             <dt>Фотографии</dt>
                             <dd class="row">
                                 <div class="col-2 d-flex align-items-center mt-2">
                                     <div class="img-thumbnail d-flex h-100 p-1 position-relative">
-                                        <img src="{{ asset('storage/'.$product->preview_image) }}" class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
+                                        <img src="{{ asset('storage/' . $product->preview_image) }}"
+                                            class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
                                         <div class="ribbon-wrapper ribbon-lg">
                                             <div class="ribbon bg-success">
                                                 Превью
@@ -74,7 +75,8 @@
                                 @foreach ($images as $image)
                                     <div class="col-2 d-flex align-items-center mt-2">
                                         <div class="img-thumbnail d-flex h-100 p-3">
-                                            <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid align-self-center" alt="{{ $image->image_path }}">
+                                            <img src="{{ asset('storage/' . $image->image_path) }}"
+                                                class="img-fluid align-self-center" alt="{{ $image->image_path }}">
                                         </div>
                                     </div>
                                 @endforeach

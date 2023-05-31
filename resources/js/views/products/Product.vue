@@ -11,10 +11,10 @@
 						<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img :src="product.preview_image" class="d-block w-100"/>
+									<img :src="product.preview_image" class="d-block w-100" />
 								</div>
 								<div class="carousel-item" v-for="image in product.images" :key="image.id">
-									<img v-if="image" :src="`storage/`+image.url" class="d-block w-100"/>
+									<img v-if="image" :src="`storage/` + image.url" class="d-block w-100" />
 								</div>
 							</div>
 							<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -180,7 +180,7 @@
 											<input type="number" class="form-control mr-2" value="1" />
 										</div>
 										<div class="col-7">
-											<button class="btn btn-block btn-primary"><i class="icon icon-cart"></i> В корзину</button>
+											<button class="btn btn-block btn-danger"><i class="icon icon-cart"></i> В корзину</button>
 										</div>
 									</div>
 								</div>
@@ -191,7 +191,7 @@
 							<!-- Add to basket -->
 
 							<div class="btn-group w-100">
-								<span class="btn btn-sm btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+								<span class="btn btn-sm btn-outline-danger" data-toggle="button" aria-pressed="false" autocomplete="off">
 									<span class="show"><i class="fa fa-heart-o"></i> Избранное</span>
 									<span class="hide"><i class="fa fa-heart"></i> В избранном</span>
 								</span>
@@ -250,9 +250,9 @@
 														<div><strong class="mr-1">Анна Влексеевна</strong></div>
 														<div class="text-muted">- 45 минут назад</div>
 														<div class="ml-auto">
-															<i class="fa fa-star icon-xs text-primary"></i>
-															<i class="fa fa-star icon-xs text-primary"></i>
-															<i class="fa fa-star icon-xs text-primary"></i>
+															<i class="fa fa-star icon-xs text-danger"></i>
+															<i class="fa fa-star icon-xs text-danger"></i>
+															<i class="fa fa-star icon-xs text-danger"></i>
 															<i class="fa fa-star icon-xs text-secondary"></i>
 															<i class="fa fa-star icon-xs text-secondary"></i>
 														</div>
@@ -331,9 +331,7 @@
 					<div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
 						<div class="row justify-content-center">
 							<div class="col-lg-8">
-								<div class="py-3 py-lg-4">
-
-								</div>
+								<div class="py-3 py-lg-4"></div>
 							</div>
 						</div>
 					</div>

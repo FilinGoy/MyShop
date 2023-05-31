@@ -1,6 +1,6 @@
 <template>
 	<div class="row">
-		<nav aria-label="breadcrumb" class="col-12">
+		<nav aria-label="breadcrumb" class="col-12 py-3">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><router-link to="/">Главная</router-link></li>
 				<li class="breadcrumb-item active" aria-current="page">Оплата заказов</li>

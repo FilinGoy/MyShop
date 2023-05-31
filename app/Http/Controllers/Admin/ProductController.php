@@ -16,6 +16,7 @@ use App\Models\ProductTag;
 use App\Models\Tag;
 use App\Models\TimeType;
 use App\Models\WeightType;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -92,7 +93,7 @@ class ProductController extends Controller
             foreach($images as $image){
                 $countImages = ProductImage::where('product_id', $product->id)->get();
 
-                if (count($countImages) > 10) continue;
+                if (count($countImages) > 4) continue;
                 $path = Storage::disk('public')->put('/images/products', $image);
                 ProductImage::create([
                     'product_id' => $product->id,
@@ -169,6 +170,37 @@ class ProductController extends Controller
             $tempData['preview_image'] = Storage::disk('public')->put('/images/products', $data['preview_image'] );
         }
 
+        if (isset($data['tags'])) {
+            $tags = $data['tags'];
+            $oldTags = ProductTag::where('product_id', $product->id)->pluck('tag_id')->toArray();
+            $delTags = array_diff($oldTags, $tags);
+            foreach ($tags as $tag) {
+                ProductTag::updateOrCreate([
+                    'tag_id' => $tag,
+                    'product_id' => $product->id
+                ]);
+            }
+            foreach ($delTags as $delTag) {
+                ProductTag::where('tag_id', $delTag)->where('product_id', $product->id)->delete();
+            }
+        }
+
+        if (isset($data['images'])) {
+            $newImages = $data['images'];
+            foreach ($newImages as $image) {
+                $countImages = ProductImage::where('product_id', $product->id)->get();
+
+                if (count($countImages) > 4) continue;
+                $path = Storage::disk('public')->put('/images/products', $image);
+                ProductImage::create(
+                    [
+                        'product_id' => $product->id,
+                        'image_path' => $path
+                    ]
+                );
+            }
+        }
+
         $product->update([
             'title' => $data['title'],
             'article' => $data['article'],
@@ -189,6 +221,13 @@ class ProductController extends Controller
         ] + $tempData);
 
         return redirect()->route('product.show', $product->id);
+    }
+
+    public function removeImage(Product $product, ProductImage $image)
+    {
+        $image->delete();
+
+        return redirect()->route('product.edit', $product->id);
     }
 
     public function delete(Product $product)

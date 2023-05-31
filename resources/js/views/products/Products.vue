@@ -165,19 +165,19 @@
 								<div class="collapse show" id="collapseExampleSize">
 									<div class="d-flex justify-content-between pt-4">
 										<span class="btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary active"> <input type="checkbox" checked /> S </label>
+											<label class="btn btn-outline-danger active"> <input type="checkbox" checked /> S </label>
 										</span>
 
 										<span class="btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary active"> <input type="checkbox" /> M </label>
+											<label class="btn btn-outline-danger active"> <input type="checkbox" /> M </label>
 										</span>
 
 										<span class="btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary active"> <input type="checkbox" /> L </label>
+											<label class="btn btn-outline-danger active"> <input type="checkbox" /> L </label>
 										</span>
 
 										<span class="btn-group-toggle" data-toggle="buttons">
-											<label class="btn btn-outline-primary active"> <input type="checkbox" /> XL </label>
+											<label class="btn btn-outline-danger active"> <input type="checkbox" /> XL </label>
 										</span>
 									</div>
 								</div>
@@ -213,7 +213,7 @@
 								<div>
 									<div class="form-inline">
 										<div class="mr-2">
-											<a href="products-grid.html" class="btn btn-sm text-primary" data-toggle="tooltip" data-placement="top" title="Grid view">
+											<a href="products-grid.html" class="btn btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="Grid view">
 												<i class="fa fa-th-large"></i>
 											</a>
 											<a href="products-list.html" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="List view">
@@ -228,7 +228,7 @@
 											</select>
 										</div>
 										<div class="d-lg-none ml-2">
-											<button class="btn btn-primary btn-sm toggle-show" data-show="open-mobile-filters">
+											<button class="btn btn-danger btn-sm toggle-show" data-show="open-mobile-filters">
 												<strong>
 													<i class="icon icon-text-align-center"></i>
 													<span class="d-none d-sm-inline-block">Filters</span>

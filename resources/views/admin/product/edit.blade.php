@@ -24,18 +24,19 @@
                         <div class="card-header">
                             <h3 class="card-title">Данные для изменения</h3>
                         </div>
-                        <form class="form-horizontal" action="{{ route('product.update', $product->id) }}" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="{{ route('product.update', $product->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="card-body">
-                                <h4>{{ $product->id.'. '.$product->title }}</h4>
+                                <h4>{{ $product->id . '. ' . $product->title }}</h4>
                                 <div class="form-group">
                                     <label for="published" class="col-form-label">Публикация (видимость на сайте)<span
                                             class="text-danger">*</span></label>
                                     <div>
                                         <input type="checkbox" name="published" id="published"
-                                        @if ( old('published') ?? $product->published ) checked @endif data-bootstrap-switch
-                                        data-off-color="danger" data-on-color="success">
+                                            @if (old('published') ?? $product->published) checked @endif data-bootstrap-switch
+                                            data-off-color="danger" data-on-color="success">
                                     </div>
                                 </div>
 
@@ -43,7 +44,8 @@
                                     <label for="title" class="col-form-label">Наименование<span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control col" id="title" name="title"
-                                        value="{{ old('title') ?? $product->title }}" placeholder="Конфеты шоколадные (упаковка 0,5кг)">
+                                        value="{{ old('title') ?? $product->title }}"
+                                        placeholder="Конфеты шоколадные (упаковка 0,5кг)">
                                     @if ($errors->has('title'))
                                         <p class="text-danger">{{ $errors->first('title') }}</p>
                                     @endif
@@ -70,7 +72,8 @@
                                     <label for="brand" class="col-form-label">
                                         Бренд</label>
                                     <select class="form-control select2" style="width: 100%;" name="brand">
-                                        <option @if (old('brand') == null && $product->brand == null) selected @endif value="">Не выбрано</option>
+                                        <option @if (old('brand') == null && $product->brand == null) selected @endif value="">Не выбрано
+                                        </option>
                                         {{ $tempBrand = old('brand') ?? $product->brand_id }}
                                         @foreach ($brands as $brand)
                                             <option @if ($brand->id == $tempBrand) selected @endif
@@ -104,12 +107,14 @@
                                     <div class="form-group row">
                                         <div class="col">
                                             <input type="number" class="form-control" id="expiration" name="expiration"
-                                                min="1" placeholder="-" value="{{ old('expiration') ?? $product->expiration_date }}">
+                                                min="1" placeholder="-"
+                                                value="{{ old('expiration') ?? $product->expiration_date }}">
                                         </div>
                                         <div class="col">
                                             <select class="form-control select2" style="width: 100%;"
                                                 name="expiration_type">
-                                                <option @if (old('expiration_type') == null && $product->expiration_type_id == null) selected @endif value="">Не выбрано</option>
+                                                <option @if (old('expiration_type') == null && $product->expiration_type_id == null) selected @endif value="">Не
+                                                    выбрано</option>
                                                 {{ $tempExpirationType = old('expiration_type') ?? $product->expiration_type_id }}
                                                 @foreach ($expirations as $expiration)
                                                     <option @if ($expiration->id == $tempExpirationType) selected @endif
@@ -130,7 +135,7 @@
                                     <label for="article" class="col-form-label">
                                         Артикул</label>
                                     <input type="text" class="form-control col" id="article" name="article"
-                                        value="{{ old('article') ?? $product->article}}" placeholder="АБВ123">
+                                        value="{{ old('article') ?? $product->article }}" placeholder="АБВ123">
                                     @if ($errors->has('article'))
                                         <p class="text-danger">{{ $errors->first('article') }}</p>
                                     @endif
@@ -140,7 +145,8 @@
                                     <label for="packaging" class="col-form-label">
                                         Упаковка</label>
                                     <select class="form-control select2" style="width: 100%;" name="packaging">
-                                        <option @if (old('packaging') == null && $product->packaging_id == null) selected @endif value="">Не выбрано</option>
+                                        <option @if (old('packaging') == null && $product->packaging_id == null) selected @endif value="">Не
+                                            выбрано</option>
                                         {{ $tempPackaging = old('packaging') ?? $product->packaging_id }}
                                         @foreach ($packagings as $packaging)
                                             <option @if ($packaging->id == $tempPackaging) selected @endif
@@ -166,15 +172,16 @@
                                     <div class="form-group row">
                                         <div class="col">
                                             <input type="number" class="form-control" id="weight" name="weight"
-                                                min="1" placeholder="-" value="{{ old('weight') ?? $product->weight }}">
+                                                min="1" placeholder="-"
+                                                value="{{ old('weight') ?? $product->weight }}">
                                         </div>
                                         <div class="col">
-                                            <select class="form-control select2" style="width: 100%;"
-                                                name="weight_type">
-                                                <option @if (old('weight_type') == null && $product->weight_type_id == null) selected @endif value="">Не выбрано</option>
-                                                {{ $tempWeightType = old('weight_type') ?? $olds["weight"] }}
+                                            <select class="form-control select2" style="width: 100%;" name="weight_type">
+                                                <option @if (old('weight_type') == null && $product->weight_type_id == null) selected @endif value="">
+                                                    Не выбрано</option>
+                                                {{ $tempWeightType = old('weight_type') ?? $product->weight_type_id }}
                                                 @foreach ($weights as $weight)
-                                                    <option @if ($weight->id == $tempWeightType->id) selected @endif
+                                                    <option @if ($weight->id == $tempWeightType) selected @endif
                                                         value="{{ $weight->id }}">{{ $weight->title }}</option>
                                                 @endforeach
                                             </select>
@@ -212,8 +219,9 @@
                                     <label for="price" class="col-form-label">
                                         Цена<span class="text-danger">*</span></label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="price" name="price" value="{{ old('price') ?? $product->price }}"
-                                        data-inputmask='"mask": "9{1,8}.99", "greedy" : false' data-mask>
+                                        <input type="text" class="form-control" id="price" name="price"
+                                            value="{{ old('price') ?? $product->price }}"
+                                            data-inputmask='"mask": "9{1,8}.99", "greedy" : false' data-mask>
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00 (формат)</span>
                                         </div>
@@ -233,14 +241,15 @@
 
                                 <div class="form-group">
                                     <label class="col-form-label">Теги</label>
-                                    <select class="select2" multiple="multiple" data-placeholder="Выберите теги" style="width: 100%;" name="tags[]">
+                                    <select class="select2" multiple="multiple" data-placeholder="Выберите теги"
+                                        style="width: 100%;" name="tags[]">
                                         {{ $tempTags = old('tags') !== null ? collect(old('tags')) : $olds['tags'] }}
                                         @foreach ($tags as $tag)
                                             <option value="{{ $tag->id }}"
-                                                    @if($tempTags->contains($tag->id)) selected @endif> {{ $tag->title }}
+                                                @if ($tempTags->contains($tag->id)) selected @endif> {{ $tag->title }}
                                             </option>
                                         @endforeach
-                                </select>
+                                    </select>
                                     @if ($errors->has('tags'))
                                         <p class="text-danger">{{ $errors->first('tags') }}</p>
                                     @endif
@@ -249,15 +258,18 @@
                                 <div class="form-group">
                                     <label for="preview_image">Файл (превью)</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="preview_image" name="preview_image">
-                                        <label class="custom-file-label" for="customFile">{{ $product->preview_image }}</label>
+                                        <input type="file" class="custom-file-input" id="preview_image"
+                                            name="preview_image">
+                                        <label class="custom-file-label"
+                                            for="customFile">{{ $product->preview_image }}</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-outline-success">Подтвердить</button>
-                                <a type="button" href="{{ route('product.index') }}" class="btn btn-outline-danger float-right">Отменить</a>
+                                <a type="button" href="{{ route('product.index') }}"
+                                    class="btn btn-outline-danger float-right">Отменить</a>
                             </div>
                         </form>
                     </div>
@@ -282,7 +294,7 @@
                                 <dt>Бренд</dt>
                                 <dd>{{ $olds['brand'] ?? '-' }}</dd>
                                 <dt>Производитель</dt>
-                                <dd>{{ $olds['manufacturer']->name.', '.$olds['manufacturer']->country }}</dd>
+                                <dd>{{ $olds['manufacturer']->name . ', ' . $olds['manufacturer']->country }}</dd>
                                 <dt>Срок хранения</dt>
                                 <dd>{{ $product->expiration_date ? $product->expiration_date . ' ' . $olds['expiration'] : '-' }}
                                 </dd>
@@ -292,7 +304,7 @@
                                 <dt>Ингридиенты</dt>
                                 <dd>{{ $product->ingredients }}</dd>
                                 <dt>Вес</dt>
-                                <dd>{{ $product->weight ? $product->weight . ' ' . $olds['weight']->title : '-' }}</dd>
+                                <dd>{{ $product->weight ? $product->weight . ' ' . $olds['weight'] : '-' }}</dd>
                                 <dt>Калории</dt>
                                 <dd>{{ $product->calorie ? $product->calorie . ' ККАЛ' : '-' }}</dd>
                                 <dt>В наличии</dt>
@@ -304,7 +316,8 @@
                                 <dd class="row">
                                     <div class="col-2 d-flex align-items-center mt-2">
                                         <div class="img-thumbnail d-flex h-100 p-1 position-relative">
-                                            <img src="{{ asset('storage/' . $product->preview_image) }}" class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
+                                            <img src="{{ asset('storage/' . $product->preview_image) }}"
+                                                class="img-fluid align-self-center" alt="{{ $product->preview_image }}">
                                             <div class="ribbon-wrapper ribbon">
                                                 <div class="ribbon bg-success">
                                                     Превью
@@ -314,11 +327,13 @@
                                     </div>
                                     @if (isset($images))
                                         @foreach ($images as $image)
-                                        <div class="col-2 d-flex align-items-center mt-2">
-                                            <div class="img-thumbnail d-flex h-100 p-3">
-                                                <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid align-self-center" alt="{{ $image->image_path }}">
+                                            <div class="col-2 d-flex align-items-center mt-2">
+                                                <div class="img-thumbnail d-flex h-100 p-3">
+                                                    <img src="{{ asset('storage/' . $image->image_path) }}"
+                                                        class="img-fluid align-self-center"
+                                                        alt="{{ $image->image_path }}">
+                                                </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     @else
                                         <div class="col-2 d-flex align-items-center mt-2">

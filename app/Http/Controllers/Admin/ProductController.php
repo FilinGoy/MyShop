@@ -46,7 +46,7 @@ class ProductController extends Controller
         $data = $request->validated();
 
         if (isset($data['preview_image'])) {
-            $tempMass['preview_image'] = Storage::disk('public')->put('/images/products', $data['preview_image']);
+            $data['preview_image'] = Storage::disk('public')->put('/images/products', $data['preview_image']);
         }
 
         $product = Product::firstOrCreate([
@@ -67,7 +67,7 @@ class ProductController extends Controller
             'expiration_type_id' => $data['expiration_type'],
             'packaging_id' => $data['packaging'],
             'weight_type_id' => $data['weight_type']
-        ], $tempMass);
+        ]);
 
         if (array_key_exists('tags', $data)){
             $tags = $data['tags'];
@@ -144,7 +144,7 @@ class ProductController extends Controller
 
         $olds['expiration'] = TimeType::where('id', $product->expiration_type_id)->first()['title']??'';
         $olds['packaging'] = PackagingType::where('id', $product->packaging_id)->first()['title']??'';
-        $olds['weight'] = WeightType::where('id', $product->weight_type_id)->first()??'';
+        $olds['weight'] = WeightType::where('id', $product->weight_type_id)->first()['title']??'';
         $olds['brand'] = Brand::where('id', $product->brand_id)->first()['title']??'';
 
         $olds['tags'] = ProductTag::join('tags', 'tags.id', '=', 'products_tags.tag_id')

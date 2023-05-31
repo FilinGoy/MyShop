@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('user_id')->index('orders_fk0');
+            $table->integer('user_id')->index('orders_fk0')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('address');
+            $table->string('description')->nullable();
             $table->integer('status_id')->index('orders_fk1');
             $table->dateTime('datetime_delivery')->nullable();
             $table->decimal('total_price');

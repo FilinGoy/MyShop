@@ -377,17 +377,22 @@ return new class extends Migration
         DB::table('tags')->insert(
             array(
                 [
-                    'title' => 'Содержащее заменитель сахара',
+                    'title' => 'Скидка',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Без консервантов',
+                    'title' => 'Акция',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Острое',
+                    'title' => 'Новинка',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Хит',
                     'created_at' => now(),
                     'updated_at' => now()
                 ]
@@ -454,6 +459,68 @@ return new class extends Migration
                 [
                     'name' => 'ИП "Семенов Л.А."',
                     'country_id' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            )
+        );
+
+        DB::table('products')->insert(
+            array(
+                [
+                    'title' => 'Карамель «Желейка» со вкусом апельсина (упаковка 0,5 кг)',
+                    'category_id' => 10,
+                    'manufacturer_id' => 1,
+                    'expiration_date' => 12,
+                    'expiration_type_id' => 3,
+                    'article' => 'YK119',
+                    'packaging_id' => 1,
+                    'ingredients' => 'патока, сахар, регуляторы кислотности: лимонная кислота; агент желирующий: пектины; краситель: экстракт паприки; ароматизатор, концентрированный сок черной моркови. Может содержать диоксид серы, следы молочных продуктов, сои.',
+                    'weight' => 500,
+                    'weight_type_id' => 1,
+                    'calorie' => 360,
+                    'count' => 1000,
+                    'price' => 100.00,
+                    'description' => 'Солнечная карамель с нежной желейной начинкой со вкусом сочного апельсина.',
+                    'published' => 1,
+                    'preview_image' => 'images/main/none.png',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => '«Cornline», зерновой батончик с кокосом, 30 г',
+                    'category_id' => 14,
+                    'brand_id' => 2,
+                    'manufacturer_id' => 3,
+                    'expiration_date' => 6,
+                    'expiration_type_id' => 3,
+                    'article' => 'BK427',
+                    'packaging_id' => 1,
+                    'ingredients' => 'глюкозные сиропы, кокосовая стружка (кокосовая стружка, консервант: диоксид серы); мука рисовая, сахар, крупа кукурузная; мальтодекстрин поршкообразный, заменитель масла какао (пальмоядровое масло, эмульгаторы: сорбитан тристеарат, соевый лецитин); хлопья овсяные, хлопья ячменные, масло растительное, мука пшеничная, влагоудерживающий агент: сорбитовый сироп; сыворотка сухая молочная деминерализованная, какао-порошок, соль, ароматизаторы, эмульгаторы: Е322 (соевый), Е476. Может содержать продукты яичные, арахис, орехи.',
+                    'weight' => 30,
+                    'weight_type_id' => 1,
+                    'count' => 1000,
+                    'price' => 11.20,
+                    'description' => 'Батончики из цельных злаков с натуральной кокосовой стружкой и воздушным рисом. Благодаря сбалансированному составу, батончик - отличный вариант для перекуса во время учебы или работы.',
+                    'published' => 1,
+                    'preview_image' => 'images/main/vert.png',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Text',
+                    'category_id' => 2,
+                    'manufacturer_id' => 3,
+                    'expiration_date' => 1,
+                    'expiration_type_id' => 4,
+                    'article' => 'AK287',
+                    'ingredients' => 'Крахмал',
+                    'calorie' => 300,
+                    'count' => 0,
+                    'price' => 12.55,
+                    'description' => 'Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test',
+                    'published' => 0,
+                    'preview_image' => 'images/main/horz.png',
                     'created_at' => now(),
                     'updated_at' => now()
                 ]

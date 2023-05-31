@@ -246,7 +246,7 @@
 											<div id="comment-1">
 												<div class="mb-4">
 													<div class="d-flex align-items-center text-small">
-														<img src="storage/images/main/iconSite.png" class="mr-2 rounded-circle" alt="..." style="width: 40px;" />
+														<img src="storage/images/main/logo.png" class="mr-2 rounded-circle" alt="..." style="width: 40px;" />
 														<div><strong class="mr-1">Анна Влексеевна</strong></div>
 														<div class="text-muted">- 45 минут назад</div>
 														<div class="ml-auto">

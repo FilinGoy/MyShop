@@ -148,8 +148,8 @@
             <!-- Brand Logo -->
             <a href="{{ route('admin') }}" class="brand-link">
                 <img src="{{ asset('storage/images/main/logo.png') }}" alt="Logo"
-                    class="brand-image bg-secondary rounded elevation-3">
-                <span class="brand-text font-weight-light">CapyProducts</span>
+                    class="brand-image rounded elevation-3">
+                <span class="brand-text font-weight-light">Дом Вкуса</span>
             </a>
 
             <!-- Sidebar -->
@@ -170,6 +170,13 @@
                     </div> --}}
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">
+                                <p>
+                                    В магазин
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-header">Основные разделы</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">

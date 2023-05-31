@@ -1,90 +1,244 @@
 <template>
-	<header> <!-- //SECTION - Header -->
-		<nav class="fixed-top navbar-white bg-white shadow dropdown">
-			<div class="container d-flex justify-content-center align-items-stretch h-100 px-0">
+	<header>
+		<!-- //SECTION - Header -->
+		<nav class="main-nav fixed-top navbar-white bg-white shadow">
+			<div class="container d-flex justify-content-between align-items-stretch h-100 px-0">
 				<div
-					class="col-1 d-md-none nav-item d-flex justify-content-center align-items-center text-black-50 navbar-toggler"
+					class="nav-item d-flex d-lg-none justify-content-center align-items-center text-black-50 navbar-toggler"
 					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarToggler"
-					aria-controls="navbarToggler"
-					aria-expanded="false"
-					aria-label="Переключатель навигации"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#mainMenuOffcanvas"
+					aria-controls="mainMenuOffcanvas"
 				>
 					<i class="fa-solid fa-bars"></i>
 				</div>
 
-				<div class="col-4 col-md-2 col-lg-2 nav-item d-flex justify-content-start justify-content-md-start align-items-center">
+				<div class="nav-item d-flex px-2 justify-content-start justify-content-md-start align-items-center">
 					<router-link class="navbar-brand d-flex align-items-center p-0" to="/">
-						<img src="/storage/images/main/logo.svg" alt="Logo" height="40" class="p-0 d-none d-xl-block" />
-						<p class="fs-6 my-0 ps-lg-2">CapyProducts</p>
+						<img src="/storage/images/main/logo.png" alt="Logo" height="40" class="p-0" />
+						<p class="fs-6 my-0 ps-2">Дом Вкуса</p>
 					</router-link>
 				</div>
 
 				<div
-					class="col-2 col-lg-2 col-xl-1 nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-md-flex justify-content-center align-items-center text-danger text-uppercase dropdown"
-					data-bs-toggle="collapse"
-					href="#categories"
-					role="button"
+					class="nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-lg-flex justify-content-center align-items-center text-danger text-uppercase dropdown-toggle"
+					type="button"
+					id="dropdownMenuButton1"
+					data-bs-toggle="dropdown"
 					aria-expanded="false"
-					aria-controls="categories"
-					data-bs-auto-close="true"
 				>
 					<i class="fa-solid fa-bars pe-2"></i>
 					<p>Каталог</p>
 				</div>
 
-				<div class="col-5 col-lg-4 col-xl-5 col-xxl nav-item d-none d-md-flex justify-content-around align-items-center text-black-50">
-					<div class="form-group-icon w-100">
-						<button class="btn bg-white border py-1 px-2 mr-2 text-muted">
-							Поиск
-						</button>
-						<input type="text" class="form-control bg-light" placeholder="Найти товар" />
+				<div class="collapse w-100 shadow dropdown-menu border-0" aria-labelledby="dropdownMenuButton1">
+					<div class="py-3 px-2 bg-white d-none d-lg-block">
+						<div class="container p-0">
+							<div class="row g-2">
+								<router-link v-for="category in categories" :key="category.id" :to="`/categories/${category.id}`" class="dropdown-item rounded-sm col-lg-4 col-xxl-3 text-wrap">
+									<span class="text-wrap">{{ category.title }}</span>
+								</router-link>
+								<router-link class="col-12 dropdown-item rounded-sm text-center" to="/products">
+									<p>Все товары</p>
+								</router-link>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-xxl-1 nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-xxl-flex justify-content-center align-items-center text-black-50">
-					<i class="fa-regular fa-heart"></i>
-				</div>
 
-				<div
-					class="col-2 col-md-1 col-lg-2 col-xxl-1 offset-3 offset-md-0 nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
-				>
-					<i class="fa-regular fa-circle-user pe-lg-2"></i>
-					<p class="d-none d-lg-block">Профиль</p>
+				<div class="nav-item d-flex flex-grow-1 justify-content-end">
+					<div class="nav-item d-none d-md-flex flex-grow-1 px-2 justify-content-around align-items-center text-black-50">
+						<div class="form-group-icon w-100">
+							<button class="btn bg-white border py-1 px-2 mr-2 text-muted text-uppercase">
+								<p>Найти</p>
+							</button>
+							<input type="text" class="form-control bg-light" placeholder="Поиск товаров" />
+						</div>
+					</div>
+					<div class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
+						<i class="fa-regular fa-heart"></i>
+					</div>
 
-					<!-- //TODO - Изменение состояния кнопки при входе
-                        <i class="fa-solid fa-right-to-bracket pe-lg-2 flex-fill"></i>
-                        <p class="d-none d-xl-block flex-fill">Войти</p> -->
-				</div>
+					<div class="nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-lg-flex justify-content-center align-items-center text-black-50">
+						<i class="fa-regular fa-circle-user pe-2"></i>
+						<p>Профиль</p>
+					</div>
 
-				<div class="col-2 col-md-1 col-lg-2 col-xxl-1 nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
-					<i class="fa-solid fa-basket-shopping pe-lg-2"></i>
-					<p class="d-none d-lg-block">Корзина</p>
+					<div class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
+						<i class="fa-solid fa-right-to-bracket pe-lg-2"></i>
+						<p class="d-none d-lg-block">Вход</p>
+					</div>
+
+					<!-- //NOTE - Скрываемый профиль -->
+					<div
+						class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex d-lg-none justify-content-center align-items-center text-black-50"
+						type="button"
+						data-bs-toggle="offcanvas"
+						data-bs-target="#profileOffcanvas"
+						aria-controls="profileOffcanvas"
+					>
+						<i class="fa-regular fa-circle-user"></i>
+					</div>
+
+					<router-link to="/cart" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
+						<i class="fa-solid fa-basket-shopping pe-lg-2"></i>
+						<p class="d-none d-lg-block">Корзина</p>
+					</router-link>
 				</div>
 			</div>
 		</nav>
+
+		<!-- //SECTION - Главный канвас -->
+		<div class="offcanvas offcanvas-start w-30" tabindex="-1" id="mainMenuOffcanvas" aria-labelledby="mainMenuOffcanvasLabel">
+			<div class="offcanvas-header">
+				<div class="offcanvas-title d-flex px-2 justify-content-start justify-content-md-start align-items-center" id="mainMenuOffcanvasLabel" data-bs-dismiss="offcanvas">
+					<router-link class="navbar-brand d-flex align-items-center p-0" to="/">
+						<img src="/storage/images/main/logo.png" alt="Logo" height="40" class="p-0" />
+						<p class="fs-6 my-0 ps-2">Дом Вкуса</p>
+					</router-link>
+				</div>
+				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+			</div>
+			<div class="offcanvas-search flex-column">
+				<div class="justify-content-around align-items-center text-black-50">
+					<div class="form-group-icon w-100">
+						<button class="btn bg-white border py-1 px-2 mr-2 text-muted text-uppercase">
+							<p>Найти</p>
+						</button>
+						<input type="text" class="form-control bg-light" placeholder="Поиск товаров" />
+					</div>
+				</div>
+			</div>
+			<div class="offcanvas-body px-0" data-bs-dismiss="offcanvas">
+				<div class="px-4">
+					<h3>Главные страницы</h3>
+					<p><router-link to="/">Главная</router-link></p>
+					<p><router-link to="/contacts">Контакты</router-link></p>
+					<p><router-link to="/how-to-buy">Как купить</router-link></p>
+					<p><router-link to="/about">О нас</router-link></p>
+					<p><router-link to="/payment-orders">Оплата заказов</router-link></p>
+					<p><router-link to="/return-and-trade">Возврат и обмен</router-link></p>
+				</div>
+
+				<hr />
+
+				<h3 class="px-4">Категории</h3>
+				<router-link class="dropdown-item px-4" to="/products">
+					<p>Все товары</p>
+				</router-link>
+				<router-link v-for="category in categories" :key="category.id" :to="`/categories/${category.id}`" class="dropdown-item text-wrap px-4">
+					<span>{{ category.title }}</span>
+				</router-link>
+
+				<hr />
+
+				<div class="px-4">
+					<h3>Документы</h3>
+					<p><router-link to="#">Для юридических лиц</router-link></p>
+					<p><router-link to="#">Договор купли-продажи</router-link></p>
+					<p><router-link to="#">Договор поставки</router-link></p>
+					<p><router-link to="#">Персональные данные</router-link></p>
+					<p><router-link to="#">Политика конфиденциальности</router-link></p>
+					<p><router-link to="#">Регламент</router-link></p>
+				</div>
+
+				<hr />
+
+				<div class="px-4">
+					<p class="fw-bold my-0">Служба поддержки</p>
+					<a href="tel:+78009999999">8 800 999 99 99</a><br />
+					<a href="mailto:info@shop.ru">info@shop.ru</a>
+				</div>
+			</div>
+		</div>
+		<!-- //!SECTION -->
+
+		<!-- //SECTION - Канвас профиля -->
+		<div class="offcanvas offcanvas-end w-30" tabindex="-1" id="profileOffcanvas" aria-labelledby="profileOffcanvasLabel">
+			<div class="offcanvas-header">
+				<div class="offcanvas-title d-flex px-2 justify-content-start justify-content-md-start align-items-center" id="profileOffcanvasLabel" style="height: 40px;">
+					<div class="navbar-brand d-flex align-items-center p-0">
+						<i class="fa-regular fa-circle-user fa-lg text-danger"></i>
+						<p class="fs-6 my-0 ps-2">Профиль</p>
+					</div>
+				</div>
+				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+			</div>
+			<div class="offcanvas-body p-0 d-flex flex-column" data-bs-dismiss="offcanvas">
+				<router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link>
+				<router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link>
+				<router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link>
+				<router-link to="#" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</router-link>
+			</div>
+		</div>
+		<!-- //!SECTION -->
 	</header>
 
-    <main class="my-3">
-        <router-view></router-view>
-    </main>
+	<!-- //!SECTION -->
 
-	<footer class="footer mt-auto py-3 border-top bg-white"> <!-- //SECTION - Footer -->
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 justify-content-between align-items-center">
-                <div class="col mb-3 text-center">
-                    <a href="#" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                    </a>
-                    <i class="fa-solid fa-frog fa-bounce fa-2x" style="color: #2f7402;"></i>
-                    <p class="text-body-secondary">Суворов Денис © 2023</p>
-                </div>
+	<main class="my-3 container h-100">
+		<router-view></router-view>
+	</main>
 
-                <div class="col">
-                    Информация
-                </div>
-            </div>
-        </div>
+	<footer class="footer mt-auto py-3 border-top bg-white">
+		<!-- //SECTION - Footer -->
+		<div class="container">
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 justify-content-between">
+				<div class="col-6 col-md-3 d-flex flex-column justify-content-between align-items-between">
+					<div>
+						<p>
+							<a href="#" class="d-flex align-items-center">
+								<i class="fa-brands fa-telegram fs-3"></i>
+								<span class="ps-2">Telegram</span>
+							</a>
+						</p>
+						<p>
+							<a href="#" class="d-flex align-items-center">
+								<i class="fa-brands fa-vk fs-3"></i>
+								<span class="ps-2">VK</span>
+							</a>
+						</p>
+						<p>
+							<a href="#" class="d-flex align-items-center">
+								<i class="fa-solid fa-share-from-square fs-3"></i>
+								<span class="ps-2">Share</span>
+							</a>
+						</p>
+					</div>
+					<small class="text-wrap text-start text-muted fw-light">Дом Вкуса © 2023</small>
+				</div>
+
+				<div class="col d-none d-lg-flex flex-column justify-content-between">
+					<p><router-link to="/">Главная</router-link></p>
+					<p><router-link to="/contacts">Контакты</router-link></p>
+					<p><router-link to="/how-to-buy">Как купить</router-link></p>
+					<p><router-link to="/about">О нас</router-link></p>
+					<p><router-link to="/payment-orders">Оплата заказов</router-link></p>
+					<p><router-link to="/return-and-trade">Возврат и обмен</router-link></p>
+				</div>
+
+				<div class="col d-none d-lg-flex flex-column justify-content-between">
+					<p><a href="#">Для юридических лиц</a></p>
+					<p><a href="#">Договор купли-продажи</a></p>
+					<p><a href="#">Договор поставки</a></p>
+					<p><a href="#">Персональные данные</a></p>
+					<p><a href="#">Политика конфиденциальности</a></p>
+					<p><a href="#">Регламент</a></p>
+				</div>
+
+				<div class="col-6 col-md-3 d-flex flex-column justify-content-start">
+					<p>
+						Служба поддержки <br />
+						<a href="tel:+78009999999">8 800 999 99 99</a> <br />
+						<a href="mailto:info@shop.ru">info@shop.ru</a>
+					</p>
+
+					<small class="text-wrap text-start text-muted fw-light">
+						7 дней в неделю с 05:00 до 22:00 по ект (GMT+5), для звонков по РФ, звонок бесплатный
+					</small>
+				</div>
+			</div>
+		</div>
 	</footer>
 </template>
 <script>
@@ -95,7 +249,7 @@ export default {
 	components: { elem },
 	data() {
 		return {
-			categories: []
+			categories: [],
 		};
 	},
 	mounted() {
@@ -106,7 +260,7 @@ export default {
 			this.axios.get("/api/categories").then((res) => {
 				this.categories = res.data.data;
 			});
-		}
+		},
 	},
 };
 </script>

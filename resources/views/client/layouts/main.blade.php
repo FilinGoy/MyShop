@@ -6,18 +6,11 @@
 
         <base href="{{ asset('/') }}">
 
-        <title>CapyProducts</title>
+        <title>Дом Вкуса</title>
 
-        <link rel="icon" href="storage/images/main/iconSite.png">
-
-        <link rel="stylesheet" media="all" href="../css/vendor/animate.css" />
-        <link rel="stylesheet" media="all" href="../css/vendor/font-awesome.css" />
-        <link rel="stylesheet" media="all" href="../css/vendor/linear-icons.css" />
-        <link rel="stylesheet" media="all" href="../css/vendor/owl.carousel.css" />
-        <link rel="stylesheet" media="all" href="../css/vendor/jquery.lavalamp.css" />
-
-        <link media="all" rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="../css/fontawesome/all.min.css">
+        <link media="all" rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+        <link rel="shortcut icon" href="../storage/images/main/logo.png" type="image/x-icon">
 
         <link media="all" rel="stylesheet" href="../css/template/style.css">
 
@@ -27,5 +20,6 @@
     @yield('content')
 
     <script defer src="../js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script defer src="js/script.js"></script>
     <script defer src="js/app.js"></script>
 </html>

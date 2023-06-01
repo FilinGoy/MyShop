@@ -1,82 +1,104 @@
 .card {
-  box-shadow: none;
-  transition: all 0.5s;
-}
-.card:hover {
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  transition: all 0.5s;
-}
-.main-nav {
-  height: 60px;
-}
-main {
-  padding-top: 60px;
-}
-.hover {
-  box-shadow: none;
-  transition: all 0.1s;
-}
-.hover:hover {
-  box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
-  transition: all 0.1s;
-}
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-/* Track */
-::-webkit-scrollbar-track {
-  background: #565e6d40;
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #f00000;
-  border-radius: 3px;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #a00000ab;
-}
-.carousel-control-prev,
-.carousel-control-next {
-  opacity: 0.75;
-}
-.dropdown-toggle::after {
-  content: none;
-}
-ul.red > li {
-  list-style: none;
-}
-ul.red > li::before {
-  content: '●';
-  position: relative;
-  display: block;
-  max-width: 0;
-  max-height: 0;
-  left: -20px;
-  color: #f00000;
-}
-#btn-back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: none;
-}
-.fit-h-img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  max-width: 100%;
-  height: 100px;
-}
-.fit-w-img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100px;
-  max-width: 100%;
-  height: 100%;
-}
-.card-title {
-  height: 60px;
+    box-shadow: none;
+    transition: all 0.5s;
 }
 
+.card:hover {
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    transition: all 0.5s;
+}
+
+.main-nav {
+    height: 60px;
+}
+
+main {
+    padding-top: 60px;
+}
+
+.hover {
+    box-shadow: none;
+    transition: all 0.1s;
+}
+
+.hover:hover {
+    box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+    transition: all 0.1s;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #565e6d40;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #f00000;
+    border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #a00000ab;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0.75;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+ul.red>li {
+    list-style: none;
+}
+
+ul.red>li::before {
+    content: '●';
+    position: relative;
+    display: block;
+    max-width: 0;
+    max-height: 0;
+    left: -20px;
+    color: #f00000;
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
+
+.fit-h-img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    max-width: 100%;
+    height: 100px;
+}
+
+.fit-w-img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100px;
+    max-width: 100%;
+    height: 100%;
+}
+
+.fit-img {
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.card-title {
+    height: 60px;
+}

@@ -35,7 +35,12 @@
 					<div class="py-3 px-2 bg-white d-none d-lg-block">
 						<div class="container p-0">
 							<div class="row g-2">
-								<router-link v-for="category in categories" :key="category.id" :to="`/categories/${category.id}`" class="dropdown-item rounded-sm col-lg-4 col-xxl-3 text-wrap">
+								<router-link
+									v-for="category in this.$store.state.categories"
+									:key="category.id"
+									:to="`/categories/${category.id}`"
+									class="dropdown-item rounded-sm col-lg-4 col-xxl-3 text-wrap"
+								>
 									<span class="text-wrap">{{ category.title }}</span>
 								</router-link>
 								<router-link class="col-12 dropdown-item rounded-sm text-center" to="/products">
@@ -94,9 +99,16 @@
 						<i class="fa-regular fa-circle-user"></i>
 					</div>
 
-					<router-link to="/cart" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
-						<i class="fa-solid fa-basket-shopping pe-lg-2"></i>
-						<p class="d-none d-lg-block">Корзина</p>
+					<router-link to="/cart" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50 position-relative">
+						<div class="d-flex justify-content-center align-items-center position-relative">
+							<i class="fa-solid fa-basket-shopping pe-lg-2 position-relative">
+								<span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger" v-if="this.$store.state.totalPrice">
+									<small>{{ this.$store.state.countCartDiff > 99 ? "99+" : this.$store.state.countCartDiff }}</small>
+								</span>
+							</i>
+							<small class="d-none d-lg-block my-0 text-danger ps-1 text-nowrap" v-if="this.$store.state.totalPrice">{{ this.$store.state.totalPrice }} ₽</small>
+							<p class="d-none d-lg-block my-0" v-else>Корзина</p>
+						</div>
 					</router-link>
 				</div>
 			</div>
@@ -140,7 +152,7 @@
 				<router-link class="dropdown-item px-4" to="/products">
 					<p>Все товары</p>
 				</router-link>
-				<router-link v-for="category in categories" :key="category.id" :to="`/categories/${category.id}`" class="dropdown-item text-wrap px-4">
+				<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/categories/${category.id}`" class="dropdown-item text-wrap px-4">
 					<span>{{ category.title }}</span>
 				</router-link>
 
@@ -261,21 +273,6 @@ import elem from "./components/Header.vue";
 export default {
 	name: "App",
 	components: { elem },
-	data() {
-		return {
-			categories: [],
-		};
-	},
-	mounted() {
-		this.getCategories();
-	},
-	methods: {
-		getCategories() {
-			this.axios.get("/api/categories").then((res) => {
-				this.categories = res.data.data;
-			});
-		}
-	},
 };
 </script>
 <style></style>

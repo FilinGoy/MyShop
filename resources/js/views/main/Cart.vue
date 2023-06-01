@@ -1,42 +1,59 @@
 <template>
-	<div class="row">
-		<div class="col-12 col-lg-8 bg-white p-4">
-			<div class="d-flex justify-content-between align-items-center">
-				<h1>Корзина</h1>
-				<div>
-					<div class="btn btn-outline-danger">Очистить корзину</div>
+	<div class="row g-2">
+		<div class="col-12 col-lg-8">
+			<div class="bg-white px-4 py-2">
+				<div class="d-flex justify-content-between align-items-center">
+					<h1>Корзина</h1>
+					<div>
+						<div class="btn btn-outline-danger" @click="clearCart">Очистить корзину</div>
+					</div>
 				</div>
-			</div>
-			<hr />
-			<div class="w-100">
-				<div class="d-none flex-column align-items-center p-md-5">
-					<img class="w-25 py-5" src="storage/images/main/cart-none.png" />
-					<h4>Корзина пока пуста</h4>
-					<p class="w-50 text-center">Вернитесь в каталог или воспользуйтесь поиском, чтобы продолжить свои покупки</p>
-					<router-link class="btn btn-danger rounded-3" to="/">На главную страницу</router-link>
-				</div>
-				<div class="row">
-					<div class="col-2"><img src="storage/images/main/vert.png" class="fit-img" /></div>
-					<div class="col">Продукт 1</div>
-				</div>
-				<div class="row">
-					<div class="col-2"><img src="storage/images/main/horz.png" class="fit-img" /></div>
-					<div class="col">sdfsdfds</div>
+				<hr />
+				<div class="w-100">
+					<div class="flex-column align-items-center p-md-5" :class="this.$store.state.countCartAll == 0 ? 'd-flex' : 'd-none'">
+						<img class="w-25 py-5" src="storage/images/main/cart-none.png" />
+						<h4>Корзина пока пуста</h4>
+						<p class="w-50 text-center">Вернитесь в каталог или воспользуйтесь поиском, чтобы продолжить свои покупки</p>
+						<router-link class="btn btn-danger rounded-3" to="/">На главную страницу</router-link>
+					</div>
+					<template v-if="products">
+						<template v-for="product in products" :key="product.id">
+							<div class="row">
+								<div class="col-2"><img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" /></div>
+								<div class="col-4">{{ product.title }}</div>
+								<div class="col-1">{{ product.count }}</div>
+								<div class="col-2">{{ product.price }}</div>
+								<div class="col-2">{{ product.count * product.price }}</div>
+								<div class="col-1" @click="removeFromCart(product.id)">
+									<div class="btn"><i class="fa-solid fa-xmark text-danger"></i></div>
+								</div>
+							</div>
+						</template>
+					</template>
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-lg-3 offset-lg-1 bg-white p-4">
-			<div class="d-flex flex-column justify-content-between">
-				<h4>Итого:</h4>
-				<p class="text-muted d-none d-lg-block"><span>x</span> товар</p>
-				<div class="mb-0 py-2">
-					На сумму:
-					<div class="fs-2 text-wrap text-danger d-flex align-items-center"><span class="fs-2">x,xx</span>₽</div>
+		<div class="col-12 col-lg-3">
+			<div class="d-flex flex-column justify-content-between bg-white p-4">
+				<h4 class="d-none d-lg-block mb-0">Итого:</h4>
+				<p class="text-muted d-none d-lg-block">
+					<span>{{ totalCount ?? "0" }}</span> товар
+				</p>
+				<div class="mb-0 py-2 d-flex justify-content-between align-items-center flex-wrap">
+					<p class="mb-0 d-lg-none">Сумма заказа:</p>
+					<p class="mb-0 d-none d-lg-block">На сумму:</p>
+					<div class="fs-2 text-wrap text-danger d-flex align-items-center">
+						<span class="fs-2">{{ totalPrice ?? "0" }}</span
+						>₽
+					</div>
 				</div>
 
-				<button type="button" href="#" class="btn btn-danger" disabled>
-					<p>До заказа ещё: <span>x</span>₽</p>
-					<p>Перейти к оформлению</p>
+				<button type="button" href="#" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 ? true : false">
+					<p v-if="!totalPrice || totalPrice < 500">
+						До заказа ещё: <span>{{ totalPrice ? 500 - totalPrice : "500" }}</span
+						>₽
+					</p>
+					<p v-if="totalPrice >= 500">Перейти к оформлению</p>
 				</button>
 			</div>
 		</div>
@@ -45,6 +62,9 @@
 <script>
 export default {
 	name: "cart",
+	mounted() {
+		this.getCart();
+	},
 };
 </script>
 <style></style>

@@ -19,6 +19,7 @@
 
     <link media="all" rel="stylesheet" href="../css/template/style.css">
 
+    <link media="all" rel="stylesheet" href="../css/normalize.css">
     <link media="all" rel="stylesheet" href="../css/app.css">
 </head>
 

@@ -253,12 +253,19 @@
 											</div>
 										</div>
 										<div class="p-3 d-flex flex-column justify-content-between h-100">
-											<a :href="`/products/${product.id}`" class="text-wrap text-truncate card-title stretched-link">
+											<a :href="`/products/${product.id}`" class="text-wrap text-truncate card-title">
 												{{ product.title }}
 											</a>
 											<div class="text-muted">
 												<span>{{ product.price }} ₽</span>
 											</div>
+										</div>
+										<div @click="addToCart(product)" type="button" class="btn btn-outline-danger">
+											<i class="fa-solid fa-plus"></i>
+											<i class="fa-solid fa-basket-shopping"></i>
+										</div>
+										<div @click="addToFavourite(product)" type="button" class="btn btn-outline-danger">
+											<i class="fa-regular fa-heart"></i>
 										</div>
 									</div>
 								</div>
@@ -290,20 +297,8 @@
 <script>
 export default {
 	name: "products",
-	data() {
-		return {
-			products: [],
-		};
-	},
 	mounted() {
 		this.getProducts();
-	},
-	methods: {
-		getProducts() {
-			this.axios.post("/api/products").then((res) => {
-				this.products = res.data.data;
-			});
-		},
 	},
 };
 </script>

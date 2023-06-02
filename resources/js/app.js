@@ -55,7 +55,7 @@ const store = createStore({
             state.favourite = JSON.parse(favourite)
         },
         ADD_TO_FAVOURITE: (state, product) => {
-            let index = state.favourites.findIndex(productInFav => productInFav.id === product[0].id);
+            let index = state.favourite.findIndex(productInFav => productInFav.id === product[0].id);
             if (index !== -1) {
                 return;
             } else {
@@ -82,7 +82,7 @@ const store = createStore({
             commit('UPDATE_TOTAL_CART');
         },
         initializeFavourite: ({ commit }) => {
-            commit('GET_FAVOURITES');
+            commit('GET_FAVOURITE');
             commit('UPDATE_TOTAL_FAVOURITE');
         },
         initializeCategories: ({ commit }) => {
@@ -126,9 +126,6 @@ app.mixin({
             this.products = JSON.parse(localStorage.getItem("cart"));
             this.totalCart();
         },
-        updateCart() {
-            localStorage.setItem("cart", JSON.stringify(this.products));
-        },
         clearCart() {
             localStorage.removeItem("cart");
             this.getCart();
@@ -156,7 +153,7 @@ app.mixin({
             this.products = this.products.filter((product) => {
                 return product.id !== id;
             });
-            this.updateCart();
+            localStorage.setItem("cart", JSON.stringify(this.products));
             this.totalCart();
             this.$store.dispatch('initializeCart');
             if (localStorage.getItem('cart') == '[]') { localStorage.removeItem("cart"); }
@@ -167,9 +164,6 @@ app.mixin({
         getFavourite() {
             this.products = JSON.parse(localStorage.getItem("favourite"));
             this.totalFavourite();
-        },
-        updateFavourite() {
-            localStorage.setItem("favourite", JSON.stringify(this.products));
         },
         clearFavourite() {
             localStorage.removeItem("favourite");
@@ -196,7 +190,7 @@ app.mixin({
             this.products = this.products.filter((product) => {
                 return product.id !== id;
             });
-            this.updateFavourite();
+            localStorage.setItem("favourite", JSON.stringify(this.products));
             this.totalFavourite();
             this.$store.dispatch('initializeFavourite');
             if (localStorage.getItem('favourite') == '[]') { localStorage.removeItem("favourite"); }

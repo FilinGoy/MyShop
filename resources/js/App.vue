@@ -60,9 +60,9 @@
 							</button>
 						</div>
 					</div>
-					<div class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
+					<router-link to="/profile/favorite" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
 						<i class="fa-regular fa-heart"></i>
-					</div>
+					</router-link>
 
 					<div class="dropdown d-none d-lg-flex">
 						<div

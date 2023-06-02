@@ -42,7 +42,8 @@
                                         <h4>Действия с производителями</h4>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <a href="{{ route('manufacturer.create') }}" class="btn btn-outline-primary">Добавить</a>
+                                                <a href="{{ route('manufacturer.create') }}"
+                                                    class="btn btn-outline-primary">Добавить</a>
                                             </div>
                                         </div>
                                     </div>
@@ -61,30 +62,34 @@
                                 <thead>
                                     <tr class="d-flex">
                                         <th class="col-2">ID</th>
-                                        <th class="col-6">Страна</th>
-                                        <th class="col-2">Аббревиатура</td>
+                                        <th class="col-6">Наименование</th>
+                                        <th class="col-2">Страна</td>
                                         <th class="col-2">Действие</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($countries as $manufacturer)
+                                    @foreach ($manufacturers as $manufacturer)
                                         <tr class="d-flex">
                                             <td class="col-2">{{ $manufacturer->id }}</td>
-                                            <td class="col-6 text-truncate">{{ $manufacturer->name }}</td>
-                                            <td class="col-2 text-truncate">{{ $country->abbreviation }}</td>
+                                            <td class="col-6 text-truncate">{{ $manufacturer->manufacturer }}</td>
+                                            <td class="col-2 text-truncate">{{ $manufacturer->country }}</td>
                                             <td class="col-2">
                                                 <div>
-                                                    <a href="{{ route('country.show', $country->id) }}" class="btn btn-outline-info btn-flat">
+                                                    <a href="{{ route('manufacturer.show', $manufacturer->id) }}"
+                                                        class="btn btn-outline-info btn-flat">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                    <a href="{{ route('country.edit', $country->id) }}" class="btn btn-outline-warning btn-flat">
+                                                    <a href="{{ route('manufacturer.edit', $manufacturer->id) }}"
+                                                        class="btn btn-outline-warning btn-flat">
                                                         <i class="fas fa-pen"></i>
                                                     </a>
-                                                    <form action="{{ route('country.delete', $country->id) }}" id="deleteForm{{ $country->id }}" method="post" hidden>
+                                                    <form action="{{ route('manufacturer.delete', $manufacturer->id) }}"
+                                                        id="deleteForm{{ $manufacturer->id }}" method="post" hidden>
                                                         @csrf
                                                         @method('delete')
                                                     </form>
-                                                    <button type="submit" form="deleteForm{{ $country->id }}" class="btn btn-outline-danger btn-flat">
+                                                    <button type="submit" form="deleteForm{{ $manufacturer->id }}"
+                                                        class="btn btn-outline-danger btn-flat">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </div>

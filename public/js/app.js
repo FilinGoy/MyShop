@@ -18014,7 +18014,10 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_14 = {
   "class": "nav-item d-flex flex-grow-1 justify-content-end dropdown"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"nav-item d-none d-md-flex flex-grow-1 px-2 justify-content-around align-items-center text-black-50\"><div class=\"d-flex w-100 bg-light border-1 border\"><input type=\"text\" class=\"form-control rounded-0 border-0 shadow-none\" placeholder=\"Поиск товаров\"><button class=\"btn bg-white rounded-0 border-0 text-muted shadow-none\"><i class=\"fas fa-search\"></i></button></div></div><div class=\"nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50\"><i class=\"fa-regular fa-heart\"></i></div>", 2);
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"nav-item d-none d-md-flex flex-grow-1 px-2 justify-content-around align-items-center text-black-50\"><div class=\"d-flex w-100 bg-light border-1 border\"><input type=\"text\" class=\"form-control rounded-0 border-0 shadow-none\" placeholder=\"Поиск товаров\"><button class=\"btn bg-white rounded-0 border-0 text-muted shadow-none\"><i class=\"fas fa-search\"></i></button></div></div>", 1);
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-heart"
+}, null, -1 /* HOISTED */);
 var _hoisted_17 = {
   "class": "dropdown d-none d-lg-flex"
 };
@@ -18182,7 +18185,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_13];
     }),
     _: 1 /* STABLE */
-  })])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/profile/favorite",
+    "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_16];
+    }),
+    _: 1 /* STABLE */
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/profile/orders",
     "class": "dropdown-item text-wrap px-4"
   }, {
@@ -18500,7 +18511,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
       state.favourite = JSON.parse(favourite);
     },
     ADD_TO_FAVOURITE: function ADD_TO_FAVOURITE(state, product) {
-      var index = state.favourites.findIndex(function (productInFav) {
+      var index = state.favourite.findIndex(function (productInFav) {
         return productInFav.id === product[0].id;
       });
       if (index !== -1) {
@@ -18532,7 +18543,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
     },
     initializeFavourite: function initializeFavourite(_ref2) {
       var commit = _ref2.commit;
-      commit('GET_FAVOURITES');
+      commit('GET_FAVOURITE');
       commit('UPDATE_TOTAL_FAVOURITE');
     },
     initializeCategories: function initializeCategories(_ref3) {
@@ -18573,9 +18584,6 @@ app.mixin({
       this.products = JSON.parse(localStorage.getItem("cart"));
       this.totalCart();
     },
-    updateCart: function updateCart() {
-      localStorage.setItem("cart", JSON.stringify(this.products));
-    },
     clearCart: function clearCart() {
       localStorage.removeItem("cart");
       this.getCart();
@@ -18605,7 +18613,7 @@ app.mixin({
       this.products = this.products.filter(function (product) {
         return product.id !== id;
       });
-      this.updateCart();
+      localStorage.setItem("cart", JSON.stringify(this.products));
       this.totalCart();
       this.$store.dispatch('initializeCart');
       if (localStorage.getItem('cart') == '[]') {
@@ -18617,9 +18625,6 @@ app.mixin({
     getFavourite: function getFavourite() {
       this.products = JSON.parse(localStorage.getItem("favourite"));
       this.totalFavourite();
-    },
-    updateFavourite: function updateFavourite() {
-      localStorage.setItem("favourite", JSON.stringify(this.products));
     },
     clearFavourite: function clearFavourite() {
       localStorage.removeItem("favourite");
@@ -18646,7 +18651,7 @@ app.mixin({
       this.products = this.products.filter(function (product) {
         return product.id !== id;
       });
-      this.updateFavourite();
+      localStorage.setItem("favourite", JSON.stringify(this.products));
       this.totalFavourite();
       this.$store.dispatch('initializeFavourite');
       if (localStorage.getItem('favourite') == '[]') {
@@ -18776,6 +18781,12 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_0__.createRouter)({
     name: 'cart',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_views_main_Cart_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/main/Cart.vue */ "./resources/js/views/main/Cart.vue"));
+    }
+  }, {
+    path: '/profile/favorite',
+    name: 'favourite',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_main_Favourite_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/main/Favourite.vue */ "./resources/js/views/main/Favourite.vue"));
     }
   }]
 });
@@ -30783,7 +30794,7 @@ function useRoute() {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_main_Main_vue":1,"resources_js_views_main_About_vue":1,"resources_js_views_main_Contacts_vue":1,"resources_js_views_main_Delivery_vue":1,"resources_js_views_main_HowToBuy_vue":1,"resources_js_views_main_ReturnAndTrade_vue":1,"resources_js_views_main_PaymentOrders_vue":1,"resources_js_views_products_Products_vue":1,"resources_js_views_products_Product_vue":1,"resources_js_views_main_Cart_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_main_Main_vue":1,"resources_js_views_main_About_vue":1,"resources_js_views_main_Contacts_vue":1,"resources_js_views_main_Delivery_vue":1,"resources_js_views_main_HowToBuy_vue":1,"resources_js_views_main_ReturnAndTrade_vue":1,"resources_js_views_main_PaymentOrders_vue":1,"resources_js_views_products_Products_vue":1,"resources_js_views_products_Product_vue":1,"resources_js_views_main_Cart_vue":1,"resources_js_views_main_Favourite_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

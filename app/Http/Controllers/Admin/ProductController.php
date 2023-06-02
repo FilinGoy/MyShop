@@ -8,7 +8,7 @@ use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Country;
-use App\Models\Manufacture;
+use App\Models\Manufacturer;
 use App\Models\PackagingType;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -31,7 +31,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        $manufacturers = Manufacture::join('country', 'country.id', '=', 'manufacturers.country_id')
+        $manufacturers = Manufacturer::join('country', 'country.id', '=', 'manufacturers.country_id')
                         ->select('manufacturers.id', 'country.name as country', 'manufacturers.name as manufacturer')->get();
         $expirations = TimeType::all();
         $packagings = PackagingType::all();
@@ -109,7 +109,7 @@ class ProductController extends Controller
     {
         $category = Category::where('id', $product->category_id)->first();
         $brand = Brand::where('id', $product->brand_id)->first()??'';
-        $manufacturer = Manufacture::where('id', $product->manufacturer_id)->first();
+        $manufacturer = Manufacturer::where('id', $product->manufacturer_id)->first();
         $manufacturer['country'] = Country::where('id', $manufacturer->country_id)->first()->name;
         $expiration = TimeType::where('id', $product->expiration_type_id)->first()->title??'';
         $packaging = PackagingType::where('id', $product->packaging_id)->first()??'';
@@ -128,7 +128,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        $manufacturers = Manufacture::join('country', 'country.id', '=', 'manufacturers.country_id')
+        $manufacturers = Manufacturer::join('country', 'country.id', '=', 'manufacturers.country_id')
                         ->select('manufacturers.id', 'country.name as country', 'manufacturers.name as manufacturer')->get();
         $expirations = TimeType::all();
         $packagings = PackagingType::all();
@@ -139,7 +139,7 @@ class ProductController extends Controller
 
         $olds['category'] = Category::where('id', $product->category_id)->select('title')->first()['title']??'';
 
-        $olds['manufacturer'] = Manufacture::join('country', 'country.id', '=', 'manufacturers.country_id')
+        $olds['manufacturer'] = Manufacturer::join('country', 'country.id', '=', 'manufacturers.country_id')
                                             ->select('manufacturers.id', 'country.name as country', 'manufacturers.name as name')
                                             ->where('manufacturers.id', $product->manufacturer_id)->first();
 

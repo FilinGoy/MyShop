@@ -21,7 +21,7 @@ class Product extends Model
 
     public function manufacturer()
     {
-        return $this->belongsTo(Manufacture::class, 'manufacturer_id', 'id');
+        return $this->belongsTo(Manufacturer::class, 'manufacturer_id', 'id');
     }
 
     public function expiration_type()

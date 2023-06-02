@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('status_id')->index('orders_fk1');
             $table->dateTime('datetime_delivery')->nullable();
             $table->decimal('total_price');
+            $table->decimal('price', 10)->default(0);
             $table->integer('payment_id')->index('orders_fk2');
             $table->timestamps();
         });

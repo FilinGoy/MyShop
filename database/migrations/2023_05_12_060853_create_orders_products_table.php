@@ -17,7 +17,8 @@ return new class extends Migration
             $table->integer('id', true);
             $table->integer('product_id')->index('orders_products_fk0');
             $table->integer('order_id')->index('orders_products_fk1');
-            $table->integer('count');
+            $table->integer('count')->default(0);
+            $table->decimal('price', 10)->default(0);
             $table->timestamps();
         });
     }

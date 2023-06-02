@@ -21,10 +21,10 @@
 							<div class="row">
 								<div class="col-2"><img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" /></div>
 								<div class="col-4">{{ product.title }}</div>
-								<div class="col-1">{{ product.count }}</div>
+								<div class="col-1">{{ product.quantity }}</div>
 								<div class="col-2">{{ product.price }}</div>
-								<div class="col-2">{{ product.count * product.price }}</div>
-								<div class="col-1" @click="removeFromCart(product.id)">
+								<div class="col-2">{{ product.quantity * product.price }}</div>
+								<div class="col-1" @click="cleanFromCart(product.id)">
 									<div class="btn"><i class="fa-solid fa-xmark text-danger"></i></div>
 								</div>
 							</div>

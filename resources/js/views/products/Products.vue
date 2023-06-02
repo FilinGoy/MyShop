@@ -245,28 +245,43 @@
 						<div v-if="products" class="row gutters-mobile">
 							<template v-for="product in products" :key="product.id">
 								<div class="col-6 col-xl-4" v-if="product.published">
-									<div class="card bg-white h-100 d-flex flex-column justify-content-between position-relative">
-										<div>
-											<img :src="product.preview_image ?? 'storage/images/main/none.png'" class="card-img-top" />
-											<div v-if="product.tags" class="position-absolute top-0 d-flex flex-wrap justify-content-start w-75 h-50">
-												<div v-for="tag in product.tags" :key="tag.tag_id" class="badge badge-danger m-2">{{ tag.title }}</div>
+									<div class="card bg-white d-flex flex-column justify-content-between">
+										<div class="card-img-top h-50 position-relative">
+											<img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" />
+											<div v-if="product.tags" class="position-absolute top-0 d-flex flex-wrap justify-content-start w-100 p-2 gap-2">
+												<div v-for="tag in product.tags" :key="tag.tag_id" class="badge badge-danger">{{ tag.title }}</div>
+											</div>
+
+											<div class="position-absolute bottom-0 left-2 d-flex justify-content-start w-100 p-3 gap-2">
+												<div class="d-flex align-items-center badge badge-white rounded-pill">
+													<i class="fas fa-star text-warning pr-1"></i>
+													<p class="text-black">0,0</p>
+												</div>
 											</div>
 										</div>
-										<div class="p-3 d-flex flex-column justify-content-between h-100">
+										<div class="card-body pb-3 pt-0 px-3 d-flex flex-column justify-content-between"></div>
+										<!-- 										<div class="card-body p-3 d-flex flex-column justify-content-between h-100">
 											<a :href="`/products/${product.id}`" class="text-wrap text-truncate card-title">
 												{{ product.title }}
 											</a>
 											<div class="text-muted">
 												<span>{{ product.price }} ₽</span>
 											</div>
+
+											<div>
+												<button @click.prevent="subtractProduct(product)" class="btn btn-outline-danger"><i class="fas fa-minus"></i></button>
+												<input type="number" min="1" max="999" :value="product.quantity" />
+												<button @click.prevent="appendProduct(product)" class="btn btn-outline-danger"><i class="fas fa-plus"></i></button>
+											</div>
 										</div>
+
 										<div @click="addToCart(product)" type="button" class="btn btn-outline-danger">
 											<i class="fa-solid fa-plus"></i>
 											<i class="fa-solid fa-basket-shopping"></i>
 										</div>
 										<div @click="addToFavourite(product)" type="button" class="btn btn-outline-danger">
 											<i class="fa-regular fa-heart"></i>
-										</div>
+										</div> -->
 									</div>
 								</div>
 							</template>

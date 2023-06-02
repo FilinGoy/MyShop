@@ -36,15 +36,15 @@ const store = createStore({
         ADD_TO_CART: (state, product) => {
             let index = state.cart.findIndex(productInCart => productInCart.id === product[0].id);
             if (index !== -1) {
-                state.cart[index].count += parseInt(product[0].count, 10);
+                state.cart[index].quantity += parseInt(product[0].quantity, 10);
             } else {
                 state.cart.push(product[0]);
             }
             localStorage.setItem('cart', JSON.stringify(state.cart));
         },
         UPDATE_TOTAL_CART: (state) => {
-            state.totalPrice = state.cart.reduce((sum, product) => sum + product.price * product.count, 0);
-            state.countCartAll = state.cart.reduce((count, product) => count + product.count, 0);
+            state.totalPrice = state.cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
+            state.countCartAll = state.cart.reduce((quantity, product) => quantity + product.quantity, 0);
             state.countCartDiff = state.cart.length;
         },
         //!SECTION
@@ -121,6 +121,30 @@ app.mixin({
         },
         //!SECTION
 
+        //SECTION - Действие с продуктом
+        subtractQuantity(product) {
+            if (product.quantity == 1) {
+                cleanFromCart(product.id);
+                return;
+            }
+            product.quantity--;
+            this.updateCart()
+            this.calculateTotal()
+        },
+        adddQuantity(product) {
+            if (product.quantity > product.count) {
+                $('.qtySelector input').val(6);
+                return alert('Столько товаров нет! Всего: ' + product.count + "шт.")
+            } else {
+                if (parseInt($('.qtySelector input').val()) === product.count) {
+                    return;
+                } else {
+                    product.qty++;
+                }
+            }
+        },
+        //!SECTION
+
         //SECTION - Корзина
         getCart() {
             this.products = JSON.parse(localStorage.getItem("cart"));
@@ -132,8 +156,8 @@ app.mixin({
             this.$store.dispatch('initializeCart');
         },
         totalCart() {
-            this.totalPrice = this.products?.reduce((sum, product) => sum + product.price * product.count, 0);
-            this.totalCount = this.products?.reduce((sum, product) => sum + product.count, 0);
+            this.totalPrice = this.products?.reduce((sum, product) => sum + product.price * product.quantity, 0);
+            this.totalCount = this.products?.reduce((sum, product) => sum + product.quantity, 0);
         },
         addToCart(product) {
             let newProduct = [
@@ -142,14 +166,14 @@ app.mixin({
                     preview_image: product.preview_image,
                     title: product.title,
                     price: product.price,
-                    count: 1,
+                    quantity: 1,
                 },
             ];
 
             this.$store.commit("ADD_TO_CART", newProduct);
             this.$store.commit("UPDATE_TOTAL_CART");
         },
-        removeFromCart(id) {
+        cleanFromCart(id) {
             this.products = this.products.filter((product) => {
                 return product.id !== id;
             });
@@ -171,7 +195,7 @@ app.mixin({
             this.$store.dispatch('initializeFavourite');
         },
         totalFavourite() {
-            this.totalCount = this.products?.reduce((sum, product) => sum + product.count, 0);
+            this.totalCount = this.products?.reduce((sum, product) => sum + product.quantity, 0);
         },
         addToFavourite(product) {
             let newProduct = [
@@ -180,6 +204,7 @@ app.mixin({
                     preview_image: product.preview_image,
                     title: product.title,
                     price: product.price,
+                    quantity: product.quantity
                 },
             ];
 

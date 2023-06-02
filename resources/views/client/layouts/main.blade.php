@@ -26,8 +26,8 @@
 @yield('content')
 
 <script defer src="../js/bootstrap/bootstrap.bundle.min.js"></script>
-<script defer src="js/script.js"></script>
 <script src="../js/vendor/jquery.min.js"></script>
+<script src="js/script.js"></script>
 <script src="../js/vendor/jquery.lavalamp.js"></script>
 <script src="../js/vendor/bootstrap.bundle.js"></script>
 <script src="../js/vendor/in-view.min.js"></script>
@@ -35,5 +35,7 @@
 <script src="../js/vendor/tabzy.js"></script>
 <script src="../js/vendor/isotope.pkgd.js"></script>
 <script defer src="js/app.js"></script>
+
+<script></script>
 
 </html>

@@ -6,6 +6,60 @@ import router from './router';
 import App from './App.vue';
 import axios from 'axios';
 
+import {
+    MDBInput,
+    MDBCheckbox,
+    MDBTextarea,
+    MDBBtn,
+    MDBTabs,
+    MDBTabNav,
+    MDBTabContent,
+    MDBTabItem,
+    MDBTabPane,
+    MDBIcon
+} from "mdb-vue-ui-kit";
+import { ref } from "vue";
+
+export default {
+    components: {
+        MDBInput,
+        MDBCheckbox,
+        MDBTextarea,
+        MDBBtn,
+        MDBTabs,
+        MDBTabNav,
+        MDBTabContent,
+        MDBTabItem,
+        MDBTabPane,
+        MDBIcon
+    },
+    setup() {
+        const form7ActiveTab = ref("form7-login");
+        const form7LoginEmail = ref("");
+        const form7LoginPassword = ref("");
+        const form7LoginCheck = ref(true);
+        const form7RegisterName = ref("");
+        const form7RegisterUsername = ref("");
+        const form7RegisterEmail = ref("");
+        const form7RegisterPassword = ref("");
+        const form7RegisterPasswordRepeat = ref("");
+        const form7RegsiterTermsCheck = ref(true);
+
+        return {
+            form7ActiveTab,
+            form7LoginEmail,
+            form7LoginPassword,
+            form7LoginCheck,
+            form7RegisterName,
+            form7RegisterUsername,
+            form7RegisterEmail,
+            form7RegisterPassword,
+            form7RegisterPasswordRepeat,
+            form7RegsiterTermsCheck
+        };
+    },
+};
+
 const app = createApp(App);
 const store = createStore({
     state: {

@@ -18134,7 +18134,7 @@ var _hoisted_49 = {
   "data-bs-dismiss": "offcanvas"
 };
 var _hoisted_50 = {
-  "class": "mb-3 container-lg h-100"
+  "class": "mb-3 container-lg d-flex flex-column flex-fill h-100"
 };
 var _hoisted_51 = {
   "class": "footer mt-auto py-3 border-top bg-white"
@@ -18468,12 +18468,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 var _this = undefined;
 
 
@@ -18481,8 +18485,48 @@ var _this = undefined;
 
 
 
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    MDBInput: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBCheckbox: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBTextarea: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBBtn: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBTabs: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBTabNav: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBTabContent: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBTabItem: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBTabPane: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    MDBIcon: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+  },
+  setup: function setup() {
+    var form7ActiveTab = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("form7-login");
+    var form7LoginEmail = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var form7LoginPassword = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var form7LoginCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
+    var form7RegisterName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var form7RegisterUsername = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var form7RegisterEmail = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var form7RegisterPassword = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var form7RegisterPasswordRepeat = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var form7RegsiterTermsCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
+    return {
+      form7ActiveTab: form7ActiveTab,
+      form7LoginEmail: form7LoginEmail,
+      form7LoginPassword: form7LoginPassword,
+      form7LoginCheck: form7LoginCheck,
+      form7RegisterName: form7RegisterName,
+      form7RegisterUsername: form7RegisterUsername,
+      form7RegisterEmail: form7RegisterEmail,
+      form7RegisterPassword: form7RegisterPassword,
+      form7RegisterPasswordRepeat: form7RegisterPasswordRepeat,
+      form7RegsiterTermsCheck: form7RegsiterTermsCheck
+    };
+  }
+});
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
   state: {
     categories: [],
     cart: [],
@@ -18561,7 +18605,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
 
     //SECTION - Категории
     GET_CATEGORIES: function GET_CATEGORIES(state) {
-      axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("/api/categories").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("/api/categories").then(function (res) {
         state.categories = res.data.data;
       });
     }
@@ -18586,7 +18630,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
   }
 });
 app.use(_router__WEBPACK_IMPORTED_MODULE_2__["default"]).use(store);
-app.config.globalProperties.axios = axios__WEBPACK_IMPORTED_MODULE_5__["default"];
+app.config.globalProperties.axios = axios__WEBPACK_IMPORTED_MODULE_6__["default"];
 app.mount('#app');
 app.mixin({
   data: function data() {

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <body class="h-100">
+    <body>
         <div class="preloader flex-column justify-content-center align-items-center" id="loadingModal">
             <div class="spinner-border text-danger" role="status">
                 <span class="visually-hidden"></span>

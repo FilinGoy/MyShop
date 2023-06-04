@@ -205,7 +205,7 @@
 
 	<!-- //!SECTION -->
 
-	<main class="mb-3 container-lg h-100">
+	<main class="mb-3 container-lg d-flex flex-column flex-fill h-100">
 		<router-view class="py-3"></router-view>
 	</main>
 

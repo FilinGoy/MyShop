@@ -30,11 +30,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "row"
+  "class": "row py-3"
 };
 var _hoisted_2 = {
   "aria-label": "breadcrumb",
-  "class": "col-12 py-3"
+  "class": "col-12"
 };
 var _hoisted_3 = {
   "class": "breadcrumb"
@@ -46,17 +46,17 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "breadcrumb-item active",
   "aria-current": "page"
 }, "Доставка", -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-12 bg-white py-5 px-4 px-md-7\"><div class=\"mr-lg-8\"><h1>Доставка заказов</h1><h4>Уважаемый клиент, если вы находитесь на карантине, сообщите, пожалуйста, об этом при оформлении заказа. Наш курьер будет подготовлен.</h4><p>Время доставки по городам:</p><ul class=\"red\"><li><b>Челябинск</b>, доставка по будням с 09:00 до 21:00 в границах города. <br> Не доставляем в п. Прудный, а также в промышленную зону Ленинского района, г. Копейск </li></ul><p>Обратите внимание, оформление заказа на сумму менее 500 рублей – недоступно.</p><h4>Курьерская доставка</h4><p>Служба доставки работает семь дней в неделю. О дате и времени доставки в ваш район вы сможете узнать при оформлении заказа.</p><p> Обратите внимание, выбранное вами время заказа может быть перенесено оператором, если заказ оформлен на адрес режимного объекта, либо на адрес, находящийся рядом с ним. Вы можете обратиться в службу поддержки для отмены заказа, если вас не устраивает новое время доставки. </p><h4>Доставка посылками</h4><p> Непродовольственные товары мы доставляем со складов посылками через нашу транспортную сеть. Доставка бесплатная. Примерный срок доставки посылки в ваш город вы можете увидеть при оформлении заказа. </p><p>Когда посылка прибудет в город получения, курьер свяжется с вами и назначит удобную дату доставки.</p><h4>Заказали продукцию на рабочий адрес?</h4><p>Пожалуйста, встретьте курьера на проходной вашей организации.</p><hr><p class=\"text-muted\"> Вопросы можно задать по адресу <a class=\"text-danger text-nowrap\" href=\"mailto:info@shop.ru\">info@shop.ru</a> или по телефону <a class=\"text-danger text-nowrap\" href=\"tel:+78009999999\">8 800 999 99 99</a> (7 дней в неделю с 05:00 до 22:00 по ект (GMT+5), для звонков по РФ, звонок бесплатный). </p></div></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row flex-fill\"><div class=\"col-12 bg-white py-5 px-4 px-md-7\"><div class=\"mr-lg-8\"><h1>Доставка заказов</h1><h4>Уважаемый клиент, если вы находитесь на карантине, сообщите, пожалуйста, об этом при оформлении заказа. Наш курьер будет подготовлен.</h4><p>Время доставки по городам:</p><ul class=\"red\"><li><b>Челябинск</b>, доставка по будням с 09:00 до 21:00 в границах города. <br> Не доставляем в п. Прудный, а также в промышленную зону Ленинского района, г. Копейск </li></ul><p>Обратите внимание, оформление заказа на сумму менее 500 рублей – недоступно.</p><h4>Курьерская доставка</h4><p>Служба доставки работает семь дней в неделю. О дате и времени доставки в ваш район вы сможете узнать при оформлении заказа.</p><p> Обратите внимание, выбранное вами время заказа может быть перенесено оператором, если заказ оформлен на адрес режимного объекта, либо на адрес, находящийся рядом с ним. Вы можете обратиться в службу поддержки для отмены заказа, если вас не устраивает новое время доставки. </p><h4>Доставка посылками</h4><p> Непродовольственные товары мы доставляем со складов посылками через нашу транспортную сеть. Доставка бесплатная. Примерный срок доставки посылки в ваш город вы можете увидеть при оформлении заказа. </p><p>Когда посылка прибудет в город получения, курьер свяжется с вами и назначит удобную дату доставки.</p><h4>Заказали продукцию на рабочий адрес?</h4><p>Пожалуйста, встретьте курьера на проходной вашей организации.</p><hr><p class=\"text-muted\"> Вопросы можно задать по адресу <a class=\"text-danger text-nowrap\" href=\"mailto:info@shop.ru\">info@shop.ru</a> или по телефону <a class=\"text-danger text-nowrap\" href=\"tel:+78009999999\">8 800 999 99 99</a> (7 дней в неделю с 05:00 до 22:00 по ект (GMT+5), для звонков по РФ, звонок бесплатный). </p></div></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ol", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ol", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Главная")];
     }),
     _: 1 /* STABLE */
-  })]), _hoisted_5])]), _hoisted_6]);
+  })]), _hoisted_5])])]), _hoisted_6], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

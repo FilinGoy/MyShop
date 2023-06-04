@@ -343,21 +343,8 @@
 <script>
 export default {
 	name: "product",
-	data() {
-		return {
-			product: [],
-		};
-	},
 	mounted() {
 		this.getProduct();
-	},
-	methods: {
-		getProduct() {
-			this.axios.get("/api/products/" + this.$route.params.id).then((res) => {
-				this.product = res.data.data;
-				console.log(res.data.data);
-			});
-		},
 	},
 };
 </script>

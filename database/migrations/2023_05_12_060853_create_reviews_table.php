@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->integer('id', true);
+            $table->boolean('published')->default(0);
             $table->integer('user_id')->index('reviews_fk0');
             $table->integer('product_id')->index('reviews_fk1');
             $table->date('date');

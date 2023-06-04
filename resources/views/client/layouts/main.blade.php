@@ -15,7 +15,7 @@
     <link rel="stylesheet" media="all" href="../css/vendor/jquery.lavalamp.css" />
 
     <link rel="stylesheet" href="../css/fontawesome/all.min.css">
-    <link media="all" rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+    <link media="all" rel="stylesheet" href="../css/bootstrap/bootstrap.css">
 
     <link media="all" rel="stylesheet" href="../css/template/style.css">
 
@@ -25,8 +25,8 @@
 
 @yield('content')
 
-<script defer src="../js/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="../js/vendor/jquery.min.js"></script>
+<script src="../js/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
 <script src="../js/vendor/jquery.lavalamp.js"></script>
 <script src="../js/vendor/bootstrap.bundle.js"></script>
@@ -34,7 +34,7 @@
 <script src="../js/vendor/wow.js"></script>
 <script src="../js/vendor/tabzy.js"></script>
 <script src="../js/vendor/isotope.pkgd.js"></script>
-<script defer src="js/app.js"></script>
+<script src="js/app.js"></script>
 
 <script></script>
 

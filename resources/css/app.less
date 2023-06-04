@@ -1,3 +1,45 @@
+html, body {
+    font-family: 'Commissioner', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+header i {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.item-search {
+    padding-left: 1rem;
+}
+
+.item-search:focus-visible {
+    border: 0;
+    outline: none;
+}
+
+.item-edit {
+    border: 0;
+    outline: none;
+    &::-webkit-inner-spin-button {
+        display: none;
+    }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.count-input {
+    padding-left: 1rem;
+}
+
+.count-input:focus-visible {
+    border: 0;
+    outline: none;
+}
+
 .card {
     box-shadow: none;
     transition: all 0.5s;
@@ -84,8 +126,8 @@ ul.red > li::before {
     max-height: 220px;
 }
 
-.card-title {
-    height: 60px;
+a.card-title {
+    font-weight: 500;
 }
 
 .preloader {

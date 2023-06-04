@@ -53,14 +53,17 @@
 
 				<div class="nav-item d-flex flex-grow-1 justify-content-end dropdown">
 					<div class="nav-item d-none d-md-flex flex-grow-1 px-2 justify-content-around align-items-center text-black-50">
-						<div class="d-flex w-100 bg-light border-1 border">
-							<input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Поиск товаров" />
-							<button class="btn bg-white rounded-0 border-0 text-muted shadow-none">
+						<div class="d-flex align-items-center w-100 bg-white border-1 border">
+							<input type="search" class="item-search rounded-0 border-0 w-100 shadow-none" placeholder="Поиск товаров" />
+							<button class="btn bg-white rounded-0 border-0 text-muted shadow-none h-100">
 								<i class="fas fa-search"></i>
 							</button>
 						</div>
 					</div>
-					<router-link to="/profile/favorite" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
+					<router-link
+						to="/profile/favorite"
+						class="nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-md-flex justify-content-center align-items-center text-black-50"
+					>
 						<i class="fa-regular fa-heart"></i>
 					</router-link>
 
@@ -100,13 +103,14 @@
 					</div>
 
 					<router-link to="/cart" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50 position-relative">
-						<div class="d-flex justify-content-center align-items-center position-relative">
-							<i class="fa-solid fa-basket-shopping pe-lg-2 position-relative">
-								<span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger" v-if="this.$store.state.totalPrice">
-									<small>{{ this.$store.state.countCartDiff > 99 ? "99+" : this.$store.state.countCartDiff }}</small>
+						<div class="d-flex justify-content-center align-items-center">
+							<div class="me-lg-2 position-relative">
+								<i class="fa-solid fa-basket-shopping"></i>
+								<span v-if="this.$store.state.totalPrice" class="translate-middle badge rounded-pill bg-danger position-absolute top-0">
+									{{ this.$store.state.countCartDiff > 99 ? "99+" : this.$store.state.countCartDiff }}
 								</span>
-							</i>
-							<small class="d-none d-lg-block my-0 text-danger ps-1 text-nowrap" v-if="this.$store.state.totalPrice">{{ this.$store.state.totalPrice }} ₽</small>
+							</div>
+							<p class="d-none d-lg-block my-0 text-danger ps-1 text-nowrap" v-if="this.$store.state.totalPrice">{{ this.$store.state.totalPrice }} ₽</p>
 							<p class="d-none d-lg-block my-0" v-else>Корзина</p>
 						</div>
 					</router-link>
@@ -117,22 +121,20 @@
 		<!-- //SECTION - Главный канвас -->
 		<div class="offcanvas offcanvas-start w-30" tabindex="-1" id="mainMenuOffcanvas" aria-labelledby="mainMenuOffcanvasLabel">
 			<div class="offcanvas-header">
-				<div class="offcanvas-title d-flex px-2 justify-content-start justify-content-md-start align-items-center" id="mainMenuOffcanvasLabel" data-bs-dismiss="offcanvas">
+				<div class="offcanvas-title d-flex px-2 justify-content-between align-items-center w-100" id="mainMenuOffcanvasLabel" data-bs-dismiss="offcanvas">
 					<router-link class="navbar-brand d-flex align-items-center p-0" to="/">
 						<img src="/storage/images/main/logo.png" alt="Logo" height="40" class="p-0" />
 						<p class="fs-6 my-0 ps-2">Дом Вкуса</p>
 					</router-link>
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
 				</div>
-				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
 			</div>
-			<div class="offcanvas-search flex-column">
-				<div class="justify-content-around align-items-center text-black-50">
-					<div class="d-flex w-100 bg-light border-1 border">
-						<input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Поиск товаров" />
-						<button class="btn bg-white rounded-0 border-0 text-muted shadow-none">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
+			<div class="d-flex justify-content-around align-items-center text-black-50 w-100">
+				<div class="d-flex w-100 bg-light border-1 border">
+					<input type="search" class="item-search w-100 rounded-0 border-0 shadow-none" placeholder="Поиск товаров" />
+					<button class="btn bg-white rounded-0 border-0 text-muted shadow-none">
+						<i class="fas fa-search"></i>
+					</button>
 				</div>
 			</div>
 			<div class="offcanvas-body px-0" data-bs-dismiss="offcanvas">

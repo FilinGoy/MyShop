@@ -48,6 +48,11 @@ class Product extends Model
         return url('storage/' . $this->preview_image);
     }
 
+    public function rate()
+    {
+        return $this->belongsToMany(Review::class, 'product_id', 'user_id');
+    }
+
     public function productImages(){
         return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }

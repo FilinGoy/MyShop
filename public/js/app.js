@@ -18014,7 +18014,7 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_14 = {
   "class": "nav-item d-flex flex-grow-1 justify-content-end dropdown"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"nav-item d-none d-md-flex flex-grow-1 px-2 justify-content-around align-items-center text-black-50\"><div class=\"d-flex w-100 bg-light border-1 border\"><input type=\"text\" class=\"form-control rounded-0 border-0 shadow-none\" placeholder=\"Поиск товаров\"><button class=\"btn bg-white rounded-0 border-0 text-muted shadow-none\"><i class=\"fas fa-search\"></i></button></div></div>", 1);
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"nav-item d-none d-md-flex flex-grow-1 px-2 justify-content-around align-items-center text-black-50\"><div class=\"d-flex align-items-center w-100 bg-white border-1 border\"><input type=\"search\" class=\"item-search rounded-0 border-0 w-100 shadow-none\" placeholder=\"Поиск товаров\"><button class=\"btn bg-white rounded-0 border-0 text-muted shadow-none h-100\"><i class=\"fas fa-search\"></i></button></div></div>", 1);
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-heart"
 }, null, -1 /* HOISTED */);
@@ -18050,73 +18050,76 @@ var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "fa-regular fa-circle-user"
 })], -1 /* HOISTED */);
 var _hoisted_22 = {
-  "class": "d-flex justify-content-center align-items-center position-relative"
+  "class": "d-flex justify-content-center align-items-center"
 };
 var _hoisted_23 = {
-  "class": "fa-solid fa-basket-shopping pe-lg-2 position-relative"
+  "class": "me-lg-2 position-relative"
 };
-var _hoisted_24 = {
-  key: 0,
-  "class": "position-absolute top-0 translate-middle badge rounded-pill bg-danger"
-};
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-basket-shopping"
+}, null, -1 /* HOISTED */);
 var _hoisted_25 = {
+  key: 0,
+  "class": "translate-middle badge rounded-pill bg-danger position-absolute top-0"
+};
+var _hoisted_26 = {
   key: 0,
   "class": "d-none d-lg-block my-0 text-danger ps-1 text-nowrap"
 };
-var _hoisted_26 = {
+var _hoisted_27 = {
   key: 1,
   "class": "d-none d-lg-block my-0"
 };
-var _hoisted_27 = {
+var _hoisted_28 = {
   "class": "offcanvas offcanvas-start w-30",
   tabindex: "-1",
   id: "mainMenuOffcanvas",
   "aria-labelledby": "mainMenuOffcanvasLabel"
 };
-var _hoisted_28 = {
+var _hoisted_29 = {
   "class": "offcanvas-header"
 };
-var _hoisted_29 = {
-  "class": "offcanvas-title d-flex px-2 justify-content-start justify-content-md-start align-items-center",
+var _hoisted_30 = {
+  "class": "offcanvas-title d-flex px-2 justify-content-between align-items-center w-100",
   id: "mainMenuOffcanvasLabel",
   "data-bs-dismiss": "offcanvas"
 };
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/storage/images/main/logo.png",
   alt: "Logo",
   height: "40",
   "class": "p-0"
 }, null, -1 /* HOISTED */);
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "fs-6 my-0 ps-2"
 }, "Дом Вкуса", -1 /* HOISTED */);
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "button",
   "class": "btn-close text-reset",
   "data-bs-dismiss": "offcanvas",
   "aria-label": "Закрыть"
 }, null, -1 /* HOISTED */);
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"offcanvas-search flex-column\"><div class=\"justify-content-around align-items-center text-black-50\"><div class=\"d-flex w-100 bg-light border-1 border\"><input type=\"text\" class=\"form-control rounded-0 border-0 shadow-none\" placeholder=\"Поиск товаров\"><button class=\"btn bg-white rounded-0 border-0 text-muted shadow-none\"><i class=\"fas fa-search\"></i></button></div></div></div>", 1);
-var _hoisted_34 = {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"d-flex justify-content-around align-items-center text-black-50 w-100\"><div class=\"d-flex w-100 bg-light border-1 border\"><input type=\"search\" class=\"item-search w-100 rounded-0 border-0 shadow-none\" placeholder=\"Поиск товаров\"><button class=\"btn bg-white rounded-0 border-0 text-muted shadow-none\"><i class=\"fas fa-search\"></i></button></div></div>", 1);
+var _hoisted_35 = {
   "class": "offcanvas-body px-0",
   "data-bs-dismiss": "offcanvas"
 };
-var _hoisted_35 = {
+var _hoisted_36 = {
   "class": "px-4"
 };
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Главные страницы", -1 /* HOISTED */);
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Главные страницы", -1 /* HOISTED */);
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "px-4"
 }, "Категории", -1 /* HOISTED */);
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Все товары", -1 /* HOISTED */);
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
-var _hoisted_41 = {
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Все товары", -1 /* HOISTED */);
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_42 = {
   "class": "px-4"
 };
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Документы", -1 /* HOISTED */);
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Документы", -1 /* HOISTED */);
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "px-4"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "fw-bold my-0"
@@ -18125,34 +18128,34 @@ var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, "8 800 999 99 99"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "mailto:info@shop.ru"
 }, "info@shop.ru")], -1 /* HOISTED */);
-var _hoisted_45 = {
+var _hoisted_46 = {
   "class": "offcanvas offcanvas-end w-30",
   tabindex: "-1",
   id: "profileOffcanvas",
   "aria-labelledby": "profileOffcanvasLabel"
 };
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"offcanvas-header\"><div class=\"offcanvas-title d-flex px-2 justify-content-start justify-content-md-start align-items-center\" id=\"profileOffcanvasLabel\" style=\"height:40px;\"><div class=\"navbar-brand d-flex align-items-center p-0\"><i class=\"fa-regular fa-circle-user fa-lg text-danger\"></i><p class=\"fs-6 my-0 ps-2\">Профиль</p></div></div><button type=\"button\" class=\"btn-close text-reset\" data-bs-dismiss=\"offcanvas\" aria-label=\"Закрыть\"></button></div>", 1);
-var _hoisted_47 = {
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"offcanvas-header\"><div class=\"offcanvas-title d-flex px-2 justify-content-start justify-content-md-start align-items-center\" id=\"profileOffcanvasLabel\" style=\"height:40px;\"><div class=\"navbar-brand d-flex align-items-center p-0\"><i class=\"fa-regular fa-circle-user fa-lg text-danger\"></i><p class=\"fs-6 my-0 ps-2\">Профиль</p></div></div><button type=\"button\" class=\"btn-close text-reset\" data-bs-dismiss=\"offcanvas\" aria-label=\"Закрыть\"></button></div>", 1);
+var _hoisted_48 = {
   "class": "offcanvas-body p-0 d-flex flex-column",
   "data-bs-dismiss": "offcanvas"
 };
-var _hoisted_48 = {
+var _hoisted_49 = {
   "class": "my-3 container h-100"
 };
-var _hoisted_49 = {
+var _hoisted_50 = {
   "class": "footer mt-auto py-3 border-top bg-white"
 };
-var _hoisted_50 = {
+var _hoisted_51 = {
   "class": "container"
 };
-var _hoisted_51 = {
+var _hoisted_52 = {
   "class": "row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 justify-content-between"
 };
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-6 col-md-3 d-flex flex-column justify-content-between align-items-between\"><div><p><a href=\"#\" class=\"d-flex align-items-center\"><i class=\"fa-brands fa-telegram fs-3\"></i><span class=\"ps-2\">Telegram</span></a></p><p><a href=\"#\" class=\"d-flex align-items-center\"><i class=\"fa-brands fa-vk fs-3\"></i><span class=\"ps-2\">VK</span></a></p><p><a href=\"#\" class=\"d-flex align-items-center\"><i class=\"fa-solid fa-share-from-square fs-3\"></i><span class=\"ps-2\">Share</span></a></p></div><small class=\"text-wrap text-start text-muted fw-light\">Дом Вкуса © 2023</small></div>", 1);
-var _hoisted_53 = {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-6 col-md-3 d-flex flex-column justify-content-between align-items-between\"><div><p><a href=\"#\" class=\"d-flex align-items-center\"><i class=\"fa-brands fa-telegram fs-3\"></i><span class=\"ps-2\">Telegram</span></a></p><p><a href=\"#\" class=\"d-flex align-items-center\"><i class=\"fa-brands fa-vk fs-3\"></i><span class=\"ps-2\">VK</span></a></p><p><a href=\"#\" class=\"d-flex align-items-center\"><i class=\"fa-solid fa-share-from-square fs-3\"></i><span class=\"ps-2\">Share</span></a></p></div><small class=\"text-wrap text-start text-muted fw-light\">Дом Вкуса © 2023</small></div>", 1);
+var _hoisted_54 = {
   "class": "col d-none d-lg-flex flex-column justify-content-between"
 };
-var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col d-none d-lg-flex flex-column justify-content-between\"><p><a href=\"#\">Для юридических лиц</a></p><p><a href=\"#\">Договор купли-продажи</a></p><p><a href=\"#\">Договор поставки</a></p><p><a href=\"#\">Персональные данные</a></p><p><a href=\"#\">Политика конфиденциальности</a></p><p><a href=\"#\">Регламент</a></p></div><div class=\"col-6 col-md-3 d-flex flex-column justify-content-start\"><p> Служба поддержки <br><a href=\"tel:+78009999999\">8 800 999 99 99</a> <br><a href=\"mailto:info@shop.ru\">info@shop.ru</a></p><small class=\"text-wrap text-start text-muted fw-light\"> 7 дней в неделю с 05:00 до 22:00 по ект (GMT+5), для звонков по РФ, звонок бесплатный </small></div>", 2);
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col d-none d-lg-flex flex-column justify-content-between\"><p><a href=\"#\">Для юридических лиц</a></p><p><a href=\"#\">Договор купли-продажи</a></p><p><a href=\"#\">Договор поставки</a></p><p><a href=\"#\">Персональные данные</a></p><p><a href=\"#\">Политика конфиденциальности</a></p><p><a href=\"#\">Регламент</a></p></div><div class=\"col-6 col-md-3 d-flex flex-column justify-content-start\"><p> Служба поддержки <br><a href=\"tel:+78009999999\">8 800 999 99 99</a> <br><a href=\"mailto:info@shop.ru\">info@shop.ru</a></p><small class=\"text-wrap text-start text-muted fw-light\"> 7 дней в неделю с 05:00 до 22:00 по ект (GMT+5), для звонков по РФ, звонок бесплатный </small></div>", 2);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
@@ -18187,7 +18190,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1 /* STABLE */
   })])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/profile/favorite",
-    "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
+    "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-none d-md-flex justify-content-center align-items-center text-black-50"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_16];
@@ -18230,18 +18233,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50 position-relative"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", _hoisted_23, [_this.$store.state.totalPrice ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.$store.state.countCartDiff > 99 ? "99+" : _this.$store.state.countCartDiff), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _this.$store.state.totalPrice ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("small", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.$store.state.totalPrice) + " ₽", 1 /* TEXT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_26, "Корзина"))])];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, _this.$store.state.totalPrice ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.$store.state.countCartDiff > 99 ? "99+" : _this.$store.state.countCartDiff), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _this.$store.state.totalPrice ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.$store.state.totalPrice) + " ₽", 1 /* TEXT */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_27, "Корзина"))])];
     }),
     _: 1 /* STABLE */
-  })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Главный канвас "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Главный канвас "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "navbar-brand d-flex align-items-center p-0",
     to: "/"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_30, _hoisted_31];
+      return [_hoisted_31, _hoisted_32];
     }),
     _: 1 /* STABLE */
-  })]), _hoisted_32]), _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }), _hoisted_33])]), _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -18283,12 +18286,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Возврат и обмен")];
     }),
     _: 1 /* STABLE */
-  })])]), _hoisted_37, _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])]), _hoisted_38, _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "dropdown-item px-4",
     to: "/products"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_39];
+      return [_hoisted_40];
     }),
     _: 1 /* STABLE */
   }), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.$store.state.categories, function (category) {
@@ -18303,7 +18306,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["to"]);
-  }), 128 /* KEYED_FRAGMENT */)), _hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }), 128 /* KEYED_FRAGMENT */)), _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [_hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "#"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -18345,7 +18348,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Регламент")];
     }),
     _: 1 /* STABLE */
-  })])]), _hoisted_43, _hoisted_44])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Канвас профиля "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [_hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])]), _hoisted_44, _hoisted_45])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Канвас профиля "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [_hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/profile/orders",
     "class": "dropdown-item text-wrap px-4"
   }, {
@@ -18377,7 +18380,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Выйти")];
     }),
     _: 1 /* STABLE */
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Footer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [_hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Footer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [_hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -18419,7 +18422,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Возврат и обмен")];
     }),
     _: 1 /* STABLE */
-  })])]), _hoisted_54])])])], 64 /* STABLE_FRAGMENT */);
+  })])]), _hoisted_55])])])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -18455,6 +18458,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+var _this = undefined;
 
 
 
@@ -18488,20 +18492,33 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
         return productInCart.id === product[0].id;
       });
       if (index !== -1) {
-        state.cart[index].quantity += parseInt(product[0].quantity, 10);
+        _this.checkToHaving();
+        return;
       } else {
         state.cart.push(product[0]);
       }
       localStorage.setItem('cart', JSON.stringify(state.cart));
     },
+    UPDATE_PRODUCT_IN_CART: function UPDATE_PRODUCT_IN_CART(state, product) {
+      var index = state.cart.findIndex(function (productInCart) {
+        return productInCart.id === product[0].id;
+      });
+      if (index !== -1) {
+        state.cart[index].quantity = product[0].quantity;
+      } else {
+        return;
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+    },
     UPDATE_TOTAL_CART: function UPDATE_TOTAL_CART(state) {
-      state.totalPrice = state.cart.reduce(function (sum, product) {
+      var _state$cart, _state$cart2, _state$cart3;
+      state.totalPrice = (_state$cart = state.cart) === null || _state$cart === void 0 ? void 0 : _state$cart.reduce(function (sum, product) {
         return sum + product.price * product.quantity;
       }, 0);
-      state.countCartAll = state.cart.reduce(function (quantity, product) {
+      state.countCartAll = (_state$cart2 = state.cart) === null || _state$cart2 === void 0 ? void 0 : _state$cart2.reduce(function (quantity, product) {
         return quantity + product.quantity;
       }, 0);
-      state.countCartDiff = state.cart.length;
+      state.countCartDiff = (_state$cart3 = state.cart) === null || _state$cart3 === void 0 ? void 0 : _state$cart3.length;
     },
     //!SECTION
 
@@ -18521,7 +18538,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
       }
       localStorage.setItem('favourite', JSON.stringify(state.favourite));
     },
-    UPDATE_TOTAL_FAVOURITE: function UPDATE_TOTAL_FAVOURITE(state) {
+    UPDATE_TOTAL_FAVOURITE: function UPDATE_TOTAL_FAVOURITE(state, product) {
       state.countFavourite = state.favourite.length;
     },
     //!SECTION
@@ -18560,6 +18577,8 @@ app.mixin({
     return {
       categories: [],
       products: [],
+      product: [],
+      cart: [],
       favourite: [],
       totalPrice: 0,
       totalCount: 0
@@ -18571,40 +18590,127 @@ app.mixin({
     this.$store.dispatch('initializeCategories');
   },
   methods: {
+    info: function info(text) {
+      console.log(text);
+    },
     //SECTION - Общие (методы)
     getProducts: function getProducts() {
-      var _this = this;
+      var _this2 = this;
       this.axios.post("/api/products").then(function (res) {
-        _this.products = res.data.data;
+        _this2.products = res.data.data;
       });
+    },
+    getProduct: function getProduct() {
+      var _this3 = this;
+      this.axios.get("/api/products/" + this.$route.params.id).then(function (res) {
+        _this3.product = res.data.data;
+        console.log(res.data.data);
+      });
+    },
+    getProductWord: function getProductWord(count) {
+      return count % 10 == 1 && count % 100 != 11 ? 'товар' : count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20) ? 'товара' : 'товаров';
+    },
+    checkToHaving: function checkToHaving(product, place) {
+      switch (place) {
+        case 'favourite':
+          {
+            var _this$$store$state$fa;
+            var index = (_this$$store$state$fa = this.$store.state.favourite) === null || _this$$store$state$fa === void 0 ? void 0 : _this$$store$state$fa.findIndex(function (p) {
+              return p.id == product.id;
+            });
+            if (index !== -1) return index;else return;
+          }
+          ;
+        case 'cart':
+          {
+            var _this$$store$state$ca;
+            var _index = (_this$$store$state$ca = this.$store.state.cart) === null || _this$$store$state$ca === void 0 ? void 0 : _this$$store$state$ca.findIndex(function (p) {
+              return p.id == product.id;
+            });
+            if (_index !== -1) return _index;else return;
+          }
+          ;
+        default:
+          return;
+      }
     },
     //!SECTION
     //SECTION - Действие с продуктом
-    subtractQuantity: function subtractQuantity(product) {
-      if (product.quantity == 1) {
-        cleanFromCart(product.id);
+    getValue: function getValue(product) {
+      return this.$store.state.cart[this.checkToHaving(product, 'cart')].quantity;
+    },
+    addQuantity: function addQuantity(product) {
+      var _this$$store$state$ca2;
+      var index = (_this$$store$state$ca2 = this.$store.state.cart) === null || _this$$store$state$ca2 === void 0 ? void 0 : _this$$store$state$ca2.findIndex(function (p) {
+        return p.id == product.id;
+      });
+      this.getCart();
+      if (this.$store.state.cart[index].quantity < 999) {
+        var editProduct = [{
+          id: product.id,
+          quantity: ++this.$store.state.cart[index].quantity
+        }];
+        this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
+        $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
+      } else {
         return;
       }
-      product.quantity--;
-      this.updateCart();
-      this.calculateTotal();
+      this.$store.commit("UPDATE_TOTAL_CART");
     },
-    adddQuantity: function adddQuantity(product) {
-      if (product.quantity > product.count) {
-        $('.qtySelector input').val(6);
-        return alert('Столько товаров нет! Всего: ' + product.count + "шт.");
+    subtractQuantity: function subtractQuantity(product) {
+      var _this$$store$state$ca3;
+      var index = (_this$$store$state$ca3 = this.$store.state.cart) === null || _this$$store$state$ca3 === void 0 ? void 0 : _this$$store$state$ca3.findIndex(function (p) {
+        return p.id == product.id;
+      });
+      this.getCart();
+      if (this.$store.state.cart[index].quantity > 1) {
+        var editProduct = [{
+          id: product.id,
+          quantity: --this.$store.state.cart[index].quantity
+        }];
+        this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
+        $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
       } else {
-        if (parseInt($('.qtySelector input').val()) === product.count) {
-          return;
-        } else {
-          product.qty++;
+        this.cleanFromCart(product);
+      }
+      this.$store.commit("UPDATE_TOTAL_CART");
+    },
+    setProduct: function setProduct(product, e) {
+      var _this$$store$state$ca4;
+      var index = (_this$$store$state$ca4 = this.$store.state.cart) === null || _this$$store$state$ca4 === void 0 ? void 0 : _this$$store$state$ca4.findIndex(function (p) {
+        return p.id == product.id;
+      });
+      var count = e.target.value;
+      this.getCart();
+      if (count < 1) {
+        this.cleanFromCart(product);
+      } else {
+        if (count > 999) {
+          count = 999;
         }
+        var editProduct = [{
+          id: product.id,
+          quantity: count
+        }];
+        this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
+        $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
+      }
+      this.$store.commit("UPDATE_TOTAL_CART");
+    },
+    checkValue: function checkValue(e) {
+      if (e.target.value > 999) {
+        e.target.value = 999;
+        return;
+      }
+      if (e.target.value < 0) {
+        e.target.value = 0;
+        return;
       }
     },
     //!SECTION
     //SECTION - Корзина
     getCart: function getCart() {
-      this.products = JSON.parse(localStorage.getItem("cart"));
+      this.cart = JSON.parse(localStorage.getItem("cart"));
       this.totalCart();
     },
     clearCart: function clearCart() {
@@ -18613,30 +18719,31 @@ app.mixin({
       this.$store.dispatch('initializeCart');
     },
     totalCart: function totalCart() {
-      var _this$products, _this$products2;
-      this.totalPrice = (_this$products = this.products) === null || _this$products === void 0 ? void 0 : _this$products.reduce(function (sum, product) {
+      var _this$cart, _this$cart2;
+      this.totalPrice = (_this$cart = this.cart) === null || _this$cart === void 0 ? void 0 : _this$cart.reduce(function (sum, product) {
         return sum + product.price * product.quantity;
       }, 0);
-      this.totalCount = (_this$products2 = this.products) === null || _this$products2 === void 0 ? void 0 : _this$products2.reduce(function (sum, product) {
+      this.totalCount = (_this$cart2 = this.cart) === null || _this$cart2 === void 0 ? void 0 : _this$cart2.reduce(function (sum, product) {
         return sum + product.quantity;
       }, 0);
     },
     addToCart: function addToCart(product) {
       var newProduct = [{
         id: product.id,
-        preview_image: product.preview_image,
         title: product.title,
         price: product.price,
-        quantity: 1
+        quantity: 1,
+        preview_image: product.preview_image
       }];
       this.$store.commit("ADD_TO_CART", newProduct);
       this.$store.commit("UPDATE_TOTAL_CART");
     },
-    cleanFromCart: function cleanFromCart(id) {
-      this.products = this.products.filter(function (product) {
-        return product.id !== id;
+    cleanFromCart: function cleanFromCart(product) {
+      this.getCart();
+      this.cart = this.cart.filter(function (tempProduct) {
+        return tempProduct.id !== product.id;
       });
-      localStorage.setItem("cart", JSON.stringify(this.products));
+      localStorage.setItem("cart", JSON.stringify(this.cart));
       this.totalCart();
       this.$store.dispatch('initializeCart');
       if (localStorage.getItem('cart') == '[]') {
@@ -18646,40 +18753,33 @@ app.mixin({
     //!SECTION
     //SECTION - Избранное
     getFavourite: function getFavourite() {
-      this.products = JSON.parse(localStorage.getItem("favourite"));
-      this.totalFavourite();
+      this.favourite = JSON.parse(localStorage.getItem("favourite"));
     },
     clearFavourite: function clearFavourite() {
       localStorage.removeItem("favourite");
       this.getFavourite();
       this.$store.dispatch('initializeFavourite');
     },
-    totalFavourite: function totalFavourite() {
-      var _this$products3;
-      this.totalCount = (_this$products3 = this.products) === null || _this$products3 === void 0 ? void 0 : _this$products3.reduce(function (sum, product) {
-        return sum + product.quantity;
-      }, 0);
-    },
-    addToFavourite: function addToFavourite(product) {
-      var newProduct = [{
-        id: product.id,
-        preview_image: product.preview_image,
-        title: product.title,
-        price: product.price,
-        quantity: product.quantity
-      }];
-      this.$store.commit("ADD_TO_FAVOURITE", newProduct);
-      this.$store.commit("UPDATE_TOTAL_FAVOURITE");
-    },
-    removeFromFavourite: function removeFromFavourite(id) {
-      this.products = this.products.filter(function (product) {
-        return product.id !== id;
-      });
-      localStorage.setItem("favourite", JSON.stringify(this.products));
-      this.totalFavourite();
-      this.$store.dispatch('initializeFavourite');
-      if (localStorage.getItem('favourite') == '[]') {
-        localStorage.removeItem("favourite");
+    toggleToFavourite: function toggleToFavourite(product) {
+      if (this.checkToHaving(product, 'favourite') === undefined) {
+        var newProduct = [{
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          preview_image: product.preview_image
+        }];
+        this.$store.commit("ADD_TO_FAVOURITE", newProduct);
+        this.$store.commit("UPDATE_TOTAL_FAVOURITE");
+      } else {
+        this.getFavourite();
+        this.favourite = this.favourite.filter(function (tempProduct) {
+          return tempProduct.id !== product.id;
+        });
+        localStorage.setItem("favourite", JSON.stringify(this.favourite));
+        this.$store.dispatch('initializeFavourite');
+        if (localStorage.getItem('favourite') == '[]') {
+          localStorage.removeItem("favourite");
+        }
       }
     } //!SECTION
   }

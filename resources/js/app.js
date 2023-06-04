@@ -36,16 +36,28 @@ const store = createStore({
         ADD_TO_CART: (state, product) => {
             let index = state.cart.findIndex(productInCart => productInCart.id === product[0].id);
             if (index !== -1) {
-                state.cart[index].quantity += parseInt(product[0].quantity, 10);
+                this.checkToHaving()
+                return
             } else {
                 state.cart.push(product[0]);
             }
             localStorage.setItem('cart', JSON.stringify(state.cart));
         },
+
+        UPDATE_PRODUCT_IN_CART: (state, product) => {
+            let index = state.cart.findIndex(productInCart => productInCart.id === product[0].id);
+            if (index !== -1) {
+                state.cart[index].quantity = product[0].quantity;
+            } else {
+                return
+            }
+            localStorage.setItem('cart', JSON.stringify(state.cart));
+        },
+
         UPDATE_TOTAL_CART: (state) => {
-            state.totalPrice = state.cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
-            state.countCartAll = state.cart.reduce((quantity, product) => quantity + product.quantity, 0);
-            state.countCartDiff = state.cart.length;
+            state.totalPrice = state.cart?.reduce((sum, product) => sum + product.price * product.quantity, 0);
+            state.countCartAll = state.cart?.reduce((quantity, product) => quantity + product.quantity, 0);
+            state.countCartDiff = state.cart?.length;
         },
         //!SECTION
 
@@ -63,7 +75,7 @@ const store = createStore({
             }
             localStorage.setItem('favourite', JSON.stringify(state.favourite));
         },
-        UPDATE_TOTAL_FAVOURITE: (state) => {
+        UPDATE_TOTAL_FAVOURITE: (state, product) => {
             state.countFavourite = state.favourite.length;
         },
         //!SECTION
@@ -102,6 +114,8 @@ app.mixin({
         return {
             categories: [],
             products: [],
+            product: [],
+            cart: [],
             favourite: [],
             totalPrice: 0,
             totalCount: 0
@@ -113,41 +127,126 @@ app.mixin({
         this.$store.dispatch('initializeCategories')
     },
     methods: {
+        info(text) {
+            console.log(text);
+        },
+
         //SECTION - Общие (методы)
         getProducts() {
             this.axios.post("/api/products").then((res) => {
                 this.products = res.data.data;
             });
         },
+
+        getProduct() {
+            this.axios.get("/api/products/" + this.$route.params.id).then((res) => {
+                this.product = res.data.data;
+                console.log(res.data.data);
+            });
+        },
+
+        getProductWord(count) {
+            return count % 10 == 1 && count % 100 != 11 ? 'товар' :
+                (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20) ? 'товара' : 'товаров');
+        },
+
+        checkToHaving(product, place) {
+            switch (place) {
+                case 'favourite': {
+                    let index = this.$store.state.favourite?.findIndex(p => p.id == product.id);
+                    if (index !== -1)
+                        return index;
+                    else
+                        return;
+                };
+
+                case 'cart': {
+                    let index = this.$store.state.cart?.findIndex(p => p.id == product.id);
+                    if (index !== -1)
+                        return index;
+                    else
+                        return;
+                };
+
+                default:
+                    return;
+            }
+        },
         //!SECTION
 
         //SECTION - Действие с продуктом
-        subtractQuantity(product) {
-            if (product.quantity == 1) {
-                cleanFromCart(product.id);
+        getValue(product) {
+            return this.$store.state.cart[this.checkToHaving(product, 'cart')].quantity;
+        },
+        addQuantity(product) {
+            let index = this.$store.state.cart?.findIndex(p => p.id == product.id);
+            this.getCart();
+            if (this.$store.state.cart[index].quantity < 999) {
+                let editProduct = [
+                    {
+                        id: product.id,
+                        quantity: ++this.$store.state.cart[index].quantity,
+                    },
+                ];
+                this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
+                $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
+            } else {
                 return;
             }
-            product.quantity--;
-            this.updateCart()
-            this.calculateTotal()
+            this.$store.commit("UPDATE_TOTAL_CART");
         },
-        adddQuantity(product) {
-            if (product.quantity > product.count) {
-                $('.qtySelector input').val(6);
-                return alert('Столько товаров нет! Всего: ' + product.count + "шт.")
+        subtractQuantity(product) {
+            let index = this.$store.state.cart?.findIndex(p => p.id == product.id);
+            this.getCart();
+            if (this.$store.state.cart[index].quantity > 1) {
+                let editProduct = [
+                    {
+                        id: product.id,
+                        quantity: --this.$store.state.cart[index].quantity,
+                    },
+                ];
+                this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
+                $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
             } else {
-                if (parseInt($('.qtySelector input').val()) === product.count) {
-                    return;
-                } else {
-                    product.qty++;
-                }
+                this.cleanFromCart(product);
+            }
+            this.$store.commit("UPDATE_TOTAL_CART");
+        },
+        setProduct(product, e) {
+            let index = this.$store.state.cart?.findIndex(p => p.id == product.id);
+            let count = e.target.value;
+            this.getCart();
+            if (count < 1) {
+                this.cleanFromCart(product);
+            } else {
+                if (count > 999) { count = 999; }
+                let editProduct = [
+                    {
+                        id: product.id,
+                        quantity: count,
+                    },
+                ];
+                this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
+                $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
+            }
+            this.$store.commit("UPDATE_TOTAL_CART");
+        },
+        checkValue(e) {
+            if (e.target.value > 999) {
+                e.target.value = 999;
+                return;
+            }
+
+            if (e.target.value < 0) {
+                e.target.value = 0;
+                return;
             }
         },
         //!SECTION
 
         //SECTION - Корзина
         getCart() {
-            this.products = JSON.parse(localStorage.getItem("cart"));
+            this.cart = JSON.parse(localStorage.getItem("cart"));
             this.totalCart();
         },
         clearCart() {
@@ -156,28 +255,27 @@ app.mixin({
             this.$store.dispatch('initializeCart');
         },
         totalCart() {
-            this.totalPrice = this.products?.reduce((sum, product) => sum + product.price * product.quantity, 0);
-            this.totalCount = this.products?.reduce((sum, product) => sum + product.quantity, 0);
+            this.totalPrice = this.cart?.reduce((sum, product) => sum + product.price * product.quantity, 0);
+            this.totalCount = this.cart?.reduce((sum, product) => sum + product.quantity, 0);
         },
         addToCart(product) {
             let newProduct = [
                 {
                     id: product.id,
-                    preview_image: product.preview_image,
                     title: product.title,
                     price: product.price,
                     quantity: 1,
+                    preview_image: product.preview_image,
                 },
             ];
 
             this.$store.commit("ADD_TO_CART", newProduct);
             this.$store.commit("UPDATE_TOTAL_CART");
         },
-        cleanFromCart(id) {
-            this.products = this.products.filter((product) => {
-                return product.id !== id;
-            });
-            localStorage.setItem("cart", JSON.stringify(this.products));
+        cleanFromCart(product) {
+            this.getCart();
+            this.cart = this.cart.filter(tempProduct => tempProduct.id !== product.id);
+            localStorage.setItem("cart", JSON.stringify(this.cart));
             this.totalCart();
             this.$store.dispatch('initializeCart');
             if (localStorage.getItem('cart') == '[]') { localStorage.removeItem("cart"); }
@@ -186,39 +284,33 @@ app.mixin({
 
         //SECTION - Избранное
         getFavourite() {
-            this.products = JSON.parse(localStorage.getItem("favourite"));
-            this.totalFavourite();
+            this.favourite = JSON.parse(localStorage.getItem("favourite"));
         },
         clearFavourite() {
             localStorage.removeItem("favourite");
             this.getFavourite();
             this.$store.dispatch('initializeFavourite');
         },
-        totalFavourite() {
-            this.totalCount = this.products?.reduce((sum, product) => sum + product.quantity, 0);
-        },
-        addToFavourite(product) {
-            let newProduct = [
-                {
-                    id: product.id,
-                    preview_image: product.preview_image,
-                    title: product.title,
-                    price: product.price,
-                    quantity: product.quantity
-                },
-            ];
-
-            this.$store.commit("ADD_TO_FAVOURITE", newProduct);
-            this.$store.commit("UPDATE_TOTAL_FAVOURITE");
-        },
-        removeFromFavourite(id) {
-            this.products = this.products.filter((product) => {
-                return product.id !== id;
-            });
-            localStorage.setItem("favourite", JSON.stringify(this.products));
-            this.totalFavourite();
-            this.$store.dispatch('initializeFavourite');
-            if (localStorage.getItem('favourite') == '[]') { localStorage.removeItem("favourite"); }
+        toggleToFavourite(product) {
+            if (this.checkToHaving(product, 'favourite') === undefined) {
+                let newProduct = [
+                    {
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        preview_image: product.preview_image
+                    },
+                ];
+                this.$store.commit("ADD_TO_FAVOURITE", newProduct);
+                this.$store.commit("UPDATE_TOTAL_FAVOURITE");
+            }
+            else {
+                this.getFavourite();
+                this.favourite = this.favourite.filter(tempProduct => tempProduct.id !== product.id);
+                localStorage.setItem("favourite", JSON.stringify(this.favourite));
+                this.$store.dispatch('initializeFavourite');
+                if (localStorage.getItem('favourite') == '[]') { localStorage.removeItem("favourite"); }
+            }
         },
         //!SECTION
     }

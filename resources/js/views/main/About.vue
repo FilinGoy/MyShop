@@ -7,7 +7,7 @@
 			</ol>
 		</nav>
 
-		<div class="col-12 bg-white py-5 px-md-7">
+		<div class="col-12 bg-white py-5 px-4 px-md-7">
 			<div class="mr-lg-8">
 				<h1>О нашем магазине</h1>
 				<p>

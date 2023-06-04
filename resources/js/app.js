@@ -125,8 +125,28 @@ app.mixin({
         this.$store.dispatch('initializeCart')
         this.$store.dispatch('initializeFavourite')
         this.$store.dispatch('initializeCategories')
+
+        $(window).scroll(this.scrollFunction)
+
+        $('#btn-back-to-top').on("click", this.backToTop)
     },
     methods: {
+        scrollFunction() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20
+            ) {
+                $('#btn-back-to-top').show();
+            } else {
+                $('#btn-back-to-top').hide();
+            }
+        },
+
+        backToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        },
+
         info(text) {
             console.log(text);
         },
@@ -223,7 +243,7 @@ app.mixin({
                 let editProduct = [
                     {
                         id: product.id,
-                        quantity: count,
+                        quantity: parseInt(count),
                     },
                 ];
                 this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);

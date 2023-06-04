@@ -7,7 +7,7 @@
 			</ol>
 		</nav>
 
-		<div class="col-12 bg-white py-5 px-md-7">
+		<div class="col-12 bg-white py-5 px-4 px-md-7">
 			<div class="mr-lg-8">
 				<h1>Как купить</h1>
 				<h4>Покупать в интернет-магазине Дом Вкуса очень просто!</h4>

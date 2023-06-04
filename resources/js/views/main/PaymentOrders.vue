@@ -1,5 +1,5 @@
 <template>
-	<div class="row">
+	<div>
 		<nav aria-label="breadcrumb" class="col-12 py-3">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><router-link to="/">Главная</router-link></li>
@@ -7,7 +7,7 @@
 			</ol>
 		</nav>
 
-		<div class="col-12 bg-white py-5 px-md-7">
+		<div class="col-12 bg-white py-5 px-4 px-md-7">
 			<div class="mr-lg-8">
 				<h1>Оплата заказов</h1>
 				<p>

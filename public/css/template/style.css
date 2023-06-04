@@ -774,13 +774,6 @@ pre code {
     overflow-y: scroll;
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
 .no-gutters {
     margin-right: 0;
     margin-left: 0;
@@ -14075,10 +14068,6 @@ a.text-wtansparent:focus {
         min-width: 992px !important;
     }
 
-    .container {
-        min-width: 992px !important;
-    }
-
     .navbar {
         display: none;
     }
@@ -14196,16 +14185,6 @@ button:focus {
 
 .close {
     z-index: 1020;
-}
-
-
-.container-fluid,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl,
-.container-xxl {
-    max-width: 1600px;
 }
 
 .text-over {

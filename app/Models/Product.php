@@ -48,9 +48,10 @@ class Product extends Model
         return url('storage/' . $this->preview_image);
     }
 
-    public function rate()
+    public function getRateAttribute()
     {
-        return $this->belongsToMany(Review::class, 'product_id', 'user_id');
+        $rate = $this->hasMany(Review::class, 'product_id', 'id')->pluck('rate')->toArray();
+            return $rate ? round(array_sum($rate) / count($rate), 1) : 0;
     }
 
     public function productImages(){

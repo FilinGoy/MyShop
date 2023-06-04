@@ -58,6 +58,11 @@ const router = createRouter({
             name: 'favourite',
             component: () => import('../views/main/Favourite.vue')
         },
+        {
+            path: '/signin',
+            name: 'signin',
+            component: () => import('../views/main/SignIn.vue')
+        },
     ]
 })
 

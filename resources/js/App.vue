@@ -78,7 +78,7 @@
 							<p>Профиль</p>
 						</div>
 
-						<ul class="dropdown-menu" aria-labelledby="dropdownProfile">
+						<ul class="dropdown-menu" aria-labelledby="dropdownProfile" ref="profileMenu">
 							<li><router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link></li>
 							<li><router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link></li>
 							<li><router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link></li>
@@ -86,13 +86,14 @@
 						</ul>
 					</div>
 
-					<div class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
+					<router-link to="/signin" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
 						<i class="fa-solid fa-right-to-bracket pe-lg-2"></i>
 						<p class="d-none d-lg-block">Вход</p>
-					</div>
+					</router-link>
 
 					<!-- //NOTE - Скрываемый профиль -->
-					<div
+					<router-link
+						to="/profile/orders"
 						class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex d-lg-none justify-content-center align-items-center text-black-50"
 						type="button"
 						data-bs-toggle="offcanvas"
@@ -100,7 +101,7 @@
 						aria-controls="profileOffcanvas"
 					>
 						<i class="fa-regular fa-circle-user"></i>
-					</div>
+					</router-link>
 
 					<router-link to="/cart" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50 position-relative">
 						<div class="d-flex justify-content-center align-items-center">
@@ -204,8 +205,8 @@
 
 	<!-- //!SECTION -->
 
-	<main class="my-3 container h-100">
-		<router-view></router-view>
+	<main class="mb-3 container-lg h-100">
+		<router-view class="py-3"></router-view>
 	</main>
 
 	<footer class="footer mt-auto py-3 border-top bg-white">

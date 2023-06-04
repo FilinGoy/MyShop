@@ -10,9 +10,7 @@
 				</div>
 				<hr />
 				<div class="w-100">
-					<div v-if="cart" class="row gutters-mobile">
-						
-					</div>
+					<div v-if="cart" class="row gutters-mobile"></div>
 					<div v-else class="flex-column align-items-center p-md-5" :class="this.$store.state.countCartAll == 0 ? 'd-flex' : 'd-none'">
 						<img class="w-25 py-5" src="storage/images/main/cart-none.png" />
 						<h4>Корзина пока пуста</h4>
@@ -26,7 +24,7 @@
 			<div class="d-flex flex-column justify-content-between bg-white p-4">
 				<h4 class="d-none d-lg-block mb-0">Итого:</h4>
 				<p class="text-muted d-none d-lg-block">
-					<span>{{ totalCount ?? "0" }}</span> {{ getProductWord(totalCount) }}
+					<span>{{ totalCount ?? "0" }} {{ getProductWord(totalCount) }}</span>
 				</p>
 				<div class="mb-0 py-2 d-flex justify-content-between align-items-center flex-wrap">
 					<p class="mb-0 d-lg-none">Сумма заказа:</p>

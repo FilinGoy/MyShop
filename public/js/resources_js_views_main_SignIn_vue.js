@@ -12,7 +12,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "signIn"
+  name: "signIn",
+  data: function data() {
+    return {
+      login: "",
+      password: "",
+      checked: false,
+      error: null
+    };
+  },
+  methods: {
+    getToken: function getToken() {
+      var _this = this;
+      if (this.login !== "" && this.password !== "") {
+        this.axios.post("/api/auth/login", {
+          login: this.login,
+          password: this.password
+        }).then(function (res) {
+          _this.$store.commit('ADD_AUTH', {
+            token: res.data.access_token,
+            remember: _this.checked
+          });
+          _this.$store.commit('SET_IS_LOGED_IN', true);
+          _this.$router.push({
+            name: 'main'
+          });
+        })["catch"](function (err) {
+          _this.error = err.response.data.error;
+        });
+      } else {
+        this.error = "Не все поля заполнены!";
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -38,312 +70,170 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "border w-50"
 };
-var _hoisted_4 = {
-  "class": "text-center mb-3"
-};
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Sign in with:", -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-center"
-}, "or:", -1 /* HOISTED */);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#!"
-}, "Forgot password?", -1 /* HOISTED */);
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Not a member? "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#!"
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
+  "class": "nav nav-pills nav-justified mb-3",
+  id: "ex1",
+  role: "tablist"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+  "class": "nav-item",
+  role: "presentation"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "nav-link active",
+  id: "tab-login",
+  "data-mdb-toggle": "pill",
+  role: "tab",
+  "aria-controls": "pills-login",
+  "aria-selected": "true"
+}, "Login")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
+  "class": "nav-item",
+  role: "presentation"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "nav-link",
+  id: "tab-register",
+  "data-mdb-toggle": "pill",
+  role: "tab",
+  "aria-controls": "pills-register",
+  "aria-selected": "false"
 }, "Register")])], -1 /* HOISTED */);
-var _hoisted_9 = {
-  "class": "text-center mb-3"
+var _hoisted_5 = {
+  "class": "tab-content"
 };
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Sign up with:", -1 /* HOISTED */);
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-center"
-}, "or:", -1 /* HOISTED */);
+var _hoisted_6 = {
+  "class": "tab-pane active border border-danger",
+  id: "pills-login",
+  role: "tabpanel",
+  "aria-labelledby": "tab-login"
+};
+var _hoisted_7 = {
+  "class": "form-outline mb-4"
+};
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label",
+  "for": "loginName"
+}, "Логин", -1 /* HOISTED */);
+var _hoisted_9 = {
+  "class": "form-outline mb-4"
+};
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label",
+  "for": "loginPassword"
+}, "Пароль", -1 /* HOISTED */);
+var _hoisted_11 = {
+  "class": "row mb-4"
+};
+var _hoisted_12 = {
+  "class": "col-md-6 d-flex justify-content-center"
+};
+var _hoisted_13 = {
+  "class": "form-check mb-3 mb-md-0"
+};
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-check-label",
+  "for": "loginCheck"
+}, "Запомнить меня", -1 /* HOISTED */);
+var _hoisted_15 = {
+  key: 0,
+  "class": "text-danger"
+};
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-6 d-flex justify-content-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Simple link "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", null, "Забыли пароль?")], -1 /* HOISTED */);
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "tab-pane active border border-danger",
+  id: "pills-register",
+  role: "tabpanel",
+  "aria-labelledby": "tab-register"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name input "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-outline mb-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  id: "registerName",
+  "class": "form-control"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label",
+  "for": "registerName"
+}, "Name")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Username input "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-outline mb-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  id: "registerUsername",
+  "class": "form-control"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label",
+  "for": "registerUsername"
+}, "Username")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email input "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-outline mb-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "email",
+  id: "registerEmail",
+  "class": "form-control"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label",
+  "for": "registerEmail"
+}, "Email")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Password input "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-outline mb-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "password",
+  id: "registerPassword",
+  "class": "form-control"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label",
+  "for": "registerPassword"
+}, "Password")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Repeat Password input "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-outline mb-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "password",
+  id: "registerRepeatPassword",
+  "class": "form-control"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label",
+  "for": "registerRepeatPassword"
+}, "Repeat password")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Checkbox "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-check d-flex justify-content-center mb-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  "class": "form-check-input me-2",
+  type: "checkbox",
+  value: "",
+  id: "registerCheck",
+  checked: "",
+  "aria-describedby": "registerCheckHelpText"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-check-label",
+  "for": "registerCheck"
+}, " I have read and agree to the terms ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Submit button "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary btn-block mb-3"
+}, "Sign in")])], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_MDBTabItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBTabItem");
-  var _component_MDBTabNav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBTabNav");
-  var _component_MDBIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBIcon");
-  var _component_MDBBtn = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBBtn");
-  var _component_MDBInput = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBInput");
-  var _component_MDBCheckbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBCheckbox");
-  var _component_MDBCol = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBCol");
-  var _component_MDBRow = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBRow");
-  var _component_MDBTabPane = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBTabPane");
-  var _component_MDBTabContent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBTabContent");
-  var _component_MDBTabs = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MDBTabs");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("template", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBTabs, {
-    modelValue: _ctx.form7ActiveTab,
-    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-      return _ctx.form7ActiveTab = $event;
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pills navs "), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pills navs "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pills content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "email",
+    id: "loginName",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.login = $event;
     })
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Tabs navs "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBTabNav, {
-        pills: "",
-        justify: "",
-        tabsClasses: "mb-3"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBTabItem, {
-            tabId: "form7-login",
-            href: "form7-login"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login")];
-            }),
-            _: 1 /* STABLE */
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBTabItem, {
-            tabId: "form7-register",
-            href: "form7-register"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Register")];
-            }),
-            _: 1 /* STABLE */
-          })];
-        }),
-
-        _: 1 /* STABLE */
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Tabs navs "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Tabs content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBTabContent, null, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBTabPane, {
-            tabId: "form7-login"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "secondary",
-                floating: "",
-                "class": "mx-1"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBIcon, {
-                    iconStyle: "fab",
-                    icon: "facebook-f"
-                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("> ")];
-                }),
-                _: 1 /* STABLE */
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "secondary",
-                floating: "",
-                "class": "mx-1"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBIcon, {
-                    iconStyle: "fab",
-                    icon: "google"
-                  })];
-                }),
-                _: 1 /* STABLE */
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "secondary",
-                floating: "",
-                "class": "mx-1"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBIcon, {
-                    iconStyle: "fab",
-                    icon: "twitter"
-                  })];
-                }),
-                _: 1 /* STABLE */
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "secondary",
-                floating: "",
-                "class": "mx-1"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBIcon, {
-                    iconStyle: "fab",
-                    icon: "github"
-                  })];
-                }),
-                _: 1 /* STABLE */
-              })]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBInput, {
-                type: "email",
-                label: "Email address",
-                id: "form7LoginEmail",
-                modelValue: _ctx.form7LoginEmail,
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-                  return _ctx.form7LoginEmail = $event;
-                }),
-                wrapperClass: "mb-4"
-              }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Password input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBInput, {
-                type: "password",
-                label: "Password",
-                id: "form7LoginPassword",
-                modelValue: _ctx.form7LoginPassword,
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-                  return _ctx.form7LoginPassword = $event;
-                }),
-                wrapperClass: "mb-4"
-              }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 column grid layout for inline styling "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBRow, {
-                "class": "mb-4"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBCol, {
-                    "class": "d-flex justify-content-center"
-                  }, {
-                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Checkbox "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBCheckbox, {
-                        label: "Remember me",
-                        id: "form7LoginCheck",
-                        modelValue: _ctx.form7LoginCheck,
-                        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-                          return _ctx.form7LoginCheck = $event;
-                        }),
-                        wrapperClass: "mb-3 mb-md-0"
-                      }, null, 8 /* PROPS */, ["modelValue"])];
-                    }),
-                    _: 1 /* STABLE */
-                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBCol, null, {
-                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Simple link "), _hoisted_7];
-                    }),
-                    _: 1 /* STABLE */
-                  })];
-                }),
-
-                _: 1 /* STABLE */
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Submit button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "primary",
-                block: "",
-                "class": "mb-4"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sign in ")];
-                }),
-                _: 1 /* STABLE */
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Register buttons "), _hoisted_8])];
-            }),
-            _: 1 /* STABLE */
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBTabPane, {
-            tabId: "form7-register"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "secondary",
-                floating: "",
-                "class": "mx-1"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBIcon, {
-                    iconStyle: "fab",
-                    icon: "facebook-f"
-                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("> ")];
-                }),
-                _: 1 /* STABLE */
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "secondary",
-                floating: "",
-                "class": "mx-1"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBIcon, {
-                    iconStyle: "fab",
-                    icon: "google"
-                  })];
-                }),
-                _: 1 /* STABLE */
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "secondary",
-                floating: "",
-                "class": "mx-1"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBIcon, {
-                    iconStyle: "fab",
-                    icon: "twitter"
-                  })];
-                }),
-                _: 1 /* STABLE */
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "secondary",
-                floating: "",
-                "class": "mx-1"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBIcon, {
-                    iconStyle: "fab",
-                    icon: "github"
-                  })];
-                }),
-                _: 1 /* STABLE */
-              })]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBInput, {
-                type: "text",
-                label: "Name",
-                id: "form7RegisterName",
-                modelValue: _ctx.form7RegisterName,
-                "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-                  return _ctx.form7RegisterName = $event;
-                }),
-                wrapperClass: "mb-4"
-              }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Username input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBInput, {
-                type: "text",
-                label: "Username",
-                id: "form7RegisterUsername",
-                modelValue: _ctx.form7RegisterUsername,
-                "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-                  return _ctx.form7RegisterUsername = $event;
-                }),
-                wrapperClass: "mb-4"
-              }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBInput, {
-                type: "email",
-                label: "Email",
-                id: "form7RegisterEmail",
-                modelValue: _ctx.form7RegisterEmail,
-                "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-                  return _ctx.form7RegisterEmail = $event;
-                }),
-                wrapperClass: "mb-4"
-              }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Password input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBInput, {
-                type: "password",
-                label: "Password",
-                id: "form7RegisterPassword",
-                modelValue: _ctx.form7RegisterPassword,
-                "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-                  return _ctx.form7RegisterPassword = $event;
-                }),
-                wrapperClass: "mb-4"
-              }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Repeat Password input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBInput, {
-                type: "password",
-                label: "Repeat password",
-                id: "form7RegisterPasswordRepeat",
-                modelValue: _ctx.form7RegisterPasswordRepeat,
-                "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-                  return _ctx.form7RegisterPasswordRepeat = $event;
-                }),
-                wrapperClass: "mb-4"
-              }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Checkbox "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBCheckbox, {
-                label: "I have read and agree to the terms",
-                id: "form7RegsiterTermsCheck",
-                modelValue: _ctx.form7RegsiterTermsCheck,
-                "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-                  return _ctx.form7RegsiterTermsCheck = $event;
-                }),
-                wrapperClass: "d-flex justify-content-center mb-4"
-              }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Submit button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MDBBtn, {
-                color: "primary",
-                block: "",
-                "class": "mb-3"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sign in ")];
-                }),
-                _: 1 /* STABLE */
-              })])];
-            }),
-
-            _: 1 /* STABLE */
-          })];
-        }),
-
-        _: 1 /* STABLE */
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Tabs content ")];
-    }),
-    _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["modelValue"])])])])])]);
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.login]]), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Password input "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "password",
+    id: "loginPassword",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.password = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.password]]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 2 column grid layout "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Checkbox "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "form-check-input",
+    type: "checkbox",
+    value: "",
+    id: "loginCheck",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.checked = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.checked]]), _hoisted_14])]), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_16]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Submit button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.getToken();
+    }, ["prevent"])),
+    "class": "btn btn-primary btn-block mb-4"
+  }, "Вход")])]), _hoisted_17]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Pills content ")])])]);
 }
 
 /***/ }),

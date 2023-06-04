@@ -67,42 +67,47 @@
 						<i class="fa-regular fa-heart"></i>
 					</router-link>
 
-					<div class="dropdown d-none d-lg-flex">
-						<div
-							class="nav-item btn btn-white h-100 shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
-							type="button"
-							id="dropdownProfile"
-							data-bs-toggle="dropdown"
-						>
-							<i class="fa-regular fa-circle-user pe-2"></i>
-							<p>Профиль</p>
-						</div>
-
-						<ul class="dropdown-menu" aria-labelledby="dropdownProfile" ref="profileMenu">
-							<li><router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link></li>
-							<li><router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link></li>
-							<li><router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link></li>
-							<li><router-link to="#" class="dropdown-item border-top text-wrap px-4">Выйти</router-link></li>
-						</ul>
-					</div>
-
-					<router-link to="/signin" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50">
+					<router-link
+						v-if="!this.$store.state.isLogedIn"
+						to="/signin"
+						class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
+					>
 						<i class="fa-solid fa-right-to-bracket pe-lg-2"></i>
 						<p class="d-none d-lg-block">Вход</p>
 					</router-link>
+					<template v-else>
+						<div class="dropdown d-none d-lg-flex">
+							<div
+								class="nav-item btn btn-white h-100 shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
+								type="button"
+								id="dropdownProfile"
+								data-bs-toggle="dropdown"
+							>
+								<i class="fa-regular fa-circle-user pe-2"></i>
+								<p>Профиль</p>
+							</div>
 
-					<!-- //NOTE - Скрываемый профиль -->
-					<router-link
-						to="/profile/orders"
-						class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex d-lg-none justify-content-center align-items-center text-black-50"
-						type="button"
-						data-bs-toggle="offcanvas"
-						data-bs-target="#profileOffcanvas"
-						aria-controls="profileOffcanvas"
-					>
-						<i class="fa-regular fa-circle-user"></i>
-					</router-link>
+							<ul class="dropdown-menu" aria-labelledby="dropdownProfile" ref="profileMenu">
+								<li><a type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a></li>
+								<li><router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link></li>
+								<li><router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link></li>
+								<li><router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link></li>
+								<li><a type="button" @click="quit" class="dropdown-item border-top text-wrap px-4">Выйти</a></li>
+							</ul>
+						</div>
 
+						<!-- //NOTE - Скрываемый профиль -->
+						<router-link
+							to="/profile/orders"
+							class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex d-lg-none justify-content-center align-items-center text-black-50"
+							type="button"
+							data-bs-toggle="offcanvas"
+							data-bs-target="#profileOffcanvas"
+							aria-controls="profileOffcanvas"
+						>
+							<i class="fa-regular fa-circle-user"></i>
+						</router-link>
+					</template>
 					<router-link to="/cart" class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50 position-relative">
 						<div class="d-flex justify-content-center align-items-center">
 							<div class="me-lg-2 position-relative">
@@ -197,7 +202,7 @@
 				<router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link>
 				<router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link>
 				<router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link>
-				<router-link to="#" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</router-link>
+				<a ype="button" @click="quit" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</a>
 			</div>
 		</div>
 		<!-- //!SECTION -->
@@ -276,6 +281,20 @@ import elem from "./components/Header.vue";
 export default {
 	name: "App",
 	components: { elem },
+	methods: {
+		goAdmin() {
+			let webApiUrl = "/admin";
+			let tokenStr = localStorage.getItem("access_token");
+			document.cookie = "user=" + tokenStr;
+			this.axios
+				.get(webApiUrl, {
+					headers: { Authorization: `Bearer ${tokenStr}` },
+				})
+				.then((res) => {
+					window.open("/admin?token=" + tokenStr, "_blank");
+				});
+		},
+	},
 };
 </script>
 <style></style>

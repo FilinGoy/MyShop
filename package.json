@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "axios": "^1.1.2",
+        "babel-preset-stage-2": "^6.24.1",
         "laravel-mix": "^6.0.49",
         "volar-service-vetur": "latest",
         "vue-loader": "^17.0.1",
@@ -18,6 +19,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.2.3",
+        "mdbvue": "^6.7.4",
         "vue": "^3.2.47",
         "vuex": "^4.0.2"
     }

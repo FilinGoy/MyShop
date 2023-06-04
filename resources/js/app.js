@@ -6,60 +6,6 @@ import router from './router';
 import App from './App.vue';
 import axios from 'axios';
 
-import {
-    MDBInput,
-    MDBCheckbox,
-    MDBTextarea,
-    MDBBtn,
-    MDBTabs,
-    MDBTabNav,
-    MDBTabContent,
-    MDBTabItem,
-    MDBTabPane,
-    MDBIcon
-} from "mdb-vue-ui-kit";
-import { ref } from "vue";
-
-export default {
-    components: {
-        MDBInput,
-        MDBCheckbox,
-        MDBTextarea,
-        MDBBtn,
-        MDBTabs,
-        MDBTabNav,
-        MDBTabContent,
-        MDBTabItem,
-        MDBTabPane,
-        MDBIcon
-    },
-    setup() {
-        const form7ActiveTab = ref("form7-login");
-        const form7LoginEmail = ref("");
-        const form7LoginPassword = ref("");
-        const form7LoginCheck = ref(true);
-        const form7RegisterName = ref("");
-        const form7RegisterUsername = ref("");
-        const form7RegisterEmail = ref("");
-        const form7RegisterPassword = ref("");
-        const form7RegisterPasswordRepeat = ref("");
-        const form7RegsiterTermsCheck = ref(true);
-
-        return {
-            form7ActiveTab,
-            form7LoginEmail,
-            form7LoginPassword,
-            form7LoginCheck,
-            form7RegisterName,
-            form7RegisterUsername,
-            form7RegisterEmail,
-            form7RegisterPassword,
-            form7RegisterPasswordRepeat,
-            form7RegsiterTermsCheck
-        };
-    },
-};
-
 const app = createApp(App);
 const store = createStore({
     state: {
@@ -82,6 +28,40 @@ const store = createStore({
 
     },
     mutations: {
+        //SECTION - Профль
+        ADD_AUTH: (state, value) => {
+            localStorage.setItem('access_token', value.token)
+        },
+        SET_IS_LOGED_IN: (state, value) => {
+            state.isLogedIn = value;
+        },
+        GET_INFO_USER: (state, value) => {
+            state.user = value
+            state.isLoadingUser = true
+        },
+        SET_TOKEN_REFRESHED: (state, value) => {
+            state.tokenRefreshed = value
+        },
+        LOGOUT: (state) => {
+            axios.post('/api/auth/logout', {}, {
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('access_token') ?? sessionStorage.getItem('access_token')}`
+                },
+                responseType: 'json'
+            })
+                .then(res => {
+                    if (localStorage.getItem('access_token')) {
+                        localStorage.removeItem('access_token');
+                    } else {
+                        sessionStorage.removeItem('access_token');
+                    }
+                    state.isLogedIn = false;
+                    state.user = null;
+                })
+        },
+        //!SECTION
+
+
         //SECTION - Корзина
         GET_CART: (state) => {
             let cart = localStorage.getItem('cart') || '[]';
@@ -153,7 +133,66 @@ const store = createStore({
         },
         initializeCategories: ({ commit }) => {
             commit('GET_CATEGORIES');
-        }
+        },
+
+        getUserInfo: ({ commit, state }) => {
+            let token = localStorage.getItem('access_token');
+            if (!token) {
+                if (sessionStorage.getItem('access_token')) token = sessionStorage.getItem('access_token');
+            }
+            if (token) {
+                axios.post("/api/auth/me", null, {
+                    headers: {
+                        'authorization': `Bearer ${token}`,
+                        'Accept': 'application/json'
+                    },
+                    responseType: 'json'
+                })
+                    .then(res => {
+                        commit('SET_IS_LOGED_IN', true);
+                        commit('GET_INFO_USER', res.data);
+                    })
+                    .catch(err => {
+                        if (err.response.data.message === 'Unauthenticated.') {
+                            commit('SET_IS_LOGED_IN', false);
+                            axios.post('/api/auth/refresh', null, {
+                                headers: {
+                                    'authorization': `Bearer ${token}`,
+                                    'Accept': 'application/json'
+                                },
+                                responseType: 'json'
+                            })
+                                .then(res => {
+                                    localStorage.setItem('access_token', res.data.access_token);
+                                    axios.post("/api/auth/me", {}, {
+                                        headers: {
+                                            'authorization': `Bearer ${res.data.access_token}`,
+                                            'Accept': 'application/json'
+                                        },
+                                        responseType: 'json'
+                                    })
+                                        .then(res => {
+                                            commit('SET_IS_LOGED_IN', true); // сохраняем данные в state
+                                            commit('GET_INFO_USER', res.data);
+                                        })
+                                        .catch(err => {
+                                            commit('SET_IS_LOGED_IN', false);
+                                        })
+                                })
+                                .catch(err => {
+                                    commit('SET_IS_LOGED_IN', false);
+                                })
+                        }
+                    });
+            } else {
+                commit('SET_IS_LOGED_IN', false);
+            }
+        },
+    },
+    getters: {
+        statusUser(state) {
+            return state.isLogedIn;
+        },
     }
 });
 
@@ -180,6 +219,8 @@ app.mixin({
         this.$store.dispatch('initializeFavourite')
         this.$store.dispatch('initializeCategories')
 
+        this.$store.dispatch('getUserInfo')
+
         $(window).scroll(this.scrollFunction)
 
         $('#btn-back-to-top').on("click", this.backToTop)
@@ -204,6 +245,15 @@ app.mixin({
         info(text) {
             console.log(text);
         },
+
+        //SECTION - Профль
+        quit() {
+            console.log('sadsa');
+            document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+            this.$store.commit('LOGOUT');
+            router.push({ name: 'main' })
+        },
+        //!SECTION
 
         //SECTION - Общие (методы)
         getProducts() {

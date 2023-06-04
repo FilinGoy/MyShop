@@ -17923,6 +17923,20 @@ __webpack_require__.r(__webpack_exports__);
   name: "App",
   components: {
     elem: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    goAdmin: function goAdmin() {
+      var webApiUrl = "/admin";
+      var tokenStr = localStorage.getItem("access_token");
+      document.cookie = "user=" + tokenStr;
+      this.axios.get(webApiUrl, {
+        headers: {
+          Authorization: "Bearer ".concat(tokenStr)
+        }
+      }).then(function (res) {
+        window.open("/admin?token=" + tokenStr, "_blank");
+      });
+    }
   }
 });
 
@@ -18018,10 +18032,16 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticV
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-heart"
 }, null, -1 /* HOISTED */);
-var _hoisted_17 = {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-right-to-bracket pe-lg-2"
+}, null, -1 /* HOISTED */);
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "d-none d-lg-block"
+}, "Вход", -1 /* HOISTED */);
+var _hoisted_19 = {
   "class": "dropdown d-none d-lg-flex"
 };
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "nav-item btn btn-white h-100 shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50",
   type: "button",
   id: "dropdownProfile",
@@ -18029,17 +18049,11 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-circle-user pe-2"
 }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Профиль")], -1 /* HOISTED */);
-var _hoisted_19 = {
+var _hoisted_21 = {
   "class": "dropdown-menu",
   "aria-labelledby": "dropdownProfile",
   ref: "profileMenu"
 };
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-solid fa-right-to-bracket pe-lg-2"
-}, null, -1 /* HOISTED */);
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "d-none d-lg-block"
-}, "Вход", -1 /* HOISTED */);
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-circle-user"
 }, null, -1 /* HOISTED */);
@@ -18190,7 +18204,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_16];
     }),
     _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }), !this.$store.state.isLogedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
+    key: 0,
+    to: "/signin",
+    "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_17, _hoisted_18];
+    }),
+    _: 1 /* STABLE */
+  })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 1
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    type: "button",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.goAdmin && $options.goAdmin.apply($options, arguments);
+    }),
+    "class": "dropdown-item text-wrap px-4"
+  }, "Админ панель")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/profile/orders",
     "class": "dropdown-item text-wrap px-4"
   }, {
@@ -18214,23 +18245,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Учётная запись")];
     }),
     _: 1 /* STABLE */
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "#",
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    type: "button",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return _ctx.quit && _ctx.quit.apply(_ctx, arguments);
+    }),
     "class": "dropdown-item border-top text-wrap px-4"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Выйти")];
-    }),
-    _: 1 /* STABLE */
-  })])], 512 /* NEED_PATCH */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "/signin",
-    "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_20, _hoisted_21];
-    }),
-    _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //NOTE - Скрываемый профиль "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, "Выйти")])], 512 /* NEED_PATCH */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //NOTE - Скрываемый профиль "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/profile/orders",
     "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-flex d-lg-none justify-content-center align-items-center text-black-50",
     type: "button",
@@ -18242,7 +18263,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_22];
     }),
     _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })], 64 /* STABLE_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/cart",
     "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50 position-relative"
   }, {
@@ -18386,15 +18407,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Учётная запись")];
     }),
     _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "#",
-    "class": "dropdown-item mt-auto border-top text-wrap px-4 py-4"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Выйти")];
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    ype: "button",
+    onClick: _cache[2] || (_cache[2] = function () {
+      return _ctx.quit && _ctx.quit.apply(_ctx, arguments);
     }),
-    _: 1 /* STABLE */
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view, {
+    "class": "dropdown-item mt-auto border-top text-wrap px-4 py-4"
+  }, "Выйти")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view, {
     "class": "py-3"
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Footer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [_hoisted_54, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/"
@@ -18468,16 +18487,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 var _this = undefined;
 
 
@@ -18485,48 +18500,8 @@ var _this = undefined;
 
 
 
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    MDBInput: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBCheckbox: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBTextarea: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBBtn: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBTabs: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBTabNav: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBTabContent: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBTabItem: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBTabPane: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
-    MDBIcon: Object(function webpackMissingModule() { var e = new Error("Cannot find module 'mdb-vue-ui-kit'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
-  },
-  setup: function setup() {
-    var form7ActiveTab = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("form7-login");
-    var form7LoginEmail = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
-    var form7LoginPassword = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
-    var form7LoginCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
-    var form7RegisterName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
-    var form7RegisterUsername = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
-    var form7RegisterEmail = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
-    var form7RegisterPassword = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
-    var form7RegisterPasswordRepeat = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
-    var form7RegsiterTermsCheck = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
-    return {
-      form7ActiveTab: form7ActiveTab,
-      form7LoginEmail: form7LoginEmail,
-      form7LoginPassword: form7LoginPassword,
-      form7LoginCheck: form7LoginCheck,
-      form7RegisterName: form7RegisterName,
-      form7RegisterUsername: form7RegisterUsername,
-      form7RegisterEmail: form7RegisterEmail,
-      form7RegisterPassword: form7RegisterPassword,
-      form7RegisterPasswordRepeat: form7RegisterPasswordRepeat,
-      form7RegsiterTermsCheck: form7RegsiterTermsCheck
-    };
-  }
-});
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
   state: {
     categories: [],
     cart: [],
@@ -18542,6 +18517,39 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
     tokenRefreshed: true
   },
   mutations: {
+    //SECTION - Профль
+    ADD_AUTH: function ADD_AUTH(state, value) {
+      localStorage.setItem('access_token', value.token);
+    },
+    SET_IS_LOGED_IN: function SET_IS_LOGED_IN(state, value) {
+      state.isLogedIn = value;
+    },
+    GET_INFO_USER: function GET_INFO_USER(state, value) {
+      state.user = value;
+      state.isLoadingUser = true;
+    },
+    SET_TOKEN_REFRESHED: function SET_TOKEN_REFRESHED(state, value) {
+      state.tokenRefreshed = value;
+    },
+    LOGOUT: function LOGOUT(state) {
+      var _localStorage$getItem;
+      axios__WEBPACK_IMPORTED_MODULE_5__["default"].post('/api/auth/logout', {}, {
+        headers: {
+          'authorization': "Bearer ".concat((_localStorage$getItem = localStorage.getItem('access_token')) !== null && _localStorage$getItem !== void 0 ? _localStorage$getItem : sessionStorage.getItem('access_token'))
+        },
+        responseType: 'json'
+      }).then(function (res) {
+        if (localStorage.getItem('access_token')) {
+          localStorage.removeItem('access_token');
+        } else {
+          sessionStorage.removeItem('access_token');
+        }
+        state.isLogedIn = false;
+        state.user = null;
+      });
+    },
+    //!SECTION
+
     //SECTION - Корзина
     GET_CART: function GET_CART(state) {
       var cart = localStorage.getItem('cart') || '[]';
@@ -18605,7 +18613,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
 
     //SECTION - Категории
     GET_CATEGORIES: function GET_CATEGORIES(state) {
-      axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("/api/categories").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("/api/categories").then(function (res) {
         state.categories = res.data.data;
       });
     }
@@ -18626,11 +18634,65 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
     initializeCategories: function initializeCategories(_ref3) {
       var commit = _ref3.commit;
       commit('GET_CATEGORIES');
+    },
+    getUserInfo: function getUserInfo(_ref4) {
+      var commit = _ref4.commit,
+        state = _ref4.state;
+      var token = localStorage.getItem('access_token');
+      if (!token) {
+        if (sessionStorage.getItem('access_token')) token = sessionStorage.getItem('access_token');
+      }
+      if (token) {
+        axios__WEBPACK_IMPORTED_MODULE_5__["default"].post("/api/auth/me", null, {
+          headers: {
+            'authorization': "Bearer ".concat(token),
+            'Accept': 'application/json'
+          },
+          responseType: 'json'
+        }).then(function (res) {
+          commit('SET_IS_LOGED_IN', true);
+          commit('GET_INFO_USER', res.data);
+        })["catch"](function (err) {
+          if (err.response.data.message === 'Unauthenticated.') {
+            commit('SET_IS_LOGED_IN', false);
+            axios__WEBPACK_IMPORTED_MODULE_5__["default"].post('/api/auth/refresh', null, {
+              headers: {
+                'authorization': "Bearer ".concat(token),
+                'Accept': 'application/json'
+              },
+              responseType: 'json'
+            }).then(function (res) {
+              localStorage.setItem('access_token', res.data.access_token);
+              axios__WEBPACK_IMPORTED_MODULE_5__["default"].post("/api/auth/me", {}, {
+                headers: {
+                  'authorization': "Bearer ".concat(res.data.access_token),
+                  'Accept': 'application/json'
+                },
+                responseType: 'json'
+              }).then(function (res) {
+                commit('SET_IS_LOGED_IN', true); // сохраняем данные в state
+                commit('GET_INFO_USER', res.data);
+              })["catch"](function (err) {
+                commit('SET_IS_LOGED_IN', false);
+              });
+            })["catch"](function (err) {
+              commit('SET_IS_LOGED_IN', false);
+            });
+          }
+        });
+      } else {
+        commit('SET_IS_LOGED_IN', false);
+      }
+    }
+  },
+  getters: {
+    statusUser: function statusUser(state) {
+      return state.isLogedIn;
     }
   }
 });
 app.use(_router__WEBPACK_IMPORTED_MODULE_2__["default"]).use(store);
-app.config.globalProperties.axios = axios__WEBPACK_IMPORTED_MODULE_6__["default"];
+app.config.globalProperties.axios = axios__WEBPACK_IMPORTED_MODULE_5__["default"];
 app.mount('#app');
 app.mixin({
   data: function data() {
@@ -18648,6 +18710,7 @@ app.mixin({
     this.$store.dispatch('initializeCart');
     this.$store.dispatch('initializeFavourite');
     this.$store.dispatch('initializeCategories');
+    this.$store.dispatch('getUserInfo');
     $(window).scroll(this.scrollFunction);
     $('#btn-back-to-top').on("click", this.backToTop);
   },
@@ -18666,6 +18729,16 @@ app.mixin({
     info: function info(text) {
       console.log(text);
     },
+    //SECTION - Профль
+    quit: function quit() {
+      console.log('sadsa');
+      document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      this.$store.commit('LOGOUT');
+      _router__WEBPACK_IMPORTED_MODULE_2__["default"].push({
+        name: 'main'
+      });
+    },
+    //!SECTION
     //SECTION - Общие (методы)
     getProducts: function getProducts() {
       var _this2 = this;

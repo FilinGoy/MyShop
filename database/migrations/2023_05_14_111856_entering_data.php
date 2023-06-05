@@ -150,6 +150,11 @@ return new class extends Migration
                     'title' => 'Плёнка',
                     'created_at' => now(),
                     'updated_at' => now()
+                ],
+                [
+                    'title' => 'Весовой',
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ]
             )
         );
@@ -563,6 +568,7 @@ return new class extends Migration
                     'first_name' => 'Иван',
                     'last_name' => 'Иванов',
                     'login' => 'test',
+                    'position_id' => 1,
                     'password' => Hash::make('test'),
                     'created_at' => now(),
                     'updated_at' => now()

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\StoreRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -14,7 +17,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'refresh', 'register']]);
     }
 
     /**
@@ -30,6 +33,30 @@ class AuthController extends Controller
         }
 
         return $this->respondWithToken($token);
+    }
+
+    public function register(StoreRequest $request)
+    {
+        $data = $request->validated();
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            return response()->json(['message' => 'Заполните поле пароля!']);
+        }
+
+        if (User::where('login', $data['login'])->first()) return response(['message' => 'Пользователь с таким логином уже существует!'], 403);
+        if (User::where('email', $data['email'])->first()) return response(['message' => 'Пользователь с такой почтой уже существует!'], 403);
+
+
+        $user = User::create($data);
+        $token = auth()->tokenById($user->id);
+
+        //Mail::to($data['email'])->send((new RegisterNotifaction($data['login']))->with('data', $data));
+
+        return response([
+            'status' => true,
+            'access_token' => $token
+        ]);
     }
 
     /**

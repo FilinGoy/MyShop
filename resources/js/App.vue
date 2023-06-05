@@ -88,11 +88,11 @@
 							</div>
 
 							<ul class="dropdown-menu" aria-labelledby="dropdownProfile" ref="profileMenu">
-								<li><a type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a></li>
+								<li v-if="this.$store.getters.statusUser"><a type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a></li>
 								<li><router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link></li>
 								<li><router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link></li>
 								<li><router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link></li>
-								<li><a type="button" @click="quit" class="dropdown-item border-top text-wrap px-4">Выйти</a></li>
+								<li><a type="button" @click="quitAccount" class="dropdown-item border-top text-wrap px-4">Выйти</a></li>
 							</ul>
 						</div>
 
@@ -202,7 +202,7 @@
 				<router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link>
 				<router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link>
 				<router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link>
-				<a ype="button" @click="quit" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</a>
+				<a ype="button" @click="quitAccount" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</a>
 			</div>
 		</div>
 		<!-- //!SECTION -->
@@ -273,6 +273,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- //!SECTION -->
 	</footer>
 </template>
 <script>
@@ -281,6 +282,11 @@ import elem from "./components/Header.vue";
 export default {
 	name: "App",
 	components: { elem },
+	watch: {
+		"$store.getters.statusUser": function (statusUser) {
+			if (statusUser) this.$router.push({ name: "main" });
+		},
+	},
 	methods: {
 		goAdmin() {
 			let webApiUrl = "/admin";
@@ -294,6 +300,14 @@ export default {
 					window.open("/admin?token=" + tokenStr, "_blank");
 				});
 		},
+
+		//SECTION - Профль
+		quitAccount() {
+			document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+			this.$store.commit("LOGOUT");
+			router.push({ name: "main" });
+		},
+		//!SECTION
 	},
 };
 </script>

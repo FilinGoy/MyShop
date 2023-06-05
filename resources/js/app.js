@@ -246,15 +246,6 @@ app.mixin({
             console.log(text);
         },
 
-        //SECTION - Профль
-        quit() {
-            console.log('sadsa');
-            document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-            this.$store.commit('LOGOUT');
-            router.push({ name: 'main' })
-        },
-        //!SECTION
-
         //SECTION - Общие (методы)
         getProducts() {
             this.axios.post("/api/products").then((res) => {

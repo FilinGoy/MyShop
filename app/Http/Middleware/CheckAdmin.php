@@ -2,13 +2,13 @@
 
 namespace App\Http\Middleware;
 
-use JWTAuth;
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class CheckAdmin
 {
@@ -27,9 +27,9 @@ class CheckAdmin
             if (Auth::user() === null || Auth::user()->position_id !== 4) {
                 return redirect()->to(asset('/'));
             }
-        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+        } catch (TokenInvalidException $e) {
             return response()->json(['status' => 'Токен недействителен']);
-        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+        } catch (TokenExpiredException $e) {
             return response()->json(['status' => 'Срок действия токена истек']);
         } catch (Exception $e) {
             return response()->json(['status' => 'Токен авторизации не найден']);

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 return new class extends Migration
 {
@@ -352,22 +353,77 @@ return new class extends Migration
         DB::table('brands')->insert(
             array(
                 [
-                    'title' => 'Siper',
+                    'title' => 'Супер',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Vkuska',
+                    'title' => 'Вкуснишка',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Snekus',
+                    'title' => 'Лакомка',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'title' => 'Lakomka',
+                    'title' => 'Желейка',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Машуля',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Swetty',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Luxure',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Марс',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'LikeTea',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Lexono',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Наша семья',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Мельниковыч',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Кислинки',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Шипучки',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'title' => 'Соник Бемби',
                     'created_at' => now(),
                     'updated_at' => now()
                 ]
@@ -468,77 +524,46 @@ return new class extends Migration
         DB::table('products')->insert(
             array(
                 [
-                    'title' => 'Карамель «Желейка» со вкусом апельсина (упаковка 0,5 кг)',
-                    'category_id' => 10,
+                    'title' => 'Test1',
+                    'category_id' => 1,
                     'manufacturer_id' => 1,
-                    'expiration_date' => 12,
-                    'expiration_type_id' => 3,
-                    'article' => 'YK119',
+                    'expiration_date' => 1,
+                    'expiration_type_id' => 1,
+                    'article' => 'Test2',
                     'packaging_id' => 1,
-                    'ingredients' => 'патока, сахар, регуляторы кислотности: лимонная кислота; агент желирующий: пектины; краситель: экстракт паприки; ароматизатор, концентрированный сок черной моркови. Может содержать диоксид серы, следы молочных продуктов, сои.',
-                    'weight' => 500,
+                    'ingredients' => 'test3',
+                    'weight' => 1,
                     'weight_type_id' => 1,
-                    'calorie' => 360,
-                    'count' => 1000,
+                    'calorie' => 1,
+                    'count' => 1,
                     'price' => 100.00,
-                    'description' => 'Солнечная карамель с нежной желейной начинкой со вкусом сочного апельсина.',
+                    'description' => 'Test4',
                     'published' => 1,
                     'preview_image' => 'images/main/none.png',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
-                [
-                    'title' => 'Карамель «Вкусняшка» со вкусом лимона (упаковка 1 кг)',
-                    'category_id' => 10,
-                    'manufacturer_id' => 1,
-                    'expiration_date' => 12,
-                    'expiration_type_id' => 3,
-                    'article' => 'NT259',
-                    'packaging_id' => 1,
-                    'ingredients' => 'сок',
-                    'weight' => 1,
-                    'weight_type_id' => 2,
-                    'calorie' => 360,
-                    'count' => 1000,
-                    'price' => 100.00,
-                    'description' => 'Солнечная карамель с нежной начинкой со вкусом сочного лимона.',
-                    'published' => 1,
-                    'preview_image' => 'images/main/vert.png',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'title' => 'Карамель с начинкой из шоколада (упаковка 1 кг)',
-                    'category_id' => 10,
-                    'manufacturer_id' => 1,
-                    'expiration_date' => 12,
-                    'expiration_type_id' => 3,
-                    'article' => 'NG227',
-                    'packaging_id' => 1,
-                    'ingredients' => 'патока, сахар, регуляторы кислотности: лимонная кислота; агент желирующий: пектины; краситель: экстракт паприки; ароматизатор, концентрированный сок черной моркови. Может содержать диоксид серы, следы молочных продуктов, сои.',
-                    'weight' => 1,
-                    'weight_type_id' => 2,
-                    'calorie' => 250,
-                    'count' => 100,
-                    'price' => 256.00,
-                    'description' => 'Солнечная карамель с нежной начинкой со вкусом сочного лимона.',
-                    'published' => 0,
-                    'preview_image' => 'images/main/horz.png',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]
             )
         );
 
         DB::table('users')->insert(
             array(
                 [
+                    'email' => 'den_suvorov2003@mail.ru',
                     'first_name' => 'Денис',
                     'last_name' => 'Суворов',
-                    'login' => 'fg',
-                    'email' => 'den_suvorov2003@mail.ru',
-                    'position_id' => 3,
-                    'password' => '0000',
+                    'login' => 'zMrwuP',
+                    'position_id' => 4,
+                    'password' => Hash::make('vZUGrH'),
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'email' => 'temp@mail.ru',
+                    'first_name' => 'Иван',
+                    'last_name' => 'Иванов',
+                    'login' => 'test',
+                    'password' => Hash::make('test'),
                     'created_at' => now(),
                     'updated_at' => now()
                 ]

@@ -18853,6 +18853,13 @@ app.mixin({
         return;
       }
     },
+    addToHistory: function addToHistory(product) {
+      var newProduct = [{
+        id: product.caegory
+      }];
+      this.$store.commit("ADD_TO_CART", newProduct);
+      this.$store.commit("UPDATE_TOTAL_CART");
+    },
     //!SECTION
     //SECTION - Корзина
     getCart: function getCart() {

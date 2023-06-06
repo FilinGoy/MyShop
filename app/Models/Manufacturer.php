@@ -9,4 +9,9 @@ class Manufacturer extends Model
 {
     protected $table = 'manufacturers';
     protected $guarded = false;
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
 }

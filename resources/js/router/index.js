@@ -39,13 +39,13 @@ const router = createRouter({
             component: () => import('../views/main/PaymentOrders.vue')
         },
         {
-            path: '/products',
-            name: 'products',
-            component: () => import('../views/products/Products.vue')
+            path: '/category/:id',
+            name: 'category.show',
+            component: () => import('../views/products/Category.vue')
         },
         {
-            path: '/products/:id',
-            name: 'products.show',
+            path: '/product/:id',
+            name: 'product.show',
             component: () => import('../views/products/Product.vue')
         },
         {
@@ -54,13 +54,18 @@ const router = createRouter({
             component: () => import('../views/main/Cart.vue')
         },
         {
+            path: '/profile',
+            name: 'profile',
+            component: () => import('../views/main/Profile.vue')
+        },
+        {
             path: '/profile/favorite',
             name: 'favourite',
             component: () => import('../views/main/Favourite.vue')
         },
         {
             path: '/signin',
-            name: 'signin',
+            name: 'signIn',
             component: () => import('../views/main/SignIn.vue')
         },
     ]

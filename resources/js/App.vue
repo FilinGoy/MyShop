@@ -2,7 +2,7 @@
 	<header>
 		<!-- //SECTION - Header -->
 		<nav class="main-nav fixed-top navbar-white bg-white shadow">
-			<div class="container d-flex justify-content-between align-items-stretch h-100 px-0">
+			<div class="container-lg d-flex justify-content-between align-items-stretch h-100 px-0">
 				<div
 					class="nav-item d-flex d-lg-none justify-content-center align-items-center text-black-50 navbar-toggler"
 					type="button"
@@ -38,13 +38,10 @@
 								<router-link
 									v-for="category in this.$store.state.categories"
 									:key="category.id"
-									:to="`/categories/${category.id}`"
+									:to="`/category/${category.id}`"
 									class="dropdown-item rounded-sm col-lg-4 col-xxl-3 text-wrap"
 								>
 									<span class="text-wrap">{{ category.title }}</span>
-								</router-link>
-								<router-link class="col-12 dropdown-item rounded-sm text-center" to="/products">
-									<p>Все товары</p>
 								</router-link>
 							</div>
 						</div>
@@ -68,7 +65,7 @@
 					</router-link>
 
 					<router-link
-						v-if="!this.$store.state.isLogedIn"
+						v-if="!this.$store.state.isLoginUser"
 						to="/signin"
 						class="nav-item btn btn-white shadow-none border-0 rounded-0 d-flex justify-content-center align-items-center text-black-50"
 					>
@@ -88,11 +85,11 @@
 							</div>
 
 							<ul class="dropdown-menu" aria-labelledby="dropdownProfile" ref="profileMenu">
-								<li v-if="this.$store.getters.statusUser"><a type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a></li>
+								<li v-if="this.$store.state.user?.position_id === 4"><a type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a></li>
 								<li><router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link></li>
 								<li><router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link></li>
 								<li><router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link></li>
-								<li><a type="button" @click="quitAccount" class="dropdown-item border-top text-wrap px-4">Выйти</a></li>
+								<li><a type="button" @click.prevent="quitAccount" class="dropdown-item border-top text-wrap px-4">Выйти</a></li>
 							</ul>
 						</div>
 
@@ -157,10 +154,7 @@
 				<hr />
 
 				<h3 class="px-4">Категории</h3>
-				<router-link class="dropdown-item px-4" to="/products">
-					<p>Все товары</p>
-				</router-link>
-				<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/categories/${category.id}`" class="dropdown-item text-wrap px-4">
+				<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/category/${category.id}`" class="dropdown-item text-wrap px-4">
 					<span>{{ category.title }}</span>
 				</router-link>
 
@@ -188,7 +182,7 @@
 		<!-- //!SECTION -->
 
 		<!-- //SECTION - Канвас профиля -->
-		<div class="offcanvas offcanvas-end w-30" tabindex="-1" id="profileOffcanvas" aria-labelledby="profileOffcanvasLabel">
+		<div v-if="this.$store.state.isLoginUser" class="offcanvas offcanvas-end w-30" tabindex="-1" id="profileOffcanvas" aria-labelledby="profileOffcanvasLabel">
 			<div class="offcanvas-header">
 				<div class="offcanvas-title d-flex px-2 justify-content-start justify-content-md-start align-items-center" id="profileOffcanvasLabel" style="height: 40px;">
 					<div class="navbar-brand d-flex align-items-center p-0">
@@ -199,10 +193,11 @@
 				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
 			</div>
 			<div class="offcanvas-body p-0 d-flex flex-column" data-bs-dismiss="offcanvas">
+				<a v-if="this.$store.state.user?.position_id === 4" type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a>
 				<router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link>
 				<router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link>
 				<router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link>
-				<a ype="button" @click="quitAccount" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</a>
+				<a type="button" @click.prevent="quitAccount" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</a>
 			</div>
 		</div>
 		<!-- //!SECTION -->
@@ -284,7 +279,7 @@ export default {
 	components: { elem },
 	watch: {
 		"$store.getters.statusUser": function (statusUser) {
-			if (statusUser) this.$router.push({ name: "main" });
+			if (!statusUser) this.$router.push({ name: "main" });
 		},
 	},
 	methods: {
@@ -297,7 +292,7 @@ export default {
 					headers: { Authorization: `Bearer ${tokenStr}` },
 				})
 				.then((res) => {
-					window.open("/admin?token=" + tokenStr, "_blank");
+					window.open("/admin?token=" + tokenStr, "_self");
 				});
 		},
 
@@ -305,7 +300,7 @@ export default {
 		quitAccount() {
 			document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 			this.$store.commit("LOGOUT");
-			router.push({ name: "main" });
+			this.$router.push({ name: "main" });
 		},
 		//!SECTION
 	},

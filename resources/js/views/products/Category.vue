@@ -4,10 +4,7 @@
 			<div class="d-none d-xl-flex col-lg-3">
 				<div class="py-3 shadow-sm bg-white">
 					<h3 class="px-4">Категории</h3>
-					<router-link class="dropdown-item px-4" to="/products">
-						<p>Все товары</p>
-					</router-link>
-					<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/categories/${category.id}`" class="dropdown-item text-wrap px-4">
+					<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/category/${category.id}`" class="dropdown-item text-wrap px-4">
 						<span>{{ category.title }}</span>
 					</router-link>
 				</div>
@@ -69,7 +66,7 @@
 				<!-- Products collection -->
 
 				<div v-if="products" class="row row-cols-1 row-cols-lg-3 gutters-mobile g-5">
-					<template v-for="product in products" :key="product.id">
+					<!-- <template v-for="product in products" :key="product.id">
 						<div class="col" v-if="product.published">
 							<div class="card bg-white d-flex flex-column justify-content-between">
 								<div class="card-img-top h-50 position-relative">
@@ -91,7 +88,7 @@
 									</div>
 								</div>
 								<div class="card-body px-3 py-3 d-flex flex-column justify-content-between">
-									<a :href="`/products/${product.id}`" class="text-wrap text-truncate card-title h-50">
+									<a :href="`/product/${product.id}`" class="text-wrap text-truncate card-title h-50">
 										{{ product.title }}
 									</a>
 
@@ -138,7 +135,7 @@
 								</div>
 							</div>
 						</div>
-					</template>
+					</template> -->
 				</div>
 
 				<!-- Pagination -->
@@ -163,9 +160,22 @@
 </template>
 <script>
 export default {
-	name: "products",
+	name: "category",
+	data() {
+		return {
+			products: [],
+		};
+	},
 	mounted() {
-		this.getProducts();
+		this.getProductFromCategory();
+	},
+	methods: {
+		getProductFromCategory() {
+			this.axios.get("../../api/product/" + this.$route.params.id).then((res) => {
+				this.products = res.data.data;
+				console.log(this.products);
+			});
+		},
 	},
 };
 </script>

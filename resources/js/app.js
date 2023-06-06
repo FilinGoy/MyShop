@@ -9,8 +9,6 @@ import axios from 'axios';
 const app = createApp(App);
 const store = createStore({
     state: {
-        categories: [],
-
         cart: [],
         countCartAll: 0,
         countCartDiff: 0,
@@ -21,9 +19,8 @@ const store = createStore({
 
         history: [],
 
-        isLogedIn: false,
+        isLoginUser: false,
         user: null,
-        isLoadingUser: false,
         tokenRefreshed: true,
 
     },
@@ -33,11 +30,10 @@ const store = createStore({
             localStorage.setItem('access_token', value.token)
         },
         SET_IS_LOGED_IN: (state, value) => {
-            state.isLogedIn = value;
+            state.isLoginUser = value;
         },
         GET_INFO_USER: (state, value) => {
             state.user = value
-            state.isLoadingUser = true
         },
         SET_TOKEN_REFRESHED: (state, value) => {
             state.tokenRefreshed = value
@@ -55,7 +51,7 @@ const store = createStore({
                     } else {
                         sessionStorage.removeItem('access_token');
                     }
-                    state.isLogedIn = false;
+                    state.isLoginUser = false;
                     state.user = null;
                 })
         },
@@ -191,7 +187,7 @@ const store = createStore({
     },
     getters: {
         statusUser(state) {
-            return state.isLogedIn;
+            return state.isLoginUser;
         },
     }
 });
@@ -205,8 +201,6 @@ app.mount('#app')
 app.mixin({
     data() {
         return {
-            categories: [],
-            products: [],
             product: [],
             cart: [],
             favourite: [],
@@ -247,19 +241,6 @@ app.mixin({
         },
 
         //SECTION - Общие (методы)
-        getProducts() {
-            this.axios.post("/api/products").then((res) => {
-                this.products = res.data.data;
-            });
-        },
-
-        getProduct() {
-            this.axios.get("/api/products/" + this.$route.params.id).then((res) => {
-                this.product = res.data.data;
-                console.log(res.data.data);
-            });
-        },
-
         getProductWord(count) {
             return count % 10 == 1 && count % 100 != 11 ? 'товар' :
                 (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20) ? 'товара' : 'товаров');
@@ -356,16 +337,6 @@ app.mixin({
                 e.target.value = 0;
                 return;
             }
-        },
-        addToHistory(product) {
-            let newProduct = [
-                {
-                    id: product.caegory,
-                },
-            ];
-
-            this.$store.commit("ADD_TO_CART", newProduct);
-            this.$store.commit("UPDATE_TOTAL_CART");
         },
         //!SECTION
 

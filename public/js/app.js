@@ -18513,7 +18513,6 @@ var _this = undefined;
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
   state: {
-    categories: [],
     cart: [],
     countCartAll: 0,
     countCartDiff: 0,
@@ -18621,7 +18620,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
 
     //SECTION - Категории
     GET_CATEGORIES: function GET_CATEGORIES(state) {
-      axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("/api/ca").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("/api/categories").then(function (res) {
         state.categories = res.data.data;
       });
     }
@@ -18705,8 +18704,6 @@ app.mount('#app');
 app.mixin({
   data: function data() {
     return {
-      categories: [],
-      products: [],
       product: [],
       cart: [],
       favourite: [],
@@ -18738,18 +18735,6 @@ app.mixin({
       console.log(text);
     },
     //SECTION - Общие (методы)
-    getCategory: function getCategory() {
-      var _this2 = this;
-      this.axios.get("/api/category/" + this.$route.params.id).then(function (res) {
-        _this2.product = res.data.data;
-      });
-    },
-    getProduct: function getProduct() {
-      var _this3 = this;
-      this.axios.get("/api/product/" + this.$route.params.id).then(function (res) {
-        _this3.product = res.data.data;
-      });
-    },
     getProductWord: function getProductWord(count) {
       return count % 10 == 1 && count % 100 != 11 ? 'товар' : count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20) ? 'товара' : 'товаров';
     },
@@ -18849,13 +18834,6 @@ app.mixin({
         e.target.value = 0;
         return;
       }
-    },
-    addToHistory: function addToHistory(product) {
-      var newProduct = [{
-        id: product.caegory
-      }];
-      this.$store.commit("ADD_TO_CART", newProduct);
-      this.$store.commit("UPDATE_TOTAL_CART");
     },
     //!SECTION
     //SECTION - Корзина
@@ -19042,7 +19020,7 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_0__.createRouter)({
     path: '/category/:id',
     name: 'category.show',
     component: function component() {
-      return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../views/products/Products.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
+      return __webpack_require__.e(/*! import() */ "resources_js_views_products_Category_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/products/Category.vue */ "./resources/js/views/products/Category.vue"));
     }
   }, {
     path: '/product/:id',
@@ -31080,7 +31058,7 @@ function useRoute() {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_main_Main_vue":1,"resources_js_views_main_About_vue":1,"resources_js_views_main_Contacts_vue":1,"resources_js_views_main_Delivery_vue":1,"resources_js_views_main_HowToBuy_vue":1,"resources_js_views_main_ReturnAndTrade_vue":1,"resources_js_views_main_PaymentOrders_vue":1,"resources_js_views_products_Product_vue":1,"resources_js_views_main_Cart_vue":1,"resources_js_views_main_Profile_vue":1,"resources_js_views_main_Favourite_vue":1,"resources_js_views_main_SignIn_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_main_Main_vue":1,"resources_js_views_main_About_vue":1,"resources_js_views_main_Contacts_vue":1,"resources_js_views_main_Delivery_vue":1,"resources_js_views_main_HowToBuy_vue":1,"resources_js_views_main_ReturnAndTrade_vue":1,"resources_js_views_main_PaymentOrders_vue":1,"resources_js_views_products_Category_vue":1,"resources_js_views_products_Product_vue":1,"resources_js_views_main_Cart_vue":1,"resources_js_views_main_Profile_vue":1,"resources_js_views_main_Favourite_vue":1,"resources_js_views_main_SignIn_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

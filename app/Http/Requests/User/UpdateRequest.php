@@ -37,9 +37,12 @@ class UpdateRequest extends FormRequest
         return [
             'email.required' => 'Поле является обязательным!',
             'email.unique' => 'Данный E-Mail уже используется!',
+            'email' => 'Поле почты заполнено неверно!',
             'login.required' => 'Поле является обязательным!',
             'login.unique' => 'Данный логин уже используется!',
             'login.min' => 'Данный логин содержит менее 4 символов!',
+            'login' => 'Поле логина заполнено неверно!',
+            'password.required' => 'Поле является обязательным!'
         ];
     }
 }

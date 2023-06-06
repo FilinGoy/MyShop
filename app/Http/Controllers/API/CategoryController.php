@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\GeneralResource;
 use App\Models\Category;
 
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     public function __invoke()
     {

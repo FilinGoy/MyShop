@@ -27,51 +27,63 @@
                             <div class="card-body">
                                 <h4>Новый пользователь</h4>
                                 <div class="form-group">
-                                    <label for="email" class="col-form-label">E-Mail адрес<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control col" id="email" name="email" value="{{ old('email') }}" placeholder="example@mail.ru">
-                                    @if($errors->has('email'))
-                                        <p class="text-danger">{{$errors->first('email')}}</p>
+                                    <label for="login" class="col-form-label">Логин<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control col" id="login" name="login"
+                                        value="{{ old('login') }}" placeholder="Логин" minlength="4" required>
+                                    @if ($errors->has('login'))
+                                        <p class="text-danger">{{ $errors->first('login') }}</p>
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="login" class="col-form-label">Логин</label>
-                                    <input type="text" class="form-control col" id="login" name="login" value="{{ old('login') }}" placeholder="Логин" minlength="4" required>
-                                    @if($errors->has('login'))
-                                        <p class="text-danger">{{$errors->first('login')}}</p>
+                                    <label for="email" class="col-form-label">E-Mail адрес<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control col" id="email" name="email"
+                                        value="{{ old('email') }}" placeholder="example@mail.ru">
+                                    @if ($errors->has('email'))
+                                        <p class="text-danger">{{ $errors->first('email') }}</p>
                                     @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="first_name" class="col-form-label">Имя</label>
-                                    <input type="text" class="form-control col" id="first_name" name="first_name" value="{{ old('first_name') }}" placeholder="Иван">
+                                    <input type="text" class="form-control col" id="first_name" name="first_name"
+                                        value="{{ old('first_name') }}" placeholder="Иван">
                                 </div>
                                 <div class="form-group">
                                     <label for="last_name" class="col-form-label">Фамилия</label>
-                                    <input type="text" class="form-control col" id="last_name" name="last_name" value="{{ old('last_name') }}" placeholder="Иванов">
+                                    <input type="text" class="form-control col" id="last_name" name="last_name"
+                                        value="{{ old('last_name') }}" placeholder="Иванов">
                                 </div>
                                 <div class="form-group">
                                     <label for="number" class="col-form-label">Номер</label>
-                                    <input type="text" class="form-control col" id="number" name="number" data-inputmask="&quot;mask&quot;: &quot;+7 (999) 999-99-99&quot;"
-                                    data-mask="" inputmode="text" value="{{ old('number') }}" placeholder="+7 (999) 999-99-99">
+                                    <input type="text" class="form-control col" id="number" name="number"
+                                        data-inputmask="&quot;mask&quot;: &quot;+7 (999) 999-99-99&quot;" data-mask=""
+                                        inputmode="text" value="{{ old('number') }}" placeholder="+7 (999) 999-99-99">
                                 </div>
                                 <div class="form-group">
                                     <label for="adress" class="col-form-label">Адрес</label>
-                                    <input type="text" class="form-control col" id="adress" name="adress" value="{{ old('adress') }}" placeholder="г.Москва, Благвощенская, д.3, кв.5">
+                                    <input type="text" class="form-control col" id="adress" name="adress"
+                                        value="{{ old('adress') }}" placeholder="г.Москва, Благвощенская, д.3, кв.5">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password" class="col-form-label">Пароль<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control col" id="password" name="password" value="{{ old('password') }}" placeholder="Пароль">
+                                    <label for="password" class="col-form-label">Пароль<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control col" id="password" name="password"
+                                        value="{{ old('password') }}" placeholder="Пароль">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control col" id="password_confirmation" name="password_confirmation" placeholder="Повторите пароль">
-                                    @if($errors->has('password'))
-                                        <p class="text-danger">{{$errors->first('password')}}</p>
+                                    <input type="text" class="form-control col" id="password_confirmation"
+                                        name="password_confirmation" placeholder="Повторите пароль">
+                                    @if ($errors->has('password'))
+                                        <p class="text-danger">{{ $errors->first('password') }}</p>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-outline-success">Создать</button>
-                                <a type="button" href="{{ route('user.index') }}" class="btn btn-outline-danger float-right">Отменить</a>
+                                <a type="button" href="{{ route('user.index') }}"
+                                    class="btn btn-outline-danger float-right">Отменить</a>
                             </div>
                         </form>
                     </div>

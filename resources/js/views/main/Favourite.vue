@@ -1,34 +1,30 @@
 <template>
-	<div class="row g-2">
-		<div class="col-12 col-lg-4">
-			<div class="d-flex flex-column justify-content-between bg-white p-4">
-				<h4 class="d-none d-lg-block mb-0">Итого:</h4>
-				<p class="text-muted d-none d-lg-block">
-					<span>{{ totalCount ?? "0" }}</span> {{ getProductWord(totalCount) }}
-				</p>
-				<div class="mb-0 py-2 d-flex justify-content-between align-items-center flex-wrap">
-					<p class="mb-0 d-lg-none">Сумма заказа:</p>
-					<p class="mb-0 d-none d-lg-block">На сумму:</p>
-					<div class="fs-2 text-wrap text-danger d-flex align-items-center">
-						<span class="fs-2">{{ totalPrice ?? "0" }}</span
-						>₽
-					</div>
+	<div class="row flex-fill g-2">
+		<div class="d-none d-lg-block col-12 col-lg-4">
+			<div class="d-flex flex-column bg-white">
+				<h4 class="d-none d-lg-block mb-0 p-4">Личный кабинет</h4>
+				<div class="d-flex flex-column flex-fill">
+					<router-link to="/profile/orders" class="dropdown-item text-wrap py-3 px-4">Мои заказы</router-link>
+					<router-link to="/profile/favorite" class="dropdown-item text-wrap py-3 px-4 active">Избранное</router-link>
+					<router-link to="/profile" class="dropdown-item text-wrap py-3 px-4">Учётная запись</router-link>
 				</div>
+				<a type="button" @click="quitAccount" class="dropdown-item mt-auto border-top text-wrap p-4">Выйти</a>
 			</div>
 		</div>
-		<div class="col-12 col-lg-8">
-			<div class="bg-white px-4 py-2">
-				<div class="d-flex justify-content-between align-items-center py-2">
-					<div class="d-flex align-items-end">
-						<h1 class="my-0 lh-1">Избранное</h1>
-						<div class="pl-2">{{ this.$store.state.countFavourite }}</div>
-					</div>
-					<div>
-						<div class="btn btn-outline-danger" @click="clearFavourite()">Очистить избранное</div>
+		<div class="d-flex col-12 col-lg-8 flex-fill">
+			<div class="bg-white flex-fill px-4 pt-2 pb-4">
+				<div v-if="favourite" class="row">
+					<div class="d-flex justify-content-between align-items-center py-4 flex-wrap">
+						<div class="d-flex align-items-end my-3">
+							<h1 class="my-0 lh-1">Избранное</h1>
+							<div class="pl-2">{{ this.$store.state.countFavourite }} {{ getProductWord(this.$store.state.countFavourite) }}</div>
+						</div>
+						<div>
+							<div class="btn btn-outline-danger" @click="clearFavourite()">Очистить избранное</div>
+						</div>
 					</div>
 				</div>
-				<hr />
-				<div class="w-100">
+				<div class="row">
 					<div class="flex-column align-items-center p-md-5" :class="this.$store.state.countFavourite == 0 ? 'd-flex' : 'd-none'">
 						<img class="w-25 py-5" src="storage/images/main/favourite-none.png" />
 						<h4>В избранном пока ничего нет</h4>

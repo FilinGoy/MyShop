@@ -30,10 +30,13 @@
 <script src="js/script.js"></script>
 <script src="../js/vendor/jquery.lavalamp.js"></script>
 <script src="../js/vendor/bootstrap.bundle.js"></script>
+<script src="js/moment/moment-with-locales.min.js"></script>
+<script src="js/inputmask/jquery.inputmask.min.js"></script>
 <script src="../js/vendor/in-view.min.js"></script>
 <script src="../js/vendor/wow.js"></script>
 <script src="../js/vendor/tabzy.js"></script>
 <script src="../js/vendor/isotope.pkgd.js"></script>
+
 <script src="js/app.js"></script>
 
 <script></script>

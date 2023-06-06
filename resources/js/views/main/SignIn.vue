@@ -1,104 +1,81 @@
 <template>
 	<div class="row flex-fill">
-		<div class="col-12 py-5 px-4 d-flex justify-content-center align-items-center">
-			<div class="border w-50">
-				<!-- Pills navs -->
-				<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-					<li class="nav-item" role="presentation">
-						<a class="nav-link active" id="tab-login" data-mdb-toggle="pill" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+		<div class="col-12 d-flex justify-content-center align-items-center">
+			<div class="border bg-white rounded-3 p-3">
+				<ul class="nav nav-tabs nav-lavalamp justify-content-center mb-4" id="productTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Вход</a>
 					</li>
-					<li class="nav-item" role="presentation">
-						<a class="nav-link" id="tab-register" data-mdb-toggle="pill" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
+					<li class="nav-item">
+						<div class="nav-link">/</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="registration-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false"> Регистрация </a>
 					</li>
 				</ul>
-				<!-- Pills navs -->
-
-				<!-- Pills content -->
-				<div class="tab-content">
-					<div class="tab-pane active border border-danger" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-						<form>
-							<!-- Email input -->
-							<div class="form-outline mb-4">
-								<label class="form-label" for="loginName">Логин</label>
-								<input type="email" id="loginName" class="form-control" v-model="loginLogin" />
+				<div class="tab-content" id="productTabContent">
+					<!-- Login tab content -->
+					<div class="tab-pane fade active show" id="login" role="tabpanel" aria-labelledby="login-tab">
+						<div class="row mb-4 g-3">
+							<div class="col-12">
+								<label for="loginName" class="form-label">Логин<span class="text-danger">*</span></label>
+								<input type="text" class="form-control" id="loginName" placeholder="Пользователь" max="255" v-model="loginLogin" />
 							</div>
-
-							<!-- Password input -->
-							<div class="form-outline mb-4">
-								<label class="form-label" for="loginPassword">Пароль</label>
-								<input type="password" id="loginPassword" class="form-control" v-model="loginPassword" />
+							<div class="col-12">
+								<label for="loginPassword" class="form-label">Пароль<span class="text-danger">*</span></label>
+								<input type="password" class="form-control" id="loginPassword" placeholder="Пароль" max="255" v-model="loginPassword" />
 							</div>
-
-							<!-- 2 column grid layout -->
-							<div class="row mb-4">
-								<div class="col-md-6 d-flex justify-content-center">
-									<!-- Checkbox -->
-									<div class="form-check mb-3 mb-md-0">
-										<label class="form-check-label" for="loginChecked">Запомнить меня</label>
-										<input class="form-check-input" type="checkbox" value="" id="loginChecked" v-model="loginChecked" />
-									</div>
-								</div>
-
-								<div class="col-md-6 d-flex justify-content-center">
-									<!-- Simple link -->
-									<a>Забыли пароль?</a>
-								</div>
-
-								<p v-if="errorLogin" class="text-danger">
-									{{ errorLogin }}
-								</p>
-							</div>
-
-							<!-- Submit button -->
-							<button @click.prevent="getToken()" class="btn btn-primary btn-block mb-4">Вход</button>
-						</form>
-					</div>
-
-					<div class="tab-pane active border border-danger" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-						<form>
-							<!-- Username input -->
-							<div class="form-outline mb-4">
-								<label class="form-label" for="registerUsername">Логин</label>
-								<input type="text" id="registerUsername" class="form-control" v-model="registerLogin" />
-							</div>
-
-							<!-- Email input -->
-							<div class="form-outline mb-4">
-								<label class="form-label" for="registerEmail">Почта (E-Mail)</label>
-								<input type="email" id="registerEmail" class="form-control" placeholder="inbox@mail.ru" v-model="registerEmail" />
-							</div>
-
-							<!-- Password input -->
-							<div class="form-outline mb-4">
-								<label class="form-label" for="registerPassword">Пароль</label>
-								<input type="password" id="registerPassword" class="form-control" placeholder="Придумайте пароль" v-model="registerPassword" />
-							</div>
-
-							<!-- Repeat Password input -->
-							<div class="form-outline mb-4">
-								<label class="form-label" for="registerRepeatPassword">Повторите пароль</label>
-								<input type="password" id="registerRepeatPassword" class="form-control" placeholder="Подтвердите пароль" v-model="registerPassword_confirm" />
-							</div>
-
-							<!-- Checkbox -->
-							<div class="form-check d-flex justify-content-center mb-4">
-								<input class="form-check-input me-2" type="checkbox" id="registerCheck" checked aria-describedby="registerCheckHelpText" v-model="registerChecked" />
-								<label class="form-check-label" for="registerCheck">
-									Я соглашаюсь с требованиями сервиса
+							<div class="col-12 form-outline">
+								<input class="form-input me-2" type="checkbox" id="loginCheck" checked aria-describedby="loginCheckHelpText" v-model="loginChecked" />
+								<label class="form-check-label" for="loginCheck">
+									Запомнить меня
 								</label>
 							</div>
-
-							<p v-if="errorRegister" class="text-danger">
-								{{ errorRegister }}
+							<div class="col-12">
+								<button @click.prevent="getToken()" class="btn btn-outline-danger w-100">Вход</button>
+							</div>
+							<p v-if="errorLogin" class="text-danger col-12">
+								{{ errorLogin }}
 							</p>
+						</div>
+					</div>
+					<!-- Registration tab content -->
+					<div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
+						<div class="row mb-4 g-3">
+							<div class="col-12">
+								<label class="form-label" for="registerUsername">Логин<span class="text-danger">*</span></label>
+								<input type="text" id="registerUsername" class="form-control" placeholder="Пользователь" v-model="registerLogin" minlength="4" max="255" />
+							</div>
+							<div class="col-12">
+								<label class="form-label" for="registerEmail">Почта (E-Mail)<span class="text-danger">*</span></label>
+								<input type="email" id="registerEmail" class="form-control" placeholder="inbox@mail.ru" v-model="registerEmail" max="255" />
+							</div>
+							<div class="col-12">
+								<label class="form-label" for="registerPassword">Пароль<span class="text-danger">*</span></label>
+								<input type="password" id="registerPassword" class="form-control" placeholder="Придумайте пароль" v-model="registerPassword" max="255" />
+							</div>
+							<div class="col-12">
+								<label class="form-label" for="registerRepeatPassword">Подтвердите пароль<span class="text-danger">*</span></label>
+								<input type="password" id="registerRepeatPassword" class="form-control" placeholder="Подтвердите пароль" v-model="registerPassword_confirm" max="255" />
+							</div>
+							<div class="col-12">
+								<input class="form-input me-2" type="checkbox" id="registerCheck" aria-describedby="registerCheckHelpText" v-model="registerChecked" required />
+								<label class="form-check-label" for="registerCheck"> Я соглашаюсь с требованиями сервиса<span class="text-danger">*</span> </label>
+							</div>
+							<div class="col-12">
+								<button @click.prevent="register()" class="btn btn-outline-danger w-100">Регистрация</button>
+							</div>
 
-							<!-- Submit button -->
-							<button @click.prevent="register()" class="btn btn-primary btn-block mb-3">Регистрация</button>
-						</form>
+							<div class="col-12">
+								<p v-if="errorRegister" class="text-danger">
+									{{ errorRegister }}
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
-				<!-- Pills content -->
 			</div>
+			<!-- Pills content -->
 		</div>
 	</div>
 </template>

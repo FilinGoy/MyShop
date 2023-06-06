@@ -2589,23 +2589,6 @@ pre code {
     border: 0;
 }
 
-.form-control {
-    display: block;
-    width: 100%;
-    height: 100%;
-    outline: none;
-    padding: 0.625rem 1.125rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    box-shadow: none;
-}
-
 @media (max-width: 1200px) {
     .form-control {
         font-size: calc(0.775rem + 0.3vw);
@@ -2631,7 +2614,6 @@ pre code {
 .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #969eac;
     outline: 0;
 }
 
@@ -3198,15 +3180,15 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #7521ff;
-    border-color: #6d14ff;
+    background-color: #ff0000;
+    border-color: #ff0000;
 }
 
 .btn-primary:focus,
 .btn-primary.focus {
     color: #fff;
-    background-color: #7521ff;
-    border-color: #6d14ff;
+    background-color: #ff0000;
+    border-color: #ff0000;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 0.05rem rgba(158, 99, 255, 0.5);
 }
 
@@ -3221,8 +3203,8 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled).active,
 .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #6d14ff;
-    border-color: #6607ff;
+    background-color: #ff0000;
+    border-color: #ff0000;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus,
@@ -4406,7 +4388,7 @@ input[type="button"].btn-block {
 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #565e6d;
+    background-color: #f00000;
 }
 
 .dropdown-item.disabled,
@@ -6312,7 +6294,7 @@ a.badge:focus {
 a.badge-primary:hover,
 a.badge-primary:focus {
     color: #fff;
-    background-color: #6d14ff;
+    background-color: #ff0000;
 }
 
 a.badge-primary:focus,
@@ -8149,7 +8131,7 @@ a.bg-primary:hover,
 a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-    background-color: #6d14ff !important;
+    background-color: #ff0000 !important;
 }
 
 .bg-secondary {

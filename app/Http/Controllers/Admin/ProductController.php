@@ -91,9 +91,9 @@ class ProductController extends Controller
 
         if (isset($images)){
             foreach($images as $image){
-                $countImages = ProductImage::where('product_id', $product->id)->get();
+                $countImages = ProductImage::where('product_id', $product->id)->count();
 
-                if (count($countImages) > 4) continue;
+                if ($countImages > 4) continue;
                 $path = Storage::disk('public')->put('/images/products', $image);
                 ProductImage::create([
                     'product_id' => $product->id,
@@ -188,9 +188,9 @@ class ProductController extends Controller
         if (isset($data['images'])) {
             $newImages = $data['images'];
             foreach ($newImages as $image) {
-                $countImages = ProductImage::where('product_id', $product->id)->get();
+                $countImages = ProductImage::where('product_id', $product->id)->count();
 
-                if (count($countImages) > 4) continue;
+                if ($countImages > 4) continue;
                 $path = Storage::disk('public')->put('/images/products', $image);
                 ProductImage::create(
                     [

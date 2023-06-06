@@ -1,62 +1,157 @@
 <template>
-	<div class="row g-2">
-		<div class="col-12 col-lg-4">
-			<div class="d-flex flex-column justify-content-between bg-white p-4">
-				<h4 class="d-none d-lg-block mb-0">Итого:</h4>
-				<p class="text-muted d-none d-lg-block">
-					<span>{{ totalCount ?? "0" }}</span> {{ getProductWord(totalCount) }}
-				</p>
-				<div class="mb-0 py-2 d-flex justify-content-between align-items-center flex-wrap">
-					<p class="mb-0 d-lg-none">Сумма заказа:</p>
-					<p class="mb-0 d-none d-lg-block">На сумму:</p>
-					<div class="fs-2 text-wrap text-danger d-flex align-items-center">
-						<span class="fs-2">{{ totalPrice ?? "0" }}</span
-						>₽
-					</div>
+	<div class="row flex-fill g-2">
+		<div class="d-none d-lg-block col-12 col-lg-4">
+			<div class="d-flex flex-column bg-white">
+				<h4 class="d-none d-lg-block mb-0 p-4">Личный кабинет</h4>
+				<div class="d-flex flex-column flex-fill">
+					<router-link to="/profile/orders" class="dropdown-item text-wrap py-3 px-4">Мои заказы</router-link>
+					<router-link to="/profile/favorite" class="dropdown-item text-wrap py-3 px-4">Избранное</router-link>
+					<router-link to="/profile" class="dropdown-item text-wrap py-3 px-4 active">Учётная запись</router-link>
 				</div>
+				<a type="button" @click="quitAccount" class="dropdown-item mt-auto border-top text-wrap p-4">Выйти</a>
 			</div>
 		</div>
-		<div class="col-12 col-lg-8">
-			<div class="bg-white px-4 py-2">
-				<div class="d-flex justify-content-between align-items-center py-2">
-					<div class="d-flex align-items-end">
-						<h1 class="my-0 lh-1">Избранное</h1>
-						<div class="pl-2">{{ this.$store.state.countFavourite }}</div>
-					</div>
-					<div>
-						<div class="btn btn-outline-danger" @click="clearFavourite()">Очистить избранное</div>
+		<div class="d-flex col-12 col-lg-8 flex-fill">
+			<div class="bg-white flex-fill px-4 pt-2 pb-4">
+				<div class="row">
+					<div class="d-flex justify-content-between align-items-center py-4">
+						<div class="d-flex align-items-end">
+							<h1 class="my-0 lh-1">Учетная запись</h1>
+						</div>
 					</div>
 				</div>
-				<hr />
-				<div class="w-100">
-					<div class="flex-column align-items-center p-md-5" :class="this.$store.state.countFavourite == 0 ? 'd-flex' : 'd-none'">
-						<img class="w-25 py-5" src="storage/images/main/favourite-none.png" />
-						<h4>В избранном пока ничего нет</h4>
-						<p class="w-50 text-center">Здесь будут храниться товары, которые вас заинтересовали.</p>
-						<router-link class="btn btn-danger rounded-3" to="/">На главную страницу</router-link>
+				<div class="row g-3">
+					<h4 class="">Личные данные</h4>
+					<div class="col-md-6">
+						<label for="firstName" class="form-label">Имя</label>
+						<input type="text" class="form-control" id="firstName" placeholder="Иван" max="255" v-model="firstName" />
 					</div>
-					<template v-if="products">
-						<template v-for="product in products" :key="product.id">
-							<div class="row">
-								<div class="col-2"><img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" /></div>
-								<div class="col-4">{{ product.title }}</div>
-								<div class="col-2">{{ product.price }}</div>
-								<div class="col-1" @click="cleanFromFavourite(product.id)">
-									<div class="btn"><i class="fa-solid fa-xmark text-danger"></i></div>
-								</div>
-							</div>
-						</template>
-					</template>
+					<div class="col-md-6">
+						<label for="lastName" class="form-label">Фамилия</label>
+						<input type="text" class="form-control" id="lastName" placeholder="Иванов" max="255" v-model="lastName" />
+					</div>
+					<div class="col-md-6">
+						<label for="number" class="form-label">Номер</label>
+						<input
+							type="text"
+							class="form-control col"
+							id="number"
+							name="number"
+							data-inputmask='"mask": "+7 (999) 999-99-99"'
+							inputmode="text"
+							placeholder="+7 (999) 999-99-99"
+							v-model="number"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="ad" class="col-form-label">Номер</label>
+						<input
+							type="text"
+							class="form-control col"
+							id="ad"
+							name="ad"
+							data-inputmask='"mask": "+7 (999) 999-99-99"'
+							data-mask=""
+							inputmode="text"
+							placeholder="+7 (999) 999-99-99"
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="email" class="form-label">Почта (E-Mail)<span class="text-danger">*</span></label>
+						<input type="email" class="form-control" id="email" placeholder="example@mail.ru" max="255" v-model="email" />
+					</div>
+					<div class="col-12">
+						<label for="adress" class="form-label">Адрес</label>
+						<input type="text" class="form-control" id="adress" placeholder="г.Челябинск, Проспект Ленина, д.1, 1" max="255" v-model="adress" />
+					</div>
+					<hr />
+					<div class="col-md-6">
+						<label for="newPassword" class="form-label">Новый пароль</label>
+						<input type="password" class="form-control" id="newPassword" max="255" v-model="newPassword" />
+					</div>
+					<div class="col-md-6">
+						<label for="newPasswordConfirm" class="form-label">Повторите пароль</label>
+						<input type="text" class="form-control" id="newPasswordConfirm" max="255" v-model="newPasswordConfirm" />
+					</div>
+					<div class="col-12">
+						<button type="submit" class="btn btn-primary">Сохранить изменения</button>
+					</div>
+					<div class="col-12">
+						<small class="text-wrap text-start text-muted fw-light"> Заполненные данные помогут вам быстрее оформлять заказы! </small>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
+import { mapState } from "vuex";
+
 export default {
-	name: "favourite",
+	name: "profile",
+	computed: {
+		...mapState(["user"]),
+	},
+	data() {
+		return {
+			id: "",
+			email: "",
+			firstName: "",
+			lastName: "",
+			number: "",
+			adress: "",
+			newPassword: "",
+			newPasswordConfirm: "",
+			error: "",
+		};
+	},
 	mounted() {
-		this.getFavourite();
+		if (!this.$store.getters.statusUser) {
+			this.$router.push({ name: "signIn" });
+		}
+	},
+	watch: {
+		"$store.state.user": function (value) {
+			this.id = value.id;
+			this.email = value.email;
+			this.firstName = value.first_name;
+			this.lastName = value.last_name;
+			this.number = value.number;
+			this.adress = value.adress;
+		},
+	},
+	methods: {
+		async editAccount() {
+			let data = { id: this.id };
+			if (this.email !== this.$store.state.user.email) data.email = this.email;
+			if (this.firstName !== this.$store.state.user.first_name) data.first_name = this.firstName;
+			if (this.lastName !== this.$store.state.user.last_name) data.last_name = this.lastName;
+			if (this.number !== this.$store.state.user.number) data.number = this.number;
+			if (this.adress !== this.$store.state.user.adress) data.adress = this.adress;
+			if (this.newPassword !== this.$store.state.user.newPassword) {
+				if (this.newPassword != this.newPasswordConfirm) {
+					return (this.error = "Пароли не совпадают");
+				}
+				data.password = this.newPassword;
+			}
+
+			this.axios
+				.post("/api/editProfile", data)
+				.then((res) => {
+					if (res.data.status) {
+						window.location.reload();
+					}
+				})
+				.catch((err) => {
+					btn.removeAttribute("disabled");
+					if (err.response.status === 403) {
+						error = err.response.data.message;
+					}
+					if (!err.response.data.status) {
+						window.location.reload();
+					}
+				});
+		},
 	},
 };
 </script>

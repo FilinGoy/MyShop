@@ -22,11 +22,11 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|string|unique:users,email,'.$this->user->id,
+            'email' => 'required|email|unique:users,email,'.$this->user->id,
             'login' => 'required|string|min:4|unique:users,login,'.$this->user->id,
             'first_name' => 'nullable|string',
             'last_name' => 'nullable|string',
-            'password' => 'required|string',
+            'password' => 'nullable|string',
             'adress' => 'nullable|string',
             'number' => 'nullable|string'
         ];
@@ -40,7 +40,6 @@ class UpdateRequest extends FormRequest
             'login.required' => 'Поле является обязательным!',
             'login.unique' => 'Данный логин уже используется!',
             'login.min' => 'Данный логин содержит менее 4 символов!',
-            'password.required' => 'Поле является обязательным!'
         ];
     }
 }

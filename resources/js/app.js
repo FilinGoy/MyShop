@@ -6,6 +6,8 @@ import router from './router';
 import App from './App.vue';
 import axios from 'axios';
 
+import VueTheMask from 'vue-the-mask';
+
 const app = createApp(App);
 const store = createStore({
     state: {
@@ -194,6 +196,7 @@ const store = createStore({
 
 app.use(router)
     .use(store)
+    .use(VueTheMask)
 
 app.config.globalProperties.axios = axios
 app.mount('#app')

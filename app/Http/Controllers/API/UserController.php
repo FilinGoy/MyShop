@@ -19,25 +19,32 @@ class UserController extends Controller
             'number' => 'nullable|string',
             'adress' => 'nullable|string',
             'password' => 'nullable|string',
+        ], [
+            'email.required' => 'Поле является обязательным!',
+            'email.unique' => 'Данный E-Mail уже используется!',
+            'email' => 'Поле почты заполнено неверно!',
+            'login.required' => 'Поле является обязательным!',
+            'login.unique' => 'Данный логин уже используется!',
+            'login.min' => 'Данный логин содержит менее 4 символов!',
+            'login' => 'Поле логина заполнено неверно!',
+            'password.required' => 'Поле является обязательным!',
+            'password.confirmed' => 'Пароли не совпадают!',
         ]);
 
         $user = User::where('id', $data['id'])->first();
 
-        dd($data);
-
         if (count($data) > 1 && $user) {
-            if (isset($data['name'])) $user->update(['name' => $data['name']]);
-
             if (isset($data['email'])) {
                 if ($user->email === $data['email']) unset($data['email']);
-                if (DB::table('users')->where('email', $data['email'])->first()) return response()->json(
-                    ['message' => 'Пользователь с такой почтой уже существует!'],
-                    403
-                );
 
                 $user->update(['email' => $data['email']]);
             }
-            if (isset($data['phone'])) $user->update(['number' => $data['phone']]);
+
+            if (isset($data['first_name'])) $user->update(['first_name' => $data['first_name']]);
+            if (isset($data['last_name'])) $user->update(['last_name' => $data['last_name']]);
+            if (isset($data['number'])) $user->update(['number' => $data['number']]);
+            if (isset($data['adress'])) $user->update(['adress' => $data['adress']]);
+            if (isset($data['newPassword'])) $user->update(['newPassword' => $data['newPassword']]);
 
             return response()->json(['status' => true]);
         } else {

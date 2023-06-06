@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     public function getProductFromCategory(Category $category)
     {
-        $products = Product::where('category_id', $category->id);
-        return ProductResource::collection($products);
+        $products = Product::where('category_id' , $category->id)->get();
+        return ['products' => ProductResource::collection($products), 'category' => $category];
     }
 }

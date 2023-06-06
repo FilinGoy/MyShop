@@ -32,29 +32,7 @@
 					</div>
 					<div class="col-md-6">
 						<label for="number" class="form-label">Номер</label>
-						<input
-							type="text"
-							class="form-control col"
-							id="number"
-							name="number"
-							data-inputmask='"mask": "+7 (999) 999-99-99"'
-							inputmode="text"
-							placeholder="+7 (999) 999-99-99"
-							v-model="number"
-						/>
-					</div>
-					<div class="form-group">
-						<label for="ad" class="col-form-label">Номер</label>
-						<input
-							type="text"
-							class="form-control col"
-							id="ad"
-							name="ad"
-							data-inputmask='"mask": "+7 (999) 999-99-99"'
-							data-mask=""
-							inputmode="text"
-							placeholder="+7 (999) 999-99-99"
-						/>
+						<input type="tel" class="form-control col" id="number" v-model="number" v-mask="'+7 (###) ###-##-##'" maxlength="18" />
 					</div>
 					<div class="col-md-6">
 						<label for="email" class="form-label">Почта (E-Mail)<span class="text-danger">*</span></label>
@@ -71,10 +49,13 @@
 					</div>
 					<div class="col-md-6">
 						<label for="newPasswordConfirm" class="form-label">Повторите пароль</label>
-						<input type="text" class="form-control" id="newPasswordConfirm" max="255" v-model="newPasswordConfirm" />
+						<input type="password" class="form-control" id="newPasswordConfirm" max="255" v-model="newPasswordConfirm" />
 					</div>
 					<div class="col-12">
-						<button type="submit" class="btn btn-primary">Сохранить изменения</button>
+						<a type="button" @click.prevent="editAccount" class="btn btn-primary">Сохранить изменения</a>
+					</div>
+					<div class="col-12" v-if="error">
+						<p class="text-danger">{{ error }}</p>
 					</div>
 					<div class="col-12">
 						<small class="text-wrap text-start text-muted fw-light"> Заполненные данные помогут вам быстрее оформлять заказы! </small>
@@ -86,9 +67,11 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import { mask } from "vue-the-mask";
 
 export default {
 	name: "profile",
+	directives: { mask },
 	computed: {
 		...mapState(["user"]),
 	},
@@ -105,7 +88,7 @@ export default {
 			error: "",
 		};
 	},
-	mounted() {
+	updated() {
 		if (!this.$store.getters.statusUser) {
 			this.$router.push({ name: "signIn" });
 		}
@@ -128,7 +111,7 @@ export default {
 			if (this.lastName !== this.$store.state.user.last_name) data.last_name = this.lastName;
 			if (this.number !== this.$store.state.user.number) data.number = this.number;
 			if (this.adress !== this.$store.state.user.adress) data.adress = this.adress;
-			if (this.newPassword !== this.$store.state.user.newPassword) {
+			if (this.newPassword !== this.$store.state.user.newPassword && this.newPassword) {
 				if (this.newPassword != this.newPasswordConfirm) {
 					return (this.error = "Пароли не совпадают");
 				}
@@ -143,11 +126,13 @@ export default {
 					}
 				})
 				.catch((err) => {
-					btn.removeAttribute("disabled");
 					if (err.response.status === 403) {
-						error = err.response.data.message;
+						this.error = err.response.data.message;
 					}
-					if (!err.response.data.status) {
+                    if (err.response.status === 422) {
+						this.error = err.response.data.message;
+					}
+					if (!err.response.status) {
 						window.location.reload();
 					}
 				});

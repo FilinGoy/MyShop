@@ -44,9 +44,8 @@
 				</div>
 			</router-link>
 		</div>
-		<div class="row">
-			<recomend-products></recomend-products>
-		</div>
+
+		<recomend-products></recomend-products>
 	</div>
 </template>
 <script>

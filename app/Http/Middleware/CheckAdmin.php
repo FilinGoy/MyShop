@@ -24,6 +24,7 @@ class CheckAdmin
             $val = $_COOKIE['user'] ?? redirect()->to(asset('/'));
             $request->headers->set('authorization', "Bearer " . $val);
             $user = $request->user();
+            dd(Auth::user());
             if (Auth::user() === null || Auth::user()->position_id !== 2) {
                 return redirect()->to(asset('/'));
             }

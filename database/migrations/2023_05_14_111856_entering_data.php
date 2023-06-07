@@ -169,19 +169,7 @@ return new class extends Migration
                 ],
                 [
                     'id' => 2,
-                    'title' => 'Курьер',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'id' => 3,
-                    'title' => 'Модератор',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'id' => 4,
-                    'title' => 'Директор',
+                    'title' => 'Администратор',
                     'created_at' => now(),
                     'updated_at' => now()
                 ]
@@ -558,7 +546,7 @@ return new class extends Migration
                     'first_name' => 'Денис',
                     'last_name' => 'Суворов',
                     'login' => 'zMrwuP',
-                    'position_id' => 4,
+                    'position_id' => 2,
                     'password' => Hash::make('vZUGrH'),
                     'created_at' => now(),
                     'updated_at' => now()

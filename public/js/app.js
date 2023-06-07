@@ -18226,7 +18226,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1 /* STABLE */
   })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_20, [((_this$$store$state$us = this.$store.state.user) === null || _this$$store$state$us === void 0 ? void 0 : _this$$store$state$us.position_id) === 4 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_20, [((_this$$store$state$us = this.$store.state.user) === null || _this$$store$state$us === void 0 ? void 0 : _this$$store$state$us.position_id) === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     type: "button",
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.goAdmin && $options.goAdmin.apply($options, arguments);
@@ -18386,7 +18386,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Регламент")];
     }),
     _: 1 /* STABLE */
-  })])]), _hoisted_44, _hoisted_45])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Канвас профиля "), this.$store.state.isLoginUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_46, [_hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [((_this$$store$state$us2 = this.$store.state.user) === null || _this$$store$state$us2 === void 0 ? void 0 : _this$$store$state$us2.position_id) === 4 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+  })])]), _hoisted_44, _hoisted_45])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Канвас профиля "), this.$store.state.isLoginUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_46, [_hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [((_this$$store$state$us2 = this.$store.state.user) === null || _this$$store$state$us2 === void 0 ? void 0 : _this$$store$state$us2.position_id) === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
     key: 0,
     type: "button",
     onClick: _cache[2] || (_cache[2] = function () {

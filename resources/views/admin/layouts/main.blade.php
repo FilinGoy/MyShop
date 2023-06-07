@@ -46,10 +46,16 @@
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light flex">
             <!-- Left navbar links -->
-            <ul class="navbar-nav d-flex justify-content-between">
+            <ul class="navbar-nav w-100 d-flex justify-content-between">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button">
                         <i class="fas fa-bars"></i>
+                    </a>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    Здравствуй, {{ auth()->user()->login }}
+                    <a class="nav-linkr btn btn-danger ml-2" role="button" href="{{ route('logout') }}">
+                        Выйти
                     </a>
                 </li>
             </ul>

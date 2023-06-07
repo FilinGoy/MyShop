@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function getProductFromCategory(Category $category, Request $request)
     {
         $page = $request->get('page', 1); // значение по умолчанию 1
-        $count = $request->get('count', 9); // значение по умолчанию 10
+        $count = $request->get('count', 9); // значение по умолчанию 9
 
         $products = Product::where('category_id', $category->id)->paginate($count, ['*'], 'page', $page);
 

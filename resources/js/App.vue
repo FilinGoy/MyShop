@@ -85,7 +85,7 @@
 							</div>
 
 							<ul class="dropdown-menu" aria-labelledby="dropdownProfile" ref="profileMenu">
-								<li v-if="this.$store.state.user?.position_id === 4"><a type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a></li>
+								<li v-if="this.$store.state.user?.position_id === 2"><a type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a></li>
 								<li><router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link></li>
 								<li><router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link></li>
 								<li><router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link></li>
@@ -193,7 +193,7 @@
 				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
 			</div>
 			<div class="offcanvas-body p-0 d-flex flex-column" data-bs-dismiss="offcanvas">
-				<a v-if="this.$store.state.user?.position_id === 4" type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a>
+				<a v-if="this.$store.state.user?.position_id === 2" type="button" @click="goAdmin" class="dropdown-item text-wrap px-4">Админ панель</a>
 				<router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link>
 				<router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link>
 				<router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link>

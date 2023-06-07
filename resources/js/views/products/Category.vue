@@ -2,8 +2,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="d-none d-xl-flex col-lg-3">
-				<div class="shadow-sm">
-					<div class="py-3 bg-white">
+				<div>
+					<div class="py-3 bg-white shadow-sm">
 						<h3 class="px-4">Категории</h3>
 						<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/category/${category.id}`" class="dropdown-item text-wrap px-4">
 							<span>{{ category.title }}</span>
@@ -18,42 +18,39 @@
 				<div class="row">
 					<div class="col">
 						<div class="bg-white p-2 p-lg-3 shadow-sm mb-2 mb-lg-4">
-							<div class="d-flex align-items-end my-3">
-								<h1 class="my-0 lh-1">{{ category.title }}</h1>
-								<div class="pl-2">{{ pages.total }} {{ getProductWord(pages.total) }}</div>
+							<div class="d-flex align-items-center justify-content-between my-3">
+								<div class="d-flex align-items-end justify-content-between">
+									<h1 class="my-0 lh-1">{{ category.title }}</h1>
+									<div class="pl-2">{{ pages.total }} {{ getProductWord(pages.total) }}</div>
+								</div>
 
-								<div>
-									<div class="form-inline">
-										<div class="mr-2">
-											<a href="products-grid.html" class="btn btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="Grid view">
-												<i class="fa fa-th-large"></i>
-											</a>
-											<a href="products-list.html" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="List view">
-												<i class="fa fa-list-ul"></i>
-											</a>
-										</div>
-										<div class="form-group mb-0">
-											<label for="exampleFormControlSelect2" class="mr-3 d-none d-lg-block"><small>Сортировка</small></label>
-											<select class="form-control form-control-sm" id="exampleFormControlSelect2">
-												<option>▲ По названию</option>
-												<option>▼ По названию</option>
-												<option>▲ По цене</option>
-												<option>▼ По цене</option>
-											</select>
-										</div>
-										<div class="d-lg-none ml-2">
-											<button class="btn btn-danger btn-sm toggle-show" data-show="open-mobile-filters">
-												<strong>
-													<i class="icon icon-text-align-center"></i>
-													<span class="d-none d-sm-inline-block">Фильтр</span>
-												</strong>
-											</button>
-										</div>
+								<div class="form-inline">
+									<div class="mr-2">
+										<a href="products-grid.html" class="btn btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="Grid view">
+											<i class="fa fa-th-large"></i>
+										</a>
+										<a href="products-list.html" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="List view">
+											<i class="fa fa-list-ul"></i>
+										</a>
+									</div>
+									<div class="form-group mb-0">
+										<label for="exampleFormControlSelect2" class="mr-3 d-none d-lg-block"><small>Сортировка</small></label>
+										<select class="form-control form-control-sm" id="exampleFormControlSelect2">
+											<option>▲ По названию</option>
+											<option>▼ По названию</option>
+											<option>▲ По цене</option>
+											<option>▼ По цене</option>
+										</select>
+									</div>
+									<div class="d-lg-none ml-2">
+										<button class="btn btn-danger btn-sm toggle-show" data-show="open-mobile-filters">
+											<strong>
+												<i class="icon icon-text-align-center"></i>
+												<span class="d-none d-sm-inline-block">Фильтр</span>
+											</strong>
+										</button>
 									</div>
 								</div>
-							</div>
-							<div class="d-flex justify-content-between">
-								<!-- Right -->
 							</div>
 						</div>
 					</div>

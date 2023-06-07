@@ -2,11 +2,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="d-none d-xl-flex col-lg-3">
-				<div class="py-3 shadow-sm bg-white">
-					<h3 class="px-4">Категории</h3>
-					<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/category/${category.id}`" class="dropdown-item text-wrap px-4">
-						<span>{{ category.title }}</span>
-					</router-link>
+				<div class="shadow-sm">
+					<div class="py-3 bg-white">
+						<h3 class="px-4">Категории</h3>
+						<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/category/${category.id}`" class="dropdown-item text-wrap px-4">
+							<span>{{ category.title }}</span>
+						</router-link>
+					</div>
 				</div>
 			</div>
 
@@ -18,26 +20,7 @@
 						<div class="bg-white p-2 p-lg-3 shadow-sm mb-2 mb-lg-4">
 							<div class="d-flex align-items-end my-3">
 								<h1 class="my-0 lh-1">{{ category.title }}</h1>
-								<div class="pl-2">{{ products.length }} {{ getProductWord(products.length) }}</div>
-							</div>
-							<div class="d-flex justify-content-between">
-								<!-- Left -->
-
-								<div>
-									<div class="form-inline">
-										<div class="form-group mb-0">
-											<select class="form-control form-control-sm" id="exampleFormControlSelect1">
-												<option>20</option>
-												<option>50</option>
-												<option>100</option>
-												<option>All</option>
-											</select>
-											<label for="exampleFormControlSelect1" class="ml-3 d-none d-lg-block"><small>Showing all 24 of 128 products</small></label>
-										</div>
-									</div>
-								</div>
-
-								<!-- Right -->
+								<div class="pl-2">{{ pages.total }} {{ getProductWord(pages.total) }}</div>
 
 								<div>
 									<div class="form-inline">
@@ -50,22 +33,27 @@
 											</a>
 										</div>
 										<div class="form-group mb-0">
-											<label for="exampleFormControlSelect2" class="mr-3 d-none d-lg-block"><small>Sort by</small></label>
+											<label for="exampleFormControlSelect2" class="mr-3 d-none d-lg-block"><small>Сортировка</small></label>
 											<select class="form-control form-control-sm" id="exampleFormControlSelect2">
-												<option>Name</option>
-												<option>Price</option>
+												<option>▲ По названию</option>
+												<option>▼ По названию</option>
+												<option>▲ По цене</option>
+												<option>▼ По цене</option>
 											</select>
 										</div>
 										<div class="d-lg-none ml-2">
 											<button class="btn btn-danger btn-sm toggle-show" data-show="open-mobile-filters">
 												<strong>
 													<i class="icon icon-text-align-center"></i>
-													<span class="d-none d-sm-inline-block">Filters</span>
+													<span class="d-none d-sm-inline-block">Фильтр</span>
 												</strong>
 											</button>
 										</div>
 									</div>
 								</div>
+							</div>
+							<div class="d-flex justify-content-between">
+								<!-- Right -->
 							</div>
 						</div>
 					</div>
@@ -153,17 +141,27 @@
 
 				<!-- Pagination -->
 
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-center py-3 py-lg-4">
-						<li class="page-item disabled">
-							<a class="page-link page-link-first" href="#" tabindex="-1" aria-disabled="true"></a>
-						</li>
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item">
-							<a class="page-link" href="#"></a>
-						</li>
-					</ul>
-				</nav>
+				<div class="row">
+					<nav aria-label="Page navigation example">
+						<ul v-if="pages" class="pagination justify-content-center py-3 py-lg-4">
+							<template v-for="page in pages.links" :key="page.label">
+								<li class="page-item" :class="page.active ? 'active' : ''">
+									<template v-if="page.url">
+										<div
+											v-if="page.label === 'pagination.previous' || page.label === 'pagination.next'"
+											@click.prevent="getProductFromCategory(this.$route, page.label === 'pagination.previous' ? page.prev_page_url : page.next_page_url)"
+											type="button"
+											class="page-link"
+										>
+											<i class="fa-solid" :class="page.label === 'pagination.previous' ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
+										</div>
+										<div v-else @click.prevent="getProductFromCategory(this.$route, page.label)" type="button" class="page-link">{{ page.label }}</div>
+									</template>
+								</li>
+							</template>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -175,6 +173,7 @@ export default {
 		return {
 			products: [],
 			category: [],
+			pages: [],
 		};
 	},
 	mounted() {
@@ -186,10 +185,11 @@ export default {
 		},
 	},
 	methods: {
-		getProductFromCategory(place) {
-			this.axios.get("../../api/category/" + place.params.id).then((res) => {
+		getProductFromCategory(place, page = 1, count = 9) {
+			this.axios.get(`../../api/category/${place.params.id}?page=${page}&count=${count}`).then((res) => {
 				this.products = res.data.products;
 				this.category = res.data.category;
+				this.pages = res.data.meta;
 			});
 		},
 	},

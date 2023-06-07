@@ -322,7 +322,7 @@
 									</header>
 
 									<div class="py-3 py-lg-4">
-										<p>{{ product.description }}</p>
+										<p v-html="product.description"></p>
 									</div>
 								</div>
 							</div>
@@ -343,8 +343,25 @@
 <script>
 export default {
 	name: "product",
+	data() {
+		return {
+			product: [],
+		};
+	},
 	mounted() {
-		this.getProduct();
+		this.getProduct(this.$route);
+	},
+	watch: {
+		$route(to, from) {
+			this.getProduct(to);
+		},
+	},
+	methods: {
+		getProduct(place) {
+			this.axios.get("../../api/product/" + place.params.id).then((res) => {
+				this.product = res.data.data;
+			});
+		},
 	},
 };
 </script>

@@ -9,6 +9,8 @@ class Product extends Model
 {
     use Filterable;
 
+    protected $appends = ['links'];
+
     protected $table = 'products';
     protected $guarded = false;
 

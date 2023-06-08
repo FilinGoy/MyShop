@@ -124,7 +124,7 @@
 						До заказа ещё: <span>{{ totalPrice ? 500 - totalPrice : "500" }}</span
 						>₽
 					</p>
-					<p v-if="totalPrice >= 500">Перейти к оформлению</p>
+					<p v-if="totalPrice >= 500" @click.prevent="orderConfirm">Перейти к оформлению</p>
 				</button>
 			</div>
 		</div>
@@ -136,6 +136,23 @@ export default {
 	mounted() {
 		this.getCart();
 	},
+    methods: {
+        orderConfirm(){
+            let products = JSON.parse(localStorage.getItem('cart'));
+
+            this.axios.post('/api/orderBuy', {
+                'user_id': this.$store.state.user.id,
+                'first_name': this.$store.state.user.first_name,
+                'last_name': this.$store.state.user.last_name,
+                'address': this.$store.state.user.address,
+                'total_price': this.totalPrice,
+                'products': products
+            }).then(res => {
+                this.clearCart()
+                alert(res.data.message)
+            })
+        }
+    },
 };
 </script>
 <style></style>

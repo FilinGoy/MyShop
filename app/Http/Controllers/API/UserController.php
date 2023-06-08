@@ -17,7 +17,7 @@ class UserController extends Controller
             'first_name' => 'nullable|string',
             'last_name' => 'nullable|string',
             'number' => 'nullable|string',
-            'adress' => 'nullable|string',
+            'address' => 'nullable|string',
             'password' => 'nullable|string',
         ], [
             'email.required' => 'Поле является обязательным!',
@@ -43,7 +43,7 @@ class UserController extends Controller
             if (isset($data['first_name'])) $user->update(['first_name' => $data['first_name']]);
             if (isset($data['last_name'])) $user->update(['last_name' => $data['last_name']]);
             if (isset($data['number'])) $user->update(['number' => $data['number']]);
-            if (isset($data['adress'])) $user->update(['adress' => $data['adress']]);
+            if (isset($data['address'])) $user->update(['address' => $data['address']]);
             if (isset($data['newPassword'])) $user->update(['newPassword' => $data['newPassword']]);
 
             return response()->json(['status' => true]);

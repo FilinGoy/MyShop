@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">{{ $user->email.' ('.$user->first_name.' '.$user->last_name.')' }}</h3>
+                        <h3 class="card-title">{{ $user->email . ' (' . $user->first_name . ' ' . $user->last_name . ')' }}</h3>
                     </div>
                     <div class="card-body">
                         <dl>
@@ -34,13 +34,13 @@
                             <dt>Логин</dt>
                             <dd>{{ $user->login }}</dd>
                             <dt>Имя</dt>
-                            <dd>{{ $user->first_name??'-' }}</dd>
+                            <dd>{{ $user->first_name ?? '-' }}</dd>
                             <dt>Фамилия</dt>
-                            <dd>{{ $user->last_name??'-' }}</dd>
+                            <dd>{{ $user->last_name ?? '-' }}</dd>
                             <dt>Адрес</dt>
-                            <dd>{{ $user->adress??'-' }}</dd>
+                            <dd>{{ $user->address ?? '-' }}</dd>
                             <dt>Номер</dt>
-                            <dd>{{ $user->number??'-' }}</dd>
+                            <dd>{{ $user->number ?? '-' }}</dd>
                             <dt>Создан</dt>
                             <dd>{{ $user->created_at }}</dd>
                             <dt>Изменён</dt>
@@ -48,9 +48,10 @@
                         </dl>
                     </div>
                     <div class="card-footer">
-                        <a type="button" href="{{ route('user.index') }}" class="btn btn-outline-danger float-right">Назад</a>
+                        <a type="button" href="{{ route('user.index') }}"
+                            class="btn btn-outline-danger float-right">Назад</a>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </section>

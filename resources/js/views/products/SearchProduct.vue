@@ -64,7 +64,7 @@
 							<div class="col" v-if="product.published" @click.prevent="addHistory(product)">
 								<div class="rowcard h-100 bg-white d-flex flex-row flex-xl-column justify-content-between p-2 p-xl-3 shadow-sm">
 									<div class="card-img-top col-4 col-md-2 col-xl-12 position-relative flex-xl-fill px-0">
-										<img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" />
+										<img :src="'storage/' + product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" />
 										<div v-if="product.tags" class="position-absolute top-0 d-flex flex-wrap justify-content-start w-100 p-2 gap-2">
 											<div v-for="tag in product.tags" :key="tag.tag_id" class="badge badge-danger">{{ tag.title }}</div>
 										</div>
@@ -171,44 +171,46 @@ export default {
 			products: [],
 			category: [],
 			pages: [],
-            selectedSort: 'nameUp'
+			selectedSort: "nameUp",
 		};
 	},
 	mounted() {
-		this.getProductFromCategory(this.$route);
+		this.getSearchProduct();
 	},
 	watch: {
 		$route(to, from) {
-			this.getProductFromCategory(to);
+			this.getSearchProduct();
 		},
 	},
-    beforeUpdate() {
-        this.sortedList();
-    },
+	beforeUpdate() {
+		this.sortedList();
+	},
 	methods: {
-		getProductFromCategory(place, page = 1, count = 9) {
-			this.axios.get(`../../api/category/${place.params.id}?page=${page}&count=${count}`).then((res) => {
-				this.products = res.data.products;
-				this.category = res.data.category;
-				this.pages = res.data.meta;
-			});
+		sortedList() {
+			switch (this.selectedSort) {
+				case "nameUp":
+					this.products.sort((a, b) => a.title.localeCompare(b.title));
+					break;
+				case "nameDown":
+					this.products.sort((a, b) => b.title.localeCompare(a.title));
+					break;
+				case "priceUp":
+					this.products.sort((a, b) => a.price - b.price);
+					break;
+				case "priceDown":
+					this.products.sort((a, b) => b.price - a.price);
+					break;
+			}
 		},
-                sortedList(){
-                switch (this.selectedSort) {
-                    case 'nameUp':
-                        this.products.sort((a, b) => a.title.localeCompare(b.title))
-                        break;
-                    case 'nameDown':
-                        this.products.sort((a, b) => b.title.localeCompare(a.title))
-                        break;
-                    case 'priceUp':
-                        this.products.sort((a, b) => a.price - b.price);
-                        break;
-                    case 'priceDown':
-                        this.products.sort((a, b) => b.price - a.price)
-                        break;
-                }
-        }
+		getSearchProduct() {
+			this.axios
+				.post("/api/search", {
+					title: this.$route.params.title,
+				})
+				.then((res) => {
+					this.products = res.data;
+				});
+		},
 	},
 };
 </script>

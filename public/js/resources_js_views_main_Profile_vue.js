@@ -38,7 +38,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       firstName: "",
       lastName: "",
       number: "",
-      adress: "",
+      address: "",
       newPassword: "",
       newPasswordConfirm: "",
       error: ""
@@ -58,7 +58,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       this.firstName = value.first_name;
       this.lastName = value.last_name;
       this.number = value.number;
-      this.adress = value.adress;
+      this.address = value.address;
     }
   },
   methods: {
@@ -76,7 +76,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
               if (_this.firstName !== _this.$store.state.user.first_name) data.first_name = _this.firstName;
               if (_this.lastName !== _this.$store.state.user.last_name) data.last_name = _this.lastName;
               if (_this.number !== _this.$store.state.user.number) data.number = _this.number;
-              if (_this.adress !== _this.$store.state.user.adress) data.adress = _this.adress;
+              if (_this.address !== _this.$store.state.user.address) data.address = _this.address;
               if (!(_this.newPassword !== _this.$store.state.user.newPassword && _this.newPassword)) {
                 _context.next = 10;
                 break;
@@ -198,7 +198,7 @@ var _hoisted_19 = {
   "class": "col-12"
 };
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "adress",
+  "for": "address",
   "class": "form-label"
 }, "Адрес", -1 /* HOISTED */);
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
@@ -303,13 +303,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "form-control",
-    id: "adress",
+    id: "address",
     placeholder: "г.Челябинск, Проспект Ленина, д.1, 1",
     max: "255",
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-      return $data.adress = $event;
+      return $data.address = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.adress]])]), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.address]])]), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
     "class": "form-control",
     id: "newPassword",

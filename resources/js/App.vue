@@ -51,8 +51,8 @@
 				<div class="nav-item d-flex flex-grow-1 justify-content-end dropdown">
 					<div class="nav-item d-none d-md-flex flex-grow-1 px-2 justify-content-around align-items-center text-black-50">
 						<div class="d-flex align-items-center w-100 bg-white border-1 border">
-							<input type="search" class="item-search rounded-0 border-0 w-100 shadow-none" placeholder="Поиск товаров" />
-							<button class="btn bg-white rounded-0 border-0 text-muted shadow-none h-100">
+							<input type="search" class="item-search rounded-0 border-0 w-100 shadow-none" placeholder="Поиск товаров" v-model="searchTitle" />
+							<button @click="Search" class="btn bg-white rounded-0 border-0 text-muted shadow-none h-100">
 								<i class="fas fa-search"></i>
 							</button>
 						</div>
@@ -134,8 +134,8 @@
 			</div>
 			<div class="d-flex justify-content-around align-items-center text-black-50 w-100">
 				<div class="d-flex w-100 bg-light border-1 border">
-					<input type="search" class="item-search w-100 rounded-0 border-0 shadow-none" placeholder="Поиск товаров" />
-					<button class="btn bg-white rounded-0 border-0 text-muted shadow-none">
+					<input type="search" class="item-search w-100 rounded-0 border-0 shadow-none" placeholder="Поиск товаров" v-model="searchTitle" />
+					<button @click="Search" class="btn bg-white rounded-0 border-0 text-muted shadow-none">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
@@ -277,6 +277,11 @@ import elem from "./components/Header.vue";
 export default {
 	name: "App",
 	components: { elem },
+	data() {
+		return {
+			searchTitle: "",
+		};
+	},
 	watch: {
 		"$store.getters.statusUser": function (statusUser) {
 			if (!statusUser) this.$router.push({ name: "main" });
@@ -303,6 +308,12 @@ export default {
 			this.$router.push({ name: "main" });
 		},
 		//!SECTION
+
+		Search() {
+			if (this.searchTitle) {
+				this.$router.push({ name: "products.search", params: { title: this.searchTitle } });
+			}
+		},
 	},
 };
 </script>

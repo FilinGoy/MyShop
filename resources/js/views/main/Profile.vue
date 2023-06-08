@@ -39,8 +39,8 @@
 						<input type="email" class="form-control" id="email" placeholder="example@mail.ru" max="255" v-model="email" />
 					</div>
 					<div class="col-12">
-						<label for="adress" class="form-label">Адрес</label>
-						<input type="text" class="form-control" id="adress" placeholder="г.Челябинск, Проспект Ленина, д.1, 1" max="255" v-model="adress" />
+						<label for="address" class="form-label">Адрес</label>
+						<input type="text" class="form-control" id="address" placeholder="г.Челябинск, Проспект Ленина, д.1, 1" max="255" v-model="address" />
 					</div>
 					<hr />
 					<div class="col-md-6">
@@ -82,7 +82,7 @@ export default {
 			firstName: "",
 			lastName: "",
 			number: "",
-			adress: "",
+			address: "",
 			newPassword: "",
 			newPasswordConfirm: "",
 			error: "",
@@ -100,7 +100,7 @@ export default {
 			this.firstName = value.first_name;
 			this.lastName = value.last_name;
 			this.number = value.number;
-			this.adress = value.adress;
+			this.address = value.address;
 		},
 	},
 	methods: {
@@ -110,7 +110,7 @@ export default {
 			if (this.firstName !== this.$store.state.user.first_name) data.first_name = this.firstName;
 			if (this.lastName !== this.$store.state.user.last_name) data.last_name = this.lastName;
 			if (this.number !== this.$store.state.user.number) data.number = this.number;
-			if (this.adress !== this.$store.state.user.adress) data.adress = this.adress;
+			if (this.address !== this.$store.state.user.address) data.address = this.address;
 			if (this.newPassword !== this.$store.state.user.newPassword && this.newPassword) {
 				if (this.newPassword != this.newPasswordConfirm) {
 					return (this.error = "Пароли не совпадают");
@@ -129,7 +129,7 @@ export default {
 					if (err.response.status === 403) {
 						this.error = err.response.data.message;
 					}
-                    if (err.response.status === 422) {
+					if (err.response.status === 422) {
 						this.error = err.response.data.message;
 					}
 					if (!err.response.status) {

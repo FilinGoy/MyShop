@@ -61,9 +61,9 @@
                                         inputmode="text" value="{{ old('number') }}" placeholder="+7 (999) 999-99-99">
                                 </div>
                                 <div class="form-group">
-                                    <label for="adress" class="col-form-label">Адрес</label>
-                                    <input type="text" class="form-control col" id="adress" name="adress"
-                                        value="{{ old('adress') }}" placeholder="г.Москва, Благвощенская, д.3, кв.5">
+                                    <label for="address" class="col-form-label">Адрес</label>
+                                    <input type="text" class="form-control col" id="address" name="address"
+                                        value="{{ old('address') }}" placeholder="г.Москва, Благвощенская, д.3, кв.5">
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="col-form-label">Пароль<span

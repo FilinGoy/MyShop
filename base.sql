@@ -623,7 +623,7 @@ CREATE TABLE `users` (
   `login` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adress` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `position_id` int(11) NOT NULL DEFAULT 1,
   `email_verified_at` timestamp NULL DEFAULT NULL,

@@ -66,9 +66,9 @@
                                         placeholder="+7 (999) 999-99-99">
                                 </div>
                                 <div class="form-group">
-                                    <label for="adress" class="col-form-label">Адрес</label>
-                                    <input type="text" class="form-control col" id="adress" name="adress"
-                                        value="{{ old('adress') ?? $user->adress }}"
+                                    <label for="address" class="col-form-label">Адрес</label>
+                                    <input type="text" class="form-control col" id="address" name="address"
+                                        value="{{ old('address') ?? $user->address }}"
                                         placeholder="г.Москва, Благвощенская, д.3, кв.5">
                                 </div>
                                 <div class="form-group">
@@ -108,7 +108,7 @@
                                 <dt>Номер</dt>
                                 <dd>{{ $user->number ?? '-' }}</dd>
                                 <dt>Адрес</dt>
-                                <dd>{{ $user->adress ?? '-' }}</dd>
+                                <dd>{{ $user->address ?? '-' }}</dd>
                                 <dt>Создан</dt>
                                 <dd>{{ $user->created_at ?? '-' }}</dd>
                                 <dt>Изменён</dt>

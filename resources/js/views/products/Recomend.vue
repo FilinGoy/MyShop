@@ -1,9 +1,10 @@
 <template>
-	<div class="row row-cols-1 row-cols-lg-4 gy-4">
+	<h4>Рекомендуемое</h4>
+	<div class="row row-cols-1 row-cols-lg-4 g-4">
 		<template v-if="products">
 			<template v-for="product in products" :key="product.id">
 				<div class="col" v-if="product.published">
-					<div class="card bg-white d-flex flex-column justify-content-between">
+					<div class="card bg-white d-flex flex-column justify-content-between p-2 p-lg-3 shadow-sm">
 						<div class="card-img-top h-50 position-relative">
 							<img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" />
 							<div v-if="product.tags" class="position-absolute top-0 d-flex flex-wrap justify-content-start w-100 p-2 gap-2">
@@ -93,7 +94,7 @@ export default {
 	},
 	methods: {
 		getProductFromCategory(place) {
-			this.axios.get("../../api/category/1").then((res) => {
+			this.axios.get("../../api/category/1?count=4").then((res) => {
 				this.products = res.data.products;
 				this.category = res.data.category;
 			});

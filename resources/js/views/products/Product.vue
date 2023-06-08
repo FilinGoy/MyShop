@@ -48,7 +48,7 @@
 								<!-- Product brand -->
 
 								<div class="row">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Категория</span>
@@ -59,7 +59,7 @@
 								</div>
 
 								<div class="row" v-if="product.brand">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Бренд</span>
@@ -70,7 +70,7 @@
 								</div>
 
 								<div class="row">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Производитель</span>
@@ -81,7 +81,7 @@
 								</div>
 
 								<div class="row" v-if="product.expiration_date">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Срок хранения</span>
@@ -92,7 +92,7 @@
 								</div>
 
 								<div class="row" v-if="product.article">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Артикул</span>
@@ -103,7 +103,7 @@
 								</div>
 
 								<div class="row" v-if="product.packaging">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Упаковка</span>
@@ -114,7 +114,7 @@
 								</div>
 
 								<div class="row" v-if="product.ingredients">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Состав</span>
@@ -125,7 +125,7 @@
 								</div>
 
 								<div class="row" v-if="product.weight">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Вес</span>
@@ -136,7 +136,7 @@
 								</div>
 
 								<div class="row" v-if="product.weight">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Калории</span>
@@ -147,7 +147,7 @@
 								</div>
 
 								<div class="row" v-if="product.count">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">На складе</span>
@@ -158,7 +158,7 @@
 								</div>
 
 								<div class="row" v-if="product.tags">
-									<div class="col-6 col-lg-12">
+									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Теги</span>

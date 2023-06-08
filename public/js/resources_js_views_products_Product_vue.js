@@ -94,7 +94,7 @@ var _hoisted_18 = {
   "class": "row"
 };
 var _hoisted_19 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_20 = {
   "class": "row mb-2"
@@ -113,7 +113,7 @@ var _hoisted_23 = {
   "class": "row"
 };
 var _hoisted_24 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_25 = {
   "class": "row mb-2"
@@ -131,7 +131,7 @@ var _hoisted_28 = {
   "class": "row"
 };
 var _hoisted_29 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_30 = {
   "class": "row mb-2"
@@ -150,7 +150,7 @@ var _hoisted_33 = {
   "class": "row"
 };
 var _hoisted_34 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_35 = {
   "class": "row mb-2"
@@ -169,7 +169,7 @@ var _hoisted_38 = {
   "class": "row"
 };
 var _hoisted_39 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_40 = {
   "class": "row mb-2"
@@ -188,7 +188,7 @@ var _hoisted_43 = {
   "class": "row"
 };
 var _hoisted_44 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_45 = {
   "class": "row mb-2"
@@ -207,7 +207,7 @@ var _hoisted_48 = {
   "class": "row"
 };
 var _hoisted_49 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_50 = {
   "class": "row mb-2"
@@ -226,7 +226,7 @@ var _hoisted_53 = {
   "class": "row"
 };
 var _hoisted_54 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_55 = {
   "class": "row mb-2"
@@ -245,7 +245,7 @@ var _hoisted_58 = {
   "class": "row"
 };
 var _hoisted_59 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_60 = {
   "class": "row mb-2"
@@ -264,7 +264,7 @@ var _hoisted_63 = {
   "class": "row"
 };
 var _hoisted_64 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_65 = {
   "class": "row mb-2"
@@ -283,7 +283,7 @@ var _hoisted_68 = {
   "class": "row"
 };
 var _hoisted_69 = {
-  "class": "col-6 col-lg-12"
+  "class": "col-12"
 };
 var _hoisted_70 = {
   "class": "row mb-2"

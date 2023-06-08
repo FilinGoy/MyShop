@@ -138,9 +138,9 @@
 
 				<!-- Pagination -->
 
-				<div class="row">
+				<div v-if="pages && pages.last_page > 1" class="row">
 					<nav aria-label="Page navigation example">
-						<ul v-if="pages" class="pagination justify-content-center py-3 py-lg-4">
+						<ul class="pagination justify-content-center py-3 py-lg-4">
 							<template v-for="page in pages.links" :key="page.label">
 								<li class="page-item" :class="page.active ? 'active' : ''">
 									<template v-if="page.url">

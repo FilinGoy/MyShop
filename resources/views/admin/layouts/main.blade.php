@@ -26,8 +26,6 @@
     <link rel="stylesheet" href="assets/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
     <link rel="stylesheet" href="assets/AdminLTE/dist/css/style.css">
-
-    @yield('head')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -332,8 +330,6 @@
             bsCustomFileInput.init();
         })
     </script>
-
-    @yield('script')
 </body>
 
 </html>

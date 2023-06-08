@@ -50,12 +50,6 @@
                         <i class="fas fa-bars"></i>
                     </a>
                 </li>
-                <li class="nav-item d-flex align-items-center">
-                    Здравствуй, {{ auth()->user()->login }}
-                    <a class="nav-linkr btn btn-danger ml-2" role="button" href="{{ route('logout') }}">
-                        Выйти
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- /.navbar -->

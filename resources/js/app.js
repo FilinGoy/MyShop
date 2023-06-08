@@ -19,8 +19,6 @@ const store = createStore({
         favourite: [],
         countFavourite: 0,
 
-        history: [],
-
         isLoginUser: false,
         user: null,
         tokenRefreshed: true,
@@ -87,7 +85,7 @@ const store = createStore({
         },
 
         UPDATE_TOTAL_CART: (state) => {
-            state.totalPrice = state.cart?.reduce((sum, product) => sum + product.price * product.quantity, 0);
+            state.totalPrice = state.cart?.reduce((sum, product) => sum + product.price * product.quantity, 0).toFixed(2);
             state.countCartAll = state.cart?.reduce((quantity, product) => quantity + product.quantity, 0);
             state.countCartDiff = state.cart?.length;
         },
@@ -109,6 +107,17 @@ const store = createStore({
         },
         UPDATE_TOTAL_FAVOURITE: (state, product) => {
             state.countFavourite = state.favourite.length;
+        },
+        //!SECTION
+
+        //SECTION - История
+        ADD_TO_HISTORY: (state, category) => {
+            if (category == localStorage.getItem('history')) {
+                return;
+            } else {
+                state.history = category;
+            }
+            localStorage.setItem('history', JSON.stringify(state.history));
         },
         //!SECTION
 
@@ -354,7 +363,7 @@ app.mixin({
             this.$store.dispatch('initializeCart');
         },
         totalCart() {
-            this.totalPrice = this.cart?.reduce((sum, product) => sum + product.price * product.quantity, 0);
+            this.totalPrice = this.cart?.reduce((sum, product) => sum + product.price * product.quantity, 0).toFixed(2);
             this.totalCount = this.cart?.reduce((sum, product) => sum + product.quantity, 0);
         },
         addToCart(product) {
@@ -377,7 +386,7 @@ app.mixin({
             localStorage.setItem("cart", JSON.stringify(this.cart));
             this.totalCart();
             this.$store.dispatch('initializeCart');
-            if (localStorage.getItem('cart') == '[]') { localStorage.removeItem("cart"); }
+            if (localStorage.getItem('cart') == '[]') { localStorage.removeItem("cart"); this.cart = null }
         },
         //!SECTION
 
@@ -408,8 +417,14 @@ app.mixin({
                 this.favourite = this.favourite.filter(tempProduct => tempProduct.id !== product.id);
                 localStorage.setItem("favourite", JSON.stringify(this.favourite));
                 this.$store.dispatch('initializeFavourite');
-                if (localStorage.getItem('favourite') == '[]') { localStorage.removeItem("favourite"); }
+                if (localStorage.getItem('favourite') == '[]') { localStorage.removeItem("favourite"); this.favourite = null }
             }
+        },
+        //!SECTION
+
+        //SECTION - История
+        addHistory(product) {
+            this.$store.commit("ADD_TO_HISTORY", product.category.id);
         },
         //!SECTION
     }

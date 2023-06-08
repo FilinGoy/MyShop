@@ -50,8 +50,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getProductFromCategory: function getProductFromCategory(place) {
-      var _this = this;
-      this.axios.get("../../api/category/1?count=4").then(function (res) {
+      var _localStorage$getItem,
+        _this = this;
+      this.axios.get("../../api/category/".concat((_localStorage$getItem = localStorage.getItem('history')) !== null && _localStorage$getItem !== void 0 ? _localStorage$getItem : 1, "?count=4")).then(function (res) {
         _this.products = res.data.products;
         _this.category = res.data.category;
       });
@@ -73,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row\"><div id=\"carouselMain\" class=\"carousel slide col px-0\" data-bs-ride=\"carousel\"><div class=\"carousel-inner\" style=\"max-height:450px;\"><div class=\"carousel-item active\"><img src=\"/storage/images/main/slider1.jpg\" class=\"d-block w-100\"></div><div class=\"carousel-item\"><img src=\"/storage/images/main/slider2.jpg\" class=\"d-block w-100\"></div><div class=\"carousel-item\"><img src=\"/storage/images/main/slider3.jpg\" class=\"d-block w-100\"></div><button class=\"carousel-control-prev text-white d-flex justify-content-start ps-2\" type=\"button\" data-bs-target=\"#carouselMain\" data-bs-slide=\"prev\"><i class=\"fa-solid fa-circle-chevron-left fa-3x\"></i><span class=\"visually-hidden\">Назад</span></button><button class=\"carousel-control-next text-white d-flex justify-content-end pe-2\" type=\"button\" data-bs-target=\"#carouselMain\" data-bs-slide=\"next\"><i class=\"fa-solid fa-circle-chevron-right fa-3x\"></i><span class=\"visually-hidden\">Вперёд</span></button></div></div></div>", 1);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row\"><div id=\"carouselMain\" class=\"carousel slide col px-0\" data-bs-ride=\"carousel\"><div class=\"carousel-inner\"><div class=\"carousel-item active\"><img src=\"/storage/images/main/slider1.jpg\" class=\"d-block w-100\"></div><div class=\"carousel-item\"><img src=\"/storage/images/main/slider2.jpg\" class=\"d-block w-100\"></div><div class=\"carousel-item\"><img src=\"/storage/images/main/slider3.jpg\" class=\"d-block w-100\"></div><button class=\"carousel-control-prev text-white d-flex justify-content-start ps-2\" type=\"button\" data-bs-target=\"#carouselMain\" data-bs-slide=\"prev\"><i class=\"fa-solid fa-circle-chevron-left fa-3x\"></i><span class=\"visually-hidden\">Назад</span></button><button class=\"carousel-control-next text-white d-flex justify-content-end pe-2\" type=\"button\" data-bs-target=\"#carouselMain\" data-bs-slide=\"next\"><i class=\"fa-solid fa-circle-chevron-right fa-3x\"></i><span class=\"visually-hidden\">Вперёд</span></button></div></div></div>", 1);
 var _hoisted_2 = {
   "class": "row my-3"
 };
@@ -139,17 +140,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Рекомендуемое", -1 /* HOISTED */);
 var _hoisted_2 = {
-  "class": "row row-cols-1 row-cols-lg-4 g-4"
+  "class": "row row-cols-1 row-cols-xl-4 g-2 g-xl-4"
 };
-var _hoisted_3 = {
-  key: 0,
-  "class": "col"
-};
+var _hoisted_3 = ["onClick"];
 var _hoisted_4 = {
-  "class": "card bg-white d-flex flex-column justify-content-between p-2 p-lg-3 shadow-sm"
+  "class": "rowcard h-100 bg-white d-flex flex-row flex-xl-column justify-content-between p-2 p-xl-3 shadow-sm"
 };
 var _hoisted_5 = {
-  "class": "card-img-top h-50 position-relative"
+  "class": "card-img-top col-4 col-md-2 col-xl-12 position-relative flex-xl-fill px-0"
 };
 var _hoisted_6 = ["src"];
 var _hoisted_7 = {
@@ -224,7 +222,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     var _product$preview_imag;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: product.id
-    }, [product.published ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    }, [product.published ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: 0,
+      "class": "col",
+      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+        return _ctx.addHistory(product);
+      }, ["prevent"])
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       src: (_product$preview_imag = product.preview_image) !== null && _product$preview_imag !== void 0 ? _product$preview_imag : 'storage/images/main/none.png',
       "class": "fit-img"
     }, null, 8 /* PROPS */, _hoisted_6), product.tags ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(product.tags, function (tag) {
@@ -244,7 +248,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([_ctx.checkToHaving(product, 'favourite') !== undefined ? 'fas text-danger' : 'fa-regular', "fa-heart position-absolute"])
     }, null, 2 /* CLASS */)], 8 /* PROPS */, _hoisted_11)], 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: "/product/".concat(product.id),
-      "class": "text-wrap text-truncate card-title h-50"
+      "class": "text-wrap card-title h-50"
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.title), 9 /* TEXT, PROPS */, _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.price) + " ₽", 1 /* TEXT */), _hoisted_18]), product.count <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_19, _hoisted_21)) : _ctx.checkToHaving(product, 'cart') === undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
       key: 1,
       onClick: function onClick($event) {
@@ -274,7 +278,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return _ctx.addQuantity(product);
       }, ["prevent"]),
       "class": "btn btn-outline-primary text-nowrap border-0 rounded-3 d-flex align-items-center justify-content-center"
-    }, _hoisted_32, 8 /* PROPS */, _hoisted_30)]))])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
+    }, _hoisted_32, 8 /* PROPS */, _hoisted_30)]))])])])], 8 /* PROPS */, _hoisted_3)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
   }), 128 /* KEYED_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 64 /* STABLE_FRAGMENT */);
 }
 

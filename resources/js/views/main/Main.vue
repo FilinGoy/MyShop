@@ -2,7 +2,7 @@
 	<div>
 		<div class="row">
 			<div id="carouselMain" class="carousel slide col px-0" data-bs-ride="carousel">
-				<div class="carousel-inner" style="max-height: 450px;">
+				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img src="/storage/images/main/slider1.jpg" class="d-block w-100" />
 					</div>

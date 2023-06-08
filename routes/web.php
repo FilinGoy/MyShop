@@ -139,6 +139,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
     });
 });
 
-Route::post('/', 'Auth\LoginController@logout')->name('logout');
-
 Route::get('{page}', \App\Http\Controllers\IndexController::class)->where('page', '.*');

@@ -1,11 +1,11 @@
 <template>
 	<h4>Рекомендуемое</h4>
-	<div class="row row-cols-1 row-cols-lg-4 g-4">
+	<div class="row row-cols-1 row-cols-xl-4 g-2 g-xl-4">
 		<template v-if="products">
 			<template v-for="product in products" :key="product.id">
-				<div class="col" v-if="product.published">
-					<div class="card bg-white d-flex flex-column justify-content-between p-2 p-lg-3 shadow-sm">
-						<div class="card-img-top h-50 position-relative">
+				<div class="col" v-if="product.published" @click.prevent="addHistory(product)">
+					<div class="rowcard h-100 bg-white d-flex flex-row flex-xl-column justify-content-between p-2 p-xl-3 shadow-sm">
+						<div class="card-img-top col-4 col-md-2 col-xl-12 position-relative flex-xl-fill px-0">
 							<img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" />
 							<div v-if="product.tags" class="position-absolute top-0 d-flex flex-wrap justify-content-start w-100 p-2 gap-2">
 								<div v-for="tag in product.tags" :key="tag.tag_id" class="badge badge-danger">{{ tag.title }}</div>
@@ -24,7 +24,7 @@
 							</div>
 						</div>
 						<div class="card-body px-3 py-3 d-flex flex-column justify-content-between">
-							<a :href="`/product/${product.id}`" class="text-wrap text-truncate card-title h-50">
+							<a :href="`/product/${product.id}`" class="text-wrap card-title h-50">
 								{{ product.title }}
 							</a>
 
@@ -94,7 +94,7 @@ export default {
 	},
 	methods: {
 		getProductFromCategory(place) {
-			this.axios.get("../../api/category/1?count=4").then((res) => {
+			this.axios.get(`../../api/category/${localStorage.getItem('history') ?? 1}?count=4`).then((res) => {
 				this.products = res.data.products;
 				this.category = res.data.category;
 			});

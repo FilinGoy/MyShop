@@ -14,14 +14,10 @@ class CountryController extends Controller
         $countries = Country::all();
         return view('admin.country.index', compact('countries'));
     }
-
     public function create()
     {
-        
         return view('admin.country.create');
     }
-
-
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
@@ -32,12 +28,10 @@ class CountryController extends Controller
 
         return redirect()->back();
     }
-
     public function edit(Country $country)
     {
         return view('admin.country.edit', compact('country'));
     }
-
     public function show(Country $country)
     {
         return view('admin.country.show', compact('country'));

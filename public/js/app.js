@@ -18522,7 +18522,6 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
     totalPrice: 0,
     favourite: [],
     countFavourite: 0,
-    history: [],
     isLoginUser: false,
     user: null,
     tokenRefreshed: true
@@ -18592,7 +18591,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
       var _state$cart, _state$cart2, _state$cart3;
       state.totalPrice = (_state$cart = state.cart) === null || _state$cart === void 0 ? void 0 : _state$cart.reduce(function (sum, product) {
         return sum + product.price * product.quantity;
-      }, 0);
+      }, 0).toFixed(2);
       state.countCartAll = (_state$cart2 = state.cart) === null || _state$cart2 === void 0 ? void 0 : _state$cart2.reduce(function (quantity, product) {
         return quantity + product.quantity;
       }, 0);
@@ -18618,6 +18617,17 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
     },
     UPDATE_TOTAL_FAVOURITE: function UPDATE_TOTAL_FAVOURITE(state, product) {
       state.countFavourite = state.favourite.length;
+    },
+    //!SECTION
+
+    //SECTION - История
+    ADD_TO_HISTORY: function ADD_TO_HISTORY(state, category) {
+      if (category == localStorage.getItem('history')) {
+        return;
+      } else {
+        state.history = category;
+      }
+      localStorage.setItem('history', JSON.stringify(state.history));
     },
     //!SECTION
 
@@ -18853,7 +18863,7 @@ app.mixin({
       var _this$cart, _this$cart2;
       this.totalPrice = (_this$cart = this.cart) === null || _this$cart === void 0 ? void 0 : _this$cart.reduce(function (sum, product) {
         return sum + product.price * product.quantity;
-      }, 0);
+      }, 0).toFixed(2);
       this.totalCount = (_this$cart2 = this.cart) === null || _this$cart2 === void 0 ? void 0 : _this$cart2.reduce(function (sum, product) {
         return sum + product.quantity;
       }, 0);
@@ -18879,6 +18889,7 @@ app.mixin({
       this.$store.dispatch('initializeCart');
       if (localStorage.getItem('cart') == '[]') {
         localStorage.removeItem("cart");
+        this.cart = null;
       }
     },
     //!SECTION
@@ -18910,8 +18921,14 @@ app.mixin({
         this.$store.dispatch('initializeFavourite');
         if (localStorage.getItem('favourite') == '[]') {
           localStorage.removeItem("favourite");
+          this.favourite = null;
         }
       }
+    },
+    //!SECTION
+    //SECTION - История
+    addHistory: function addHistory(product) {
+      this.$store.commit("ADD_TO_HISTORY", product.category.id);
     } //!SECTION
   }
 });

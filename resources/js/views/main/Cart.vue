@@ -57,7 +57,7 @@
 														<small>Нет в наличии</small>
 													</button>
 												</a>
-												<a v-else-if="checkToHaving(product, 'cart') === undefined" @click="addToCart(product)" class="d-flex align-items-center justify-content-center">
+												<a v-else-if="checkToHaving(product, 'cart') === undefined" @click.prevent="addToCart(product)" class="d-flex align-items-center justify-content-center">
 													<button class="btn btn-outline-primary text-nowrap d-flex align-items-center justify-content-center gap-2">
 														<i class="fas fa-plus"></i>
 														<i class="fas fa-shopping-basket fs-5"></i>
@@ -121,7 +121,7 @@
 
 				<button type="button" href="#" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 ? true : false">
 					<p v-if="!totalPrice || totalPrice < 500">
-						До заказа ещё: <span>{{ totalPrice ? 500 - totalPrice : "500" }}</span
+						До заказа ещё: <span>{{ totalPrice ? (500 - totalPrice).toFixed(2) : "500" }}</span
 						>₽
 					</p>
 					<p v-if="totalPrice >= 500" @click.prevent="orderConfirm">Перейти к оформлению</p>
@@ -136,23 +136,26 @@ export default {
 	mounted() {
 		this.getCart();
 	},
-    methods: {
-        orderConfirm(){
-            let products = JSON.parse(localStorage.getItem('cart'));
+	methods: {
+		orderConfirm() {
+			let products = JSON.parse(localStorage.getItem("cart"));
 
-            this.axios.post('/api/orderBuy', {
-                'user_id': this.$store.state.user.id,
-                'first_name': this.$store.state.user.first_name,
-                'last_name': this.$store.state.user.last_name,
-                'address': this.$store.state.user.address,
-                'total_price': this.totalPrice,
-                'products': products
-            }).then(res => {
-                this.clearCart()
-                alert(res.data.message)
-            })
-        }
-    },
+			this.axios
+				.post("/api/orderBuy", {
+					user_id: this.$store.state.user.id,
+                    email: this.$store.state.user.email,
+					first_name: this.$store.state.user.first_name,
+					last_name: this.$store.state.user.last_name,
+					address: this.$store.state.user.address,
+					total_price: this.totalPrice,
+					products: products,
+				})
+				.then((res) => {
+					this.clearCart();
+					alert(res.data.message);
+				});
+		},
+	},
 };
 </script>
 <style></style>

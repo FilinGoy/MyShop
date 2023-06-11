@@ -6,6 +6,8 @@ import router from './router';
 import App from './App.vue';
 import axios from 'axios';
 
+import { debounce } from "lodash";
+
 import VueTheMask from 'vue-the-mask';
 
 const app = createApp(App);
@@ -18,6 +20,8 @@ const store = createStore({
 
         favourite: [],
         countFavourite: 0,
+
+        history: null,
 
         isLoginUser: false,
         user: null,
@@ -66,7 +70,6 @@ const store = createStore({
         ADD_TO_CART: (state, product) => {
             let index = state.cart.findIndex(productInCart => productInCart.id === product[0].id);
             if (index !== -1) {
-                this.checkToHaving()
                 return
             } else {
                 state.cart.push(product[0]);
@@ -105,7 +108,7 @@ const store = createStore({
             }
             localStorage.setItem('favourite', JSON.stringify(state.favourite));
         },
-        UPDATE_TOTAL_FAVOURITE: (state, product) => {
+        UPDATE_TOTAL_FAVOURITE: (state) => {
             state.countFavourite = state.favourite.length;
         },
         //!SECTION
@@ -142,7 +145,7 @@ const store = createStore({
             commit('GET_CATEGORIES');
         },
 
-        getUserInfo: ({ commit, state }) => {
+        getUserInfo: debounce(({ commit, state }) => {
             let token = localStorage.getItem('access_token');
             if (!token) {
                 if (sessionStorage.getItem('access_token')) token = sessionStorage.getItem('access_token');
@@ -179,7 +182,7 @@ const store = createStore({
                                         responseType: 'json'
                                     })
                                         .then(res => {
-                                            commit('SET_IS_LOGED_IN', true); // сохраняем данные в state
+                                            commit('SET_IS_LOGED_IN', true); // сохранение данных в state
                                             commit('GET_INFO_USER', res.data);
                                         })
                                         .catch(err => {
@@ -194,7 +197,7 @@ const store = createStore({
             } else {
                 commit('SET_IS_LOGED_IN', false);
             }
-        },
+        }, 1000)
     },
     getters: {
         statusUser(state) {
@@ -298,10 +301,12 @@ app.mixin({
                 ];
                 this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
                 $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
+                this.getCart();
+                this.$store.dispatch('initializeCart');
             } else {
                 return;
             }
-            this.$store.commit("UPDATE_TOTAL_CART");
+
         },
         subtractQuantity(product) {
             let index = this.$store.state.cart?.findIndex(p => p.id == product.id);
@@ -315,10 +320,12 @@ app.mixin({
                 ];
                 this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
                 $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
+                this.getCart();
+                this.$store.dispatch('initializeCart');
             } else {
                 this.cleanFromCart(product);
             }
-            this.$store.commit("UPDATE_TOTAL_CART");
+
         },
         setProduct(product, e) {
             let index = this.$store.state.cart?.findIndex(p => p.id == product.id);
@@ -336,8 +343,10 @@ app.mixin({
                 ];
                 this.$store.commit("UPDATE_PRODUCT_IN_CART", editProduct);
                 $('#editQuantity' + product.id).val(this.$store.state.cart[index].quantity);
+                this.getCart();
+                this.$store.dispatch('initializeCart');
             }
-            this.$store.commit("UPDATE_TOTAL_CART");
+
         },
         checkValue(e) {
             if (e.target.value > 999) {
@@ -378,7 +387,7 @@ app.mixin({
             ];
 
             this.$store.commit("ADD_TO_CART", newProduct);
-            this.$store.commit("UPDATE_TOTAL_CART");
+            this.$store.dispatch('initializeCart');
         },
         cleanFromCart(product) {
             this.getCart();

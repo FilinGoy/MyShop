@@ -19,14 +19,15 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     orderConfirm: function orderConfirm() {
       var _this = this;
-      var products = JSON.parse(localStorage.getItem('cart'));
-      this.axios.post('/api/orderBuy', {
-        'user_id': this.$store.state.user.id,
-        'first_name': this.$store.state.user.first_name,
-        'last_name': this.$store.state.user.last_name,
-        'address': this.$store.state.user.address,
-        'total_price': this.totalPrice,
-        'products': products
+      var products = JSON.parse(localStorage.getItem("cart"));
+      this.axios.post("/api/orderBuy", {
+        user_id: this.$store.state.user.id,
+        email: this.$store.state.user.email,
+        first_name: this.$store.state.user.first_name,
+        last_name: this.$store.state.user.last_name,
+        address: this.$store.state.user.address,
+        total_price: this.totalPrice,
+        products: products
       }).then(function (res) {
         _this.clearCart();
         alert(res.data.message);
@@ -229,9 +230,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "text-wrap card-title h-50"
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.title), 9 /* TEXT, PROPS */, _hoisted_23), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.price) + " ₽", 1 /* TEXT */), _hoisted_27]), product.count <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_28, _hoisted_30)) : _ctx.checkToHaving(product, 'cart') === undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
       key: 1,
-      onClick: function onClick($event) {
+      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return _ctx.addToCart(product);
-      },
+      }, ["prevent"]),
       "class": "d-flex align-items-center justify-content-center"
     }, _hoisted_33, 8 /* PROPS */, _hoisted_31)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -273,7 +274,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "#",
     "class": "btn btn-danger",
     disabled: ((_ctx$totalPrice2 = _ctx.totalPrice) !== null && _ctx$totalPrice2 !== void 0 ? _ctx$totalPrice2 : 0) < 500 ? true : false
-  }, [!_ctx.totalPrice || _ctx.totalPrice < 500 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" До заказа ещё: "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.totalPrice ? 500 - _ctx.totalPrice : "500"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("₽ ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.totalPrice >= 500 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
+  }, [!_ctx.totalPrice || _ctx.totalPrice < 500 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" До заказа ещё: "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.totalPrice ? (500 - _ctx.totalPrice).toFixed(2) : "500"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("₽ ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.totalPrice >= 500 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
     key: 1,
     onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.orderConfirm && $options.orderConfirm.apply($options, arguments);

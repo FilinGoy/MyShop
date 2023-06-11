@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('address');
             $table->string('description')->nullable();
-            $table->integer('status_id')->index('orders_fk1');
+            $table->integer('status_id')->index('orders_fk1')->default(1);
             $table->dateTime('datetime_delivery')->nullable();
             $table->decimal('total_price', 10)->default(0);
             $table->integer('payment_id')->index('orders_fk2');

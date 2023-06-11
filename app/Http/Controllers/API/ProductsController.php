@@ -4,11 +4,14 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
+use App\Mail\OrderInfo;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ProductsController extends Controller
 {
@@ -30,17 +33,22 @@ class ProductsController extends Controller
     {
         $data = $request->validate([
             'user_id' => 'nullable',
+            'email' => 'required',
             'first_name' => 'nullable',
             'last_name' => 'nullable',
             'address' => 'nullable',
             'total_price' => 'required',
+            'products' => 'required',
             'products' => 'required'
         ]);
 
         if (!isset($data['address'])) unset($data['address']);
 
         $products = $data['products'];
-        unset($data['products']);
+        $email = $data['email'];
+
+        unset($data['products'], $data['email']);
+
 
         $order = Order::create($data);
 
@@ -55,6 +63,7 @@ class ProductsController extends Controller
             );
         }
 
+        Mail::to($email)->send((new OrderInfo($order))->with('order', $order));
         return response()->json(['message' => "Заказ отправлен вам на почту"]);
     }
 }

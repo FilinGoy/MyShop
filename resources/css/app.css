@@ -117,7 +117,3 @@ a.card-title {
   top: 0;
   z-index: 9999;
 }
-.carousel-item {
-  height: 100%;
-  overflow: hidden;
-}

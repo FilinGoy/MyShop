@@ -47,7 +47,7 @@
 								<input type="text" id="registerUsername" class="form-control" placeholder="Пользователь" v-model="registerLogin" minlength="4" max="255" />
 							</div>
 							<div class="col-12">
-								<label class="form-label" for="registerEmail">Почта (E-Mail)<span class="text-danger">*</span></label>
+								<label class="form-label" for="registerEmail">Почта (Email адрес)<span class="text-danger">*</span></label>
 								<input type="email" id="registerEmail" class="form-control" placeholder="inbox@mail.ru" v-model="registerEmail" max="255" />
 							</div>
 							<div class="col-12">

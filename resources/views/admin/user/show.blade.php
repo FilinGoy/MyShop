@@ -29,7 +29,7 @@
                         <dl>
                             <dt>Идентификатор (ID)</dt>
                             <dd>{{ $user->id }}</dd>
-                            <dt>E-Mail</dt>
+                            <dt>Email адрес</dt>
                             <dd>{{ $user->email }}</dd>
                             <dt>Логин</dt>
                             <dd>{{ $user->login }}</dd>

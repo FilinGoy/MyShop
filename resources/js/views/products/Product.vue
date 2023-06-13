@@ -277,7 +277,7 @@
 
 										<header>
 											<div class="h3 mb-1">Оставить отзыв</div>
-											<p class="text-muted"><small>Ваш E-Mail под защитой и будет скрыт для других пользователям.</small></p>
+											<p class="text-muted"><small>Ваш Email адрес под защитой и будет скрыт для других пользователям.</small></p>
 										</header>
 
 										<!-- Reply form -->
@@ -287,7 +287,7 @@
 												<div class="row">
 													<div class="col-lg-6">
 														<div class="form-group">
-															<label class="label" for="exampleInputEmail1">E-Mail почта</label>
+															<label class="label" for="exampleInputEmail1">Email адрес</label>
 															<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
 														</div>
 													</div>

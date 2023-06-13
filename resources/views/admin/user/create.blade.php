@@ -36,7 +36,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="email" class="col-form-label">E-Mail адрес<span
+                                    <label for="email" class="col-form-label">Email адрес<span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control col" id="email" name="email"
                                         value="{{ old('email') }}" placeholder="example@mail.ru">

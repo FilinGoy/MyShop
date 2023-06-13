@@ -39,6 +39,4 @@
 
 <script src="js/app.js"></script>
 
-<script></script>
-
 </html>

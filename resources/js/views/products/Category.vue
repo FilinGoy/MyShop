@@ -13,44 +13,44 @@
 			</div>
 
 			<div class="col">
+				<!-- <recomend-products></recomend-products> -->
+
 				<!-- Products header -->
-
-				<div class="row">
-					<div class="col">
-						<div class="bg-white p-2 p-lg-3 shadow-sm mb-2 mb-lg-4">
+				<div class="row bg-white py-2 py-lg-3 shadow-sm">
+					<div class="col-12 col-md-6">
+						<div class="d-flex align-items-center justify-content-between my-3">
+							<div class="d-flex align-items-end justify-content-between">
+								<h1 class="my-0 lh-1">{{ category.title }}</h1>
+								<div class="pl-2">{{ pages.total }} {{ getProductWord(pages.total) }}</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 d-flex justify-content-md-end">
+						<div class="form-inline">
 							<div class="d-flex align-items-center justify-content-between my-3">
-								<div class="d-flex align-items-end justify-content-between">
-									<h1 class="my-0 lh-1">{{ category.title }}</h1>
-									<div class="pl-2">{{ pages.total }} {{ getProductWord(pages.total) }}</div>
-								</div>
-
-								<div class="form-inline">
-									<div class="mr-2">
-										<a href="products-grid.html" class="btn btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="Grid view">
-											<i class="fa fa-th-large"></i>
-										</a>
-										<a href="products-list.html" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="List view">
-											<i class="fa fa-list-ul"></i>
-										</a>
-									</div>
-									<div class="form-group mb-0">
-										<label for="exampleFormControlSelect2" class="mr-3 d-none d-lg-block"><small>Сортировка</small></label>
-										<select class="form-control form-control-sm" id="exampleFormControlSelect2" v-model="selectedSort" @change="sortedList">
-											<option value="nameUp" selected>▲ По названию</option>
-											<option value="nameDown">▼ По названию</option>
-											<option value="priceUp">▲ По цене</option>
-											<option value="priceDown">▼ По цене</option>
-										</select>
-									</div>
-									<div class="d-lg-none ml-2">
-										<button class="btn btn-danger btn-sm toggle-show" data-show="open-mobile-filters">
-											<strong>
-												<i class="icon icon-text-align-center"></i>
-												<span class="d-none d-sm-inline-block">Фильтр</span>
-											</strong>
-										</button>
-									</div>
-								</div>
+								<a href="products-grid.html" class="btn btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="Grid view">
+									<i class="fa fa-th-large"></i>
+								</a>
+								<a href="products-list.html" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="List view">
+									<i class="fa fa-list-ul"></i>
+								</a>
+							</div>
+							<div class="form-group mb-0">
+								<label for="exampleFormControlSelect2" class="mr-3 d-none d-lg-block"><small>Сортировка</small></label>
+								<select class="form-control form-control-sm" id="exampleFormControlSelect2" v-model="selectedSort" @change="sortedList">
+									<option value="nameUp" selected>▲ По названию</option>
+									<option value="nameDown">▼ По названию</option>
+									<option value="priceUp">▲ По цене</option>
+									<option value="priceDown">▼ По цене</option>
+								</select>
+							</div>
+							<div class="d-lg-none ml-2">
+								<button class="btn btn-danger btn-sm toggle-show" data-show="open-mobile-filters">
+									<strong>
+										<i class="icon icon-text-align-center"></i>
+										<span class="d-none d-sm-inline-block">Фильтр</span>
+									</strong>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -58,7 +58,7 @@
 
 				<!-- Products collection -->
 
-				<div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-2 g-xl-4">
+				<div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-2 g-xl-4 mt-2">
 					<template v-if="products">
 						<template v-for="product in products" :key="product.id">
 							<div class="col" v-if="product.published" @click="addHistory(product)">
@@ -164,14 +164,16 @@
 	</div>
 </template>
 <script>
+import RecomendProducts from "./Recomend.vue";
 export default {
+	components: { RecomendProducts },
 	name: "category",
 	data() {
 		return {
 			products: [],
 			category: [],
 			pages: [],
-            selectedSort: 'nameUp'
+			selectedSort: "nameUp",
 		};
 	},
 	mounted() {
@@ -182,9 +184,9 @@ export default {
 			this.getProductFromCategory(to);
 		},
 	},
-    beforeUpdate() {
-        this.sortedList();
-    },
+	beforeUpdate() {
+		this.sortedList();
+	},
 	methods: {
 		getProductFromCategory(place, page = 1, count = 9) {
 			this.axios.get(`../../api/category/${place.params.id}?page=${page}&count=${count}`).then((res) => {
@@ -193,22 +195,22 @@ export default {
 				this.pages = res.data.meta;
 			});
 		},
-                sortedList(){
-                switch (this.selectedSort) {
-                    case 'nameUp':
-                        this.products.sort((a, b) => a.title.localeCompare(b.title))
-                        break;
-                    case 'nameDown':
-                        this.products.sort((a, b) => b.title.localeCompare(a.title))
-                        break;
-                    case 'priceUp':
-                        this.products.sort((a, b) => a.price - b.price);
-                        break;
-                    case 'priceDown':
-                        this.products.sort((a, b) => b.price - a.price)
-                        break;
-                }
-        }
+		sortedList() {
+			switch (this.selectedSort) {
+				case "nameUp":
+					this.products.sort((a, b) => a.title.localeCompare(b.title));
+					break;
+				case "nameDown":
+					this.products.sort((a, b) => b.title.localeCompare(a.title));
+					break;
+				case "priceUp":
+					this.products.sort((a, b) => a.price - b.price);
+					break;
+				case "priceDown":
+					this.products.sort((a, b) => b.price - a.price);
+					break;
+			}
+		},
 	},
 };
 </script>

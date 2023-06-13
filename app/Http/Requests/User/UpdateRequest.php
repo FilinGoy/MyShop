@@ -36,7 +36,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'email.required' => 'Поле является обязательным!',
-            'email.unique' => 'Данный E-Mail уже используется!',
+            'email.unique' => 'Данный Email адрес уже используется!',
             'email' => 'Поле почты заполнено неверно!',
             'login.required' => 'Поле является обязательным!',
             'login.unique' => 'Данный логин уже используется!',

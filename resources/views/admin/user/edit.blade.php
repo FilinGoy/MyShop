@@ -40,7 +40,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="email" class="col-form-label">E-Mail адрес<span
+                                    <label for="email" class="col-form-label">Email адрес<span
                                             class="text-danger">*</span></label>
                                     <input type="text" class="form-control col" id="email" name="email"
                                         value="{{ old('email') ?? $user->email }}" placeholder="example@mail.ru">
@@ -99,7 +99,7 @@
                             <dl>
                                 <dt>Идентификатор (ID)</dt>
                                 <dd>{{ $user->id }}</dd>
-                                <dt>E-Mail</dt>
+                                <dt>Email адрес</dt>
                                 <dd>{{ $user->email }}</dd>
                                 <dt>Имя</dt>
                                 <dd>{{ $user->first_name ?? '-' }}</dd>

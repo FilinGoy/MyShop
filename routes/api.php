@@ -23,7 +23,7 @@ Route::get('/category/{category}', 'App\Http\Controllers\API\ProductController@g
 Route::get('/product/{product}', 'App\Http\Controllers\API\ProductController@getProduct');
 Route::post('/editProfile', '\App\Http\Controllers\API\UserController@editProfile');
 Route::post('/search', '\App\Http\Controllers\API\ProductsController@getSearch');
-Route::post('/orderBuy', '\App\Http\Controllers\API\ProductsController@storeOrder');
+Route::post('/ckeckout', '\App\Http\Controllers\API\OrderController@storeOrder');
 
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function($router) {
     Route::post('me', [App\Http\Controllers\API\AuthController::class, 'me']);

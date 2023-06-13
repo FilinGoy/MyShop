@@ -62,7 +62,7 @@
                                     <tr class="d-flex">
                                         <th class="col-1">ID</th>
                                         <th class="col-2">Логин</td>
-                                        <th class="col-3">E-Mail</th>
+                                        <th class="col-3">Email адрес</th>
                                         <th class="col-2">Имя</td>
                                         <th class="col-2">Фамилия</td>
                                         <th class="col-2">Действие</td>

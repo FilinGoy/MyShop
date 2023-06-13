@@ -1,29 +1,8 @@
 <template>
 	<div>
-		<div class="row">
-			<div id="carouselMain" class="carousel slide col px-0" data-bs-ride="carousel">
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="/storage/images/main/slider1.jpg" class="d-block w-100" />
-					</div>
-					<div class="carousel-item">
-						<img src="/storage/images/main/slider2.jpg" class="d-block w-100" />
-					</div>
-					<div class="carousel-item">
-						<img src="/storage/images/main/slider3.jpg" class="d-block w-100" />
-					</div>
-					<button class="carousel-control-prev text-white d-flex justify-content-start ps-2" type="button" data-bs-target="#carouselMain" data-bs-slide="prev">
-						<i class="fa-solid fa-circle-chevron-left fa-3x"></i>
-						<span class="visually-hidden">Назад</span>
-					</button>
-					<button class="carousel-control-next text-white d-flex justify-content-end pe-2" type="button" data-bs-target="#carouselMain" data-bs-slide="next">
-						<i class="fa-solid fa-circle-chevron-right fa-3x"></i>
-						<span class="visually-hidden">Вперёд</span>
-					</button>
-				</div>
-			</div>
-		</div>
-
+		<router-link to="category/1" class="row">
+			<img src="storage/images/main/newProduct.jpg" class="px-0" />
+		</router-link>
 		<div class="row my-3">
 			<router-link class="col-4 btn btn-white rounded-0 d-flex flex-wrap align-items-start justify-content-evenly p-4" to="/how-to-buy">
 				<div>

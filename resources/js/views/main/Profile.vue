@@ -35,7 +35,7 @@
 						<input type="tel" class="form-control col" id="number" v-model="number" v-mask="'+7 (###) ###-##-##'" maxlength="18" />
 					</div>
 					<div class="col-md-6">
-						<label for="email" class="form-label">Почта (E-Mail)<span class="text-danger">*</span></label>
+						<label for="email" class="form-label">Почта (Email адрес)<span class="text-danger">*</span></label>
 						<input type="email" class="form-control" id="email" placeholder="example@mail.ru" max="255" v-model="email" />
 					</div>
 					<div class="col-12">

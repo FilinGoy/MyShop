@@ -2169,9 +2169,7 @@ progress {
 }
 
 .table> :not(caption)>*>* {
-    padding: 0.5rem 0.5rem;
     background-color: var(--bs-table-bg);
-    border-bottom-width: var(--bs-border-width);
     box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
 
@@ -2662,9 +2660,9 @@ textarea.form-control-lg {
 }
 
 .form-select:focus {
-    border-color: #86b7fe;
+    border-color: #fe8686;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 .25rem rgba(253, 13, 13, 0.25)
 }
 
 .form-select[multiple],

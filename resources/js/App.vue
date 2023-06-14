@@ -15,7 +15,7 @@
 
 				<div class="nav-item d-flex px-2 justify-content-start justify-content-md-start align-items-center">
 					<router-link class="navbar-brand d-flex align-items-center p-0" to="/">
-						<img src="/storage/images/main/logo.png" alt="Logo" height="40" class="p-0" />
+						<img :src="logo" alt="Logo" height="40" class="p-0" />
 						<p class="fs-6 my-0 ps-2">Дом Вкуса</p>
 					</router-link>
 				</div>
@@ -126,7 +126,7 @@
 			<div class="offcanvas-header">
 				<div class="offcanvas-title d-flex px-2 justify-content-between align-items-center w-100" id="mainMenuOffcanvasLabel" data-bs-dismiss="offcanvas">
 					<router-link class="navbar-brand d-flex align-items-center p-0" to="/">
-						<img src="/storage/images/main/logo.png" alt="Logo" height="40" class="p-0" />
+						<img :src="logo" alt="Logo" height="40" class="p-0" />
 						<p class="fs-6 my-0 ps-2">Дом Вкуса</p>
 					</router-link>
 					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
@@ -280,6 +280,7 @@ export default {
 	data() {
 		return {
 			searchTitle: "",
+			logo: "storage/images/main/logo.png",
 		};
 	},
 	watch: {

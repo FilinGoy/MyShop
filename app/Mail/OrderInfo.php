@@ -14,13 +14,20 @@ class OrderInfo extends Mailable
     use Queueable, SerializesModels;
 
     protected $order;
+    protected $products;
+    protected $payment;
+    protected $number;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($order)
+    public function __construct($order, $products, $payment, $number)
     {
         $this->order = $order;
+        $this->products = $products;
+        $this->payment = $payment;
+        $this->number = $number;
+
     }
 
     /**
@@ -29,7 +36,7 @@ class OrderInfo extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Сведения о заказе №'.$this->order->id,
+            subject: 'Новый заказ в интернет-магазине Дом Вкуса #'.$this->order->id,
         );
     }
 
@@ -40,7 +47,8 @@ class OrderInfo extends Mailable
     {
         return new Content(
             view: 'mail.order',
-            with: ['order' => $this->order]
+            with: ['order' => $this->order, 'products' => $this->products,
+                    'payment' => $this->payment, 'number' => $this->number]
         );
     }
 

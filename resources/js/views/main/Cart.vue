@@ -13,7 +13,7 @@
 					<div v-if="cart" class="row gutters-mobile">
 						<div class="row row-cols-1 g-2">
 							<template v-for="product in cart" :key="product.id">
-								<div class="col px-0 border-bottom">
+								<div class="col px-0 card-line-item">
 									<div class="rowcard h-100 bg-white d-flex flex-row justify-content-between p-2">
 										<div class="card-img-top col-4 col-md-2 position-relative flex-xl-fill px-0">
 											<img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" />
@@ -119,12 +119,13 @@
 					</div>
 				</div>
 
-				<button type="button" href="#" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 ? true : false">
+				<button type="button" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 ? true : false"
+                @click="(totalPrice ?? 0) < 500 ? {} : $router.push('checkout')">
 					<p v-if="!totalPrice || totalPrice < 500">
 						До заказа ещё: <span>{{ totalPrice ? (500 - totalPrice).toFixed(2) : "500" }}</span
 						>₽
 					</p>
-					<p v-if="totalPrice >= 500" @click.prevent="orderConfirm">Перейти к оформлению</p>
+					<p v-if="totalPrice >= 500">Перейти к оформлению</p>
 				</button>
 			</div>
 		</div>
@@ -135,26 +136,6 @@ export default {
 	name: "cart",
 	mounted() {
 		this.getCart();
-	},
-	methods: {
-		orderConfirm() {
-			let products = JSON.parse(localStorage.getItem("cart"));
-
-			this.axios
-				.post("/api/orderBuy", {
-					user_id: this.$store.state.user.id,
-                    email: this.$store.state.user.email,
-					first_name: this.$store.state.user.first_name,
-					last_name: this.$store.state.user.last_name,
-					address: this.$store.state.user.address,
-					total_price: this.totalPrice,
-					products: products,
-				})
-				.then((res) => {
-					this.clearCart();
-					alert(res.data.message);
-				});
-		},
 	},
 };
 </script>

@@ -34,7 +34,7 @@
 					<template v-if="this.favourite">
 						<div class="row row-cols-1 g-2">
 							<template v-for="product in favourite" :key="product.id">
-								<div class="col px-0 border-bottom">
+								<div class="col px-0 card-line-item">
 									<div class="rowcard h-100 bg-white d-flex flex-row justify-content-between p-2">
 										<div class="card-img-top col-4 col-md-2 position-relative flex-xl-fill px-0">
 											<img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" />

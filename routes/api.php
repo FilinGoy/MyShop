@@ -19,11 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/categories', App\Http\Controllers\API\CategoryController::class);
+Route::get('/getPaymentTypes', App\Http\Controllers\API\PaymentTypeController::class);
+
 Route::get('/category/{category}', 'App\Http\Controllers\API\ProductController@getProductFromCategory');
 Route::get('/product/{product}', 'App\Http\Controllers\API\ProductController@getProduct');
 Route::post('/editProfile', '\App\Http\Controllers\API\UserController@editProfile');
 Route::post('/search', '\App\Http\Controllers\API\ProductsController@getSearch');
-Route::post('/ckeckout', '\App\Http\Controllers\API\OrderController@storeOrder');
+Route::post('/orderBuy', '\App\Http\Controllers\API\OrderController@storeOrder');
 
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function($router) {
     Route::post('me', [App\Http\Controllers\API\AuthController::class, 'me']);

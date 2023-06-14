@@ -58,7 +58,7 @@
 						<p class="text-danger">{{ error }}</p>
 					</div>
 					<div class="col-12">
-						<small class="text-wrap text-start text-muted fw-light"> Заполненные данные помогут вам быстрее оформлять заказы! </small>
+						<small class="text-wrap text-start text-muted fw-light">*Заполненные данные помогут вам быстрее оформлять заказы! </small>
 					</div>
 				</div>
 			</div>

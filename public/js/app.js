@@ -18586,7 +18586,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.createStore)({
     history: null,
     isLoginUser: false,
     user: null,
-    tokenRefreshed: true
+    tokenRefreshed: false
   },
   mutations: {
     //SECTION - Профль
@@ -18751,7 +18751,7 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.createStore)({
                 },
                 responseType: 'json'
               }).then(function (res) {
-                commit('SET_IS_LOGED_IN', true); // сохранение данных в state
+                commit('SET_IS_LOGED_IN', true);
                 commit('GET_INFO_USER', res.data);
               })["catch"](function (err) {
                 commit('SET_IS_LOGED_IN', false);
@@ -18835,6 +18835,15 @@ app.mixin({
         default:
           return;
       }
+    },
+    formattedDate: function formattedDate(datetime) {
+      var date = new Date(datetime);
+      var year = String(date.getFullYear()).padStart(2, "0");
+      var month = String(date.getMonth() + 1).padStart(2, "0");
+      var day = String(date.getDate()).padStart(2, "0");
+      var hours = String(date.getHours()).padStart(2, "0");
+      var minutes = String(date.getMinutes()).padStart(2, "0");
+      return "".concat(day, ".").concat(month, ".").concat(year, " ").concat(hours, ":").concat(minutes);
     },
     //!SECTION
     //SECTION - Действие с продуктом
@@ -19134,7 +19143,19 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_0__.createRouter)({
     path: '/profile',
     name: 'profile',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ "resources_js_views_main_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/main/Profile.vue */ "./resources/js/views/main/Profile.vue"));
+      return __webpack_require__.e(/*! import() */ "resources_js_views_profile_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/profile/Profile.vue */ "./resources/js/views/profile/Profile.vue"));
+    }
+  }, {
+    path: '/profile/orders',
+    name: 'orders',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_profile_Orders_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/profile/Orders.vue */ "./resources/js/views/profile/Orders.vue"));
+    }
+  }, {
+    path: '/profile/order/:id',
+    name: 'order',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_views_profile_Order_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/profile/Order.vue */ "./resources/js/views/profile/Order.vue"));
     }
   }, {
     path: '/profile/favorite',
@@ -48391,7 +48412,7 @@ function useRoute() {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_main_Main_vue":1,"resources_js_views_main_About_vue":1,"resources_js_views_main_Contacts_vue":1,"resources_js_views_main_Delivery_vue":1,"resources_js_views_main_HowToBuy_vue":1,"resources_js_views_main_ReturnAndTrade_vue":1,"resources_js_views_main_PaymentOrders_vue":1,"resources_js_views_products_Category_vue":1,"resources_js_views_products_Product_vue":1,"resources_js_views_products_SearchProduct_vue":1,"resources_js_views_main_Cart_vue":1,"resources_js_views_main_Checkout_vue":1,"resources_js_views_main_Profile_vue":1,"resources_js_views_main_Favourite_vue":1,"resources_js_views_main_SignIn_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_main_Main_vue":1,"resources_js_views_main_About_vue":1,"resources_js_views_main_Contacts_vue":1,"resources_js_views_main_Delivery_vue":1,"resources_js_views_main_HowToBuy_vue":1,"resources_js_views_main_ReturnAndTrade_vue":1,"resources_js_views_main_PaymentOrders_vue":1,"resources_js_views_products_Category_vue":1,"resources_js_views_products_Product_vue":1,"resources_js_views_products_SearchProduct_vue":1,"resources_js_views_main_Cart_vue":1,"resources_js_views_main_Checkout_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_profile_Orders_vue":1,"resources_js_views_profile_Order_vue":1,"resources_js_views_main_Favourite_vue":1,"resources_js_views_main_SignIn_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -137,6 +137,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
         Route::patch('/{type}', '\App\Http\Controllers\Admin\WeightTypeController@update')->name('weight.update');
         Route::delete('/{type}', '\App\Http\Controllers\Admin\WeightTypeController@delete')->name('weight.delete');
     });
+
+    Route::group(['prefix' => 'orders'], function () {
+        Route::get('/', '\App\Http\Controllers\Admin\OrderController@index')->name('order.index');
+        Route::get('/{type}', '\App\Http\Controllers\Admin\OrderController@show')->name('order.show');
+        Route::get('/{type}/edit', '\App\Http\Controllers\Admin\OrderController@edit')->name('order.edit');
+        Route::patch('/{type}', '\App\Http\Controllers\Admin\OrderController@update')->name('order.update');
+    });
 });
 
 Route::get('{page}', \App\Http\Controllers\IndexController::class)->where('page', '.*');

@@ -145,7 +145,7 @@ a.card-title {
     border-bottom:#e9ecef 1px solid ;
 }
 
-.table > * > * {
+.table.orderInfo > * > * {
     &:not(:last-child)
     {
         border-bottom: #e9ecef 1px solid;
@@ -160,6 +160,33 @@ a.card-title {
             text-align: right;
             border-left: #e9ecef 1px solid;
         }
+    }
+}
+
+.table.standart>*>* {
+    &:not(:last-child) {
+        border-bottom: #e9ecef 1px solid;
+    }
+
+    >* {
+        border: none;
+
+        &:first-child {
+            text-align: left;
+        }
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+}
+
+.checkgroup {
+    >.btn-check:not(:first-child)+label{
+        padding-left: 1rem;
+    }
+    >.btn-check:checked+label {
+        color: red;
     }
 }
 

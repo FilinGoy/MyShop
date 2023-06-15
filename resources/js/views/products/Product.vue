@@ -113,17 +113,6 @@
 									</div>
 								</div>
 
-								<div class="row" v-if="product.ingredients">
-									<div class="col-12">
-										<div class="row mb-2">
-											<div class="col-xl-4">
-												<span class="text-muted">Состав</span>
-											</div>
-											<div v-if="product.ingredients" class="col-xl-8">{{ product.ingredients }}</div>
-										</div>
-									</div>
-								</div>
-
 								<div class="row" v-if="product.weight">
 									<div class="col-12">
 										<div class="row mb-2">
@@ -176,25 +165,59 @@
 
 								<div class="mb-2">
 									<div class="row">
-										<div class="col-5">
-											<input type="number" class="form-control mr-2" value="1" />
-										</div>
-										<div class="col-7">
-											<button class="btn btn-block btn-danger"><i class="icon icon-cart"></i> В корзину</button>
+										<a v-if="product.count <= 0" class="bg-white d-flex flex-fill align-items-center justify-content-center px-0">
+											<button class="btn btn-outline-primary text-nowrap d-flex align-items-center justify-content-center gap-2 w-100" disable>
+												<small>Нет в наличии</small>
+											</button>
+										</a>
+										<a
+											v-else-if="checkToHaving(product, 'cart') === undefined"
+											@click="addToCart(product)"
+											class="bg-white d-flex flex-fill align-items-center justify-content-center px-0"
+										>
+											<button class="btn btn-outline-danger text-nowrap d-flex align-items-center justify-content-center gap-2 w-100">
+												<i class="fas fa-plus"></i>
+												<i class="fas fa-shopping-basket fs-5"></i>
+											</button>
+										</a>
+
+										<div v-else class="d-flex flex-fill align-items-center justify-content-center border rounded-3 bg-white px-0">
+											<button
+												@click.prevent="subtractQuantity(product)"
+												class="btn btn-outline-primary text-nowrap border-0 rounded-3 d-flex align-items-center justify-content-center"
+											>
+												<i class="fas fa-minus flex-fill"></i>
+											</button>
+											<input
+												type="number"
+												class="item-edit rounded-0 border-0 shadow-none flex-fill text-center"
+												min="0"
+												max="999"
+												:id="'editQuantity' + product.id"
+												@input="checkValue"
+												@change="setProduct(product, $event)"
+												:value="checkToHaving(product, 'cart') === undefined ? 1 : getValue(product)"
+											/>
+											<button @click.prevent="addQuantity(product)" class="btn btn-outline-primary text-nowrap border-0 rounded-3 d-flex align-items-center justify-content-center">
+												<i class="fas fa-plus"></i>
+											</button>
 										</div>
 									</div>
 								</div>
 
-								<hr />
-							</div>
-
-							<!-- Add to basket -->
-
-							<div class="btn-group w-100">
-								<span class="btn btn-sm btn-outline-danger" data-toggle="button" aria-pressed="false" autocomplete="off">
-									<span class="show"><i class="fa fa-heart-o"></i> Избранное</span>
-									<span class="hide"><i class="fa fa-heart"></i> В избранном</span>
-								</span>
+								<div class="mb-2">
+									<div class="row">
+										<a @click="toggleToFavourite(product)" class="bg-white d-flex flex-fill align-items-center justify-content-center px-0">
+											<button
+												class="btn btn-outline-danger text-nowrap d-flex align-items-center justify-content-center gap-2 w-100"
+												:class="checkToHaving(product, 'favourite') === undefined ? '' : 'active'"
+											>
+												<i class="fas fa-heart"></i>
+												<p>{{ checkToHaving(product, "favourite") === undefined ? "Добавить в избранное" : "Удалить из избранного" }}</p>
+											</button>
+										</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -210,8 +233,8 @@
 			<div class="container mt-5">
 				<ul class="nav nav-tabs nav-lavalamp justify-content-center mb-4" id="productTab" role="tablist">
 					<li class="nav-item">
-						<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="true">
-							Отзывы
+						<a class="nav-link active" id="composition-tab" data-toggle="tab" href="#composition" role="tab" aria-controls="composition" aria-selected="true">
+							Состав продукта
 						</a>
 					</li>
 					<li class="nav-item">
@@ -219,100 +242,32 @@
 							Описание
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">
+							Отзывы
+						</a>
+					</li>
 				</ul>
 
 				<!-- Product tab content -->
 
 				<div class="tab-content" id="productTabContent">
-					<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-						<!-- Widget rating -->
-
+					<div class="tab-pane fade" id="composition" role="tabpanel" aria-labelledby="composition-tab">
 						<div class="row justify-content-center">
 							<div class="col-lg-8">
-								<div class="rating-overall">
-									<!-- Comments -->
+								<div class="py-3 py-lg-4">
+									<header>
+										<div class="h3 mb-1">Состав продукта (на 100 г.)</div>
+									</header>
 
 									<div class="py-3 py-lg-4">
-										<!-- Comments header -->
-
-										<header>
-											<div class="h3 mb-1">Отзывы</div>
-											<p class="text-muted"><small>Новые отзывы</small></p>
-										</header>
-
-										<!-- Comments feedback -->
-
-										<div class="pt-3 pt-lg-4">
-											<div id="comment-1">
-												<div class="mb-4">
-													<div class="d-flex align-items-center text-small">
-														<img src="storage/images/main/logo.png" class="mr-2 rounded-circle" alt="..." style="width: 40px;" />
-														<div><strong class="mr-1">Анна Влексеевна</strong></div>
-														<div class="text-muted">- 45 минут назад</div>
-														<div class="ml-auto">
-															<i class="fa fa-star icon-xs text-danger"></i>
-															<i class="fa fa-star icon-xs text-danger"></i>
-															<i class="fa fa-star icon-xs text-danger"></i>
-															<i class="fa fa-star icon-xs text-secondary"></i>
-															<i class="fa fa-star icon-xs text-secondary"></i>
-														</div>
-													</div>
-													<div class="my-2">
-														Согласна, но не очень хорошо!
-													</div>
-													<div>
-														<a class="link link-right link-dark"><strong>Ответить</strong></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<hr />
-
-									<!-- Reply -->
-
-									<div class="py-3 py-lg-4">
-										<!-- Reply header -->
-
-										<header>
-											<div class="h3 mb-1">Оставить отзыв</div>
-											<p class="text-muted"><small>Ваш Email адрес под защитой и будет скрыт для других пользователям.</small></p>
-										</header>
-
-										<!-- Reply form -->
-
-										<div class="pt-3 pt-lg-4">
-											<form>
-												<div class="row">
-													<div class="col-lg-6">
-														<div class="form-group">
-															<label class="label" for="exampleInputEmail1">Email адрес</label>
-															<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-														</div>
-													</div>
-													<div class="col-lg-6">
-														<div class="form-group">
-															<label class="label" for="exampleInputName1">Видимое имя</label>
-															<input type="password" class="form-control" id="exampleInputName1" />
-														</div>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="label" for="exampleComment">Комментарий</label>
-													<textarea class="form-control" name="" id="exampleComment" cols="20" rows="4"></textarea>
-												</div>
-
-												<div class="d-flex justify-content-between align-items-center">
-													<button type="submit" class="btn link link-right link-dark"><strong>Отправить</strong></button>
-												</div>
-											</form>
-										</div>
+										<p v-html="product.ingredients"></p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
 					<div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
 						<div class="row justify-content-center">
 							<div class="col-lg-8">
@@ -328,10 +283,58 @@
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+
+					<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+						<!-- Widget rating -->
+
 						<div class="row justify-content-center">
 							<div class="col-lg-8">
-								<div class="py-3 py-lg-4"></div>
+								<div class="rating-overall">
+									<!-- Comments -->
+
+									<div class="py-3 py-lg-4">
+										<!-- Comments header -->
+
+										<header>
+											<div class="h3 mb-1 d-flex">
+												Отзывы (
+												<p class="text-black">{{ product.rate }}<i class="fas fa-star text-warning pr-1"></i></p>
+												)
+											</div>
+											<p class="text-muted"><small>Новые отзывы</small></p>
+										</header>
+
+										<!-- Comments feedback -->
+
+										<div class="pt-3 pt-lg-4">
+											<div id="comment-1">
+												<div class="mb-4">
+													<div class="d-flex align-items-center text-small">
+														<img src="storage/images/main/noname.jpg" class="mr-2 rounded-circle" alt="..." style="width: 40px;" />
+														<div><strong class="mr-1">Анна Семанова</strong></div>
+														<div class="text-muted">- 45 минут назад</div>
+														<div class="ml-auto">
+															<i class="fa fa-star icon-xs text-danger"></i>
+															<i class="fa fa-star icon-xs text-danger"></i>
+															<i class="fa fa-star icon-xs text-danger"></i>
+															<i class="fa fa-star icon-xs text-secondary"></i>
+															<i class="fa fa-star icon-xs text-secondary"></i>
+														</div>
+													</div>
+													<div class="my-2">
+														Вкусные, любим кушать всей семьёй!
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<hr />
+
+									<!-- Reply -->
+									<p>В разработке!</p>
+									<!--  -->
+								</div>
 							</div>
 						</div>
 					</div>
@@ -358,7 +361,7 @@ export default {
 	},
 	methods: {
 		getProduct(place) {
-			this.axios.get("../../api/product/" + place.params.id).then((res) => {
+			this.axios.get("/api/product/" + place.params.id).then((res) => {
 				this.product = res.data.data;
 			});
 		},

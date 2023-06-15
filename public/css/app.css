@@ -121,19 +121,37 @@ a.card-title {
 .card-line-item:not(:last-child) {
   border-bottom: #e9ecef 1px solid;
 }
-.table > * > *:not(:last-child) {
+.table.orderInfo > * > *:not(:last-child) {
   border-bottom: #e9ecef 1px solid;
 }
-.table > * > * > * {
+.table.orderInfo > * > * > * {
   border: none;
   text-align: center;
 }
-.table > * > * > *:first-child {
+.table.orderInfo > * > * > *:first-child {
   text-align: left;
 }
-.table > * > * > *:last-child {
+.table.orderInfo > * > * > *:last-child {
   text-align: right;
   border-left: #e9ecef 1px solid;
+}
+.table.standart > * > *:not(:last-child) {
+  border-bottom: #e9ecef 1px solid;
+}
+.table.standart > * > * > * {
+  border: none;
+}
+.table.standart > * > * > *:first-child {
+  text-align: left;
+}
+.table.standart > * > * > *:last-child {
+  text-align: right;
+}
+.checkgroup > .btn-check:not(:first-child) + label {
+  padding-left: 1rem;
+}
+.checkgroup > .btn-check:checked + label {
+  color: red;
 }
 .mymodal {
   position: fixed;

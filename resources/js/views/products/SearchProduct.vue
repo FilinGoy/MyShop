@@ -1,9 +1,9 @@
 <template>
-	<div class="container">
+	<div class="container py-3">
 		<div class="row">
 			<div class="d-none d-xl-flex col-lg-3">
 				<div>
-					<div class="py-3 bg-white shadow-sm">
+					<div class="ьy-3 bg-white shadow-sm">
 						<h3 class="px-4">Категории</h3>
 						<router-link v-for="category in this.$store.state.categories" :key="category.id" :to="`/category/${category.id}`" class="dropdown-item text-wrap px-4">
 							<span>{{ category.title }}</span>
@@ -15,48 +15,46 @@
 			<div class="col">
 				<!-- Products header -->
 
-				<div class="row">
-					<div class="col">
-						<div class="bg-white p-2 p-lg-3 shadow-sm mb-2 mb-lg-4">
-							<div class="d-flex align-items-center justify-content-between my-3">
-								<div class="d-flex align-items-end justify-content-between">
-									<h1 class="my-0 lh-1">{{ category.title }}</h1>
-									<div class="pl-2">{{ pages.total }} {{ getProductWord(pages.total) }}</div>
-								</div>
+				<div class="row bg-white py-2 py-lg-3 mb-2 mb-lg-3 shadow-sm">
+					<div class="col-12 col-md-6">
+						<div class="d-flex align-items-center justify-content-between my-3">
+							<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end">
+								<h1 class="my-0 lh-1 text-truncate">По запросу «{{ this.$route.params.title }}</h1>
+								<div class="pl-md-2 text-nowrap">{{ this.products.length }} {{ getProductWord(this.products.length) }}</div>
+							</div>
+						</div>
+					</div>
 
-								<div class="form-inline">
-									<div class="mr-2">
-										<a href="products-grid.html" class="btn btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="Grid view">
-											<i class="fa fa-th-large"></i>
-										</a>
-										<a href="products-list.html" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="List view">
-											<i class="fa fa-list-ul"></i>
-										</a>
-									</div>
-									<div class="form-group mb-0">
-										<label for="exampleFormControlSelect2" class="mr-3 d-none d-lg-block"><small>Сортировка</small></label>
-										<select class="form-control form-control-sm" id="exampleFormControlSelect2" v-model="selectedSort" @change="sortedList">
-											<option value="nameUp" selected>▲ По названию</option>
-											<option value="nameDown">▼ По названию</option>
-											<option value="priceUp">▲ По цене</option>
-											<option value="priceDown">▼ По цене</option>
-										</select>
-									</div>
-									<div class="d-lg-none ml-2">
-										<button class="btn btn-danger btn-sm toggle-show" data-show="open-mobile-filters">
-											<strong>
-												<i class="icon icon-text-align-center"></i>
-												<span class="d-none d-sm-inline-block">Фильтр</span>
-											</strong>
-										</button>
-									</div>
-								</div>
+					<div class="col-12 col-md-6 d-flex justify-content-md-end">
+						<div class="form-inline">
+							<div class="d-flex align-items-center justify-content-between my-3">
+								<a href="products-grid.html" class="btn btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="Grid view">
+									<i class="fa fa-th-large"></i>
+								</a>
+								<a href="products-list.html" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="List view">
+									<i class="fa fa-list-ul"></i>
+								</a>
+							</div>
+							<div class="form-group mb-0">
+								<label for="exampleFormControlSelect2" class="mr-3 d-none d-lg-block"><small>Сортировка</small></label>
+								<select class="form-control form-control-sm" id="exampleFormControlSelect2" v-model="selectedSort" @change="sortedList">
+									<option value="nameUp" selected>▲ По названию</option>
+									<option value="nameDown">▼ По названию</option>
+									<option value="priceUp">▲ По цене</option>
+									<option value="priceDown">▼ По цене</option>
+								</select>
+							</div>
+							<div class="d-lg-none ml-2">
+								<button class="btn btn-danger btn-sm toggle-show" data-show="open-mobile-filters">
+									<strong>
+										<i class="icon icon-text-align-center"></i>
+										<span class="d-none d-sm-inline-block">Фильтр</span>
+									</strong>
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<!-- Products collection -->
 
 				<div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-2 g-xl-4">
 					<template v-if="products">
@@ -135,32 +133,34 @@
 						</template>
 					</template>
 				</div>
-
-				<!-- Pagination -->
-
-				<div v-if="pages && pages.last_page > 1" class="row">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination justify-content-center py-3 py-lg-4">
-							<template v-for="page in pages.links" :key="page.label">
-								<li class="page-item" :class="page.active ? 'active' : ''">
-									<template v-if="page.url">
-										<div
-											v-if="page.label === 'pagination.previous' || page.label === 'pagination.next'"
-											@click.prevent="getProductFromCategory(this.$route, page.label === 'pagination.previous' ? page.prev_page_url : page.next_page_url)"
-											type="button"
-											class="page-link"
-										>
-											<i class="fa-solid" :class="page.label === 'pagination.previous' ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
-										</div>
-										<div v-else @click.prevent="getProductFromCategory(this.$route, page.label)" type="button" class="page-link">{{ page.label }}</div>
-									</template>
-								</li>
-							</template>
-						</ul>
-					</nav>
-				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Products collection -->
+
+	<!-- Pagination -->
+
+	<div v-if="pages && pages.last_page > 1" class="row">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center py-3 py-lg-4">
+				<template v-for="page in pages.links" :key="page.label">
+					<li class="page-item" :class="page.active ? 'active' : ''">
+						<template v-if="page.url">
+							<div
+								v-if="page.label === 'pagination.previous' || page.label === 'pagination.next'"
+								@click.prevent="getProductFromCategory(this.$route, page.label === 'pagination.previous' ? page.prev_page_url : page.next_page_url)"
+								type="button"
+								class="page-link"
+							>
+								<i class="fa-solid" :class="page.label === 'pagination.previous' ? 'fa-chevron-left' : 'fa-chevron-right'"></i>
+							</div>
+							<div v-else @click.prevent="getProductFromCategory(this.$route, page.label)" type="button" class="page-link">{{ page.label }}</div>
+						</template>
+					</li>
+				</template>
+			</ul>
+		</nav>
 	</div>
 </template>
 <script>

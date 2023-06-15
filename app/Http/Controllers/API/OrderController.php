@@ -9,6 +9,7 @@ use App\Mail\OrderInfo;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\PaymentType;
+use App\Models\Product;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
@@ -78,5 +79,25 @@ class OrderController extends Controller
         Mail::to($email)->send(new OrderInfo($order, $products, $payment, $number));
 
         return response()->json(['message' => "Благодарим за покупку!\nИнформация о зааке отправлена вам на почту"]);
+    }
+
+    public function getOrders(Request $request)
+    {
+        $user = $request->get('user');
+        $count = $request->get('count', 10);
+        $page = $request->get('page', 1);
+
+        $orders = Order::where('user_id', $user)->with('statuses')->orderByDesc('created_at')->paginate($count, ['*'], 'page', $page);
+
+        return compact('orders');
+    }
+
+    public function getOrder(Request $request)
+    {
+        $id = $request->order;
+
+        $order = Order::where('id', $id)->with('statuses')->with('orders_products')->with('payment')->with('user')->get()->first();
+
+        return compact('order');
     }
 }

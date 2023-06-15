@@ -72,7 +72,7 @@
 						<router-link to="/cart">Редактировать <i class="fa-solid fa-pen-to-square"></i></router-link>
 					</div>
 
-					<table class="table">
+					<table class="table orderInfo">
 						<tbody>
 							<tr v-for="product in cart" :key="product.id">
 								<td>
@@ -102,7 +102,7 @@
 							<span class="fs-2">{{ totalPrice ?? "0" }}</span
 							>₽
 						</div>
-						<button type="submit" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 ? true : false">
+						<button type="submit" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 && buttonPress ? true : false">
 							<p v-if="!totalPrice || totalPrice < 500">
 								До заказа ещё: <span>{{ totalPrice ? (500 - totalPrice).toFixed(2) : "500" }}</span
 								>₽
@@ -144,6 +144,8 @@ export default {
 			datetime_delivery: this.getTodayF(),
 			total_price: null,
 			products: [],
+
+			buttonPress: true,
 
 			today: this.getTodayF(),
 			maxDate: this.maxDateF(),
@@ -227,6 +229,7 @@ export default {
 		setUser() {
 			this.user_id = this.$store.state.user?.id;
 			this.email = this.$store.state.user?.email;
+			this.number = this.$store.state.user?.number;
 			this.first_name = this.$store.state.user?.first_name;
 			this.last_name = this.$store.state.user?.last_name;
 			this.address = this.$store.state.user?.address;
@@ -238,6 +241,8 @@ export default {
 				this.error = "Заполните обязательные поля!";
 				return;
 			}
+
+			buttonPress = false;
 
 			let products = JSON.parse(localStorage.getItem("cart"));
 
@@ -256,11 +261,13 @@ export default {
 					products: products,
 				})
 				.then((res) => {
+					buttonPress = true;
 					this.clearCart();
 					this.showModal();
 				})
 				.catch((err) => {
-					console.log(err);
+					buttonPress = true;
+					this.error = err;
 				});
 		},
 

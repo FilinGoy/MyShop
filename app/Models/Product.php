@@ -9,8 +9,6 @@ class Product extends Model
 {
     use Filterable;
 
-    protected $appends = ['links'];
-
     protected $table = 'products';
     protected $guarded = false;
 
@@ -51,6 +49,11 @@ class Product extends Model
 
     public function getImageUrlAttribute(){
         return url('storage/' . $this->preview_image);
+    }
+
+    public function orders_products()
+    {
+        return $this->belongsToMany(Order::class, 'orders_products');
     }
 
     public function getRateAttribute()

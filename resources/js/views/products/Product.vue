@@ -137,7 +137,7 @@
 									</div>
 								</div>
 
-								<div class="row" v-if="product.count">
+								<!-- 								<div class="row" v-if="product.count">
 									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
@@ -146,7 +146,7 @@
 											<div v-if="product.count" class="col-xl-8">{{ product.count + " шт" }}</div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 
 								<div class="row" v-if="product.tags > 0">
 									<div class="col-12">

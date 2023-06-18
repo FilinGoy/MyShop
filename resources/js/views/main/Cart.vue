@@ -75,9 +75,9 @@
 														type="number"
 														class="item-edit rounded-0 border-0 shadow-none flex-fill text-center"
 														min="0"
-														max="999"
+														:max="product.count > 999 ? 999 : product.count"
 														:id="'editQuantity' + product.id"
-														@input="checkValue"
+														@input="checkValue($event, product.count)"
 														@change="setProduct(product, $event)"
 														:value="checkToHaving(product, 'cart') === undefined ? 1 : getValue(product)"
 													/>
@@ -119,8 +119,7 @@
 					</div>
 				</div>
 
-				<button type="button" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 ? true : false"
-                @click="(totalPrice ?? 0) < 500 ? {} : $router.push('checkout')">
+				<button type="button" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 ? true : false" @click="(totalPrice ?? 0) < 500 ? {} : $router.push('checkout')">
 					<p v-if="!totalPrice || totalPrice < 500">
 						До заказа ещё: <span>{{ totalPrice ? (500 - totalPrice).toFixed(2) : "500" }}</span
 						>₽

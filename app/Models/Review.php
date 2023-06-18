@@ -9,4 +9,9 @@ class Review extends Model
 {
     protected $table = 'reviews';
     protected $guarded = false;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

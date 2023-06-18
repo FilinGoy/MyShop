@@ -203,6 +203,9 @@ const store = createStore({
         statusUser(state) {
             return state.isLoginUser;
         },
+        userGetter(state) {
+            return state.user;
+        },
     }
 });
 
@@ -303,7 +306,7 @@ app.mixin({
         addQuantity(product) {
             let index = this.$store.state.cart?.findIndex(p => p.id == product.id);
             this.getCart();
-            if (this.$store.state.cart[index].quantity < 999) {
+            if (this.$store.state.cart[index].quantity < (product.count < 999 ? product.count : 999)) {
                 let editProduct = [
                     {
                         id: product.id,
@@ -345,7 +348,7 @@ app.mixin({
             if (count < 1) {
                 this.cleanFromCart(product);
             } else {
-                if (count > 999) { count = 999; }
+                if (count > product.count > 999 ? 999 : product.count) { count = (product.count > 999 ? 999 : product.count); }
                 let editProduct = [
                     {
                         id: product.id,
@@ -359,9 +362,9 @@ app.mixin({
             }
 
         },
-        checkValue(e) {
-            if (e.target.value > 999) {
-                e.target.value = 999;
+        checkValue(e, count) {
+            if (e.target.value > (count > 999 ? 999 : count)) {
+                e.target.value = count;
                 return;
             }
 
@@ -393,6 +396,7 @@ app.mixin({
                     title: product.title,
                     price: product.price,
                     quantity: 1,
+                    count: product.count,
                     preview_image: product.preview_image,
                 },
             ];

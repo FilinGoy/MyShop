@@ -160,7 +160,7 @@ var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "fas fa-minus flex-fill"
 }, null, -1 /* HOISTED */);
 var _hoisted_45 = [_hoisted_44];
-var _hoisted_46 = ["id", "onChange", "value"];
+var _hoisted_46 = ["max", "id", "onInput", "onChange", "value"];
 var _hoisted_47 = ["onClick"];
 var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-plus"
@@ -254,11 +254,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "number",
       "class": "item-edit rounded-0 border-0 shadow-none flex-fill text-center",
       min: "0",
-      max: "999",
+      max: product.count > 999 ? 999 : product.count,
       id: 'editQuantity' + product.id,
-      onInput: _cache[2] || (_cache[2] = function () {
-        return _ctx.checkValue && _ctx.checkValue.apply(_ctx, arguments);
-      }),
+      onInput: function onInput($event) {
+        return _ctx.checkValue($event, product.count);
+      },
       onChange: function onChange($event) {
         return _ctx.setProduct(product, $event);
       },

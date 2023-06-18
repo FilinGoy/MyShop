@@ -17959,7 +17959,15 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       }
-    }
+    },
+    //SECTION - Профль
+    quitAccount: function quitAccount() {
+      document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      this.$store.commit("LOGOUT");
+      this.$router.push({
+        name: "main"
+      });
+    } //!SECTION
   }
 });
 
@@ -18229,14 +18237,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["to"]);
   }), 128 /* KEYED_FRAGMENT */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onKeyup: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function () {
+      return $options.Search && $options.Search.apply($options, arguments);
+    }, ["enter"])),
     type: "search",
     "class": "item-search rounded-0 border-0 w-100 shadow-none",
     placeholder: "Поиск товаров",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.searchTitle = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchTitle]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[1] || (_cache[1] = function () {
+  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchTitle]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[2] || (_cache[2] = function () {
       return $options.Search && $options.Search.apply($options, arguments);
     }),
     "class": "btn bg-white rounded-0 border-0 text-muted shadow-none h-100"
@@ -18261,7 +18272,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_23, [((_this$$store$state$us = this.$store.state.user) === null || _this$$store$state$us === void 0 ? void 0 : _this$$store$state$us.position_id) === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     type: "button",
-    onClick: _cache[2] || (_cache[2] = function () {
+    onClick: _cache[3] || (_cache[3] = function () {
       return $options.goAdmin && $options.goAdmin.apply($options, arguments);
     }),
     "class": "dropdown-item text-wrap px-4"
@@ -18292,7 +18303,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [this.$store.state.isLoginUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
     key: 0,
     type: "button",
-    onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return _this.quitAccount && _this.quitAccount.apply(_this, arguments);
     }, ["prevent"])),
     "class": "dropdown-item border-top text-wrap px-4"
@@ -18330,14 +18341,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 1 /* STABLE */
   }), _hoisted_37])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onKeyup: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function () {
+      return $options.Search && $options.Search.apply($options, arguments);
+    }, ["enter"])),
     type: "search",
     "class": "item-search w-100 rounded-0 border-0 shadow-none",
     placeholder: "Поиск товаров",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $data.searchTitle = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchTitle]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[5] || (_cache[5] = function () {
+  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchTitle]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[7] || (_cache[7] = function () {
       return $options.Search && $options.Search.apply($options, arguments);
     }),
     "class": "btn bg-white rounded-0 border-0 text-muted shadow-none"
@@ -18440,7 +18454,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })])]), _hoisted_50, _hoisted_51])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Канвас профиля "), this.$store.state.isLoginUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_52, [_hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [((_this$$store$state$us2 = this.$store.state.user) === null || _this$$store$state$us2 === void 0 ? void 0 : _this$$store$state$us2.position_id) === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
     key: 0,
     type: "button",
-    onClick: _cache[6] || (_cache[6] = function () {
+    onClick: _cache[8] || (_cache[8] = function () {
       return $options.goAdmin && $options.goAdmin.apply($options, arguments);
     }),
     "class": "dropdown-item text-wrap px-4"
@@ -18471,7 +18485,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), this.$store.state.isLoginUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
     key: 1,
     type: "button",
-    onClick: _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onClick: _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return _this.quitAccount && _this.quitAccount.apply(_this, arguments);
     }, ["prevent"])),
     "class": "dropdown-item mt-auto border-top text-wrap px-4 py-4"
@@ -18762,6 +18776,9 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.createStore)({
   getters: {
     statusUser: function statusUser(state) {
       return state.isLoginUser;
+    },
+    userGetter: function userGetter(state) {
+      return state.user;
     }
   }
 });
@@ -18849,7 +18866,7 @@ app.mixin({
         return p.id == product.id;
       });
       this.getCart();
-      if (this.$store.state.cart[index].quantity < 999) {
+      if (this.$store.state.cart[index].quantity < (product.count < 999 ? product.count : 999)) {
         var editProduct = [{
           id: product.id,
           quantity: ++this.$store.state.cart[index].quantity
@@ -18891,8 +18908,8 @@ app.mixin({
       if (count < 1) {
         this.cleanFromCart(product);
       } else {
-        if (count > 999) {
-          count = 999;
+        if (count > product.count > 999 ? 999 : product.count) {
+          count = product.count > 999 ? 999 : product.count;
         }
         var editProduct = [{
           id: product.id,
@@ -18904,9 +18921,9 @@ app.mixin({
         this.$store.dispatch('initializeCart');
       }
     },
-    checkValue: function checkValue(e) {
-      if (e.target.value > 999) {
-        e.target.value = 999;
+    checkValue: function checkValue(e, count) {
+      if (e.target.value > (count > 999 ? 999 : count)) {
+        e.target.value = count;
         return;
       }
       if (e.target.value < 0) {
@@ -18940,6 +18957,7 @@ app.mixin({
         title: product.title,
         price: product.price,
         quantity: 1,
+        count: product.count,
         preview_image: product.preview_image
       }];
       this.$store.commit("ADD_TO_CART", newProduct);
@@ -48605,6 +48623,11 @@ function useRoute() {
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
 /******/ 	})();
 /******/ 	
 /************************************************************************/

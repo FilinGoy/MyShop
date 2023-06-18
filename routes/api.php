@@ -23,6 +23,9 @@ Route::get('/getPaymentTypes', App\Http\Controllers\API\PaymentTypeController::c
 
 Route::get('/category/{category}', 'App\Http\Controllers\API\ProductController@getProductFromCategory');
 Route::get('/product/{product}', 'App\Http\Controllers\API\ProductController@getProduct');
+Route::post('/product/{product}/addReview', 'App\Http\Controllers\API\ReviewController@addReview');
+Route::post('/product/{review}/removeReview', 'App\Http\Controllers\API\ReviewController@removeReview');
+Route::get('/product/{product}/listReviews', 'App\Http\Controllers\API\ReviewController@listReviews');
 Route::post('/orders', 'App\Http\Controllers\API\OrderController@getOrders');
 Route::get('/order/{order}', 'App\Http\Controllers\API\OrderController@getOrder');
 Route::post('/editProfile', '\App\Http\Controllers\API\UserController@editProfile');

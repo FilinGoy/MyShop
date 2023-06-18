@@ -133,7 +133,7 @@ var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "fas fa-minus flex-fill"
 }, null, -1 /* HOISTED */);
 var _hoisted_37 = [_hoisted_36];
-var _hoisted_38 = ["id", "onChange", "value"];
+var _hoisted_38 = ["max", "id", "onInput", "onChange", "value"];
 var _hoisted_39 = ["onClick"];
 var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-plus"
@@ -228,11 +228,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "number",
       "class": "item-edit rounded-0 border-0 shadow-none flex-fill text-center",
       min: "0",
-      max: "999",
+      max: product.count > 999 ? 999 : product.count,
       id: 'editQuantity' + product.id,
-      onInput: _cache[1] || (_cache[1] = function () {
-        return _ctx.checkValue && _ctx.checkValue.apply(_ctx, arguments);
-      }),
+      onInput: function onInput($event) {
+        return _ctx.checkValue($event, product.count);
+      },
       onChange: function onChange($event) {
         return _ctx.setProduct(product, $event);
       },
@@ -258,7 +258,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "button",
     "class": "btn btn-danger",
     disabled: ((_ctx$totalPrice2 = _ctx.totalPrice) !== null && _ctx$totalPrice2 !== void 0 ? _ctx$totalPrice2 : 0) < 500 ? true : false,
-    onClick: _cache[2] || (_cache[2] = function ($event) {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
       var _ctx$totalPrice3;
       return ((_ctx$totalPrice3 = _ctx.totalPrice) !== null && _ctx$totalPrice3 !== void 0 ? _ctx$totalPrice3 : 0) < 500 ? {} : _ctx.$router.push('checkout');
     })

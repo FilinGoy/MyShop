@@ -96,9 +96,9 @@
 														type="number"
 														class="item-edit rounded-0 border-0 shadow-none flex-fill text-center"
 														min="0"
-														max="999"
+														:max="product.count > 999 ? 999 : product.count"
 														:id="'editQuantity' + product.id"
-														@input="checkValue"
+														@input="checkValue($event, product.count)"
 														@change="setProduct(product, $event)"
 														:value="checkToHaving(product, 'cart') === undefined ? 1 : getValue(product)"
 													/>

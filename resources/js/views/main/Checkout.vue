@@ -119,11 +119,11 @@
 			<h4>Информация о покупке</h4>
 			<hr />
 			<p>Благодарим за покупку в нашем интернет магазине!</p>
-			<p>ПИнформация о заказе была отправлена вам на указанную почту.</p>
+			<p>Информация о заказе была отправлена вам на указанную почту.</p>
 			<hr />
 			<p>Окно автоматически закроется через 10 сек.</p>
 
-			<button type="button" class="btn btn-outline-danger" @click.prevent="hideModal">На глвную</button>
+			<button type="button" class="btn btn-outline-danger" @click.prevent="hideModal">На главную</button>
 		</div>
 	</div>
 </template>

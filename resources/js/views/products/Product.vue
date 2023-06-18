@@ -148,7 +148,7 @@
 									</div>
 								</div>
 
-								<div class="row" v-if="product.tags">
+								<div class="row" v-if="product.tags > 0">
 									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
@@ -194,9 +194,9 @@
 												type="number"
 												class="item-edit rounded-0 border-0 shadow-none flex-fill text-center"
 												min="0"
-												max="999"
+												:max="product.count > 999 ? 999 : product.count"
 												:id="'editQuantity' + product.id"
-												@input="checkValue"
+												@input="checkValue($event, product.count)"
 												@change="setProduct(product, $event)"
 												:value="checkToHaving(product, 'cart') === undefined ? 1 : getValue(product)"
 											/>
@@ -294,37 +294,43 @@
 								<div class="rating-overall">
 									<!-- Comments -->
 
-									<div class="py-3 py-lg-4">
+									<div>
 										<!-- Comments header -->
 
 										<header>
 											<div class="h3 mb-1 d-flex">
 												Отзывы (
-												<p class="text-black">{{ product.rate }}<i class="fas fa-star text-warning pr-1"></i></p>
+												<p class="text-black">{{ product.rate }}<i class="fas fa-star text-warning pr-1"></i> - {{ countReviews + " " + this.getReviewWord(countReviews) }}</p>
 												)
 											</div>
-											<p class="text-muted"><small>Новые отзывы</small></p>
+											<p class="text-muted"><small>Последние отзывы</small></p>
 										</header>
 
 										<!-- Comments feedback -->
 
-										<div class="pt-3 pt-lg-4">
+										<div v-for="review in reviews" :key="review.id" class="pt-3 pt-lg-4 px-3 mb-2 bg-white border">
 											<div id="comment-1">
 												<div class="mb-4">
-													<div class="d-flex align-items-center text-small">
-														<img src="storage/images/main/noname.jpg" class="mr-2 rounded-circle" alt="..." style="width: 40px;" />
-														<div><strong class="mr-1">Анна Семанова</strong></div>
-														<div class="text-muted">- 45 минут назад</div>
-														<div class="ml-auto">
-															<i class="fa fa-star icon-xs text-danger"></i>
-															<i class="fa fa-star icon-xs text-danger"></i>
-															<i class="fa fa-star icon-xs text-danger"></i>
-															<i class="fa fa-star icon-xs text-secondary"></i>
-															<i class="fa fa-star icon-xs text-secondary"></i>
+													<div class="d-flex justify-content-between align-items-center text-small">
+														<div>
+															<strong class="mr-1">{{ review.user.first_name + " " + review.user.last_name }}</strong>
 														</div>
+														<div class="text-muted">{{ review.date }}</div>
 													</div>
-													<div class="my-2">
-														Вкусные, любим кушать всей семьёй!
+													<div>
+														<div class="ml-auto">
+															<i class="fa fa-star icon-xs" :class="review.rate > 0 ? 'text-danger' : 'text-secondary'"></i>
+															<i class="fa fa-star icon-xs" :class="review.rate > 1 ? 'text-danger' : 'text-secondary'"></i>
+															<i class="fa fa-star icon-xs" :class="review.rate > 2 ? 'text-danger' : 'text-secondary'"></i>
+															<i class="fa fa-star icon-xs" :class="review.rate > 3 ? 'text-danger' : 'text-secondary'"></i>
+															<i class="fa fa-star icon-xs" :class="review.rate > 4 ? 'text-danger' : 'text-secondary'"></i>
+														</div>
+														{{ review.content }}
+													</div>
+													<div class="border-top">
+														<a href="" role="button" v-if="this.$store.state.user?.position_id == 2" @click.prevent="removeReview(review.id)"
+															><i class="fas fa-trash-alt"></i> Удалить отзыв</a
+														>
 													</div>
 												</div>
 											</div>
@@ -334,8 +340,68 @@
 									<hr />
 
 									<!-- Reply -->
-									<p>В разработке!</p>
-									<!--  -->
+									<div v-if="this.$store.state.isLoginUser" class="py-3 py-lg-4">
+										<!-- Reply header -->
+
+										<div class="h3 mb-1">Оставить отзыв</div>
+										<!-- Reply form -->
+
+										<div>
+											<form>
+												<div class="row">
+													<div class="col-lg-6">
+														<div class="form-group mb-0">
+															<label class="label" for="exampleInputEmail1">Ваша оценка:<span class="text-danger">*</span></label>
+															<fieldset class="px-0 form-control rating d-flex justify-content-end align-items-center">
+																<input type="radio" id="option5" class="btn-check" value="5" v-model="stars" autocomplete="off" />
+																<label for="option5"><i class="fa fa-star fa-sm"></i></label>
+																<input type="radio" id="option4" class="btn-check" value="4" v-model="stars" autocomplete="off" />
+																<label for="option4"><i class="fa fa-star fa-sm"></i></label>
+																<input type="radio" id="option3" class="btn-check" value="3" v-model="stars" autocomplete="off" />
+																<label for="option3"><i class="fa fa-star fa-sm"></i></label>
+																<input type="radio" id="option2" class="btn-check" value="2" v-model="stars" autocomplete="off" />
+																<label for="option2"><i class="fa fa-star fa-sm"></i></label>
+																<input type="radio" id="option1" class="btn-check" value="1" v-model="stars" autocomplete="off" />
+																<label for="option1"><i class="fa fa-star fa-sm"></i></label>
+															</fieldset>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="label" for="exampleComment">Комментарий ({{ comment.length ?? "0" }} из 500 символов)</label>
+													<textarea class="form-control" cols="20" rows="4" v-model="comment" :maxlength="500"></textarea>
+												</div>
+
+												<div class="mb-3">
+													<div v-if="this.error">
+														<p class="text-danger">{{ this.error }}</p>
+													</div>
+													<div v-if="this.added">
+														<p class="text-success">{{ this.added }}</p>
+													</div>
+												</div>
+
+												<div class="d-flex justify-content-between align-items-center">
+													<button type="button" role="button" @click.prevent="sendReview(product.id)" class="btn btn-outline-danger"><strong>Отправить</strong></button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
+						<div class="row justify-content-center">
+							<div class="col-lg-8">
+								<div class="py-3 py-lg-4">
+									<header>
+										<div class="h3 mb-1">Описание</div>
+									</header>
+
+									<div class="py-3 py-lg-4">
+										<p v-html="product.description"></p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -351,6 +417,13 @@ export default {
 	data() {
 		return {
 			product: [],
+			reviews: [],
+			countReviews: 0,
+			stars: 0,
+			canReview: false,
+			comment: "",
+			error: "",
+			added: "",
 		};
 	},
 	mounted() {
@@ -365,9 +438,70 @@ export default {
 		getProduct(place) {
 			this.axios.get("/api/product/" + place.params.id).then((res) => {
 				this.product = res.data.data;
+				this.getReviews(res.data.data.id);
 			});
+		},
+
+		getReviews(id) {
+			this.axios.get("/api/product/" + id + "/listReviews").then((res) => {
+				this.reviews = res.data.reviews;
+				this.countReviews = res.data.count;
+			});
+		},
+
+		removeReview(id) {
+			this.axios.post("/api/product/" + id + "/removeReview", { user: this.$store.state.user?.id }).then((res) => {
+				this.getReviews(this.product.id);
+			});
+		},
+
+		sendReview(id) {
+			if (!this.stars) {
+				this.error = "Требуется выбрать оценку!";
+				return;
+			}
+			this.axios
+				.post("/api/product/" + id + "/addReview", { rate: this.stars, content: this.comment, user: this.$store.state.user?.id })
+				.then((res) => {
+					this.added = "Ваш отзыв успешно добавлен/обновлён!";
+					this.error = "";
+					this.getReviews(id);
+				})
+				.catch((err) => {
+					this.error = err;
+				});
+		},
+
+		getReviewWord(count) {
+			return count % 10 == 1 && count % 100 != 11 ? "отзыв" : count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20) ? "отзыва" : "отзывов";
 		},
 	},
 };
 </script>
-<style></style>
+<style>
+.rating {
+	direction: rtl;
+	background-color: transparent;
+	border: none;
+}
+
+.rating input + label {
+	color: #565e6d;
+}
+
+.rating input:hover + label ~ input + label {
+	color: red;
+}
+
+.rating input:checked + label ~ input + label {
+	color: red;
+}
+
+.rating input:hover + label {
+	color: red;
+}
+
+.rating input:checked + label {
+	color: red;
+}
+</style>

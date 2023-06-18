@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-lg-3 col-6">
+                <div class="col-12 col-md-6">
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
@@ -31,29 +31,29 @@
                             <p>Новые заказы ожидающие подтверждения</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fas fa-cash-register"></i>
                         </div>
                         <a href="{{ route('order.index') }}" class="small-box-footer">Переход в заказы<i
                                 class="fas fa-arrow-circle-right pl-2"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
+                <div class="col-12 col-md-6">
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{ $cash }} ₽</h3>
+                            <h3>{{ number_format($cash, 2, '.', ' ') }} ₽</h3>
                             <p>Потенциаьная прибыль за неделю</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="far fa-money-bill-alt"></i>
                         </div>
                         <a href="{{ route('order.index') }}" class="small-box-footer">Переход в заказы<i
                                 class="fas fa-arrow-circle-right pl-2"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
+                <div class="col-12 col-md-6">
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
@@ -61,22 +61,22 @@
                             <p>Общее количество клиентов</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="fas fa-users"></i>
                         </div>
                         <a href="{{ route('user.index') }}" class="small-box-footer">Перейти в пользователи<i
                                 class="fas fa-arrow-circle-right pl-2"></i></a>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-6">
+                <div class="col-12 col-md-6">
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>{{ $products }}</h3>
-                            <p>Количество видов товара кончилось</p>
+                            <p>Остуствующих товаров на складе</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="fas fa-box-open"></i>
                         </div>
                         <a href="{{ route('product.index') }}" class="small-box-footer">Перейти в товары
                             <i class="fas fa-arrow-circle-right pl-2"></i></a>

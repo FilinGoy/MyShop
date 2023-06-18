@@ -18866,7 +18866,7 @@ app.mixin({
         return p.id == product.id;
       });
       this.getCart();
-      if (this.$store.state.cart[index].quantity < (product.count < 999 ? product.count : 999)) {
+      if (this.$store.state.cart[index].quantity < (product.count > 999 ? 999 : product.count)) {
         var editProduct = [{
           id: product.id,
           quantity: ++this.$store.state.cart[index].quantity
@@ -18908,7 +18908,7 @@ app.mixin({
       if (count < 1) {
         this.cleanFromCart(product);
       } else {
-        if (count > product.count > 999 ? 999 : product.count) {
+        if (count > (product.count > 999 ? 999 : product.count)) {
           count = product.count > 999 ? 999 : product.count;
         }
         var editProduct = [{

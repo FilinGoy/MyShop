@@ -89,7 +89,7 @@
 								<li><router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link></li>
 								<li><router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link></li>
 								<li><router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link></li>
-								<li><a type="button" @click.prevent="quitAccount" class="dropdown-item border-top text-wrap px-4">Выйти</a></li>
+								<li><a type="button" v-if="this.$store.state.isLoginUser" @click.prevent="this.quitAccount" class="dropdown-item border-top text-wrap px-4">Выйти</a></li>
 							</ul>
 						</div>
 
@@ -197,7 +197,7 @@
 				<router-link to="/profile/orders" class="dropdown-item text-wrap px-4">Мои заказы</router-link>
 				<router-link to="/profile/favorite" class="dropdown-item text-wrap px-4">Избранное</router-link>
 				<router-link to="/profile" class="dropdown-item text-wrap px-4">Учётная запись</router-link>
-				<a type="button" @click.prevent="quitAccount" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</a>
+				<a type="button" v-if="this.$store.state.isLoginUser" @click.prevent="this.quitAccount" class="dropdown-item mt-auto border-top text-wrap px-4 py-4">Выйти</a>
 			</div>
 		</div>
 		<!-- //!SECTION -->
@@ -301,14 +301,6 @@ export default {
 					window.open("/admin?token=" + tokenStr, "_self");
 				});
 		},
-
-		//SECTION - Профль
-		quitAccount() {
-			document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-			this.$store.commit("LOGOUT");
-			this.$router.push({ name: "main" });
-		},
-		//!SECTION
 
 		Search() {
 			if (this.searchTitle) {

@@ -8,7 +8,7 @@
 					<router-link to="/profile/favorite" class="dropdown-item text-wrap py-3 px-4">Избранное</router-link>
 					<router-link to="/profile" class="dropdown-item text-wrap py-3 px-4">Учётная запись</router-link>
 				</div>
-				<a type="button" @click.prevent="this.quitAccount" class="dropdown-item mt-auto border-top text-wrap p-4">Выйти</a>
+				<a type="button" v-if="this.$store.state.isLoginUser" @click.prevent="this.quitAccount" class="dropdown-item mt-auto border-top text-wrap p-4">Выйти</a>
 			</div>
 		</div>
 		<div class="d-flex col-12 col-lg-8 flex-fill">
@@ -16,7 +16,7 @@
 				<div class="d-flex justify-content-between flex-column py-2">
 					<div class="my-3">
 						<h1 class="my-0">
-							Заказ №{{ order.id }} <span class="badge bg-light text-black">{{ order.statuses?.title }}</span>
+							Заказ №{{ order.id }} <span class="badge text-black" :class="checkColor(order.statuses?.id)">{{ order.statuses?.title }}</span>
 						</h1>
 					</div>
 					<p class="px-1">{{ this.formattedDate(order.created_at) }}</p>
@@ -119,6 +119,28 @@ export default {
 				this.order = res.data.order;
 				this.products = this.order.orders_products;
 			});
+		},
+
+		checkColor(id) {
+			switch (id) {
+				case 1:
+				case 2:
+					return "bg-warning";
+				case 5:
+					return "bg-gray";
+				case 3:
+				case 4:
+					return "bg-info text-white";
+				case 6:
+					return "bg-success";
+				case 7:
+				case 8:
+				case 9:
+				case 10:
+					return "bg-danger text-white";
+				default:
+					return "bg-light";
+			}
 		},
 	},
 };

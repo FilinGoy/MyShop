@@ -1,5 +1,5 @@
 <template>
-	<h4>Рекомендуемое</h4>
+	<h4>Случайные товары</h4>
 	<div class="row row-cols-1 row-cols-xl-4 g-2 g-xl-4">
 		<template v-if="products">
 			<template v-for="product in products" :key="product.id">
@@ -81,7 +81,6 @@ export default {
 	data() {
 		return {
 			products: [],
-			category: [],
 		};
 	},
 	mounted() {
@@ -96,7 +95,6 @@ export default {
 		getProductFromCategory(place) {
 			this.axios.get(`../../api/category/${localStorage.getItem("history") ?? 1}?count=4`).then((res) => {
 				this.products = res.data.products;
-				this.category = res.data.category;
 			});
 		},
 	},

@@ -442,6 +442,14 @@ app.mixin({
         },
         //!SECTION
 
+        //SECTION - Профль
+        quitAccount() {
+            document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            this.$store.commit("LOGOUT");
+            this.$router.push({ name: "main" });
+        },
+        //!SECTION
+
         //SECTION - История
         addHistory(product) {
             this.$store.commit("ADD_TO_HISTORY", product.category.id);

@@ -29,7 +29,7 @@ class AuthController extends Controller
     {
         $authorities = request(['login', 'password']);
         if (!$token = auth()->attempt($authorities)) {
-            return response()->json(['error' => 'Ошибка авторизации'], 401);
+            return response()->json(['error' => 'Неверные данные для авторизации'], 401);
         }
 
         return $this->respondWithToken($token);

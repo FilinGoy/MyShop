@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="assets/AdminLTE/plugins/fontawesome-free/css/all.min.css">
     <!-- summernote -->
     <link rel="stylesheet" href="assets/AdminLTE/plugins/summernote/summernote-bs4.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+        href="assets/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/AdminLTE/dist/css/adminlte.css">
     <!-- dropzonejs -->
@@ -91,7 +94,7 @@
                         </li>
                         <li class="nav-header">Основные разделы</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('order.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-shopping-bag"></i>
                                 <p>
                                     Заказы
@@ -295,6 +298,8 @@
     <script src="assets/AdminLTE/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- Bootstrap Switch -->
     <script src="assets/AdminLTE/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="assets/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- dropzonejs -->
     <script src="assets/AdminLTE/plugins/dropzone/min/dropzone.min.js"></script>
     <!-- bs-custom-file-input -->
@@ -317,6 +322,18 @@
             $("input[data-bootstrap-switch]").each(function() {
                 $(this).bootstrapSwitch('state', $(this).prop('checked'));
             })
+
+            //Date picker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+
+            //Date and time picker
+            $('#reservationdatetime').datetimepicker({
+                icons: {
+                    time: 'far fa-clock'
+                }
+            });
 
             // Summernote
             $('#summernote').summernote()

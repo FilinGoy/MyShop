@@ -40,7 +40,9 @@
 								<div class="h2 mb-0">
 									<span>{{ product.title }}</span>
 									<hr />
-									<span>Цена: {{ product.price }} ₽</span>
+									<p>
+										Цена: <span class="text-danger">{{ product.price }} ₽</span>
+									</p>
 								</div>
 
 								<hr />
@@ -252,7 +254,7 @@
 				<!-- Product tab content -->
 
 				<div class="tab-content" id="productTabContent">
-					<div class="tab-pane fade" id="composition" role="tabpanel" aria-labelledby="composition-tab">
+					<div class="tab-pane fade show active" id="composition" role="tabpanel" aria-labelledby="composition-tab">
 						<div class="row justify-content-center">
 							<div class="col-lg-8">
 								<div class="py-3 py-lg-4">
@@ -284,7 +286,7 @@
 						</div>
 					</div>
 
-					<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+					<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
 						<!-- Widget rating -->
 
 						<div class="row justify-content-center">

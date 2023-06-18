@@ -17950,15 +17950,6 @@ __webpack_require__.r(__webpack_exports__);
         window.open("/admin?token=" + tokenStr, "_self");
       });
     },
-    //SECTION - Профль
-    quitAccount: function quitAccount() {
-      document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      this.$store.commit("LOGOUT");
-      this.$router.push({
-        name: "main"
-      });
-    },
-    //!SECTION
     Search: function Search() {
       if (this.searchTitle) {
         this.$router.push({
@@ -18298,13 +18289,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Учётная запись")];
     }),
     _: 1 /* STABLE */
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [this.$store.state.isLoginUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 0,
     type: "button",
     onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return $options.quitAccount && $options.quitAccount.apply($options, arguments);
+      return _this.quitAccount && _this.quitAccount.apply(_this, arguments);
     }, ["prevent"])),
     "class": "dropdown-item border-top text-wrap px-4"
-  }, "Выйти")])], 512 /* NEED_PATCH */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //NOTE - Скрываемый профиль "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, "Выйти")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 512 /* NEED_PATCH */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //NOTE - Скрываемый профиль "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/profile/orders",
     "class": "nav-item btn btn-white shadow-none border-0 rounded-0 d-flex d-lg-none justify-content-center align-items-center text-black-50",
     type: "button",
@@ -18476,13 +18468,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Учётная запись")];
     }),
     _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }), this.$store.state.isLoginUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 1,
     type: "button",
     onClick: _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return $options.quitAccount && $options.quitAccount.apply($options, arguments);
+      return _this.quitAccount && _this.quitAccount.apply(_this, arguments);
     }, ["prevent"])),
     "class": "dropdown-item mt-auto border-top text-wrap px-4 py-4"
-  }, "Выйти")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view, {
+  }, "Выйти")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //!SECTION "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view, {
     "class": "py-3"
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" //SECTION - Footer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [_hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/"
@@ -18997,6 +18990,15 @@ app.mixin({
           this.favourite = null;
         }
       }
+    },
+    //!SECTION
+    //SECTION - Профль
+    quitAccount: function quitAccount() {
+      document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      this.$store.commit("LOGOUT");
+      this.$router.push({
+        name: "main"
+      });
     },
     //!SECTION
     //SECTION - История

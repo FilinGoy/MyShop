@@ -140,9 +140,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function(){
 
     Route::group(['prefix' => 'orders'], function () {
         Route::get('/', '\App\Http\Controllers\Admin\OrderController@index')->name('order.index');
-        Route::get('/{type}', '\App\Http\Controllers\Admin\OrderController@show')->name('order.show');
-        Route::get('/{type}/edit', '\App\Http\Controllers\Admin\OrderController@edit')->name('order.edit');
-        Route::patch('/{type}', '\App\Http\Controllers\Admin\OrderController@update')->name('order.update');
+        Route::get('/{order}', '\App\Http\Controllers\Admin\OrderController@show')->name('order.show');
+        Route::get('/{order}/edit', '\App\Http\Controllers\Admin\OrderController@edit')->name('order.edit');
+        Route::patch('/{order}', '\App\Http\Controllers\Admin\OrderController@update')->name('order.update');
     });
 });
 

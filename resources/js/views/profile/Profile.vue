@@ -8,7 +8,7 @@
 					<router-link to="/profile/favorite" class="dropdown-item text-wrap py-3 px-4">Избранное</router-link>
 					<router-link to="/profile" class="dropdown-item text-wrap py-3 px-4 active">Учётная запись</router-link>
 				</div>
-				<a type="button" @click.prevent="this.quitAccount" class="dropdown-item mt-auto border-top text-wrap p-4">Выйти</a>
+				<a type="button" v-if="this.$store.state.isLoginUser" @click.prevent="this.quitAccount" class="dropdown-item mt-auto border-top text-wrap p-4">Выйти</a>
 			</div>
 		</div>
 		<div class="d-flex col-12 col-lg-8 flex-fill">

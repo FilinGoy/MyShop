@@ -27,7 +27,7 @@ __webpack_require__.r(__webpack_exports__);
       datetime_delivery: this.getTodayF(),
       total_price: null,
       products: [],
-      buttonPress: true,
+      buttonActive: true,
       today: this.getTodayF(),
       maxDate: this.maxDateF(),
       weekends: [6, 0],
@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
         this.error = "Заполните обязательные поля!";
         return;
       }
-      buttonPress = false;
+      this.buttonActive = false;
       var products = JSON.parse(localStorage.getItem("cart"));
       this.axios.post("/api/orderBuy", {
         user_id: this.user_id,
@@ -127,11 +127,11 @@ __webpack_require__.r(__webpack_exports__);
         payment_id: this.payment,
         products: products
       }).then(function (res) {
-        buttonPress = true;
+        _this2.buttonActive = true;
         _this2.clearCart();
         _this2.showModal();
       })["catch"](function (err) {
-        buttonPress = true;
+        _this2.buttonActive = true;
         _this2.error = err;
       });
     },
@@ -448,7 +448,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128 /* KEYED_FRAGMENT */))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [_hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Общее кол-во в корзине: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_ctx$totalCount = _ctx.totalCount) !== null && _ctx$totalCount !== void 0 ? _ctx$totalCount : "0") + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.getProductWord(_ctx.totalCount)), 1 /* TEXT */)]), _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_ctx$totalPrice = _ctx.totalPrice) !== null && _ctx$totalPrice !== void 0 ? _ctx$totalPrice : "0"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("₽ ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     "class": "btn btn-danger",
-    disabled: ((_ctx$totalPrice2 = _ctx.totalPrice) !== null && _ctx$totalPrice2 !== void 0 ? _ctx$totalPrice2 : 0) < 500 && $data.buttonPress ? true : false
+    disabled: ((_ctx$totalPrice2 = _ctx.totalPrice) !== null && _ctx$totalPrice2 !== void 0 ? _ctx$totalPrice2 : 0) < 500 || !$data.buttonActive
   }, [!_ctx.totalPrice || _ctx.totalPrice < 500 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" До заказа ещё: "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.totalPrice ? (500 - _ctx.totalPrice).toFixed(2) : "500"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("₽ ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.totalPrice >= 500 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_54, "Оформить заказ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8 /* PROPS */, _hoisted_52)])])])])], 32 /* HYDRATE_EVENTS */), $data.modalShow ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
     "class": "mymodal",

@@ -102,7 +102,7 @@
 							<span class="fs-2">{{ totalPrice ?? "0" }}</span
 							>₽
 						</div>
-						<button type="submit" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 && buttonPress ? true : false">
+						<button type="submit" class="btn btn-danger" :disabled="(totalPrice ?? 0) < 500 || !buttonActive">
 							<p v-if="!totalPrice || totalPrice < 500">
 								До заказа ещё: <span>{{ totalPrice ? (500 - totalPrice).toFixed(2) : "500" }}</span
 								>₽
@@ -145,7 +145,7 @@ export default {
 			total_price: null,
 			products: [],
 
-			buttonPress: true,
+			buttonActive: true,
 
 			today: this.getTodayF(),
 			maxDate: this.maxDateF(),
@@ -242,7 +242,7 @@ export default {
 				return;
 			}
 
-			buttonPress = false;
+			this.buttonActive = false;
 
 			let products = JSON.parse(localStorage.getItem("cart"));
 
@@ -261,12 +261,12 @@ export default {
 					products: products,
 				})
 				.then((res) => {
-					buttonPress = true;
+					this.buttonActive = true;
 					this.clearCart();
 					this.showModal();
 				})
 				.catch((err) => {
-					buttonPress = true;
+					this.buttonActive = true;
 					this.error = err;
 				});
 		},

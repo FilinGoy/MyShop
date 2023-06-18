@@ -8,7 +8,7 @@
 					<router-link to="/profile/favorite" class="dropdown-item text-wrap py-3 px-4">Избранное</router-link>
 					<router-link to="/profile" class="dropdown-item text-wrap py-3 px-4">Учётная запись</router-link>
 				</div>
-				<a type="button" @click.prevent="this.quitAccount" class="dropdown-item mt-auto border-top text-wrap p-4">Выйти</a>
+				<a type="button" v-if="this.$store.state.isLoginUser" @click.prevent="this.quitAccount" class="dropdown-item mt-auto border-top text-wrap p-4">Выйти</a>
 			</div>
 		</div>
 		<div class="d-flex col-12 col-lg-8 flex-fill">
@@ -42,12 +42,11 @@
 											</div>
 										</td>
 										<td class="d-none d-md-table-cell">
-											<p class="badge bg-light text-dark">{{ order.statuses.title }}</p>
+											<p class="badge text-dark" :class="checkColor(order.statuses.id)">{{ order.statuses.title }}</p>
 										</td>
 										<td>
 											<div class="d-flex flex-column align-items-end">
 												<p>{{ order.total_price }} ₽</p>
-												<p class="d-block d-md-none badge bg-light text-dark">{{ order.statuses.title }}</p>
 											</div>
 										</td>
 										<router-link class="stretched-link" :to="`order/` + order.id"></router-link>
@@ -132,6 +131,28 @@ export default {
 					this.pags = res.data.orders;
 					this.orders = this.pags.data;
 				});
+		},
+
+		checkColor(id) {
+			switch (id) {
+				case 1:
+				case 2:
+					return "bg-warning";
+				case 5:
+					return "bg-gray";
+				case 3:
+				case 4:
+					return "bg-info text-white";
+				case 6:
+					return "bg-success";
+				case 7:
+				case 8:
+				case 9:
+				case 10:
+					return "bg-danger text-white";
+				default:
+					return "bg-light";
+			}
 		},
 	},
 };

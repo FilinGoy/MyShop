@@ -19021,7 +19021,8 @@ app.mixin({
     //!SECTION
     //SECTION - История
     addHistory: function addHistory(product) {
-      this.$store.commit("ADD_TO_HISTORY", product.category.id);
+      var _product$category$id, _product$category;
+      this.$store.commit("ADD_TO_HISTORY", (_product$category$id = (_product$category = product.category) === null || _product$category === void 0 ? void 0 : _product$category.id) !== null && _product$category$id !== void 0 ? _product$category$id : product.category_id);
     } //!SECTION
   }
 });

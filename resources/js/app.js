@@ -456,7 +456,7 @@ app.mixin({
 
         //SECTION - История
         addHistory(product) {
-            this.$store.commit("ADD_TO_HISTORY", product.category.id);
+            this.$store.commit("ADD_TO_HISTORY", product.category?.id ?? product.category_id);
         },
         //!SECTION
     }

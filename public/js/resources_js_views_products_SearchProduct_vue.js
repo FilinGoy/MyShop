@@ -157,7 +157,7 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, "Фильтр")])])], -1 /* HOISTED */);
 var _hoisted_23 = {
   key: 0,
-  "class": "row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-2 g-xl-4"
+  "class": "row row-cols-1 row-cols-xl-2 row-cols-xxl-3 gy-2 gy-xl-4"
 };
 var _hoisted_24 = ["onClick"];
 var _hoisted_25 = {
@@ -289,7 +289,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: product.id
     }, [product.published ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: 0,
-      "class": "col",
+      "class": "col px-0 px-lg-2",
       onClick: function onClick($event) {
         return _ctx.addHistory(product);
       }

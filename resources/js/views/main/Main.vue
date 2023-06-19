@@ -24,16 +24,20 @@
 			</router-link>
 		</div>
 
+		<random-products></random-products>
+
 		<recomend-products></recomend-products>
 	</div>
 </template>
 <script>
 import RecomendProducts from "../products/Recomend.vue";
+import RandomProducts from "../products/Random.vue";
 
 export default {
 	name: "mainPage",
 	components: {
 		RecomendProducts,
+		RandomProducts,
 	},
 };
 </script>

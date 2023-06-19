@@ -22,6 +22,7 @@ Route::get('/categories', App\Http\Controllers\API\CategoryController::class);
 Route::get('/getPaymentTypes', App\Http\Controllers\API\PaymentTypeController::class);
 
 Route::get('/category/{category}', 'App\Http\Controllers\API\ProductController@getProductFromCategory');
+Route::get('/getProductFromRate', 'App\Http\Controllers\API\ProductController@getProductFromRate');
 Route::get('/product/{product}', 'App\Http\Controllers\API\ProductController@getProduct');
 Route::post('/product/{product}/addReview', 'App\Http\Controllers\API\ReviewController@addReview');
 Route::post('/product/{review}/removeReview', 'App\Http\Controllers\API\ReviewController@removeReview');

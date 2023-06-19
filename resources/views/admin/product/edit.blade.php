@@ -379,7 +379,7 @@
                                 </dd>
                                 <dt>Теги</dt>
                                 <dd>
-                                    @if (isset($olds['tags']))
+                                    @if (count($olds['tags']) > 0)
                                         @foreach ($olds['tags'] as $tag)
                                             {{ $tag->title }}
                                             <br>

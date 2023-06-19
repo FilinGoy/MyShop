@@ -19,7 +19,7 @@ class ProductsController extends Controller
     public function getSearch(Request $request)
     {
         $title = $request->validate(['title' => 'nullable|string']);
-        $products = DB::table('products')->where('title', 'like', '%' . $title['title'] . '%')->get();
+        $products = DB::table('products')->where('title', 'like', '%' . $title['title'] . '%')->where('published', true)->get();
 
         return $products;
     }

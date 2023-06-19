@@ -126,13 +126,13 @@
 									</div>
 								</div>
 
-								<div class="row" v-if="product.weight">
+								<div class="row" v-if="product.calorie">
 									<div class="col-12">
 										<div class="row mb-2">
 											<div class="col-xl-4">
 												<span class="text-muted">Калории</span>
 											</div>
-											<div v-if="product.weight" class="col-xl-8">{{ product.calorie + " ккал" }}</div>
+											<div v-if="product.calorie" class="col-xl-8">{{ product.calorie + " ккал" }}</div>
 										</div>
 									</div>
 								</div>
@@ -400,7 +400,8 @@
 									</header>
 
 									<div class="py-3 py-lg-4">
-										<p v-html="product.description"></p>
+										<p v-if="(product.description)" v-html="product.description"></p>
+										<p v-else>Пока нет данных об описании данного продукта, при необходимости свяжитесь с администратором.</p>
 									</div>
 								</div>
 							</div>

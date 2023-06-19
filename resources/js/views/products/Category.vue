@@ -50,9 +50,9 @@
 
 				<!-- Products collection -->
 
-				<div v-if="products.length > 0" class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-2 g-xl-4">
+				<div v-if="products.length > 0" class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 gy-2 gy-xl-4">
 					<template v-for="product in products" :key="product.id">
-						<div class="col" v-if="product.published" @click="addHistory(product)">
+						<div class="col px-0 px-lg-2" v-if="product.published" @click="addHistory(product)">
 							<div class="rowcard h-100 bg-white d-flex flex-row flex-xl-column justify-content-between p-2 p-xl-3 shadow-sm">
 								<div class="card-img-top col-4 col-md-2 col-xl-12 position-relative flex-xl-fill px-0">
 									<img :src="product.preview_image ?? 'storage/images/main/none.png'" class="fit-img" />

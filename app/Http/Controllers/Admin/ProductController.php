@@ -23,7 +23,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderByDesc('created_at')->get();
         return view('admin.product.index', compact('products'));
     }
 
